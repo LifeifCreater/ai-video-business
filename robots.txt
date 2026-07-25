@@ -4,4 +4,4 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://lifeifcreater.github.io/ai-video-business/sitemap.xml
