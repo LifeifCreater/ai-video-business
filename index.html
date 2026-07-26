@@ -1369,6 +1369,37 @@ summary:focus-visible{
     }, {rootMargin:'-40% 0px -50% 0px'});
     sections.forEach(function(s){ navObserver.observe(s); });
   }
+
+  // ---------------- お問い合わせフォーム（Googleフォーム）クリック計測 ----------------
+  // 対象は下記Googleフォームを開くリンクのみ。#contact等のページ内リンクや他の外部リンクは対象外。
+  // 既存のGoogleタグ（測定ID：G-HFRM2G8C7C）はこの処理より前に読み込み済みのため、
+  // ここでは新たにタグを追加せず、既存の gtag 関数が使える場合のみイベントを送信する。
+  function initContactFormTracking(){
+    var GA_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform';
+    var formLinks = document.querySelectorAll('a[href="' + GA_FORM_URL + '"]');
+    formLinks.forEach(function(link){
+      // 同じリンクへ重複してリスナーを登録しないようにする
+      if(link.getAttribute('data-ga-tracked') === 'true') return;
+      link.setAttribute('data-ga-tracked', 'true');
+
+      link.addEventListener('click', function(){
+        // preventDefaultは使用しない（フォームは通常どおり新しいタブで開く）
+        if(typeof gtag === 'function'){
+          gtag('event', 'contact_form_click', {
+            link_url: link.href,
+            link_text: (link.textContent || '').trim(),
+            source_page: 'homepage'
+          });
+        }
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initContactFormTracking);
+  } else {
+    // このスクリプトはbody末尾で読み込まれるため、その時点で既にDOM構築が完了している場合はすぐに実行する
+    initContactFormTracking();
+  }
 })();
 </script>
 
