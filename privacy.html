@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Search Console 所有権確認 -->
+<meta name="google-site-verification" content="tMryDzvKuym28F_ahW7J4rW69t-82RCLpqkXgKaip3M">
+
+<!-- ============================================================
+  基本SEO設定
+  ・本ページは検索結果には表示させず（noindex）、リンクはたどれる（follow）設定にしています
+============================================================= -->
+<title>プライバシーポリシー｜企業向けAI動画制作｜よっしー</title>
+<meta name="description" content="よっしー（企業向けAI動画制作）のプライバシーポリシーです。取得する情報、利用目的、外部サービスの利用、第三者提供、お問い合わせ窓口などについて記載しています。">
+<meta name="robots" content="noindex, follow">
+<!-- 公開URLに合わせて設定済み -->
+<link rel="canonical" href="https://lifeifcreater.github.io/ai-video-business/privacy.html">
+
+<!-- ============================================================
+  OGP（基本設定）
+============================================================= -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="プライバシーポリシー｜企業向けAI動画制作｜よっしー">
+<meta property="og:description" content="よっしー（企業向けAI動画制作）のプライバシーポリシーです。">
+<meta property="og:url" content="https://lifeifcreater.github.io/ai-video-business/privacy.html">
+<meta property="og:site_name" content="よっしー｜生成AI×企業動画制作">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://lifeifcreater.github.io/ai-video-business/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="プライバシーポリシー｜企業向けAI動画制作｜よっしー">
+<meta name="twitter:description" content="よっしー（企業向けAI動画制作）のプライバシーポリシーです。">
+<meta name="twitter:image" content="https://lifeifcreater.github.io/ai-video-business/og-image.png">
+
+<!-- ============================================================
+  フォント読み込み（index.htmlと同一。使用ウェイトのみ読み込み）
+============================================================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   0. デザイントークン（index.htmlと共通）
+============================================================= */
+:root{
+  --color-black:#0a0a0a;
+  --color-charcoal:#1c1b19;
+  --color-gray-700:#4a4844;
+  --color-gray-400:#8c8880;
+  --color-line:#dedad2;
+  --color-ivory:#faf7f0;
+  --color-white:#ffffff;
+  --color-accent:#c9a02b;
+  --color-accent-soft:#e9d99a;
+
+  --font-display:'Shippori Mincho', serif;
+  --font-body:'Zen Kaku Gothic New', sans-serif;
+
+  --gap-xs:8px;
+  --gap-sm:16px;
+  --gap-md:32px;
+  --gap-lg:64px;
+  --gap-xl:120px;
+
+  --header-h:76px;
+  --radius:2px;
+  --ease:cubic-bezier(.16,.84,.44,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth; scroll-padding-top: var(--header-h);}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  color:var(--color-charcoal);
+  background:var(--color-white);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+h1,h2,h3,h4{font-family:var(--font-display); margin:0; line-height:1.4;}
+p{margin:0;}
+ul,ol{margin:0; padding:0; list-style:none;}
+button{font-family:inherit; cursor:pointer;}
+html,body{max-width:100%;}
+
+a:focus-visible,
+button:focus-visible{
+  outline:3px solid var(--color-accent);
+  outline-offset:3px;
+}
+
+.container{ max-width:1180px; margin:0 auto; padding:0 24px; }
+@media (min-width:768px){ .container{padding:0 40px;} }
+
+/* ============================================================
+   1. ボタン（index.htmlと共通）
+============================================================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:16px 30px; font-size:.95rem; font-weight:700;
+  border-radius:var(--radius); border:1px solid transparent;
+  text-decoration:none;
+  transition:transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+  min-height:52px; min-width:44px; white-space:nowrap;
+}
+.btn--primary{ background:var(--color-accent); color:var(--color-black); }
+.btn--primary:hover{ transform:translateY(-2px); background:#b28f24; }
+.btn--dark{ background:var(--color-black); color:var(--color-ivory); }
+.btn--dark:hover{ transform:translateY(-2px); background:var(--color-charcoal); }
+
+.text-link{
+  color:var(--color-black);
+  text-decoration-color:var(--color-accent);
+  text-decoration-thickness:2px;
+  text-underline-offset:3px;
+  font-weight:700;
+}
+.text-link:hover{ text-decoration-thickness:2px; color:var(--color-accent); }
+
+/* ============================================================
+   2. ヘッダー（index.htmlと共通）
+============================================================= */
+.site-header{
+  position:fixed; top:0; left:0; right:0; height:var(--header-h);
+  display:flex; align-items:center; z-index:200;
+  background:rgba(250,247,240,.86);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s var(--ease), background .3s var(--ease);
+}
+.site-header.is-scrolled{ border-bottom-color:var(--color-line); }
+
+.header-inner{ width:100%; display:flex; align-items:center; justify-content:space-between; }
+.brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--color-black); }
+.brand-text{ display:flex; flex-direction:column; line-height:1.25; }
+.brand-name{ font-family:var(--font-display); font-weight:700; font-size:1.02rem; }
+.brand-role{ font-size:.68rem; color:var(--color-gray-700); letter-spacing:.04em; }
+
+/* アイコン画像の共通フォールバック構造：画像が読み込めない場合は「よ」の文字を表示 */
+.avatar{
+  position:relative; display:inline-flex; align-items:center; justify-content:center;
+  border-radius:50%; overflow:hidden; background:var(--color-charcoal); flex-shrink:0;
+}
+.avatar-fallback{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:700; color:var(--color-accent); background:var(--color-charcoal);
+}
+.avatar img{ position:relative; z-index:1; width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.avatar--header{ width:38px; height:38px; border:1px solid var(--color-line); }
+.avatar--header .avatar-fallback{ font-size:1rem; }
+
+.main-nav{ display:none; }
+.main-nav ul{ display:flex; align-items:center; gap:30px; }
+.main-nav a{ font-size:.88rem; text-decoration:none; color:var(--color-charcoal); position:relative; padding:4px 0; }
+.main-nav a::after{
+  content:''; position:absolute; left:0; right:100%; bottom:-2px;
+  height:2px; background:var(--color-accent);
+  transition:right .3s var(--ease);
+}
+.main-nav a:hover::after{ right:0; }
+
+.header-cta{ display:none; }
+@media (min-width:1080px){ .main-nav{ display:block; } .header-cta{ display:inline-flex; } }
+
+.menu-toggle{ display:flex; width:44px; height:44px; align-items:center; justify-content:center; background:none; border:none; }
+@media (min-width:1080px){ .menu-toggle{ display:none; } }
+.menu-toggle span{ display:block; width:22px; height:2px; background:var(--color-black); position:relative; transition:background .2s; }
+.menu-toggle span::before,.menu-toggle span::after{
+  content:''; position:absolute; left:0; width:22px; height:2px; background:var(--color-black);
+  transition:transform .3s var(--ease), top .3s var(--ease);
+}
+.menu-toggle span::before{ top:-7px; }
+.menu-toggle span::after{ top:7px; }
+.menu-toggle[aria-expanded="true"] span{ background:transparent; }
+.menu-toggle[aria-expanded="true"] span::before{ top:0; transform:rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span::after{ top:0; transform:rotate(-45deg); }
+
+.mobile-nav{
+  position:fixed; top:0; left:0; right:0; bottom:0;
+  background:var(--color-ivory); z-index:190;
+  padding:20px 24px 40px;
+  transform:translateX(100%);
+  transition:transform .35s var(--ease);
+  overflow-y:auto;
+}
+.mobile-nav.is-open{ transform:translateX(0); }
+.mobile-nav-top{ display:flex; align-items:center; justify-content:space-between; height:var(--header-h); margin-bottom:var(--gap-sm); }
+.mobile-nav-close{
+  display:flex; align-items:center; gap:8px;
+  background:none; border:1px solid var(--color-line);
+  padding:10px 16px; border-radius:999px; font-size:.85rem; font-weight:700;
+  min-height:44px;
+}
+.mobile-nav ul{ display:flex; flex-direction:column; gap:4px; }
+.mobile-nav a{
+  display:block; padding:18px 4px; font-size:1.1rem;
+  text-decoration:none; color:var(--color-charcoal);
+  border-bottom:1px solid var(--color-line);
+  min-height:44px;
+}
+.mobile-nav .btn{ margin-top:var(--gap-md); width:100%; }
+@media (min-width:1080px){ .mobile-nav{ display:none; } }
+
+/* ============================================================
+   3. ポリシー本文（新規：読みやすい本文幅と行間）
+============================================================= */
+.policy-hero{
+  padding:calc(var(--header-h) + 56px) 0 40px;
+  background:var(--color-black);
+  color:var(--color-ivory);
+}
+.policy-hero .eyebrow{
+  font-size:.8rem; letter-spacing:.15em; color:var(--color-accent);
+  font-weight:700; display:inline-block; margin-bottom:var(--gap-sm);
+}
+.policy-hero h1{
+  font-size:clamp(1.9rem,4.4vw,2.8rem);
+  font-weight:700;
+}
+.policy-hero p{
+  margin-top:14px;
+  color:#cfcac0;
+  font-size:.95rem;
+}
+.back-link{
+  display:inline-flex; align-items:center; gap:8px;
+  margin-top:var(--gap-md);
+  font-size:.86rem;
+  color:var(--color-ivory);
+  text-decoration:none;
+  border-bottom:1px solid rgba(250,247,240,.4);
+  padding-bottom:2px;
+}
+.back-link:hover{ border-bottom-color:var(--color-accent); color:var(--color-accent); }
+
+.policy-body{ padding:var(--gap-xl) 0; }
+.policy-content{
+  max-width:760px;
+  margin:0 auto;
+}
+.policy-section{
+  padding:34px 0;
+  border-top:1px solid var(--color-line);
+}
+.policy-content .policy-section:first-child{ border-top:none; padding-top:0; }
+.policy-section h2{
+  font-size:1.3rem;
+  font-weight:600;
+  margin-bottom:14px;
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+}
+.policy-section h2 .num{
+  font-size:.85rem;
+  color:var(--color-accent);
+  letter-spacing:.05em;
+}
+.policy-section p{
+  color:var(--color-gray-700);
+  font-size:.96rem;
+  line-height:2;
+  margin-bottom:12px;
+}
+.policy-section ul{ margin-bottom:12px; }
+.policy-section ul li{
+  color:var(--color-gray-700);
+  font-size:.94rem;
+  line-height:1.9;
+  padding-left:18px;
+  position:relative;
+  margin-bottom:6px;
+}
+.policy-section ul li::before{
+  content:''; position:absolute; left:0; top:11px;
+  width:8px; height:1px; background:var(--color-accent);
+}
+.policy-section .note{
+  margin-top:14px;
+  padding:18px 20px;
+  background:var(--color-ivory);
+  border:1px solid var(--color-line);
+  font-size:.88rem;
+  color:var(--color-gray-700);
+  line-height:1.9;
+}
+.policy-enacted{
+  margin-top:var(--gap-lg);
+  padding-top:var(--gap-md);
+  border-top:1px solid var(--color-line);
+  font-size:.9rem;
+  color:var(--color-gray-700);
+}
+.policy-back-bottom{ margin-top:var(--gap-lg); }
+
+/* ============================================================
+   4. フッター（index.htmlと共通）
+============================================================= */
+.site-footer{ background:var(--color-ivory); padding:var(--gap-lg) 0 40px; border-top:1px solid var(--color-line); }
+.footer-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--gap-md); margin-bottom:var(--gap-lg); }
+.footer-brand{ font-family:var(--font-display); font-size:1.05rem; font-weight:700; }
+.footer-service{ font-size:.85rem; color:var(--color-gray-700); margin-top:6px; }
+.footer-links{ display:flex; flex-wrap:wrap; gap:22px; font-size:.85rem; }
+.footer-links a{ text-decoration:none; color:var(--color-gray-700); min-height:44px; display:inline-flex; align-items:center; }
+.footer-links a:hover{ color:var(--color-black); }
+.footer-copy{ font-size:.78rem; color:var(--color-gray-400); }
+
+/* ============================================================
+   5. 固定の相談ボタン（右下）
+============================================================= */
+.floating-cta{
+  position:fixed; right:16px; bottom:16px; z-index:150;
+  opacity:0; transform:translateY(12px); pointer-events:none;
+  transition:opacity .3s var(--ease), transform .3s var(--ease);
+}
+.floating-cta.is-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
+.floating-cta .btn{ box-shadow:0 12px 30px -10px rgba(0,0,0,.4); padding:14px 22px; font-size:.88rem; }
+@media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } .floating-cta .btn{ padding:16px 28px; font-size:.95rem; } }
+@media (max-width:600px){ .floating-cta{ right:14px; bottom:14px; } }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ transition-duration:.001ms !important; animation-duration:.001ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ヘッダー（index.htmlと共通のブランド表示。リンクはトップページへ）
+============================================================= -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="よっしー｜企業向けAI動画制作 トップページへ戻る">
+      <!-- ヘッダー左側のブランドアイコン：profile-icon.png を同じフォルダに設置してください -->
+      <span class="avatar avatar--header">
+        <span class="avatar-fallback" aria-hidden="true">よ</span>
+        <img src="profile-icon.png" alt="よっしー｜企業向けAI動画制作" width="38" height="38" loading="eager" decoding="async" onerror="this.style.display='none'">
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">よっしー</span>
+        <span class="brand-role">生成AI×企業動画制作</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="サイト内ナビゲーション">
+      <ul>
+        <li><a href="index.html#service">サービス</a></li>
+        <li><a href="index.html#reason">特徴</a></li>
+        <li><a href="index.html#flow">制作の流れ</a></li>
+        <li><a href="index.html#price">料金</a></li>
+        <li><a href="index.html#profile">プロフィール</a></li>
+        <li><a href="index.html#faq">よくある質問</a></li>
+      </ul>
+    </nav>
+
+    <a href="index.html#contact" class="btn btn--dark header-cta">動画制作について相談する</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- スマートフォン用メニュー -->
+<nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
+  <div class="mobile-nav-top">
+    <span class="brand-name">メニュー</span>
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="メニューを閉じる">閉じる ✕</button>
+  </div>
+  <ul>
+    <li><a href="index.html">トップページ</a></li>
+    <li><a href="index.html#service">サービス</a></li>
+    <li><a href="index.html#reason">特徴</a></li>
+    <li><a href="index.html#flow">制作の流れ</a></li>
+    <li><a href="index.html#price">料金</a></li>
+    <li><a href="index.html#profile">プロフィール</a></li>
+    <li><a href="index.html#faq">よくある質問</a></li>
+  </ul>
+  <a href="index.html#contact" class="btn btn--primary">動画制作について相談する</a>
+</nav>
+
+<main id="top">
+
+  <!-- ============================================================
+       ページ見出し
+  ============================================================= -->
+  <section class="policy-hero">
+    <div class="container">
+      <span class="eyebrow">PRIVACY POLICY</span>
+      <h1>プライバシーポリシー</h1>
+      <p>よっしー｜生成AI×企業動画制作（以下「本サービス」）における個人情報の取扱いについて定めるものです。</p>
+      <a href="index.html" class="back-link">← トップページへ戻る</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ポリシー本文
+  ============================================================= -->
+  <section class="policy-body">
+    <div class="container">
+      <div class="policy-content">
+
+        <article class="policy-section">
+          <h2><span class="num">01</span>基本方針</h2>
+          <p>
+            よっしー｜生成AI×企業動画制作（以下「本サービス」）は、企業向けAI動画制作サービスの提供にあたり、お客様からお預かりする個人情報の重要性を認識し、適切に取り扱うよう努めます。本ポリシーは、本サービスが取得する情報とその取扱い方針について定めるものです。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">02</span>取得する情報</h2>
+          <p>お問い合わせフォームへのご入力を通じて、以下の情報を取得する場合があります。</p>
+          <ul>
+            <li>氏名</li>
+            <li>会社名、団体名</li>
+            <li>メールアドレス</li>
+            <li>電話番号</li>
+            <li>お問い合わせ内容</li>
+            <li>ご希望の動画の内容</li>
+            <li>ご予算</li>
+            <li>ご希望の納期</li>
+            <li>その他、ご本人がフォームへ入力した情報</li>
+          </ul>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">03</span>個人情報の利用目的</h2>
+          <p>取得した情報は、以下の目的の範囲内で利用します。</p>
+          <ul>
+            <li>お問い合わせへの回答のため</li>
+            <li>お見積もりやご提案の作成のため</li>
+            <li>動画制作に関する打ち合わせのため</li>
+            <li>契約、制作、納品、アフターフォローの対応のため</li>
+            <li>お問い合わせ内容の傾向を把握し、サービス内容や案内文言を改善するため</li>
+            <li>不正利用やなりすまし、トラブルの防止・対応のため</li>
+            <li>法令上必要となる対応のため</li>
+          </ul>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">04</span>個人情報の管理</h2>
+          <p>
+            本サービスは、取得した個人情報について、不正アクセスや紛失、破損、改ざん、漏えいなどのリスクを低減するため、可能な範囲で適切な管理に努めます。ただし、インターネットを通じた情報のやり取りにおいて、リスクを完全に排除できることを保証するものではありません。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">05</span>外部サービスの利用</h2>
+          <p>本サイトの運営およびお問い合わせ管理にあたり、以下の外部サービスを利用しています。</p>
+          <ul>
+            <li>Googleフォーム（お問い合わせの受付）</li>
+            <li>Googleスプレッドシート（お問い合わせ内容の整理・保管）</li>
+            <li>Gmail（お客様とのメールでのやり取り）</li>
+            <li>Google Apps Script（フォーム内容の転記や通知処理など）</li>
+            <li>OpenAI API（お問い合わせ内容の整理・案件内容の判定支援）</li>
+            <li>GitHub Pages（本サイトの公開・ホスティング）</li>
+          </ul>
+          <p>
+            お問い合わせいただいた内容の整理や案件判定を目的として、ご相談内容の一部をOpenAI APIへ送信する場合があります。その際、メールアドレスや電話番号などお客様へ直接連絡が可能となる情報については、送信前に削除する処理を行った上で利用します。
+          </p>
+          <p class="note">
+            これらの外部サービスは、各提供事業者が定める利用規約・プライバシーポリシーに基づいて運営されています。本サービスとして、外部サービス側の安全性について完全性を保証するものではなく、各社の定めに従って適切に利用するよう努めます。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">06</span>個人情報の第三者提供</h2>
+          <p>
+            本サービスは、法令に基づく場合を除き、ご本人の同意なく個人データを第三者へ提供することはありません。ただし、業務の遂行に必要な範囲で、前項に記載の外部サービスや制作進行上必要となる委託先を利用する場合があります。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">07</span>個人情報の取扱いの委託</h2>
+          <p>
+            本サービスは、利用目的の達成に必要な範囲内において、個人情報の取扱いの全部または一部を外部へ委託する場合があります。委託を行う場合は、委託先について必要かつ適切な選定を行い、適切な管理が行われるよう努めます。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">08</span>保存期間</h2>
+          <p>
+            取得した個人情報は、利用目的の達成に必要な期間、または法令上の保存義務がある場合はその期間、保存します。保存期間を経過した情報については、適切な方法で削除・破棄するよう努めます。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">09</span>開示、訂正、削除、利用停止等の請求</h2>
+          <p>
+            ご本人からご自身の個人情報について、開示、訂正、追加、削除、利用停止等のご請求があった場合は、ご本人であることを確認のうえ、法令に従い遅滞なく対応いたします。ご請求は、下記お問い合わせ窓口までご連絡ください。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">10</span>Cookieやアクセス解析について</h2>
+          <p>
+            現時点で、本サイトはアクセス解析ツールを導入していません。今後、サービス改善を目的としてCookieやアクセス解析ツールを導入する場合があります。導入した場合は、利用するサービス名と取得する情報の内容を本ページに追記します。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">11</span>プライバシーポリシーの変更</h2>
+          <p>
+            本ポリシーの内容は、法令の改正やサービス内容の変更等に応じて、予告なく変更する場合があります。変更後のプライバシーポリシーは、本ページに掲載した時点から効力を生じるものとします。
+          </p>
+        </article>
+
+        <article class="policy-section">
+          <h2><span class="num">12</span>お問い合わせ窓口</h2>
+          <p>
+            個人情報の取扱いに関するご質問、開示等のご請求については、下記フォームよりご連絡ください。運営者の氏名、住所その他の法令上必要となる情報については、ご本人からの正当なご請求があった場合、確認のうえ遅滞なく開示いたします。
+          </p>
+          <p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform" class="text-link" target="_blank" rel="noopener">お問い合わせ窓口（Googleフォーム）を開く</a>
+          </p>
+        </article>
+
+        <p class="policy-enacted">制定日：2026年7月26日</p>
+
+        <div class="policy-back-bottom">
+          <a href="index.html" class="btn btn--dark">トップページへ戻る</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     フッター（index.htmlと共通）
+============================================================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="footer-brand">よっしー｜生成AI×企業動画制作</p>
+        <p class="footer-service">企業向けAI動画制作｜企画・構成から一括対応</p>
+      </div>
+      <nav class="footer-links" aria-label="フッターナビゲーション">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="index.html#contact">お問い合わせ</a>
+      </nav>
+    </div>
+    <p class="footer-copy">&copy; <span id="year"></span> よっしー｜生成AI×企業動画制作</p>
+  </div>
+</footer>
+
+<!-- 固定の相談ボタン（右下・スクロール時のみ表示） -->
+<div class="floating-cta" id="floatingCta">
+  <a href="index.html#contact" class="btn btn--primary" aria-label="動画制作について相談する（トップページのお問い合わせへ移動）">相談する</a>
+</div>
+
+<script>
+/* ============================================================
+   JavaScript（必要最低限の実装。実行されない場合でも
+   全ての文章・画像・リンクは通常のHTMLとして閲覧可能）
+============================================================= */
+(function(){
+  'use strict';
+
+  var yearEl = document.getElementById('year');
+  if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
+
+  // ---------------- ハンバーガーメニュー ----------------
+  var menuToggle = document.getElementById('menuToggle');
+  var mobileNav  = document.getElementById('mobileNav');
+  var mobileNavClose = document.getElementById('mobileNavClose');
+
+  function closeMenu(){
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'メニューを開く');
+    mobileNav.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  function openMenu(){
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.setAttribute('aria-label', 'メニューを閉じる');
+    mobileNav.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  menuToggle.addEventListener('click', function(){
+    var isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
+  if(mobileNavClose){ mobileNavClose.addEventListener('click', closeMenu); }
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  // ---------------- ヘッダーの背景切り替え ＆ 固定相談ボタンの表示 ----------------
+  var header = document.getElementById('siteHeader');
+  var floatingCta = document.getElementById('floatingCta');
+
+  function onScroll(){
+    var scrolled = window.scrollY > 10;
+    header.classList.toggle('is-scrolled', scrolled);
+    floatingCta.classList.toggle('is-visible', scrolled);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
+
+</body>
+</html>
