@@ -626,7 +626,7 @@ body.modal-open{ overflow:hidden; }
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a href="#top" class="brand" aria-label="FRAMEPACT トップへ戻る">
-      <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="170" height="147" loading="eager" decoding="async">
+      <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="170" height="147" loading="eager" decoding="async" onerror="this.style.display='none'">
     </a>
 
     <nav class="main-nav" aria-label="サイト内ナビゲーション">
@@ -670,7 +670,7 @@ body.modal-open{ overflow:hidden; }
 
     <div class="wrap hero-inner">
       <div>
-        <img src="./images/framepact-logo-white.png" alt="" aria-hidden="true" class="hero-logo" width="170" height="147" loading="eager" decoding="async" fetchpriority="high">
+        <img src="./images/framepact-logo-white.png" alt="" aria-hidden="true" class="hero-logo" width="170" height="147" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
         <span class="hero-tag">企業向けAI動画制作</span>
         <h1 class="hero-title">
           映像の力で、<br>
@@ -920,7 +920,7 @@ body.modal-open{ overflow:hidden; }
           <p>FRAMEPACTは、ただ見られるだけではなく、人を動かす映像を目指します。</p>
         </div>
         <div class="logo-concept-visual">
-          <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="320" height="276" loading="lazy" decoding="async">
+          <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="320" height="276" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
       </div>
     </div>
@@ -1023,7 +1023,7 @@ body.modal-open{ overflow:hidden; }
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="footer-logo" width="150" height="130" loading="lazy" decoding="async">
+        <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="footer-logo" width="150" height="130" loading="lazy" decoding="async" onerror="this.style.display='none'">
         <p class="footer-tag">生成AIを活用した企業動画制作。映像の力で、「伝わる」を「行動」に変える。</p>
       </div>
       <div class="footer-links">
@@ -1162,11 +1162,31 @@ body.modal-open{ overflow:hidden; }
     return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  // ---------------- 動画が設定されている作品だけを表示対象にする ----------------
+  // videoUrl / videoSrc といった別名で登録された場合にも対応できるようにしている。
+  // 動画が未設定の項目は、空の枠やサムネイルだけの状態でDOMへ出力しない。
+  function getVisibleWorks(){
+    return worksData.filter(function(work){
+      var videoPath = work.video || work.videoUrl || work.videoSrc;
+      return !!(videoPath && String(videoPath).trim() !== '');
+    });
+  }
+
   function renderWorks(filterCategory){
     if(!worksGrid) return;
     worksGrid.innerHTML = '';
 
-    var list = worksData.filter(function(w){
+    var visibleWorks = getVisibleWorks();
+
+    // 表示できる作品が1件もない場合は、セクション自体を非表示にして
+    // 空の枠やレイアウトの不自然な余白が発生しないようにする
+    var worksSection = document.getElementById('works');
+    if(worksSection){
+      worksSection.hidden = visibleWorks.length === 0;
+    }
+    if(visibleWorks.length === 0){ return; }
+
+    var list = visibleWorks.filter(function(w){
       return !filterCategory || filterCategory === 'すべて' || w.category === filterCategory;
     });
 
@@ -1186,6 +1206,8 @@ body.modal-open{ overflow:hidden; }
       thumbImg.loading = 'lazy';
       thumbImg.decoding = 'async';
       thumbImg.addEventListener('error', function(){
+        // 動画は設定されているがサムネイル画像だけ読み込めない場合は、
+        // 壊れた画像アイコンの代わりに黒背景＋再生アイコンのフォールバックを表示する
         var wrap = thumbImg.parentElement;
         wrap.innerHTML = '<span class="work-fallback">' + playIconSVG() + '<span>' + safeTitle + '</span></span>';
       });
@@ -1209,8 +1231,8 @@ body.modal-open{ overflow:hidden; }
       worksGrid.appendChild(card);
     });
 
-    // カテゴリーが2種類以上ある場合のみ、絞り込みボタンを表示する
-    var categories = Array.from(new Set(worksData.map(function(w){ return w.category; })));
+    // カテゴリーが2種類以上ある場合のみ、絞り込みボタンを表示する（動画未設定の作品はカテゴリー集計にも含めない）
+    var categories = Array.from(new Set(visibleWorks.map(function(w){ return w.category; })));
     if(worksToolbar){
       if(categories.length > 1){
         worksToolbar.hidden = false;
