@@ -14,72 +14,36 @@
 <!-- Google Search Console 所有権確認 -->
 <meta name="google-site-verification" content="tMryDzvKuym28F_ahW7J4rW69t-82RCLpqkXgKaip3M">
 
-<!-- favicon設定：profile-icon.pngをそのまま使用 -->
-<link rel="icon" type="image/png" href="profile-icon.png">
-<link rel="apple-touch-icon" href="profile-icon.png">
+<!-- favicon：既存のロゴアイコンを使用 -->
+<link rel="icon" type="image/png" href="./images/framepact-logo-white.png">
+<link rel="apple-touch-icon" href="./images/framepact-logo-white.png">
 
-<!-- ============================================================
-  【公開設定 一覧】※このコメントブロックは目次です
-  1. 公開URL：https://framepact.jp/ を設定済み
-     （canonical / og:url / twitter:image / JSON-LD内のurl・@id に反映済み）
-  2. お問い合わせフォームURL → 設定済み（Googleフォームへ直接リンク）
-     （変更する場合は「お問い合わせフォームへ進む」ボタンのhrefを差し替え）
-  3. og-image.png（1200×630px）→ 実ファイルをindex.htmlと同じ階層に設置
-  4. profile-icon.png → 実ファイルをindex.htmlと同じ階層に設置
-     （ヘッダー／ファーストビュー／プロフィールの3箇所で参照）
-  5. プライバシーポリシーのリンク → privacy.html を設定済み
-  6. sitemap.xml → locを公開ドメインへ変更済み。lastmodは公開日に更新してください
-  7. robots.txt → Sitemap: の行を公開ドメインへ変更済みです
-============================================================= -->
-
-<!-- ============================================================
-  基本SEO設定
-  ・title / description は下記から変更可能です
-  ・公開時に実際のドメインへ一括変更（このコメントが付いているURLをすべて置換してください）
-============================================================= -->
 <title>FRAMEPACT｜生成AIを活用した企業動画制作</title>
 <meta name="description" content="FRAMEPACTは、生成AIと映像編集を活用し、撮影や素材がなくても企業PR・採用・研修・広告・イベント動画を制作します。企業の想いを、伝わり行動につながる映像へ。">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<!-- 公開時に実際のドメインへ一括変更 -->
+<!-- canonicalは既存設定を維持 -->
 <link rel="canonical" href="https://framepact.jp/">
 
-<!-- ============================================================
-  OGP・SNS共有設定
-  ・公開時に実際のドメインへ一括変更
-  ・og-image.png（1200×630px）を同じフォルダに設置してください
-============================================================= -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="FRAMEPACT｜生成AIを活用した企業動画制作">
 <meta property="og:description" content="FRAMEPACTは、生成AIと映像編集を活用し、撮影や素材がなくても企業PR・採用・研修・広告・イベント動画を制作します。企業の想いを、伝わり行動につながる映像へ。">
 <meta property="og:url" content="https://framepact.jp/">
 <meta property="og:site_name" content="FRAMEPACT">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://framepact.jp/og-image.png">
+<!-- OGP画像の仮パス：実ファイルを ./images/ogp-framepact.jpg に設置してください -->
+<meta property="og:image" content="https://framepact.jp/images/ogp-framepact.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="FRAMEPACT｜生成AIを活用した企業動画制作のサービス紹介画像">
+<meta property="og:image:alt" content="FRAMEPACT｜生成AIを活用した企業動画制作">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FRAMEPACT｜生成AIを活用した企業動画制作">
 <meta name="twitter:description" content="生成AIと映像編集を活用し、撮影や素材がなくても企業PR・採用・研修・広告・イベント動画を制作します。">
-<meta name="twitter:image" content="https://framepact.jp/og-image.png">
+<meta name="twitter:image" content="https://framepact.jp/images/ogp-framepact.jpg">
 
 <!-- ============================================================
-  フォント読み込み（Google Fonts / 無料・表示速度に配慮し使用ウェイトのみ読み込み）
-  見出し：Shippori Mincho（和文書体で知性と高級感を表現）
-  本文：Zen Kaku Gothic New（可読性の高いゴシック体）
-============================================================= -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap" rel="stylesheet">
-
-<!-- ============================================================
-  構造化データ（JSON-LD）
-  ・ページ上に実際に表示されている情報のみを記載しています
-  ・price / url は公開ドメイン確定後に見直してください
-  ・Organizationの sameAs（X / Instagram / YouTube / note / ココナラ）は、
-    無効なプレースホルダーURLを構造化データに残さないため現時点では未記載です。
-    実際のSNS・プロフィールURLが決まり次第、Organizationオブジェクト内に
-    "sameAs": ["https://...", "https://..."] の形式で追加してください。
+     構造化データ（JSON-LD）
+     ・ページ上に実際に表示されている情報のみを記載
+     ・VideoObjectのuploadDateなど不明な情報は記載していません
 ============================================================= -->
 <script type="application/ld+json">
 {
@@ -101,109 +65,49 @@
       "name": "FRAMEPACT｜生成AIを活用した企業動画制作",
       "description": "FRAMEPACTは、生成AIと映像編集を活用し、撮影や素材がなくても企業PR・採用・研修・広告・イベント動画を制作します。",
       "isPartOf": { "@id": "https://framepact.jp/#website" },
-      "about": { "@id": "https://framepact.jp/#service" },
+      "about": { "@id": "https://framepact.jp/#organization" },
       "inLanguage": "ja"
     },
     {
       "@type": ["Organization", "ProfessionalService"],
       "@id": "https://framepact.jp/#organization",
       "name": "FRAMEPACT",
-      "alternateName": "よっしー｜生成AI×企業動画制作",
       "url": "https://framepact.jp/",
-      "logo": "https://framepact.jp/framepact-logo.png",
-      "image": "https://framepact.jp/og-image.png",
-      "description": "生成AIを活用した企業動画制作ブランド。撮影や素材が十分に用意できない場合でも、企業PR、採用、研修、広告、イベントなど、目的に合わせた映像制作を行う。",
+      "logo": "https://framepact.jp/images/framepact-logo-white.png",
+      "image": "https://framepact.jp/images/framepact-logo-white.png",
+      "description": "生成AIを活用した企業動画制作。企業PR、採用、研修、広告、イベントなど、目的に合わせた映像制作を行う。",
       "founder": { "@id": "https://framepact.jp/#person" }
     },
     {
       "@type": "Person",
       "@id": "https://framepact.jp/#person",
       "name": "よっしー",
-      "alternateName": "企業動画プロデューサー",
       "jobTitle": "企業動画プロデューサー",
       "description": "大手日系IT企業で動画制作・情報発信を3年以上担当し、個人としてYouTube運用を6年以上継続。生成AIを活用した企業動画制作ブランド「FRAMEPACT」を運営している。",
-      "image": "https://framepact.jp/profile-icon.png",
-      "url": "https://framepact.jp/#profile",
-      "worksFor": { "@id": "https://framepact.jp/#organization" },
-      "knowsAbout": [
-        "企業向けAI動画制作",
-        "動画企画",
-        "動画構成",
-        "YouTube運用",
-        "生成AI動画",
-        "研修動画",
-        "社内啓発動画",
-        "企業イベント動画"
-      ]
+      "worksFor": { "@id": "https://framepact.jp/#organization" }
     },
     {
-      "@type": "Service",
-      "@id": "https://framepact.jp/#service",
-      "name": "企業向けAI動画制作",
-      "serviceType": "AI動画制作",
-      "provider": { "@id": "https://framepact.jp/#organization" },
-      "description": "生成AIによる映像制作と、企画・構成・台本作成・動画編集を組み合わせて、研修、社内啓発、企業イベント、採用、商品・サービス紹介向けの動画を制作するサービス。撮影素材がない状態からでも相談可能。",
-      "audience": {
-        "@type": "BusinessAudience",
-        "audienceType": "企業の広報・人事・研修・総務・イベント担当者"
-      },
-      "areaServed": "JP",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "JPY",
-        "price": "300000",
-        "description": "30〜90秒程度の企業向け動画制作の基本プラン。ヒアリング、企画・構成、台本作成、AI映像制作、編集、テロップ、BGM・効果音、AIナレーション、修正2回を含む。動画の長さや表現内容により料金は変動する。"
-      }
+      "@type": "VideoObject",
+      "@id": "https://framepact.jp/#video-showreel",
+      "name": "FRAMEPACT 制作技術紹介",
+      "description": "生成AIと映像編集を組み合わせた制作事例を、約40秒にまとめたショーリール。企業PR、広告、SNS動画など、素材がない状態からでも幅広い映像表現が可能です。",
+      "thumbnailUrl": "https://framepact.jp/images/works/framepact-showreel-thumbnail.jpg",
+      "contentUrl": "https://framepact.jp/videos/framepact-showreel.mp4",
+      "duration": "PT41S"
     },
     {
       "@type": "FAQPage",
       "@id": "https://framepact.jp/#faq",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "素材がまったくなくても制作できますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、撮影素材やイラストがまったくない状態からでも動画制作をご相談いただけます。ヒアリングした内容をもとに、必要な映像を生成AIで制作します。" }
-        },
-        {
-          "@type": "Question",
-          "name": "どのような動画に対応していますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "研修・社内啓発動画、企業イベント動画、採用・会社紹介動画、商品・サービス紹介動画に対応しています。上記以外の用途についても、まずはご相談ください。" }
-        },
-        {
-          "@type": "Question",
-          "name": "制作期間はどのくらいですか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "内容や動画尺によって異なりますが、通常はヒアリングから納品まで3〜4週間程度が目安です。お急ぎの場合は事前にご相談ください。" }
-        },
-        {
-          "@type": "Question",
-          "name": "修正は何回まで可能ですか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "基本プランでは2回まで修正を承っております。修正範囲によって追加のご相談をさせていただく場合があります。" }
-        },
-        {
-          "@type": "Question",
-          "name": "AIで制作できない表現はありますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "表現内容によっては、生成AIでの再現が難しい場合があります。ご希望の表現を伺った上で、実現可能な方法を丁寧にご提案します。" }
-        },
-        {
-          "@type": "Question",
-          "name": "実在人物や特定の商品を登場させられますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "内容によって対応可否が異なります。権利やガイドラインに配慮した上で、可能な表現方法をご案内いたします。" }
-        },
-        {
-          "@type": "Question",
-          "name": "機密情報を含む案件も相談できますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、ご相談いただけます。必要に応じて秘密保持に関する取り決めについてもご相談に応じます。" }
-        },
-        {
-          "@type": "Question",
-          "name": "制作物を非公開にできますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、可能です。社内限定での利用など、公開範囲についてもご希望に応じて対応いたします。" }
-        },
-        {
-          "@type": "Question",
-          "name": "内容が決まっていなくても相談できますか？",
-          "acceptedAnswer": { "@type": "Answer", "text": "はい、内容が決まっていない段階でもご相談いただけます。目的や課題を伺いながら、内容を一緒に整理するところからお手伝いします。" }
-        }
+        { "@type": "Question", "name": "素材がまったくなくても制作できますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、撮影素材やイラストがまったくない状態からでも動画制作をご相談いただけます。ヒアリングした内容をもとに、必要な映像を生成AIで制作します。" } },
+        { "@type": "Question", "name": "どのような動画に対応していますか？", "acceptedAnswer": { "@type": "Answer", "text": "企業PR動画、採用動画、研修・マニュアル動画、広告・SNS動画、イベント映像に対応しています。上記以外の用途についても、まずはご相談ください。" } },
+        { "@type": "Question", "name": "制作期間はどのくらいですか？", "acceptedAnswer": { "@type": "Answer", "text": "内容や動画尺によって異なりますが、通常はヒアリングから納品まで3〜4週間程度が目安です。お急ぎの場合は事前にご相談ください。" } },
+        { "@type": "Question", "name": "修正は何回まで可能ですか？", "acceptedAnswer": { "@type": "Answer", "text": "基本プランでは2回まで修正を承っております。修正範囲によって追加のご相談をさせていただく場合があります。" } },
+        { "@type": "Question", "name": "AIで制作できない表現はありますか？", "acceptedAnswer": { "@type": "Answer", "text": "表現内容によっては、生成AIでの再現が難しい場合があります。ご希望の表現を伺った上で、実現可能な方法を丁寧にご提案します。" } },
+        { "@type": "Question", "name": "実在人物や特定の商品を登場させられますか？", "acceptedAnswer": { "@type": "Answer", "text": "内容によって対応可否が異なります。権利やガイドラインに配慮した上で、可能な表現方法をご案内いたします。" } },
+        { "@type": "Question", "name": "機密情報を含む案件も相談できますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、ご相談いただけます。必要に応じて秘密保持に関する取り決めについてもご相談に応じます。" } },
+        { "@type": "Question", "name": "制作物を非公開にできますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、可能です。社内限定での利用など、公開範囲についてもご希望に応じて対応いたします。" } },
+        { "@type": "Question", "name": "内容が決まっていなくても相談できますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、内容が決まっていない段階でもご相談いただけます。目的や課題を伺いながら、内容を一緒に整理するところからお手伝いします。" } }
       ]
     }
   ]
@@ -212,100 +116,78 @@
 
 <style>
 /* ============================================================
-   0. デザイントークン（色・余白・書体をここで一括管理）
+   0. デザイントークン
 ============================================================= */
 :root{
-  --color-black:#0a0a0a;
-  --color-charcoal:#1c1b19;
-  --color-gray-700:#4a4844;
-  --color-gray-400:#8c8880;
-  --color-line:#dedad2;
-  --color-ivory:#faf7f0;
-  --color-white:#ffffff;
-  --color-accent:#c9a02b;      /* 落ち着いた黄色 */
-  --color-accent-soft:#e9d99a; /* 黄色の淡色（背景用） */
+  --black:#0a0a0a;
+  --charcoal:#161616;
+  --charcoal-2:#202020;
+  --offwhite:#f6f5f1;
+  --white:#ffffff;
+  --ink:#111111;
+  --gray-600:#6b6b66;
+  --gray-400:#9a9a95;
+  --gray-200:#e4e2db;
+  --yellow:#fdc44b;
+  --yellow-dark:#e0a930;
 
-  --font-display:'Shippori Mincho', serif;
-  --font-body:'Zen Kaku Gothic New', sans-serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
 
-  --gap-xs:8px;
-  --gap-sm:16px;
-  --gap-md:32px;
-  --gap-lg:64px;
-  --gap-xl:120px;
-
-  --header-h:76px;
-  --radius:2px;
+  --header-h:78px;
+  --measure:720px;
   --ease:cubic-bezier(.16,.84,.44,1);
+  --dur:.7s;
 }
 
-*,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth; scroll-padding-top: var(--header-h);}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:var(--header-h); }
 body{
   margin:0;
   font-family:var(--font-body);
-  color:var(--color-charcoal);
-  background:var(--color-white);
+  background:var(--white);
+  color:var(--ink);
+  line-height:1.75;
   -webkit-font-smoothing:antialiased;
-  line-height:1.8;
   overflow-x:hidden;
 }
-img{max-width:100%; display:block;}
-a{color:inherit;}
-h1,h2,h3,h4{font-family:var(--font-display); margin:0; line-height:1.4;}
-p{margin:0;}
-ul{margin:0; padding:0; list-style:none;}
-button{font-family:inherit; cursor:pointer;}
-html,body{max-width:100%;}
+img,video{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+h1,h2,h3{ margin:0; font-weight:700; letter-spacing:-.01em; }
+p{ margin:0; }
+ul{ margin:0; padding:0; list-style:none; }
+button{ font-family:inherit; cursor:pointer; background:none; border:none; color:inherit; }
 
-/* キーボードフォーカスを明確に表示（アクセシビリティ） */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible{
-  outline:3px solid var(--color-accent);
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+  outline:3px solid var(--yellow);
   outline-offset:3px;
 }
 
-.container{
-  max-width:1180px;
-  margin:0 auto;
-  padding:0 24px;
-}
-@media (min-width:768px){ .container{padding:0 40px;} }
+.wrap{ max-width:1240px; margin:0 auto; padding:0 24px; }
+@media (min-width:768px){ .wrap{ padding:0 48px; } }
+
+.measure{ max-width:var(--measure); }
 
 .eyebrow{
-  font-size:.8rem;
-  letter-spacing:.15em;
-  color:var(--color-accent);
+  font-size:.78rem;
+  letter-spacing:.22em;
   font-weight:700;
+  color:var(--yellow);
   display:inline-block;
-  margin-bottom:var(--gap-sm);
+  margin-bottom:14px;
 }
 
-.section{ padding:var(--gap-xl) 0; }
-.section--dark{ background:var(--color-black); color:var(--color-ivory); }
-.section--ivory{ background:var(--color-ivory); }
+.section{ padding:clamp(64px,10vw,140px) 0; }
+.section--dark{ background:var(--black); color:var(--white); }
+.section--offwhite{ background:var(--offwhite); }
 
-.h2{
-  font-size:clamp(1.7rem, 3.6vw, 2.6rem);
-  font-weight:600;
-  letter-spacing:.02em;
-}
-.lead{
-  color:var(--color-gray-700);
-  font-size:1.02rem;
-  max-width:640px;
-}
-.section--dark .lead{ color:#cfcac0; }
+.h2{ font-size:clamp(1.9rem,4.4vw,3rem); line-height:1.25; }
+.lead{ color:var(--gray-600); font-size:1.05rem; max-width:var(--measure); }
+.section--dark .lead{ color:#c9c9c4; }
 
-/* スクロール連動フェード（prefers-reduced-motionに配慮） */
-.reveal{
-  opacity:0;
-  transform:translateY(24px);
-  transition:opacity .7s var(--ease), transform .7s var(--ease);
-}
+/* スクロール連動フェード */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
 .reveal.is-visible{ opacity:1; transform:translateY(0); }
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
   .reveal{ opacity:1; transform:none; transition:none; }
   *{ animation-duration:.001ms !important; transition-duration:.001ms !important; animation-iteration-count:1 !important; }
@@ -315,122 +197,58 @@ summary:focus-visible{
    1. ボタン
 ============================================================= */
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:16px 30px;
-  font-size:.95rem;
-  font-weight:700;
-  border-radius:var(--radius);
-  border:1px solid transparent;
-  text-decoration:none;
-  transition:transform .25s var(--ease), background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
-  min-height:52px;
-  min-width:44px;
-  white-space:nowrap;
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  padding:17px 32px; font-size:.95rem; font-weight:700;
+  border-radius:6px; min-height:52px; white-space:nowrap;
+  transition:transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
 }
-.btn--primary{ background:var(--color-accent); color:var(--color-black); }
-.btn--primary:hover{ transform:translateY(-2px); background:#b28f24; }
-.btn--outline{ background:transparent; color:var(--color-ivory); border-color:rgba(250,247,240,.4); }
-.btn--outline:hover{ border-color:var(--color-ivory); transform:translateY(-2px); }
-.btn--dark{ background:var(--color-black); color:var(--color-ivory); }
-.btn--dark:hover{ transform:translateY(-2px); background:var(--color-charcoal); }
-
-/* 本文内の意味の通るテキストリンク */
-.text-link{
-  color:var(--color-black);
-  text-decoration-color:var(--color-accent);
-  text-decoration-thickness:2px;
-  text-underline-offset:3px;
-  font-weight:700;
-}
-.text-link:hover{ text-decoration-thickness:2px; color:var(--color-accent); }
+.btn--primary{ background:var(--yellow); color:var(--black); }
+.btn--primary:hover{ background:var(--yellow-dark); transform:translateY(-2px); }
+.btn--ghost{ border:1px solid rgba(255,255,255,.35); color:var(--white); }
+.btn--ghost:hover{ border-color:var(--white); transform:translateY(-2px); }
+.btn--dark{ background:var(--black); color:var(--white); }
+.btn--dark:hover{ background:var(--charcoal-2); transform:translateY(-2px); }
+.btn .arrow{ transition:transform .25s var(--ease); }
+.btn:hover .arrow{ transform:translateX(4px); }
 
 /* ============================================================
    2. ヘッダー
 ============================================================= */
 .site-header{
-  position:fixed;
-  top:0; left:0; right:0;
+  position:fixed; top:0; left:0; right:0; z-index:300;
   height:var(--header-h);
-  display:flex;
-  align-items:center;
-  z-index:200;
-  background:rgba(250,247,240,.86);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
+  display:flex; align-items:center;
+  background:transparent;
+  transition:background .35s var(--ease), backdrop-filter .35s var(--ease), border-color .35s var(--ease);
   border-bottom:1px solid transparent;
-  transition:border-color .3s var(--ease), background .3s var(--ease);
 }
-.site-header.is-scrolled{ border-bottom-color:var(--color-line); }
-
+.site-header.is-scrolled{
+  background:rgba(10,10,10,.72);
+  border-bottom-color:rgba(255,255,255,.08);
+}
+@supports (backdrop-filter:blur(1px)){
+  .site-header.is-scrolled{ backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+}
 .header-inner{ width:100%; display:flex; align-items:center; justify-content:space-between; }
-.brand{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--color-black); }
-.brand-text{ display:flex; flex-direction:column; line-height:1.25; }
-.brand-name{ font-family:var(--font-display); font-weight:700; font-size:1.02rem; }
-.brand-role{ font-size:.68rem; color:var(--color-gray-700); letter-spacing:.04em; }
-
-/* ---- アイコン画像の共通フォールバック構造 ----
-   画像が読み込めない場合でも、円の中に「よ」の文字が表示される。
-   img の onerror は補助的な仕組みで、JSが無効でも背景の文字は常に存在する。 */
-.avatar{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  overflow:hidden;
-  background:var(--color-charcoal);
-  flex-shrink:0;
-}
-.avatar-fallback{
-  position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  font-family:var(--font-display);
-  font-weight:700;
-  color:var(--color-accent);
-  background:var(--color-charcoal);
-}
-.avatar img{
-  position:relative; z-index:1;
-  width:100%; height:100%;
-  object-fit:cover;
-  border-radius:50%;
-}
-.avatar--header{ width:38px; height:38px; border:1px solid var(--color-line); }
-.avatar--header .avatar-fallback{ font-size:1rem; }
-
-/* ヘッダー左上のFRAMEPACTロゴ（アイコン単体・黒背景込みの画像なので枠のみ整える） */
-.header-logo{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  object-fit:cover;
-  flex-shrink:0;
-}
-.avatar--hero{ width:56px; height:56px; border:1px solid rgba(250,247,240,.3); }
-.avatar--hero .avatar-fallback{ font-size:1.3rem; }
+.brand{ display:flex; align-items:center; }
+.brand img{ width:clamp(120px,15vw,170px); height:auto; }
 
 .main-nav{ display:none; }
-.main-nav ul{ display:flex; align-items:center; gap:30px; }
-.main-nav a{ font-size:.88rem; text-decoration:none; color:var(--color-charcoal); position:relative; padding:4px 0; }
+.main-nav ul{ display:flex; align-items:center; gap:34px; }
+.main-nav a{ font-size:.88rem; color:#e8e8e3; position:relative; padding:4px 0; }
 .main-nav a::after{
-  content:''; position:absolute; left:0; right:100%; bottom:-2px;
-  height:2px; background:var(--color-accent);
+  content:''; position:absolute; left:0; right:100%; bottom:-2px; height:2px; background:var(--yellow);
   transition:right .3s var(--ease);
 }
-.main-nav a:hover::after, .main-nav a[aria-current="true"]::after{ right:0; }
-.main-nav a[aria-current="true"]{ color:var(--color-black); font-weight:700; }
-
+.main-nav a:hover::after{ right:0; }
 .header-cta{ display:none; }
-@media (min-width:1080px){ .main-nav{ display:block; } .header-cta{ display:inline-flex; } }
+@media (min-width:1080px){ .main-nav{ display:block; } .header-cta{ display:inline-flex; padding:12px 24px; min-height:44px; } }
 
-.menu-toggle{ display:flex; width:44px; height:44px; align-items:center; justify-content:center; background:none; border:none; }
+.menu-toggle{ display:flex; width:44px; height:44px; align-items:center; justify-content:center; }
 @media (min-width:1080px){ .menu-toggle{ display:none; } }
-.menu-toggle span{ display:block; width:22px; height:2px; background:var(--color-black); position:relative; transition:background .2s; }
+.menu-toggle span{ display:block; width:22px; height:2px; background:var(--white); position:relative; }
 .menu-toggle span::before,.menu-toggle span::after{
-  content:''; position:absolute; left:0; width:22px; height:2px; background:var(--color-black);
+  content:''; position:absolute; left:0; width:22px; height:2px; background:var(--white);
   transition:transform .3s var(--ease), top .3s var(--ease);
 }
 .menu-toggle span::before{ top:-7px; }
@@ -440,397 +258,353 @@ summary:focus-visible{
 .menu-toggle[aria-expanded="true"] span::after{ top:0; transform:rotate(-45deg); }
 
 .mobile-nav{
-  position:fixed; top:0; left:0; right:0; bottom:0;
-  background:var(--color-ivory);
-  z-index:190;
-  padding:20px 24px 40px;
-  transform:translateX(100%);
-  transition:transform .35s var(--ease);
-  overflow-y:auto;
+  position:fixed; inset:0; z-index:290;
+  background:rgba(10,10,10,.98);
+  display:flex; flex-direction:column;
+  padding:calc(var(--header-h) + 20px) 28px 40px;
+  opacity:0; visibility:hidden; transform:translateY(-8px);
+  transition:opacity .35s var(--ease), transform .35s var(--ease), visibility 0s linear .35s;
 }
-.mobile-nav.is-open{ transform:translateX(0); }
-.mobile-nav-top{
-  display:flex; align-items:center; justify-content:space-between;
-  height:var(--header-h);
-  margin-bottom:var(--gap-sm);
-}
-.mobile-nav-close{
-  display:flex; align-items:center; gap:8px;
-  background:none; border:1px solid var(--color-line);
-  padding:10px 16px; border-radius:999px; font-size:.85rem; font-weight:700;
-  min-height:44px;
-}
+.mobile-nav.is-open{ opacity:1; visibility:visible; transform:translateY(0); transition:opacity .35s var(--ease), transform .35s var(--ease); }
 .mobile-nav ul{ display:flex; flex-direction:column; gap:4px; }
-.mobile-nav a{
-  display:block; padding:18px 4px; font-size:1.1rem;
-  text-decoration:none; color:var(--color-charcoal);
-  border-bottom:1px solid var(--color-line);
-  min-height:44px;
-}
-.mobile-nav .btn{ margin-top:var(--gap-md); width:100%; }
-@media (min-width:1080px){ .mobile-nav{ display:none; } }
+.mobile-nav a{ display:block; padding:18px 4px; font-size:1.3rem; color:var(--white); border-bottom:1px solid rgba(255,255,255,.12); min-height:44px; }
+.mobile-nav .btn{ margin-top:28px; width:100%; }
+@media (min-width:1080px){ .mobile-nav{ display:none !important; } }
 
 /* ============================================================
-   3. ファーストビュー
+   3. ヒーロー
 ============================================================= */
 .hero{
   position:relative;
-  min-height:100svh;
-  display:flex;
-  align-items:center;
-  padding-top:calc(var(--header-h) + 40px);
-  padding-bottom:60px;
-  background:var(--color-black);
-  color:var(--color-ivory);
+  min-height:92vh;
+  display:flex; align-items:center;
+  background:var(--black); color:var(--white);
+  padding:calc(var(--header-h) + 30px) 0 70px;
   overflow:hidden;
 }
 .hero-grid{
-  position:absolute; inset:0;
+  position:absolute; inset:0; pointer-events:none;
   background-image:
-    linear-gradient(rgba(250,247,240,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(250,247,240,.06) 1px, transparent 1px);
-  background-size:64px 64px;
-  mask-image:radial-gradient(ellipse 80% 60% at 60% 40%, #000 40%, transparent 85%);
-  pointer-events:none;
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 75% 65% at 30% 40%, #000 35%, transparent 82%);
 }
 .hero-glow{
-  position:absolute;
-  width:60vw; height:60vw; max-width:800px; max-height:800px;
-  right:-10%; top:-10%;
-  background:radial-gradient(circle, rgba(201,160,43,.14) 0%, transparent 65%);
-  pointer-events:none;
+  position:absolute; pointer-events:none;
+  width:70vw; height:70vw; max-width:900px; max-height:900px;
+  left:-15%; top:-20%;
+  background:radial-gradient(circle, rgba(253,196,75,.13) 0%, transparent 65%);
 }
-.hero-inner{ position:relative; z-index:2; display:grid; gap:var(--gap-lg); }
-@media (min-width:960px){ .hero-inner{ grid-template-columns:1.3fr .9fr; align-items:center; } }
+.hero-inner{ position:relative; z-index:2; display:grid; gap:56px; width:100%; }
+@media (min-width:960px){ .hero-inner{ grid-template-columns:1.15fr .85fr; align-items:center; } }
 
-/* ファーストビューのFRAMEPACTロゴ：PCで160〜200px、スマートフォンで120〜150px程度 */
-.hero-logo{
-  display:block;
-  width:clamp(120px, 14vw, 180px);
-  height:auto;
-  margin-bottom:var(--gap-md);
-}
-@media (max-width:600px){
-  .hero-logo{ width:clamp(120px, 34vw, 150px); }
-}
-
+.hero-logo{ width:clamp(120px,16vw,170px); height:auto; margin-bottom:28px; }
 .hero-tag{
-  font-size:.82rem; letter-spacing:.08em; color:#cfcac0;
-  border:1px solid rgba(250,247,240,.3);
-  display:inline-block; padding:8px 16px; border-radius:999px;
-  margin-bottom:var(--gap-md);
+  display:inline-block; font-size:.8rem; letter-spacing:.1em; color:#d8d8d3;
+  border:1px solid rgba(255,255,255,.28); padding:8px 16px; border-radius:999px; margin-bottom:26px;
 }
-
-/* ---- ファーストビュー見出しの改行制御 ----
-   ・「素材ゼロから、」の後は常に改行
-   ・「人を動かす」と「企業動画を。」の間は、スマートフォン幅のみ改行
-   ・「企業動画を。」は no-break でひとまとまりにし、助詞や句点だけが
-     単独行に取り残されることを防ぐ */
 .hero-title{
-  font-size:clamp(2.1rem, 6vw, 3.9rem);
-  font-weight:700;
-  letter-spacing:.02em;
-  margin-bottom:var(--gap-md);
-  word-break:keep-all;
-  overflow-wrap:break-word;
+  font-size:clamp(2.3rem,6.4vw,4.4rem);
+  line-height:1.22;
+  letter-spacing:-.01em;
+  margin-bottom:26px;
 }
-.hero-title em{
-  font-style:normal;
-  color:var(--color-accent);
-  border-bottom:2px solid var(--color-accent);
-  padding-bottom:2px;
-  white-space:nowrap;
-}
-.hero-title .no-break{ white-space:nowrap; }
-.lb-mobile{ display:none; }
-@media (max-width:600px){ .lb-mobile{ display:block; content:""; } }
-
-.hero-sub{ font-size:1.05rem; color:#d8d4cb; max-width:560px; margin-bottom:var(--gap-md); }
-.hero-badges{ display:flex; flex-wrap:wrap; gap:10px 18px; font-size:.86rem; color:#cfcac0; margin-bottom:var(--gap-lg); }
-.hero-badges li{ display:flex; align-items:center; gap:8px; }
-.hero-badges li::before{ content:''; width:5px; height:5px; background:var(--color-accent); border-radius:50%; }
+.hero-title em{ font-style:normal; color:var(--yellow); }
+.hero-sub{ font-size:clamp(1.05rem,1.6vw,1.25rem); color:#e6e6e1; max-width:560px; margin-bottom:14px; }
+.hero-note{ font-size:.94rem; color:#a9a9a4; max-width:560px; margin-bottom:36px; }
 .hero-actions{ display:flex; flex-wrap:wrap; gap:16px; }
 
-.hero-visual{ position:relative; display:flex; flex-direction:column; gap:var(--gap-md); }
-.hero-diagram{
-  border:1px solid rgba(250,247,240,.18);
-  padding:28px 22px;
-  background:rgba(250,247,240,.03);
-  transition:border-color .3s var(--ease);
+.hero-visual{ position:relative; display:flex; justify-content:center; }
+.hero-video-card{
+  position:relative;
+  width:min(280px,72vw);
+  aspect-ratio:9/16;
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--charcoal);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.65);
 }
-.hero-diagram:hover{ border-color:rgba(201,160,43,.5); }
-.hero-diagram svg{ width:100%; height:auto; display:block; }
-.hero-diagram-caption{ margin-top:14px; font-size:.76rem; letter-spacing:.05em; color:#a49f93; display:flex; justify-content:space-between; }
+.hero-video-card video,
+.hero-video-card .hero-video-poster{
+  width:100%; height:100%; object-fit:cover;
+}
+.hero-video-card::after{
+  content:'';
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
+  pointer-events:none;
+}
+.hero-video-caption{
+  position:absolute; left:18px; right:18px; bottom:16px; z-index:1;
+  font-size:.78rem; letter-spacing:.06em; color:#f1f1ec;
+}
 
-.hero-person{ display:flex; align-items:center; gap:14px; border-top:1px solid rgba(250,247,240,.18); padding-top:var(--gap-md); }
-.hero-person-name{ font-family:var(--font-display); font-size:1rem; font-weight:600; }
-.hero-person-role{ font-size:.78rem; color:#a49f93; margin-top:2px; }
-
-.scroll-cue{ position:absolute; left:24px; bottom:22px; display:flex; align-items:center; gap:10px; font-size:.72rem; letter-spacing:.1em; color:#a49f93; z-index:2; }
-.scroll-cue-line{ width:1px; height:34px; background:linear-gradient(var(--color-accent), transparent); animation:scrollcue 1.8s ease-in-out infinite; }
-@keyframes scrollcue{
+.scroll-indicator{
+  position:absolute; left:50%; bottom:26px; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  font-size:.68rem; letter-spacing:.14em; color:#a9a9a4; z-index:2;
+}
+.scroll-indicator .line{ width:1px; height:32px; background:linear-gradient(var(--yellow), transparent); animation:scrollline 1.8s ease-in-out infinite; }
+@keyframes scrollline{
   0%{ transform:scaleY(0); transform-origin:top; }
   50%{ transform:scaleY(1); transform-origin:top; }
   50.1%{ transform-origin:bottom; }
   100%{ transform:scaleY(0); transform-origin:bottom; }
 }
-@media (max-width:600px){ .scroll-cue{ display:none; } }
-
-/* ---- 制作プロセス図のアニメーション（CSSのみ・一度だけ再生） ---- */
-.diagram-node{ opacity:0; transform-origin:center; animation:nodeAppear .6s var(--ease) forwards; }
-.diagram-node:nth-of-type(1){ animation-delay:.2s; }
-.diagram-connector{ stroke-dasharray:6; stroke-dashoffset:60; opacity:0; animation:drawLine .9s var(--ease) forwards; }
-.diagram-connector.c1{ animation-delay:.4s; }
-.diagram-connector.c2{ animation-delay:.9s; }
-.diagram-label{ opacity:0; animation:labelFade .5s var(--ease) forwards; }
-.diagram-label.l1{ animation-delay:.3s; }
-.diagram-label.l2{ animation-delay:.8s; }
-.diagram-label.l3{ animation-delay:1.3s; }
-.diagram-final{ opacity:0; animation:finalAppear .7s var(--ease) forwards; animation-delay:1.6s; }
-@keyframes nodeAppear{ from{opacity:0; transform:scale(.4);} to{opacity:1; transform:scale(1);} }
-@keyframes drawLine{ from{opacity:1; stroke-dashoffset:60;} to{opacity:1; stroke-dashoffset:0;} }
-@keyframes labelFade{ from{opacity:0; transform:translateX(-4px);} to{opacity:1; transform:translateX(0);} }
-@keyframes finalAppear{ from{opacity:0;} to{opacity:1;} }
-.hero-diagram:hover .diagram-final rect{ stroke-width:1.6; }
+@media (max-width:600px){ .scroll-indicator{ display:none; } }
 
 /* ============================================================
-   4. 数字による信頼表示（ヒーロー直後のストリップ）
+   4. 信頼性の数字
 ============================================================= */
-.stats-strip{ background:var(--color-ivory); border-bottom:1px solid var(--color-line); }
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:0;
-}
+.stats-strip{ background:var(--offwhite); border-bottom:1px solid var(--gray-200); }
+.stats-grid{ display:grid; grid-template-columns:repeat(2,1fr); }
 @media (min-width:860px){ .stats-grid{ grid-template-columns:repeat(4,1fr); } }
-.stats-item{
-  padding:36px 24px;
-  border-top:1px solid var(--color-line);
-  border-left:1px solid var(--color-line);
-}
+.stats-item{ padding:38px 26px; border-top:1px solid var(--gray-200); border-left:1px solid var(--gray-200); }
 .stats-grid .stats-item:nth-child(odd){ border-left:none; }
 @media (min-width:860px){
-  .stats-grid .stats-item:nth-child(odd){ border-left:1px solid var(--color-line); }
+  .stats-grid .stats-item:nth-child(odd){ border-left:1px solid var(--gray-200); }
   .stats-grid .stats-item:first-child{ border-left:none; }
 }
-.stats-num{
-  display:block;
-  font-family:var(--font-display);
-  font-size:clamp(1.8rem,3.4vw,2.6rem);
-  font-weight:700;
-  color:var(--color-black);
-  line-height:1.2;
-}
+.stats-num{ display:block; font-size:clamp(1.9rem,3.6vw,2.7rem); font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
 .stats-num small{ font-size:1rem; font-weight:400; margin-left:2px; }
-.stats-label{ display:block; margin-top:8px; font-size:.86rem; color:var(--color-gray-700); }
+.stats-label{ display:block; margin-top:8px; font-size:.86rem; color:var(--gray-600); }
 
 /* ============================================================
-   5. 企業向けAI動画制作とは（AI検索・SEO向けサービス定義）
+   5. サービス（左右交互）
 ============================================================= */
-.intro-section{ background:var(--color-white); }
-.intro-lead{ font-size:1.08rem; color:var(--color-charcoal); max-width:760px; margin-bottom:var(--gap-sm); }
-.intro-body p{ color:var(--color-gray-700); font-size:.96rem; max-width:760px; margin-bottom:14px; }
+.service-row{
+  display:grid; gap:36px; align-items:center;
+  padding:56px 0; border-top:1px solid var(--gray-200);
+}
+.service-row:last-child{ border-bottom:1px solid var(--gray-200); }
+@media (min-width:860px){
+  .service-row{ grid-template-columns:1fr 1fr; gap:64px; }
+  .service-row:nth-of-type(even) .service-visual{ order:2; }
+}
+.service-eyebrow{ font-size:.76rem; letter-spacing:.18em; color:var(--yellow-dark); font-weight:700; margin-bottom:10px; display:block; }
+.service-title{ font-size:clamp(1.4rem,2.6vw,1.9rem); margin-bottom:14px; }
+.service-desc{ color:var(--gray-600); font-size:.98rem; margin-bottom:12px; max-width:520px; }
+.service-usecase{ font-size:.86rem; color:var(--gray-600); }
+.service-usecase b{ color:var(--ink); }
+.service-visual{
+  aspect-ratio:4/3; border-radius:14px; background:var(--charcoal);
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+  position:relative;
+}
+.service-visual svg{ width:46%; height:46%; }
 
 /* ============================================================
-   6. 悩みセクション（Bento Grid）
+   6. 制作実績（WORKS）
 ============================================================= */
-.pain-grid{ display:grid; gap:1px; background:var(--color-line); border:1px solid var(--color-line); margin-top:var(--gap-lg); }
-@media (min-width:640px){ .pain-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (min-width:960px){ .pain-grid{ grid-template-columns:repeat(3,1fr); } }
-.pain-item{ background:var(--color-white); padding:28px 26px; font-size:.95rem; display:flex; gap:14px; }
-.pain-item span{ color:var(--color-accent); font-family:var(--font-display); font-size:1.1rem; }
-
-.merit-box{ margin-top:var(--gap-lg); padding:36px; background:var(--color-charcoal); color:var(--color-ivory); display:grid; gap:var(--gap-md); }
-@media (min-width:840px){ .merit-box{ grid-template-columns:1fr 1fr; align-items:start; } }
-.merit-box h3{ font-size:1.3rem; font-weight:600; }
-.merit-box p{ color:#cfcac0; font-size:.95rem; }
-
-/* ============================================================
-   7. 対応する動画（カード）
-============================================================= */
-.service-grid{ display:grid; gap:24px; margin-top:var(--gap-lg); }
-@media (min-width:700px){ .service-grid{ grid-template-columns:repeat(2,1fr); } }
-.service-card{ border:1px solid var(--color-line); padding:32px 28px; background:var(--color-white); transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); }
-.service-card:hover{ transform:translateY(-4px); border-color:var(--color-accent); box-shadow:0 18px 40px -24px rgba(0,0,0,.25); }
-.service-num{ font-family:var(--font-display); color:var(--color-accent); font-size:.85rem; letter-spacing:.1em; display:block; margin-bottom:14px; }
-.service-card h3{ font-size:1.2rem; font-weight:600; margin-bottom:12px; }
-.service-card p{ color:var(--color-gray-700); font-size:.92rem; }
-
-/* ============================================================
-   7-2. FRAMEPACTについて（ABOUT / PHILOSOPHY / NAME ORIGIN / LOGO CONCEPT）
-============================================================= */
-.about-lead{ margin-top:var(--gap-lg); max-width:760px; display:grid; gap:16px; }
-.about-lead p{ color:var(--color-gray-700); font-size:.98rem; }
-
-.philosophy-block{
-  margin-top:var(--gap-xl);
-  padding:44px 36px;
-  background:var(--color-charcoal);
-  color:var(--color-ivory);
-  border-left:3px solid var(--color-accent);
+.works-toolbar{ display:flex; flex-wrap:wrap; gap:10px; margin:36px 0 8px; }
+.works-filter-btn{
+  padding:9px 18px; border-radius:999px; border:1px solid var(--gray-200);
+  font-size:.84rem; color:var(--gray-600); min-height:40px;
+  transition:background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
 }
-.philosophy-statement{
-  font-family:var(--font-display);
-  font-size:clamp(1.5rem, 3.6vw, 2.2rem);
-  font-weight:600;
-  line-height:1.6;
-  margin:14px 0 20px;
-}
-.philosophy-desc{ color:#cfcac0; font-size:.95rem; max-width:640px; }
+.works-filter-btn[aria-pressed="true"]{ background:var(--black); color:var(--white); border-color:var(--black); }
+.works-toolbar[hidden]{ display:none; }
 
-.name-origin{ margin-top:var(--gap-xl); max-width:760px; }
-.name-origin-heading{ font-size:1.3rem; font-weight:600; margin:14px 0 16px; }
-.name-origin p{ color:var(--color-gray-700); font-size:.96rem; margin-bottom:12px; }
-.name-equation{
-  margin-top:20px;
-  font-family:var(--font-display);
-  font-size:clamp(1.3rem, 3.2vw, 1.9rem);
-  font-weight:700;
-  color:var(--color-black);
-  letter-spacing:.03em;
-  padding:18px 22px;
-  border:1px solid var(--color-accent);
-  display:inline-block;
-}
-
-.logo-concept{
-  margin-top:var(--gap-xl);
-  display:grid;
-  gap:var(--gap-lg);
-  align-items:center;
-}
-@media (min-width:840px){
-  .logo-concept{ grid-template-columns:1.1fr .9fr; }
-}
-.logo-concept-heading{ font-size:1.3rem; font-weight:600; margin:14px 0 16px; }
-.logo-concept-text p{ color:var(--color-gray-700); font-size:.96rem; margin-bottom:12px; }
-.logo-concept-visual{ display:flex; justify-content:center; }
-.logo-concept-visual img{ width:100%; max-width:300px; height:auto; }
-
-/* ============================================================
-   8. 選ばれる理由（Bento Grid：3項目を大きく／2項目を補助的に）
-============================================================= */
-.reason-bento{
-  margin-top:var(--gap-lg);
-  display:grid;
-  gap:16px;
+.works-grid{
+  display:grid; gap:24px; margin-top:28px;
   grid-template-columns:1fr;
 }
-@media (min-width:780px){
-  .reason-bento{
-    grid-template-columns:repeat(6,1fr);
-    grid-auto-rows:minmax(140px,auto);
-  }
-  .reason-bento .reason--major:nth-of-type(1){ grid-column:1 / 4; grid-row:1 / 3; }
-  .reason-bento .reason--major:nth-of-type(2){ grid-column:4 / 7; grid-row:1 / 2; }
-  .reason-bento .reason--major:nth-of-type(3){ grid-column:4 / 7; grid-row:2 / 3; }
-  .reason-bento .reason--minor:nth-of-type(4){ grid-column:1 / 4; grid-row:3 / 4; }
-  .reason-bento .reason--minor:nth-of-type(5){ grid-column:4 / 7; grid-row:3 / 4; }
-}
-.reason-cell{
-  border:1px solid var(--color-line);
-  padding:28px 26px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  transition:border-color .3s var(--ease), transform .3s var(--ease);
-}
-.reason-cell:hover{ border-color:var(--color-accent); transform:translateY(-2px); }
-.reason--major{ background:var(--color-charcoal); color:var(--color-ivory); }
-.reason--major h3{ font-size:1.25rem; font-weight:600; margin-bottom:10px; }
-.reason--major p{ color:#cfcac0; font-size:.92rem; }
-.reason--minor{ background:var(--color-white); }
-.reason--minor h3{ font-size:1.02rem; font-weight:600; margin-bottom:8px; }
-.reason--minor p{ color:var(--color-gray-700); font-size:.88rem; }
+@media (min-width:700px){ .works-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1080px){ .works-grid{ grid-template-columns:repeat(3,1fr); } }
 
-/* ============================================================
-   9. 制作の流れ
-============================================================= */
-.flow-list{ margin-top:var(--gap-lg); }
-.flow-item{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding:26px 0; border-top:1px solid rgba(250,247,240,.16); }
-.flow-list .flow-item:last-child{ border-bottom:1px solid rgba(250,247,240,.16); }
-.flow-num{ font-family:var(--font-display); font-size:1.3rem; color:var(--color-accent); }
-.flow-item h3{ font-size:1.05rem; font-weight:600; margin-bottom:6px; }
-.flow-item p{ color:#cfcac0; font-size:.9rem; }
-.flow-note{ margin-top:var(--gap-md); padding:22px 24px; border:1px solid rgba(201,160,43,.4); font-size:.92rem; color:var(--color-ivory); }
-
-/* ============================================================
-   10. 料金
-============================================================= */
-.price-card{ margin-top:var(--gap-lg); border:1px solid var(--color-line); padding:44px 36px; display:grid; gap:var(--gap-md); }
-@media (min-width:840px){ .price-card{ grid-template-columns:.9fr 1.1fr; } }
-.price-lead .price-num{ font-family:var(--font-display); font-size:clamp(2.4rem,4vw,3.2rem); font-weight:700; }
-.price-lead .price-unit{ font-size:1rem; color:var(--color-gray-700); }
-.price-includes{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px 20px; }
-.price-includes li{ font-size:.9rem; color:var(--color-charcoal); padding-left:18px; position:relative; }
-.price-includes li::before{ content:''; position:absolute; left:0; top:9px; width:8px; height:1px; background:var(--color-accent); }
-.price-caution{ margin-top:var(--gap-md); font-size:.84rem; color:var(--color-gray-700); line-height:1.9; }
-
-/* ============================================================
-   11. プロフィール
-============================================================= */
-.profile-wrap{ margin-top:var(--gap-lg); display:grid; gap:var(--gap-lg); }
-@media (min-width:860px){ .profile-wrap{ grid-template-columns:280px 1fr; align-items:start; } }
-.profile-photo-frame{
+.work-card{
   position:relative;
-  aspect-ratio:1/1; max-width:280px;
-  border:1px solid var(--color-line);
-  padding:10px;
-  background:var(--color-ivory);
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--charcoal);
+  cursor:pointer;
+  border:none;
+  text-align:left;
+  width:100%;
+  display:block;
 }
-.profile-photo-frame .avatar{ width:100%; height:100%; border-radius:6px; }
-.profile-photo-frame .avatar img{ border-radius:6px; }
-.profile-photo-frame .avatar-fallback{ border-radius:6px; font-size:3rem; }
+.work-card.is-featured{ grid-column:1 / -1; }
+@media (min-width:700px){ .work-card.is-featured{ grid-column:1 / -1; } }
+.work-thumb-wrap{ position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--black); }
+.work-card.is-featured .work-thumb-wrap{ aspect-ratio:21/9; }
+.work-thumb-wrap img{ width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
+.work-card:hover .work-thumb-wrap img{ transform:scale(1.045); }
+.work-overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.05) 40%, rgba(0,0,0,.7) 100%);
+  transition:background .3s var(--ease);
+}
+.work-card:hover .work-overlay{ background:linear-gradient(180deg, rgba(0,0,0,.15) 30%, rgba(0,0,0,.78) 100%); }
+.work-play{
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:60px; height:60px; border-radius:50%;
+  background:var(--yellow); color:var(--black);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .3s var(--ease);
+}
+.work-card:hover .work-play{ transform:translate(-50%,-50%) scale(1.08); }
+.work-play svg{ width:22px; height:22px; margin-left:3px; }
+.work-meta{ position:absolute; left:0; right:0; bottom:0; padding:20px; color:var(--white); }
+.work-category{ font-size:.72rem; letter-spacing:.14em; color:var(--yellow); margin-bottom:6px; display:block; }
+.work-title{ font-size:1.05rem; font-weight:700; margin-bottom:8px; }
+.work-card.is-featured .work-title{ font-size:clamp(1.3rem,2.6vw,1.7rem); }
+.work-desc{ font-size:.86rem; color:#d8d8d3; max-width:640px; margin-bottom:10px; display:none; }
+.work-card.is-featured .work-desc{ display:block; }
+.work-tags{ display:flex; flex-wrap:wrap; gap:8px; }
+.work-tag{ font-size:.72rem; padding:4px 10px; border:1px solid rgba(255,255,255,.3); border-radius:999px; color:#e8e8e3; }
+.work-fallback{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+  background:var(--black); color:var(--white); text-align:center; padding:20px;
+}
+.work-fallback svg{ width:34px; height:34px; color:var(--yellow); }
 
-.profile-name{ font-size:1.5rem; font-weight:700; margin-bottom:4px; }
-.profile-role{ color:var(--color-accent); font-size:.9rem; margin-bottom:var(--gap-md); }
-.profile-block{ margin-bottom:22px; }
-.profile-block h3{ font-size:.98rem; font-weight:700; margin-bottom:8px; }
-.profile-block p{ color:var(--color-gray-700); font-size:.94rem; }
-.profile-facts{ margin-top:var(--gap-md); display:grid; gap:10px; font-size:.88rem; }
-.profile-facts li{ display:flex; gap:10px; }
-.profile-facts li::before{ content:'—'; color:var(--color-accent); }
+/* モーダル */
+.work-modal{
+  position:fixed; inset:0; z-index:400;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+  opacity:0; visibility:hidden;
+  transition:opacity .3s var(--ease), visibility 0s linear .3s;
+}
+.work-modal.is-open{ opacity:1; visibility:visible; transition:opacity .3s var(--ease); }
+.work-modal-backdrop{ position:absolute; inset:0; background:rgba(6,6,6,.88); }
+.work-modal-body{
+  position:relative; z-index:1;
+  max-width:420px; width:100%;
+  max-height:88vh;
+  background:var(--black);
+  border-radius:16px;
+  overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.work-modal-video-wrap{ position:relative; width:100%; aspect-ratio:9/16; max-height:70vh; background:#000; }
+.work-modal-video-wrap video{ width:100%; height:100%; object-fit:contain; background:#000; }
+.work-modal-info{ padding:18px 20px 22px; color:var(--white); }
+.work-modal-info h3{ font-size:1.05rem; margin-bottom:6px; }
+.work-modal-info p{ font-size:.86rem; color:#c9c9c4; }
+.work-modal-close{
+  position:absolute; top:14px; right:14px; z-index:2;
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255,255,255,.12); color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+}
+.work-modal-close:hover{ background:rgba(255,255,255,.22); }
+body.modal-open{ overflow:hidden; }
 
 /* ============================================================
-   12. FAQ（details/summary でアクセシブルなアコーディオンを実現）
+   7. FRAMEPACTについて
 ============================================================= */
-.faq-list{ margin-top:var(--gap-lg); border-top:1px solid var(--color-line); }
-.faq-item{ border-bottom:1px solid var(--color-line); }
+.about-lead{ margin-top:30px; max-width:var(--measure); display:grid; gap:18px; }
+.about-lead p{ color:var(--gray-600); font-size:1.02rem; }
+
+/* PHILOSOPHY */
+.philosophy{ background:var(--black); color:var(--white); padding:clamp(70px,12vw,150px) 0; }
+.philosophy-lines{ font-size:clamp(1.7rem,4.6vw,3.1rem); line-height:1.5; font-weight:700; }
+.philosophy-lines .line{ display:block; opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+.philosophy-lines .line.is-visible{ opacity:1; transform:translateY(0); }
+.philosophy-lines .line em{ font-style:normal; color:var(--yellow); }
+.philosophy-desc{ margin-top:34px; color:#c9c9c4; font-size:1rem; max-width:640px; }
+
+/* NAME ORIGIN */
+.name-origin{ padding:clamp(70px,12vw,140px) 0; }
+.name-origin .measure p{ color:var(--gray-600); font-size:1rem; margin-bottom:14px; }
+.name-equation{
+  margin-top:36px; display:flex; flex-wrap:wrap; align-items:center; gap:16px;
+  font-size:clamp(1.5rem,4vw,2.4rem); font-weight:700;
+}
+.name-equation .frame{ opacity:0; transform:translateX(-24px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+.name-equation .impact{ opacity:0; transform:translateX(24px); transition:opacity .6s var(--ease) .15s, transform .6s var(--ease) .15s; }
+.name-equation .result{ opacity:0; transition:opacity .5s var(--ease) .4s; color:var(--yellow-dark); }
+.name-equation.is-visible .frame,
+.name-equation.is-visible .impact,
+.name-equation.is-visible .result{ opacity:1; transform:translate(0); }
+.name-equation .op{ color:var(--gray-400); }
+
+/* LOGO CONCEPT */
+.logo-concept{ background:var(--offwhite); }
+.logo-concept-grid{ display:grid; gap:48px; align-items:center; margin-top:20px; }
+@media (min-width:840px){ .logo-concept-grid{ grid-template-columns:1fr 1fr; } }
+.logo-concept-grid p{ color:var(--gray-600); font-size:1rem; margin-bottom:14px; }
+.logo-concept-visual{ display:flex; justify-content:center; }
+.logo-concept-visual img{ width:100%; max-width:320px; height:auto; }
+
+/* ============================================================
+   8. 制作の流れ（タイムライン）
+============================================================= */
+.process{ background:var(--black); color:var(--white); }
+.process-timeline{ margin-top:56px; position:relative; }
+.process-timeline::before{
+  content:''; position:absolute; left:23px; top:8px; bottom:8px; width:1px;
+  background:rgba(255,255,255,.16);
+}
+@media (min-width:900px){
+  .process-timeline{ display:flex; gap:0; }
+  .process-timeline::before{ left:0; right:0; top:23px; bottom:auto; height:1px; width:auto; }
+}
+.process-step{
+  position:relative; padding:0 0 44px 60px;
+  opacity:0; transform:translateY(18px);
+  transition:opacity .6s var(--ease), transform .6s var(--ease);
+}
+.process-step.is-visible{ opacity:1; transform:translateY(0); }
+@media (min-width:900px){
+  .process-step{ flex:1; padding:60px 20px 0 0; }
+  .process-step:last-child{ padding-right:0; }
+}
+.process-num{
+  position:absolute; left:0; top:0;
+  width:48px; height:48px; border-radius:50%;
+  background:var(--charcoal); border:1px solid rgba(255,255,255,.2);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; color:var(--yellow);
+}
+@media (min-width:900px){ .process-num{ position:static; margin-bottom:20px; } }
+.process-step h3{ font-size:1.1rem; margin-bottom:8px; }
+.process-step p{ font-size:.9rem; color:#c9c9c4; max-width:280px; }
+
+/* ============================================================
+   9. FAQ
+============================================================= */
+.faq-list{ margin-top:36px; border-top:1px solid var(--gray-200); }
+.faq-item{ border-bottom:1px solid var(--gray-200); }
 .faq-item summary{
   list-style:none; display:flex; align-items:center; justify-content:space-between; gap:20px;
-  padding:22px 4px; font-weight:700; font-size:.98rem; min-height:44px;
+  padding:24px 4px; font-weight:700; font-size:1rem; min-height:44px;
 }
 .faq-item summary::-webkit-details-marker{ display:none; }
 .faq-icon{ flex-shrink:0; width:22px; height:22px; position:relative; }
-.faq-icon::before,.faq-icon::after{ content:''; position:absolute; background:var(--color-black); top:50%; left:50%; transform:translate(-50%,-50%); }
+.faq-icon::before,.faq-icon::after{ content:''; position:absolute; background:var(--ink); top:50%; left:50%; transform:translate(-50%,-50%); }
 .faq-icon::before{ width:14px; height:2px; }
 .faq-icon::after{ width:2px; height:14px; transition:transform .25s var(--ease); }
-.faq-item[open] .faq-icon::after{ transform:translate(-50%,-50%) rotate(90deg); scale:0; }
-.faq-answer{ padding:0 4px 24px; color:var(--color-gray-700); font-size:.92rem; max-width:760px; }
+.faq-item[open] .faq-icon::after{ transform:translate(-50%,-50%) rotate(90deg) scaleY(0); }
+.faq-answer{ padding:0 4px 26px; color:var(--gray-600); font-size:.95rem; max-width:var(--measure); }
 
 /* ============================================================
-   13. お問い合わせ
+   10. 問い合わせ CTA
 ============================================================= */
-.contact-section{ background:var(--color-black); color:var(--color-ivory); padding:var(--gap-xl) 0; text-align:center; }
-.contact-section .h2{ margin-bottom:18px; }
-.contact-section .lead{ margin:0 auto var(--gap-lg); color:#d8d4cb; }
+.contact-section{ background:var(--black); color:var(--white); padding:clamp(80px,14vw,160px) 0; text-align:center; }
+.contact-section .h2{ margin-bottom:20px; }
+.contact-section .lead{ margin:0 auto 40px; color:#d6d6d1; }
 .contact-actions{ display:flex; justify-content:center; }
 
 /* ============================================================
-   14. フッター
+   11. フッター
 ============================================================= */
-.site-footer{ background:var(--color-ivory); padding:var(--gap-lg) 0 40px; border-top:1px solid var(--color-line); }
-.footer-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--gap-md); margin-bottom:var(--gap-lg); }
-.footer-logo{ width:clamp(120px, 14vw, 160px); height:auto; margin-bottom:14px; }
-.footer-brand{ font-family:var(--font-display); font-size:1.05rem; font-weight:700; }
-.footer-service{ font-size:.85rem; color:var(--color-gray-700); margin-top:6px; }
-.footer-links{ display:flex; flex-wrap:wrap; gap:22px; font-size:.85rem; }
-.footer-links a{ text-decoration:none; color:var(--color-gray-700); min-height:44px; display:inline-flex; align-items:center; }
-.footer-links a:hover{ color:var(--color-black); }
-.footer-copy{ font-size:.78rem; color:var(--color-gray-400); }
+.site-footer{ background:var(--black); color:#c9c9c4; padding:70px 0 40px; }
+.footer-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:48px; margin-bottom:56px; }
+.footer-logo{ width:clamp(120px,14vw,150px); height:auto; margin-bottom:18px; }
+.footer-tag{ font-size:.86rem; color:#9a9a95; max-width:280px; }
+.footer-links{ display:flex; flex-wrap:wrap; gap:56px; }
+.footer-col h4{ font-size:.78rem; letter-spacing:.1em; color:#9a9a95; margin-bottom:16px; font-weight:700; }
+.footer-col ul{ display:grid; gap:10px; }
+.footer-col a{ font-size:.92rem; color:#e2e2dd; min-height:32px; display:inline-flex; align-items:center; }
+.footer-col a:hover{ color:var(--yellow); }
+.footer-bottom{ border-top:1px solid rgba(255,255,255,.12); padding-top:26px; font-size:.8rem; color:#7d7d78; }
 
 /* ============================================================
-   15. 固定の相談ボタン（右下）
+   12. 固定相談ボタン
 ============================================================= */
 .floating-cta{
   position:fixed; right:16px; bottom:16px; z-index:150;
@@ -838,13 +612,10 @@ summary:focus-visible{
   transition:opacity .3s var(--ease), transform .3s var(--ease);
 }
 .floating-cta.is-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
-.floating-cta .btn{ box-shadow:0 12px 30px -10px rgba(0,0,0,.4); padding:14px 22px; font-size:.88rem; }
-@media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } .floating-cta .btn{ padding:16px 28px; font-size:.95rem; } }
-/* スマートフォンでFAQ・本文操作の邪魔にならないよう、画面下端からの浮き幅を確保 */
-@media (max-width:600px){ .floating-cta{ right:14px; bottom:14px; } }
+.floating-cta .btn{ box-shadow:0 14px 30px -12px rgba(0,0,0,.5); padding:14px 22px; font-size:.88rem; min-height:auto; }
+@media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } }
 
-.section-head{ max-width:760px; }
-.section-head .h2{ margin-bottom:16px; }
+.section-head{ max-width:var(--measure); }
 </style>
 </head>
 <body>
@@ -853,29 +624,22 @@ summary:focus-visible{
      ヘッダー
 ============================================================= -->
 <header class="site-header" id="siteHeader">
-  <div class="container header-inner">
-    <a href="#top" class="brand" aria-label="FRAMEPACT｜生成AIを活用した企業動画制作 トップへ戻る">
-      <!-- ヘッダー左上のロゴ：framepact-logo-icon.png（アイコン単体・黒背景に白文字ロゴから切り出し）を同じフォルダに設置してください -->
-      <img src="framepact-logo-icon.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="header-logo" width="44" height="44" loading="eager" decoding="async">
-      <span class="brand-text">
-        <span class="brand-name">FRAMEPACT</span>
-        <span class="brand-role">生成AI×企業動画制作</span>
-      </span>
+  <div class="wrap header-inner">
+    <a href="#top" class="brand" aria-label="FRAMEPACT トップへ戻る">
+      <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="170" height="147" loading="eager" decoding="async">
     </a>
 
     <nav class="main-nav" aria-label="サイト内ナビゲーション">
       <ul>
-        <li><a href="#service">サービス</a></li>
-        <li><a href="#about-framepact">FRAMEPACTについて</a></li>
-        <li><a href="#reason">特徴</a></li>
-        <li><a href="#flow">制作の流れ</a></li>
-        <li><a href="#price">料金</a></li>
-        <li><a href="#profile">プロフィール</a></li>
+        <li><a href="#services">サービス</a></li>
+        <li><a href="#works">制作実績</a></li>
+        <li><a href="#about">FRAMEPACTについて</a></li>
+        <li><a href="#process">制作の流れ</a></li>
         <li><a href="#faq">よくある質問</a></li>
       </ul>
     </nav>
 
-    <a href="#contact" class="btn btn--dark header-cta">動画制作について相談する</a>
+    <a href="#contact" class="btn btn--primary header-cta">お問い合わせ</a>
 
     <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く">
       <span></span>
@@ -883,122 +647,84 @@ summary:focus-visible{
   </div>
 </header>
 
-<!-- スマートフォン用メニュー -->
 <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
-  <div class="mobile-nav-top">
-    <span class="brand-name">メニュー</span>
-    <button class="mobile-nav-close" id="mobileNavClose" aria-label="メニューを閉じる">閉じる ✕</button>
-  </div>
   <ul>
-    <li><a href="#service">サービス</a></li>
-    <li><a href="#about-framepact">FRAMEPACTについて</a></li>
-    <li><a href="#reason">特徴</a></li>
-    <li><a href="#flow">制作の流れ</a></li>
-    <li><a href="#price">料金</a></li>
-    <li><a href="#profile">プロフィール</a></li>
+    <li><a href="#services">サービス</a></li>
+    <li><a href="#works">制作実績</a></li>
+    <li><a href="#about">FRAMEPACTについて</a></li>
+    <li><a href="#process">制作の流れ</a></li>
     <li><a href="#faq">よくある質問</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
   </ul>
-  <a href="#contact" class="btn btn--primary">動画制作について相談する</a>
+  <a href="#contact" class="btn btn--primary">お問い合わせ</a>
 </nav>
 
 <main id="top">
 
   <!-- ============================================================
        ファーストビュー
-       h1：ページ全体の中心メッセージ（ページ内で唯一のh1）
   ============================================================= -->
   <section class="hero">
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-glow" aria-hidden="true"></div>
 
-    <div class="container hero-inner">
+    <div class="wrap hero-inner">
       <div>
-        <!-- ファーストビューのFRAMEPACTロゴ：framepact-logo.png（アイコン＋ワードマーク、黒背景に白文字）を同じフォルダに設置してください -->
-        <img src="framepact-logo.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="hero-logo" width="180" height="155" loading="eager" decoding="async" fetchpriority="high">
-        <span class="hero-tag">企業向けAI動画制作｜企画・構成から一括対応</span>
+        <img src="./images/framepact-logo-white.png" alt="" aria-hidden="true" class="hero-logo" width="170" height="147" loading="eager" decoding="async" fetchpriority="high">
+        <span class="hero-tag">企業向けAI動画制作</span>
         <h1 class="hero-title">
           映像の力で、<br>
-          <em>「伝わる」</em>を<em>「行動」</em>に<span class="no-break">変える。</span>
+          <em>「伝わる」</em>を<em>「行動」</em>に変える。
         </h1>
-        <p class="hero-sub">
-          生成AIと映像編集を活用し、撮影や素材がなくても、企業の想いを映像にします。
-        </p>
-        <ul class="hero-badges">
-          <li>撮影不要</li>
-          <li>素材なしでも対応</li>
-          <li>法人向け</li>
-        </ul>
+        <p class="hero-sub">生成AIと映像編集を活用し、撮影や素材がなくても、企業の想いを映像にします。</p>
+        <p class="hero-note">企業PR・採用・研修・広告・イベント動画まで、企画から映像制作まで一貫して対応します。</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn--primary">動画制作について相談する</a>
-          <a href="#service" class="btn btn--outline" aria-label="企業向けAI動画制作のサービス内容を見る">サービス内容を見る</a>
+          <a href="#contact" class="btn btn--primary">制作について相談する</a>
+          <a href="#works" class="btn btn--ghost">制作実績を見る</a>
         </div>
       </div>
 
       <div class="hero-visual">
-        <!-- 素材→企画構成→生成AI→動画　の関係を示す抽象図（信頼できる制作プロセスを視覚化）
-             ノードとラインはCSSアニメーションで一度だけ順番に表示される。JS不要で表示可能。 -->
-        <div class="hero-diagram" aria-hidden="true">
-          <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
-            <line x1="20" y1="40"  x2="300" y2="40"  stroke="rgba(250,247,240,.15)" stroke-width="1"/>
-            <line x1="20" y1="100" x2="300" y2="100" stroke="rgba(250,247,240,.15)" stroke-width="1"/>
-            <line x1="20" y1="160" x2="300" y2="160" stroke="rgba(250,247,240,.15)" stroke-width="1"/>
-
-            <circle class="diagram-node" cx="30" cy="40" r="4" fill="#c9a02b"/>
-            <text class="diagram-label l1" x="46" y="45" fill="#d8d4cb" font-size="12" font-family="'Zen Kaku Gothic New',sans-serif">素材ゼロの状態</text>
-
-            <line class="diagram-connector c1" x1="30" y1="44" x2="30" y2="96" stroke="rgba(250,247,240,.35)" stroke-width="1"/>
-            <circle class="diagram-node" cx="30" cy="100" r="4" fill="#faf7f0" style="animation-delay:.7s"/>
-            <text class="diagram-label l2" x="46" y="105" fill="#f2efe6" font-size="12" font-family="'Zen Kaku Gothic New',sans-serif">企画・構成・台本</text>
-
-            <line class="diagram-connector c2" x1="30" y1="104" x2="30" y2="156" stroke="rgba(250,247,240,.35)" stroke-width="1"/>
-            <circle class="diagram-node" cx="30" cy="160" r="4" fill="#c9a02b" style="animation-delay:1.2s"/>
-            <text class="diagram-label l3" x="46" y="165" fill="#f2efe6" font-size="12" font-family="'Zen Kaku Gothic New',sans-serif">生成AI映像＋人の編集</text>
-
-            <line x1="180" y1="30" x2="180" y2="170" stroke="rgba(250,247,240,.15)" stroke-width="1"/>
-            <g class="diagram-final">
-              <rect x="200" y="85" width="90" height="30" fill="none" stroke="#c9a02b" stroke-width="1"/>
-              <text x="245" y="104" fill="#faf7f0" font-size="12" text-anchor="middle" font-family="'Zen Kaku Gothic New',sans-serif">完成動画</text>
-            </g>
-          </svg>
-          <p class="hero-diagram-caption"><span>PROCESS</span><span>素材が無くても、映像は成立する</span></p>
-        </div>
-
-        <div class="hero-person">
-          <!-- ファーストビュー内の小さなアクセント：ブランドアイコンを控えめに表示 -->
-          <span class="avatar avatar--hero">
-            <span class="avatar-fallback" aria-hidden="true">よ</span>
-            <img src="profile-icon.png" alt="よっしー｜企業向けAI動画制作" width="56" height="56" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
-          </span>
-          <div>
-            <p class="hero-person-name">よっしー</p>
-            <p class="hero-person-role">企業動画プロデューサー｜生成AI活用</p>
-          </div>
+        <div class="hero-video-card">
+          <!-- 縦型ショーリール動画。PC・タブレットのみ自動再生し、モバイルやprefers-reduced-motion時は静止画（poster）のまま表示する -->
+          <video
+            id="heroVideo"
+            class="hero-video"
+            poster="./images/works/framepact-showreel-thumbnail.jpg"
+            muted
+            loop
+            playsinline
+            preload="none"
+            aria-label="FRAMEPACT制作技術紹介ショーリール（自動再生・音声なし）">
+            <source data-src="./videos/framepact-showreel.mp4" type="video/mp4">
+          </video>
+          <p class="hero-video-caption">FRAMEPACT SHOWREEL</p>
         </div>
       </div>
     </div>
 
-    <div class="scroll-cue" aria-hidden="true">
+    <div class="scroll-indicator" aria-hidden="true">
       <span>SCROLL</span>
-      <span class="scroll-cue-line"></span>
+      <span class="line"></span>
     </div>
   </section>
 
   <!-- ============================================================
-       必須修正2：数字による信頼表示（実績件数などの誇張は含めない）
+       信頼性を伝える数字
   ============================================================= -->
-  <section class="stats-strip" aria-label="経験と専門性">
-    <div class="container">
+  <section class="stats-strip" aria-label="経験と実績">
+    <div class="wrap">
       <div class="stats-grid reveal">
         <div class="stats-item">
-          <span class="stats-num">6<small>年以上</small></span>
-          <span class="stats-label">YouTube運用</span>
+          <span class="stats-num" data-count="6">0<small>年以上</small></span>
+          <span class="stats-label">YouTube運用経験</span>
         </div>
         <div class="stats-item">
-          <span class="stats-num">3<small>年以上</small></span>
+          <span class="stats-num" data-count="3">0<small>年以上</small></span>
           <span class="stats-label">大手IT企業での動画制作・情報発信</span>
         </div>
         <div class="stats-item">
-          <span class="stats-num">5<small>万人以上</small></span>
+          <span class="stats-num" data-count="5">0<small>万人以上</small></span>
           <span class="stats-label">SNS総フォロワー数</span>
         </div>
         <div class="stats-item">
@@ -1010,197 +736,192 @@ summary:focus-visible{
   </section>
 
   <!-- ============================================================
-       必須修正7：AI検索・SEO向けのサービス定義
-       （結論→詳細の順で、生成AIが要点を抽出しやすい構成）
+       サービス
   ============================================================= -->
-  <section class="section intro-section" id="about-service">
-    <div class="container">
+  <section class="section" id="services">
+    <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">ABOUT</span>
-        <h2 class="h2">企業向けAI動画制作とは</h2>
-      </div>
-      <div class="intro-body reveal">
-        <p class="intro-lead">
-          企業向けAI動画制作とは、生成AIによる映像生成と、企画・構成・台本・動画編集を組み合わせて、企業の研修動画、社内啓発動画、企業イベント動画、採用動画、商品・サービス紹介動画を制作するサービスです。
-        </p>
-        <p>
-          FRAMEPACTが提供する企業向けAI動画制作では、単にAI映像を生成するだけではなく、動画を見る対象者、伝える内容、視聴後に取ってほしい行動を整理した上で、企画から納品まで一貫して対応します。法人向け動画制作を外注する際に課題となりやすい「制作会社との認識のずれ」を防ぐため、本制作前に台本と構成を確認する工程を設けています。
-        </p>
-        <p>
-          撮影素材やイラストが用意できない場合でも、内容に応じて必要な映像を生成AI動画制作で補いながら制作を進められます。オンラインでのやり取りにより、全国の企業からのご相談に対応しています。
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       このようなお悩みはありませんか？
-  ============================================================= -->
-  <section class="section" id="pain">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">PROBLEM</span>
-        <h2 class="h2">このようなお悩みはありませんか？</h2>
-      </div>
-
-      <div class="pain-grid reveal">
-        <div class="pain-item"><span>01</span>動画を作りたいが、撮影素材がない</div>
-        <div class="pain-item"><span>02</span>社内に動画制作を担当できる人がいない</div>
-        <div class="pain-item"><span>03</span>企画や構成から相談したい</div>
-        <div class="pain-item"><span>04</span>文章や資料だけでは内容が伝わりにくい</div>
-        <div class="pain-item"><span>05</span>通常の撮影では表現しにくい場面を映像化したい</div>
-        <div class="pain-item"><span>06</span>納期や予算に合った制作方法を提案してほしい</div>
-      </div>
-
-      <div class="merit-box reveal">
-        <h3>生成AIを活用するメリット</h3>
-        <p>
-          撮影が難しい場面や、実写では準備に時間がかかる映像も、生成AI動画制作を使えば短い期間で形にできます。
-          重要なのは「AIに任せきりにしない」ことです。企画・構成・編集・品質確認は人の目で丁寧に行い、
-          伝わる動画になっているかを最後まで確認しながら制作します。
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       対応する動画
-  ============================================================= -->
-  <section class="section section--ivory" id="service">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">SERVICE</span>
-        <h2 class="h2">対応する動画</h2>
+        <span class="eyebrow">SERVICES</span>
+        <h2 class="h2">サービス</h2>
         <p class="lead">目的や視聴者に合わせて、企画段階から構成をご提案します。</p>
       </div>
 
-      <div class="service-grid reveal">
-        <article class="service-card">
-          <span class="service-num">01 / TRAINING</span>
-          <h3>研修・社内啓発動画</h3>
-          <p>防災、情報セキュリティ、コンプライアンス、社内制度など、文章だけでは伝わりにくい内容を分かりやすく映像化します。</p>
-        </article>
-        <article class="service-card">
-          <span class="service-num">02 / EVENT</span>
-          <h3>企業イベント動画</h3>
-          <p>イベントのオープニング、シナリオ導入、展示会、社内総会など、参加者の関心や理解を高める動画を制作します。</p>
-        </article>
-        <article class="service-card">
-          <span class="service-num">03 / RECRUIT</span>
-          <h3>採用・会社紹介動画</h3>
-          <p>会社の魅力、仕事内容、企業文化、目指す未来などを、撮影素材が少ない状態からでも映像化します。</p>
-        </article>
-        <article class="service-card">
-          <span class="service-num">04 / PRODUCT</span>
-          <h3>商品・サービス紹介動画</h3>
-          <p>サービスの仕組みや利用場面を、AI映像、テロップ、ナレーションを組み合わせて分かりやすく紹介します。</p>
-        </article>
+      <div class="service-row reveal">
+        <div>
+          <span class="service-eyebrow">CORPORATE PR</span>
+          <h3 class="service-title">企業PR動画</h3>
+          <p class="service-desc">会社の魅力や事業内容を、伝わる映像で紹介します。撮影素材が少ない場合でも、生成AIで補いながら制作します。</p>
+          <p class="service-usecase"><b>想定用途：</b>採用サイト、会社紹介、株主・取引先向け説明</p>
+        </div>
+        <div class="service-visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="34" stroke="#fdc44b" stroke-width="1.4"/><path d="M38 50l9 9 17-19" stroke="#fdc44b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal">
+        <div>
+          <span class="service-eyebrow">RECRUITING</span>
+          <h3 class="service-title">採用動画</h3>
+          <p class="service-desc">仕事内容や企業文化、目指す未来を、求職者に伝わる形で映像化します。</p>
+          <p class="service-usecase"><b>想定用途：</b>採用ページ、説明会、就職イベント</p>
+        </div>
+        <div class="service-visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="38" cy="38" r="12" stroke="#fdc44b" stroke-width="1.4"/><path d="M18 76c0-13 9-22 20-22s20 9 20 22" stroke="#fdc44b" stroke-width="1.4"/><path d="M62 40l8 8 14-16" stroke="#fdc44b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal">
+        <div>
+          <span class="service-eyebrow">TRAINING</span>
+          <h3 class="service-title">研修・マニュアル動画</h3>
+          <p class="service-desc">防災、情報セキュリティ、コンプライアンス、社内制度など、文章だけでは伝わりにくい内容を分かりやすく映像化します。</p>
+          <p class="service-usecase"><b>想定用途：</b>社内研修、新人教育、業務マニュアル</p>
+        </div>
+        <div class="service-visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="24" y="20" width="52" height="60" rx="4" stroke="#fdc44b" stroke-width="1.4"/><path d="M34 36h32M34 48h32M34 60h20" stroke="#fdc44b" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal">
+        <div>
+          <span class="service-eyebrow">ADS &amp; SOCIAL</span>
+          <h3 class="service-title">広告・SNS動画</h3>
+          <p class="service-desc">サービスの仕組みや利用シーンを、AI映像とテロップ、ナレーションで分かりやすく紹介します。</p>
+          <p class="service-usecase"><b>想定用途：</b>Web広告、SNS投稿、商品紹介</p>
+        </div>
+        <div class="service-visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 20l6 18h19l-15 12 6 18-16-11-16 11 6-18-15-12h19z" stroke="#fdc44b" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal">
+        <div>
+          <span class="service-eyebrow">EVENT</span>
+          <h3 class="service-title">イベント映像</h3>
+          <p class="service-desc">イベントのオープニング、展示会、社内総会など、参加者の関心や理解を高める動画を制作します。</p>
+          <p class="service-usecase"><b>想定用途：</b>展示会、社内イベント、周年記念</p>
+        </div>
+        <div class="service-visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 70V40l40-14v50" stroke="#fdc44b" stroke-width="1.4"/><circle cx="30" cy="74" r="4" stroke="#fdc44b" stroke-width="1.4"/><circle cx="70" cy="80" r="4" stroke="#fdc44b" stroke-width="1.4"/></svg>
+        </div>
+      </div>
+
+      <div class="service-row reveal">
+        <div>
+          <span class="service-eyebrow">AI-POWERED PRODUCTION</span>
+          <h3 class="service-title">生成AIを活用した映像制作</h3>
+          <p class="service-desc">撮影が難しい場面や素材がない状態でも、複数の生成AIを使い分けながら必要な映像を制作します。編集・品質確認は人の目で丁寧に行います。</p>
+          <p class="service-usecase"><b>想定用途：</b>素材ゼロからの映像化、表現の幅を広げたい場合</p>
+        </div>
+        <div class="service-visual" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="6" fill="#fdc44b"/><circle cx="28" cy="30" r="4" stroke="#fdc44b" stroke-width="1.4"/><circle cx="72" cy="30" r="4" stroke="#fdc44b" stroke-width="1.4"/><circle cx="28" cy="70" r="4" stroke="#fdc44b" stroke-width="1.4"/><circle cx="72" cy="70" r="4" stroke="#fdc44b" stroke-width="1.4"/><path d="M50 50L28 30M50 50L72 30M50 50L28 70M50 50L72 70" stroke="#fdc44b" stroke-width="1"/></svg>
+        </div>
       </div>
     </div>
-    <!-- 将来のコンテンツ拡張：制作事例を追加する場合はこのセクションの直後に事例カードを追加してください -->
   </section>
 
   <!-- ============================================================
-       FRAMEPACTについて（ブランドストーリー：概要／理念／名前の由来／ロゴの意味）
+       制作実績（WORKS）
   ============================================================= -->
-  <section class="section" id="about-framepact">
-    <div class="container">
+  <section class="section section--offwhite" id="works">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">WORKS</span>
+        <h2 class="h2">制作実績</h2>
+        <p class="lead">FRAMEPACTが制作した生成AI動画・企業PR動画・広告動画などの事例をご紹介します。</p>
+      </div>
+
+      <div class="works-toolbar reveal" id="worksToolbar" hidden>
+        <!-- 実績が増えた際、カテゴリー数が2以上になると自動的に表示されます -->
+      </div>
+
+      <div class="works-grid reveal" id="worksGrid">
+        <!-- worksData（JavaScript）から自動生成されます -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 動画再生モーダル -->
+  <div class="work-modal" id="workModal" role="dialog" aria-modal="true" aria-labelledby="workModalTitle">
+    <div class="work-modal-backdrop" id="workModalBackdrop"></div>
+    <div class="work-modal-body">
+      <button class="work-modal-close" id="workModalClose" aria-label="閉じる">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="work-modal-video-wrap">
+        <video id="workModalVideo" controls playsinline preload="none"></video>
+      </div>
+      <div class="work-modal-info">
+        <h3 id="workModalTitle"></h3>
+        <p id="workModalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FRAMEPACTについて
+  ============================================================= -->
+  <section class="section" id="about">
+    <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">ABOUT FRAMEPACT</span>
         <h2 class="h2">FRAMEPACTについて</h2>
       </div>
-
       <div class="about-lead reveal">
-        <p>
-          FRAMEPACTは、企業やサービスが持つ価値を、伝わる映像へ変換する映像制作ブランドです。
-        </p>
-        <p>
-          私たちは、映像を作ること自体を目的にはしません。企業の想いや情報を整理し、理解・共感・行動へつながる表現を設計します。
-        </p>
-        <p>
-          生成AIと映像編集を組み合わせることで、撮影や素材が十分に用意できない場合でも、企業PR、採用、研修、広告、イベントなど、さまざまな目的に合わせた映像制作を可能にします。
-        </p>
-      </div>
-
-      <!-- 企業理念 -->
-      <div class="philosophy-block reveal">
-        <span class="eyebrow">PHILOSOPHY</span>
-        <p class="philosophy-statement">
-          映像の力で、<br>
-          「伝わる」を「行動」に変える。
-        </p>
-        <p class="philosophy-desc">
-          私たちは、企業やサービスが持つ本来の価値を整理し、見る人に伝わる形へ変換します。ただ見られるだけの映像ではなく、理解や共感を生み、その先の行動につながる映像を目指します。
-        </p>
-      </div>
-
-      <!-- 名前の由来 -->
-      <div class="name-origin reveal">
-        <span class="eyebrow">NAME ORIGIN</span>
-        <h3 class="name-origin-heading">名前の由来</h3>
-        <p>
-          FRAMEPACTという名称は、映像を構成する「FRAME」と、人の心や行動に影響を与える「IMPACT」を組み合わせて生まれました。
-        </p>
-        <p>
-          一つひとつの映像表現を通じて人の心を動かし、理解や共感、その先の行動につながるインパクトを生み出したい。そんな想いを、この名前に込めています。
-        </p>
-        <p class="name-equation">FRAME + IMPACT = FRAMEPACT</p>
-      </div>
-
-      <!-- ロゴの意味 -->
-      <div class="logo-concept reveal">
-        <div class="logo-concept-text">
-          <span class="eyebrow">LOGO CONCEPT</span>
-          <h3 class="logo-concept-heading">ロゴの意味</h3>
-          <p>
-            黄色の再生マークは、映像による情報発信と、新しい可能性の始まりを表しています。
-          </p>
-          <p>
-            その中から前へ走り出す人物は、映像を見た人の心が動き、次の行動へ踏み出す姿を表現しています。
-          </p>
-          <p>
-            FRAMEPACTは、ただ見られるだけではなく、人を動かす映像を目指します。
-          </p>
-        </div>
-        <div class="logo-concept-visual">
-          <!-- ロゴの意味を説明するブロック内の大きめのロゴ表示 -->
-          <img src="framepact-logo.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="300" height="259" loading="lazy" decoding="async">
-        </div>
+        <p>FRAMEPACTは、企業やサービスが持つ価値を、伝わる映像へ変換する映像制作ブランドです。</p>
+        <p>私たちは、映像を作ること自体を目的にはしません。企業の想いや情報を整理し、理解・共感・行動へつながる表現を設計します。</p>
+        <p>生成AIと映像編集を組み合わせることで、撮影や素材が十分に用意できない場合でも、企業PR、採用、研修、広告、イベントなど、さまざまな目的に合わせた映像制作を可能にします。</p>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       選ばれる理由（Bento Grid：3項目を大きく強調）
-  ============================================================= -->
-  <section class="section" id="reason">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">WHY US</span>
-        <h2 class="h2">選ばれる理由</h2>
-      </div>
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="wrap">
+      <span class="eyebrow">PHILOSOPHY</span>
+      <p class="philosophy-lines">
+        <span class="line">映像の力で、</span>
+        <span class="line"><em>「伝わる」</em>を<em>「行動」</em>に変える。</span>
+      </p>
+      <p class="philosophy-desc reveal">
+        私たちは、企業やサービスが持つ本来の価値を整理し、見る人に伝わる形へ変換します。ただ見られるだけの映像ではなく、理解や共感を生み、その先の行動につながる映像を目指します。
+      </p>
+    </div>
+  </section>
 
-      <div class="reason-bento reveal">
-        <article class="reason-cell reason--major">
-          <h3>企業の事情を理解できる</h3>
-          <p>大手IT企業で動画制作・情報発信を3年以上担当した経験から、承認フローや関係者調整、目的整理など、企業ならではの進め方を理解した上で対応できます。</p>
-        </article>
-        <article class="reason-cell reason--major">
-          <h3>見てもらうための構成を理解している</h3>
-          <p>YouTube運用6年以上の経験を通じて、視聴者に最後まで見てもらうための構成や伝え方を実践的に学んできました。</p>
-        </article>
-        <article class="reason-cell reason--major">
-          <h3>素材がなくても制作できる</h3>
-          <p>撮影素材が用意できない場合でも、必要な映像を生成AIで補いながら制作を進められるため、着手までの負担を抑えられます。</p>
-        </article>
-        <article class="reason-cell reason--minor">
-          <h3>複数の生成AIを適切に使い分け</h3>
-          <p>表現したい内容に合わせて複数の生成AIツールを使い分け、AI任せにせず人の目で品質を確認しながら仕上げます。</p>
-        </article>
-        <article class="reason-cell reason--minor">
-          <h3>迅速かつ丁寧なコミュニケーション</h3>
-          <p>ご相談から納品まで、返信の速さと説明の分かりやすさを大切にしています。</p>
-        </article>
+  <!-- NAME ORIGIN -->
+  <section class="section name-origin" id="name-origin">
+    <div class="wrap">
+      <div class="section-head reveal measure">
+        <span class="eyebrow">NAME ORIGIN</span>
+        <h2 class="h2">名前の由来</h2>
+      </div>
+      <div class="measure reveal">
+        <p>FRAMEPACTという名称は、映像を構成する「FRAME」と、人の心や行動に影響を与える「IMPACT」を組み合わせて生まれました。</p>
+        <p>一つひとつの映像表現を通じて人の心を動かし、理解や共感、その先の行動につながるインパクトを生み出したい。そんな想いを、この名前に込めています。</p>
+      </div>
+      <p class="name-equation reveal-equation">
+        <span class="frame">FRAME</span> <span class="op">+</span> <span class="impact">IMPACT</span> <span class="op">=</span> <span class="result">FRAMEPACT</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- LOGO CONCEPT -->
+  <section class="section logo-concept" id="logo-concept">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">LOGO CONCEPT</span>
+        <h2 class="h2">ロゴの意味</h2>
+      </div>
+      <div class="logo-concept-grid reveal">
+        <div>
+          <p>黄色の再生マークは、映像による情報発信と、新しい可能性の始まりを表しています。</p>
+          <p>その中から前へ走り出す人物は、映像を見た人の心が動き、次の行動へ踏み出す姿を表現しています。</p>
+          <p>FRAMEPACTは、ただ見られるだけではなく、人を動かす映像を目指します。</p>
+        </div>
+        <div class="logo-concept-visual">
+          <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="320" height="276" loading="lazy" decoding="async">
+        </div>
       </div>
     </div>
   </section>
@@ -1208,134 +929,29 @@ summary:focus-visible{
   <!-- ============================================================
        制作の流れ
   ============================================================= -->
-  <section class="section section--dark" id="flow">
-    <div class="container">
+  <section class="section process" id="process">
+    <div class="wrap">
       <div class="section-head reveal">
-        <span class="eyebrow">FLOW</span>
+        <span class="eyebrow">PROCESS</span>
         <h2 class="h2">制作の流れ</h2>
-        <p class="lead">本制作に入る前に、台本と構成を必ずご確認いただきます。内容を把握した状態で進められるため、安心してお任せいただけます。</p>
+        <p class="lead">本制作に入る前に、台本と構成を必ずご確認いただきます。安心してお任せいただける進め方です。</p>
       </div>
 
-      <div class="flow-list reveal">
-        <div class="flow-item"><span class="flow-num">01</span><div><h3>お問い合わせ</h3><p>目的やご希望内容を、分かる範囲でお聞かせください。</p></div></div>
-        <div class="flow-item"><span class="flow-num">02</span><div><h3>ヒアリング</h3><p>視聴対象、目的、使用シーンなどを詳しくお伺いします。</p></div></div>
-        <div class="flow-item"><span class="flow-num">03</span><div><h3>企画・見積もり</h3><p>目的に合った構成案と、お見積もりをご提示します。</p></div></div>
-        <div class="flow-item"><span class="flow-num">04</span><div><h3>台本・構成確認</h3><p>制作前に台本・構成をご確認いただき、認識をすり合わせます。</p></div></div>
-        <div class="flow-item"><span class="flow-num">05</span><div><h3>映像制作・編集</h3><p>生成AIによる映像制作と、編集・テロップ・音入れを行います。</p></div></div>
-        <div class="flow-item"><span class="flow-num">06</span><div><h3>確認・修正</h3><p>完成した動画をご確認いただき、必要に応じて修正します。</p></div></div>
-        <div class="flow-item"><span class="flow-num">07</span><div><h3>納品</h3><p>指定の形式でデータを納品します。</p></div></div>
-      </div>
-
-      <p class="flow-note reveal">
-        <!-- 制作期間の目安。運用方針が変わった場合はこの一文と本文中の同内容を合わせて修正してください -->
-        内容や動画尺によって異なりますが、通常はヒアリングから納品まで3〜4週間程度が目安です。台本・構成の確認工程を挟むため、「イメージと違った」というすれ違いが起きにくい進め方になっています。
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       料金
-  ============================================================= -->
-  <section class="section" id="price">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">PRICE</span>
-        <h2 class="h2">料金</h2>
-        <p class="lead">企業向けAI動画制作の基本料金は30万円からで、内容によって変動します。</p>
-      </div>
-
-      <div class="price-card reveal">
-        <div class="price-lead">
-          <p class="price-num">30万円<span class="price-unit">〜</span></p>
-          <p class="lead" style="margin-top:12px;">ヒアリングから納品まで、企画・構成を含めて対応する基本プランです。基本動画尺は30〜90秒程度、修正は2回まで対応します。</p>
-        </div>
-        <div>
-          <ul class="price-includes">
-            <li>30〜90秒程度</li>
-            <li>ヒアリング</li>
-            <li>企画・構成</li>
-            <li>台本作成</li>
-            <li>AI映像制作</li>
-            <li>動画編集</li>
-            <li>テロップ</li>
-            <li>BGM・効果音</li>
-            <li>AIナレーション</li>
-            <li>修正2回</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="price-caution reveal">
-        動画の長さ、AI生成カット数、表現内容、納期、修正範囲などによって料金は変動します。詳細はヒアリング後にお見積もりいたします。<br>
-        制作事例として公開可能な企業には、事例協力プランをご案内できる場合があります。
-      </p>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       プロフィール
-  ============================================================= -->
-  <section class="section section--ivory" id="profile">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">PROFILE</span>
-        <h2 class="h2">プロフィール</h2>
-      </div>
-
-      <div class="profile-wrap reveal">
-        <div class="profile-photo-frame">
-          <!-- プロフィール欄のメイン画像：profile-icon.png を使用。読み込めない場合は「よ」の文字が表示されます -->
-          <span class="avatar">
-            <span class="avatar-fallback" aria-hidden="true">よ</span>
-            <img src="profile-icon.png" alt="よっしー｜企業向けAI動画制作" width="280" height="280" loading="lazy" decoding="async" onerror="this.style.display='none'">
-          </span>
-        </div>
-
-        <div>
-          <p class="profile-name">よっしー</p>
-          <p class="profile-role">企業動画プロデューサー｜生成AI活用</p>
-
-          <div class="profile-block">
-            <h3>大手日系IT企業での業務</h3>
-            <p>大手日系IT企業にて、動画制作および社内向けの情報発信を3年以上担当。従業員の理解や行動変容を目的としたコンテンツ制作を通じて、企業内で「伝わる映像」をつくる経験を積んできました。</p>
-          </div>
-
-          <div class="profile-block">
-            <h3>個人でのYouTube運用</h3>
-            <p>個人としてYouTube運用を6年以上継続し、企画・撮影・編集・分析までを一貫して経験。SNS総フォロワー数は5万人を超え、視聴者に見てもらうための構成や伝え方を実践的に学んできました。</p>
-          </div>
-
-          <div class="profile-block">
-            <h3>生成AI動画制作での対応範囲</h3>
-            <p>複数の生成AIサービスを用途に応じて使い分けながら、企画・構成・台本作成からAI映像制作、編集までを一貫して対応しています。</p>
-          </div>
-
-          <div class="profile-block">
-            <h3>ココナラでの受注経験</h3>
-            <p>ココナラにて動画制作案件を受注しており、企業・イベント用途の動画制作にも対応してきました。</p>
-          </div>
-
-          <div class="profile-block">
-            <h3>顧客対応で大切にしていること</h3>
-            <p>返信の速さ、説明の丁寧さ、納期対応を大切にしています。</p>
-          </div>
-
-          <ul class="profile-facts">
-            <li>YouTube運用6年以上（企画・撮影・編集・分析）</li>
-            <li>大手IT企業での動画制作・情報発信3年以上</li>
-            <li>SNS総フォロワー数5万人以上</li>
-            <li>複数の生成AIサービスを用途に応じて使い分け</li>
-          </ul>
-        </div>
+      <div class="process-timeline">
+        <div class="process-step reveal"><span class="process-num">01</span><h3>お問い合わせ</h3><p>目的やご希望内容を、分かる範囲でお聞かせください。</p></div>
+        <div class="process-step reveal"><span class="process-num">02</span><h3>ヒアリング</h3><p>視聴対象、目的、使用シーンなどを詳しくお伺いします。</p></div>
+        <div class="process-step reveal"><span class="process-num">03</span><h3>企画・構成</h3><p>目的に合った構成案・台本をご提示し、内容をすり合わせます。</p></div>
+        <div class="process-step reveal"><span class="process-num">04</span><h3>映像制作</h3><p>生成AIによる映像制作と、編集・テロップ・音入れを行います。</p></div>
+        <div class="process-step reveal"><span class="process-num">05</span><h3>確認・納品</h3><p>内容をご確認いただき、必要に応じて修正の上、納品します。</p></div>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       よくある質問（各回答の一文目で結論を明示）
+       よくある質問
   ============================================================= -->
-  <section class="section" id="faq">
-    <div class="container">
+  <section class="section section--offwhite" id="faq">
+    <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">FAQ</span>
         <h2 class="h2">よくある質問</h2>
@@ -1348,11 +964,10 @@ summary:focus-visible{
         </details>
         <details class="faq-item">
           <summary>どのような動画に対応していますか？<span class="faq-icon" aria-hidden="true"></span></summary>
-          <div class="faq-answer">研修・社内啓発動画、企業イベント動画、採用・会社紹介動画、商品・サービス紹介動画に対応しています。上記以外の用途についても、まずはご相談ください。</div>
+          <div class="faq-answer">企業PR動画、採用動画、研修・マニュアル動画、広告・SNS動画、イベント映像に対応しています。上記以外の用途についても、まずはご相談ください。</div>
         </details>
         <details class="faq-item">
           <summary>制作期間はどのくらいですか？<span class="faq-icon" aria-hidden="true"></span></summary>
-          <!-- 制作期間の目安。実際の運用方針と異なる場合はここを修正してください -->
           <div class="faq-answer">内容や動画尺によって異なりますが、通常はヒアリングから納品まで3〜4週間程度が目安です。お急ぎの場合は事前にご相談ください。</div>
         </details>
         <details class="faq-item">
@@ -1381,20 +996,20 @@ summary:focus-visible{
         </details>
       </div>
     </div>
-    <!-- 将来のコンテンツ拡張：AI動画制作の解説記事や料金解説記事はFAQの直後に追加する想定です -->
   </section>
 
   <!-- ============================================================
-       お問い合わせ
+       お問い合わせ CTA
   ============================================================= -->
   <section class="contact-section" id="contact">
-    <div class="container">
+    <div class="wrap">
       <span class="eyebrow">CONTACT</span>
-      <h2 class="h2">動画制作について相談する</h2>
-      <p class="lead">企画や内容がまだ決まっていない段階でもご相談いただけます。目的や課題をお伺いし、適した制作方法をご提案します。</p>
+      <h2 class="h2">映像で伝える準備を、<br>ここから始めませんか。</h2>
+      <p class="lead">企画が固まっていない段階でも問題ありません。制作したい映像の目的やイメージをお聞かせください。</p>
       <div class="contact-actions">
-        <!-- GoogleフォームのURLは設定済みです。変更する場合はこのhrefを差し替えてください -->
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform" class="btn btn--primary" target="_blank" rel="noopener">お問い合わせフォームへ進む</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform" class="btn btn--primary" target="_blank" rel="noopener">
+          制作について相談する <span class="arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1405,44 +1020,50 @@ summary:focus-visible{
      フッター
 ============================================================= -->
 <footer class="site-footer">
-  <div class="container">
+  <div class="wrap">
     <div class="footer-top">
       <div>
-        <!-- フッターのFRAMEPACTロゴ：framepact-logo.png（アイコン＋ワードマーク）を使用 -->
-        <img src="framepact-logo.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="footer-logo" width="160" height="138" loading="lazy" decoding="async">
-        <p class="footer-brand">FRAMEPACT</p>
-        <p class="footer-service">生成AIを活用した企業動画制作｜企画・構成から一括対応</p>
+        <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="footer-logo" width="150" height="130" loading="lazy" decoding="async">
+        <p class="footer-tag">生成AIを活用した企業動画制作。映像の力で、「伝わる」を「行動」に変える。</p>
       </div>
-      <nav class="footer-links" aria-label="フッターナビゲーション">
-        <!-- プライバシーポリシーページを追加しました -->
-        <a href="privacy.html">プライバシーポリシー</a>
-        <a href="#contact">お問い合わせ</a>
-      </nav>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>SITE</h4>
+          <ul>
+            <li><a href="#services">サービス</a></li>
+            <li><a href="#works">制作実績</a></li>
+            <li><a href="#about">FRAMEPACTについて</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>LEGAL</h4>
+          <ul>
+            <li><a href="privacy.html">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <p class="footer-copy">&copy; <span id="year"></span> FRAMEPACT</p>
+    <p class="footer-bottom">&copy; <span id="year"></span> FRAMEPACT</p>
   </div>
 </footer>
 
-<!-- 固定の相談ボタン（右下・スクロール時のみ表示） -->
 <div class="floating-cta" id="floatingCta">
-  <a href="#contact" class="btn btn--primary" aria-label="動画制作について相談する（お問い合わせへ移動）">相談する</a>
+  <a href="#contact" class="btn btn--primary" aria-label="制作について相談する（お問い合わせへ移動）">相談する</a>
 </div>
 
 <script>
-/* ============================================================
-   JavaScript（必要最低限の実装。実行されない場合でも
-   全ての文章・画像・リンクは通常のHTMLとして閲覧可能）
-============================================================= */
 (function(){
   'use strict';
 
   var yearEl = document.getElementById('year');
   if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-  // ---------------- ハンバーガーメニュー ----------------
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- ハンバーガーメニュー ---------------- */
   var menuToggle = document.getElementById('menuToggle');
   var mobileNav  = document.getElementById('mobileNav');
-  var mobileNavClose = document.getElementById('mobileNavClose');
 
   function closeMenu(){
     menuToggle.setAttribute('aria-expanded', 'false');
@@ -1460,12 +1081,9 @@ summary:focus-visible{
     var isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
     isOpen ? closeMenu() : openMenu();
   });
-  if(mobileNavClose){ mobileNavClose.addEventListener('click', closeMenu); }
-  mobileNav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', closeMenu);
-  });
+  mobileNav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
 
-  // ---------------- ヘッダーの背景切り替え ＆ 固定相談ボタンの表示 ----------------
+  /* ---------------- ヘッダー背景 ＆ 固定CTA ---------------- */
   var header = document.getElementById('siteHeader');
   var floatingCta = document.getElementById('floatingCta');
   var heroEl = document.querySelector('.hero');
@@ -1479,8 +1097,8 @@ summary:focus-visible{
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  // ---------------- スクロール連動フェード表示 ----------------
-  var revealTargets = document.querySelectorAll('.reveal');
+  /* ---------------- スクロール連動フェード ---------------- */
+  var revealTargets = document.querySelectorAll('.reveal, .process-step, .philosophy-lines .line, .name-equation');
   if('IntersectionObserver' in window){
     var revealObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
@@ -1495,56 +1113,212 @@ summary:focus-visible{
     revealTargets.forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-  // ---------------- 現在閲覧中のセクションをナビに反映 ----------------
-  var navLinks = document.querySelectorAll('.main-nav a');
-  var sections = Array.prototype.map.call(navLinks, function(link){
-    return document.querySelector(link.getAttribute('href'));
-  }).filter(Boolean);
+  /* ---------------- ヒーロー動画：PC/タブレットのみ自動再生 ---------------- */
+  var heroVideo = document.getElementById('heroVideo');
+  function setupHeroVideo(){
+    if(!heroVideo) return;
+    var isDesktop = window.innerWidth >= 768;
+    var source = heroVideo.querySelector('source');
+    if(isDesktop && !reduceMotion){
+      if(source && !source.src){
+        source.src = source.getAttribute('data-src');
+        heroVideo.load();
+        heroVideo.play().catch(function(){ /* 自動再生に失敗してもposterが表示されるため問題ない */ });
+      }
+    }
+  }
+  setupHeroVideo();
+  window.addEventListener('resize', function(){
+    // リサイズのたびに動画を読み込み直さないよう、未読み込みの場合のみ判定する
+    if(heroVideo && !heroVideo.querySelector('source').src){ setupHeroVideo(); }
+  }, {passive:true});
 
-  if('IntersectionObserver' in window && sections.length){
-    var navObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        var id = '#' + entry.target.id;
-        var link = document.querySelector('.main-nav a[href="' + id + '"]');
-        if(!link) return;
-        if(entry.isIntersecting){
-          navLinks.forEach(function(l){ l.removeAttribute('aria-current'); });
-          link.setAttribute('aria-current', 'true');
-        }
-      });
-    }, {rootMargin:'-40% 0px -50% 0px'});
-    sections.forEach(function(s){ navObserver.observe(s); });
+  /* ============================================================
+     制作実績（WORKS）：worksDataから自動生成
+     新しい実績を追加する場合は、この配列にオブジェクトを追加するだけでOK
+  ============================================================= */
+  var worksData = [
+    {
+      id: "framepact-showreel",
+      title: "FRAMEPACT 制作技術紹介",
+      category: "生成AI",
+      description: "生成AIと映像編集を組み合わせた制作事例を、約40秒にまとめたショーリール。企業PR、広告、SNS動画など、素材がない状態からでも幅広い映像表現が可能です。",
+      thumbnail: "./images/works/framepact-showreel-thumbnail.jpg",
+      video: "./videos/framepact-showreel.mp4",
+      tags: ["生成AI動画", "企業PR", "広告動画", "SNS動画"],
+      orientation: "portrait",
+      featured: true
+    }
+  ];
+
+  var worksGrid = document.getElementById('worksGrid');
+  var worksToolbar = document.getElementById('worksToolbar');
+
+  function playIconSVG(){
+    return '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg>';
   }
 
-  // ---------------- お問い合わせフォーム（Googleフォーム）クリック計測 ----------------
-  // 対象は下記Googleフォームを開くリンクのみ。#contact等のページ内リンクや他の外部リンクは対象外。
-  // 既存のGoogleタグ（測定ID：G-HFRM2G8C7C）はこの処理より前に読み込み済みのため、
-  // ここでは新たにタグを追加せず、既存の gtag 関数が使える場合のみイベントを送信する。
-  function initContactFormTracking(){
-    var GA_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform';
-    var formLinks = document.querySelectorAll('a[href="' + GA_FORM_URL + '"]');
-    formLinks.forEach(function(link){
-      // 同じリンクへ重複してリスナーを登録しないようにする
-      if(link.getAttribute('data-ga-tracked') === 'true') return;
-      link.setAttribute('data-ga-tracked', 'true');
+  function escapeHtml(str){
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
 
-      link.addEventListener('click', function(){
-        // preventDefaultは使用しない（フォームは通常どおり新しいタブで開く）
-        if(typeof gtag === 'function'){
-          gtag('event', 'contact_form_click', {
-            link_url: link.href,
-            link_text: (link.textContent || '').trim(),
-            source_page: 'homepage'
-          });
-        }
-      });
+  function renderWorks(filterCategory){
+    if(!worksGrid) return;
+    worksGrid.innerHTML = '';
+
+    var list = worksData.filter(function(w){
+      return !filterCategory || filterCategory === 'すべて' || w.category === filterCategory;
     });
+
+    list.forEach(function(work){
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'work-card' + (work.featured ? ' is-featured' : '');
+      card.setAttribute('aria-haspopup', 'dialog');
+      card.setAttribute('data-id', work.id);
+
+      var tagsHtml = (work.tags || []).map(function(t){ return '<span class="work-tag">' + escapeHtml(t) + '</span>'; }).join('');
+      var safeTitle = escapeHtml(work.title);
+
+      var thumbImg = document.createElement('img');
+      thumbImg.src = work.thumbnail;
+      thumbImg.alt = work.title + 'のサムネイル';
+      thumbImg.loading = 'lazy';
+      thumbImg.decoding = 'async';
+      thumbImg.addEventListener('error', function(){
+        var wrap = thumbImg.parentElement;
+        wrap.innerHTML = '<span class="work-fallback">' + playIconSVG() + '<span>' + safeTitle + '</span></span>';
+      });
+
+      var thumbWrap = document.createElement('span');
+      thumbWrap.className = 'work-thumb-wrap';
+      thumbWrap.appendChild(thumbImg);
+      thumbWrap.insertAdjacentHTML('beforeend',
+        '<span class="work-overlay" aria-hidden="true"></span>' +
+        '<span class="work-play" aria-hidden="true">' + playIconSVG() + '</span>' +
+        '<span class="work-meta">' +
+          '<span class="work-category">' + escapeHtml(work.category) + '</span>' +
+          '<span class="work-title">' + safeTitle + '</span>' +
+          '<span class="work-desc">' + escapeHtml(work.description) + '</span>' +
+          '<span class="work-tags">' + tagsHtml + '</span>' +
+        '</span>'
+      );
+
+      card.appendChild(thumbWrap);
+      card.addEventListener('click', function(){ openWorkModal(work); });
+      worksGrid.appendChild(card);
+    });
+
+    // カテゴリーが2種類以上ある場合のみ、絞り込みボタンを表示する
+    var categories = Array.from(new Set(worksData.map(function(w){ return w.category; })));
+    if(worksToolbar){
+      if(categories.length > 1){
+        worksToolbar.hidden = false;
+        worksToolbar.innerHTML = ['すべて'].concat(categories).map(function(cat){
+          return '<button type="button" class="works-filter-btn" data-category="' + escapeHtml(cat) + '" aria-pressed="' + (cat === (filterCategory || 'すべて') ? 'true' : 'false') + '">' + escapeHtml(cat) + '</button>';
+        }).join('');
+        worksToolbar.querySelectorAll('.works-filter-btn').forEach(function(btn){
+          btn.addEventListener('click', function(){ renderWorks(btn.getAttribute('data-category')); });
+        });
+      } else {
+        worksToolbar.hidden = true;
+      }
+    }
   }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initContactFormTracking);
+  renderWorks();
+
+  /* ---------------- 動画モーダル ---------------- */
+  var workModal = document.getElementById('workModal');
+  var workModalBackdrop = document.getElementById('workModalBackdrop');
+  var workModalClose = document.getElementById('workModalClose');
+  var workModalVideo = document.getElementById('workModalVideo');
+  var workModalTitle = document.getElementById('workModalTitle');
+  var workModalDesc = document.getElementById('workModalDesc');
+  var lastFocusedEl = null;
+
+  function openWorkModal(work){
+    lastFocusedEl = document.activeElement;
+    workModalTitle.textContent = work.title;
+    workModalDesc.textContent = work.description;
+    workModalVideo.setAttribute('src', work.video);
+    workModalVideo.load();
+
+    workModal.classList.add('is-open');
+    document.body.classList.add('modal-open');
+    workModalClose.focus();
+
+    workModalVideo.muted = false;
+    workModalVideo.play().catch(function(){ /* 自動再生できない場合はcontrolsから再生可能 */ });
+
+    document.addEventListener('keydown', onModalKeydown);
+  }
+
+  function closeWorkModal(){
+    workModal.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+    workModalVideo.pause();
+    workModalVideo.removeAttribute('src');
+    workModalVideo.load();
+    document.removeEventListener('keydown', onModalKeydown);
+    if(lastFocusedEl){ lastFocusedEl.focus(); }
+  }
+
+  function onModalKeydown(e){
+    if(e.key === 'Escape'){
+      closeWorkModal();
+      return;
+    }
+    // 簡易フォーカストラップ（モーダル内の要素のみをTabで巡回）
+    if(e.key === 'Tab'){
+      var focusable = workModal.querySelectorAll('button, [href], video');
+      if(focusable.length === 0) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if(e.shiftKey && document.activeElement === first){
+        e.preventDefault(); last.focus();
+      } else if(!e.shiftKey && document.activeElement === last){
+        e.preventDefault(); first.focus();
+      }
+    }
+  }
+
+  workModalClose.addEventListener('click', closeWorkModal);
+  workModalBackdrop.addEventListener('click', closeWorkModal);
+
+  /* ---------------- 数字のカウントアップ（reduced-motion時はスキップ） ---------------- */
+  var statNums = document.querySelectorAll('.stats-num[data-count]');
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if(reduceMotion || isNaN(target)){
+      el.childNodes[0].nodeValue = target;
+      return;
+    }
+    var duration = 900;
+    var startTime = null;
+    function step(ts){
+      if(startTime === null) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var value = Math.floor(progress * target);
+      el.childNodes[0].nodeValue = value;
+      if(progress < 1){ requestAnimationFrame(step); } else { el.childNodes[0].nodeValue = target; }
+    }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window && statNums.length){
+    var countObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.4});
+    statNums.forEach(function(el){ countObserver.observe(el); });
   } else {
-    // このスクリプトはbody末尾で読み込まれるため、その時点で既にDOM構築が完了している場合はすぐに実行する
-    initContactFormTracking();
+    statNums.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      if(!isNaN(target)){ el.childNodes[0].nodeValue = target; }
+    });
   }
 })();
 </script>
