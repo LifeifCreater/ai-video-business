@@ -15,8 +15,8 @@
 <meta name="google-site-verification" content="tMryDzvKuym28F_ahW7J4rW69t-82RCLpqkXgKaip3M">
 
 <!-- favicon：既存のロゴアイコンを使用 -->
-<link rel="icon" type="image/png" href="./images/framepact-logo-white.png">
-<link rel="apple-touch-icon" href="./images/framepact-logo-white.png">
+<link rel="icon" type="image/png" href="/images/framepact-logo-white.png">
+<link rel="apple-touch-icon" href="/images/framepact-logo-white.png">
 
 <title>FRAMEPACT｜生成AIを活用した企業動画制作</title>
 <meta name="description" content="FRAMEPACTは、生成AIと映像編集を活用し、撮影や素材がなくても企業PR・採用・研修・広告・イベント動画を制作します。企業の想いを、伝わり行動につながる映像へ。">
@@ -30,7 +30,7 @@
 <meta property="og:url" content="https://framepact.jp/">
 <meta property="og:site_name" content="FRAMEPACT">
 <meta property="og:locale" content="ja_JP">
-<!-- OGP画像の仮パス：実ファイルを ./images/ogp-framepact.jpg に設置してください -->
+<!-- OGP画像の仮パス：実ファイルを /images/ogp-framepact.jpg に設置してください -->
 <meta property="og:image" content="https://framepact.jp/images/ogp-framepact.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -529,6 +529,14 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 }
 .work-modal-video-wrap{ position:relative; width:100%; aspect-ratio:9/16; max-height:70vh; background:#000; }
 .work-modal-video-wrap video{ width:100%; height:100%; object-fit:contain; background:#000; }
+.work-modal-error{
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  padding:24px; margin:0;
+  background:rgba(10,10,10,.94);
+  color:var(--white); font-size:.92rem; line-height:1.7;
+}
+.work-modal-error[hidden]{ display:none; }
 .work-modal-info{ padding:18px 20px 22px; color:var(--white); }
 .work-modal-info h3{ font-size:1.05rem; margin-bottom:6px; }
 .work-modal-info p{ font-size:.86rem; color:#c9c9c4; }
@@ -675,9 +683,9 @@ body.modal-open{ overflow:hidden; }
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
     <a href="#top" class="brand" aria-label="FRAMEPACT トップへ戻る">
-      <!-- ロゴ画像：./images/framepact-logo-white.png（黒背景用の白文字ロゴ）を使用。
+      <!-- ロゴ画像：/images/framepact-logo-white.png（黒背景用の白文字ロゴ）を使用。
            読み込めない場合はテキストロゴ「FRAMEPACT」を表示し、ロゴ自体を消さない -->
-      <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="brand-logo-img" width="170" height="147" loading="eager" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+      <img src="/images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="brand-logo-img" width="170" height="147" loading="eager" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
       <span class="brand-fallback" aria-hidden="true">FRAMEPACT</span>
     </a>
 
@@ -722,7 +730,7 @@ body.modal-open{ overflow:hidden; }
 
     <div class="wrap hero-inner">
       <div>
-        <img src="./images/framepact-logo-white.png" alt="" aria-hidden="true" class="hero-logo" width="170" height="147" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
+        <img src="/images/framepact-logo-white.png" alt="" aria-hidden="true" class="hero-logo" width="170" height="147" loading="eager" decoding="async" fetchpriority="high" onerror="this.style.display='none'">
         <span class="hero-tag">企業向けAI動画制作</span>
         <h1 class="hero-title">
           <span class="hero-line">映像の力で、</span>
@@ -869,6 +877,7 @@ body.modal-open{ overflow:hidden; }
       </button>
       <div class="work-modal-video-wrap">
         <video id="workModalVideo" controls playsinline preload="metadata"></video>
+        <p class="work-modal-error" id="workModalError" hidden>動画を読み込めませんでした。時間を置いて再度お試しください。</p>
       </div>
       <div class="work-modal-info">
         <h3 id="workModalTitle"></h3>
@@ -939,7 +948,7 @@ body.modal-open{ overflow:hidden; }
           <p>FRAMEPACTは、ただ見られるだけではなく、人を動かす映像を目指します。</p>
         </div>
         <div class="logo-concept-visual">
-          <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="320" height="276" loading="lazy" decoding="async" onerror="this.style.display='none'">
+          <img src="/images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" width="320" height="276" loading="lazy" decoding="async" onerror="this.style.display='none'">
         </div>
       </div>
     </div>
@@ -1042,7 +1051,7 @@ body.modal-open{ overflow:hidden; }
   <div class="wrap">
     <div class="footer-top">
       <div>
-        <img src="./images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="footer-logo" width="150" height="130" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+        <img src="/images/framepact-logo-white.png" alt="FRAMEPACT｜生成AIを活用した企業動画制作" class="footer-logo" width="150" height="130" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
         <span class="brand-fallback footer-brand-fallback" aria-hidden="true" style="display:none;">FRAMEPACT</span>
         <p class="footer-tag">生成AIを活用した企業動画制作。映像の力で、「伝わる」を「行動」に変える。</p>
       </div>
@@ -1143,8 +1152,8 @@ body.modal-open{ overflow:hidden; }
       title: "FRAMEPACT 制作技術紹介",
       category: "生成AI",
       description: "生成AIと映像編集を組み合わせた制作事例を、約40秒にまとめたショーリール。企業PR、広告、SNS動画など、素材がない状態からでも幅広い映像表現が可能です。",
-      thumbnail: "./images/works/framepact-showreel-thumbnail.jpg",
-      video: "./videos/framepact-showreel.mp4",
+      thumbnail: "/images/works/framepact-showreel-thumbnail.jpg",
+      video: "/videos/framepact-showreel.mp4",
       tags: ["生成AI動画", "企業PR", "広告動画", "SNS動画"],
       orientation: "portrait",
       featured: true,
@@ -1267,32 +1276,70 @@ body.modal-open{ overflow:hidden; }
   var workModalVideo = document.getElementById('workModalVideo');
   var workModalTitle = document.getElementById('workModalTitle');
   var workModalDesc = document.getElementById('workModalDesc');
+  var workModalError = document.getElementById('workModalError');
   var lastFocusedEl = null;
+
+  function showModalError(){
+    if(workModalError){ workModalError.hidden = false; }
+  }
+  function hideModalError(){
+    if(workModalError){ workModalError.hidden = true; }
+  }
+
+  // 動画の読み込みに失敗した場合、画面上にメッセージを表示し、
+  // コンソールへ実際の動画URLとエラー内容を出力する
+  workModalVideo.addEventListener('error', function(){
+    console.error(
+      '動画の読み込みに失敗しました。',
+      workModalVideo.currentSrc,
+      workModalVideo.error
+    );
+    showModalError();
+  });
 
   function openWorkModal(work){
     lastFocusedEl = document.activeElement;
-    workModalTitle.textContent = work.title;
-    workModalDesc.textContent = work.description;
-    workModalVideo.setAttribute('src', work.video);
+
+    workModalTitle.textContent = work.title || '';
+    workModalDesc.textContent = work.description || '';
+    hideModalError();
+
+    // 前回の再生状態を確実にリセットしてから、新しい動画を設定する
+    workModalVideo.pause();
+    workModalVideo.removeAttribute('src');
     workModalVideo.load();
 
     workModal.classList.add('is-open');
     document.body.classList.add('modal-open');
+
+    workModalVideo.src = work.video;
+    workModalVideo.controls = true;
+    workModalVideo.playsInline = true;
+    workModalVideo.preload = 'metadata';
+
+    workModalVideo.load();
+
+    workModalVideo.addEventListener('canplay', function playOnce(){
+      workModalVideo.removeEventListener('canplay', playOnce);
+      workModalVideo.play().catch(function(){
+        // 自動再生できない場合も、標準controlsの再生ボタンから再生できる状態を維持する
+      });
+    });
+
     workModalClose.focus();
-
-    workModalVideo.muted = false;
-    workModalVideo.play().catch(function(){ /* 自動再生できない場合はcontrolsから再生可能 */ });
-
     document.addEventListener('keydown', onModalKeydown);
   }
 
   function closeWorkModal(){
-    workModal.classList.remove('is-open');
-    document.body.classList.remove('modal-open');
     workModalVideo.pause();
     workModalVideo.removeAttribute('src');
     workModalVideo.load();
+
+    workModal.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+
     document.removeEventListener('keydown', onModalKeydown);
+
     if(lastFocusedEl){ lastFocusedEl.focus(); }
   }
 
