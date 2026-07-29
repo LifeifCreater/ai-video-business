@@ -277,6 +277,13 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .mobile-nav ul{ display:flex; flex-direction:column; gap:4px; }
 .mobile-nav a{ display:block; padding:18px 4px; font-size:1.3rem; color:var(--white); border-bottom:1px solid rgba(255,255,255,.12); min-height:44px; }
 .mobile-nav .btn{ margin-top:28px; width:100%; }
+.mobile-nav-note{
+  margin-top:14px;
+  font-size:.8rem;
+  color:#a9a9a4;
+  text-align:center;
+  line-height:1.6;
+}
 @media (min-width:1080px){ .mobile-nav{ display:none !important; } }
 
 /* ============================================================
@@ -583,6 +590,55 @@ body.modal-open{ overflow:hidden; }
 .process-step p{ font-size:.9rem; color:#c9c9c4; max-width:280px; }
 
 /* ============================================================
+   8-2. 料金
+============================================================= */
+.price-lead{
+  margin-top:48px;
+  padding:36px 32px;
+  border:1px solid var(--gray-200);
+  border-left:3px solid var(--yellow);
+}
+.price-lead-stat{
+  font-size:clamp(1.6rem,3.2vw,2.3rem);
+  font-weight:700;
+  color:var(--ink);
+  letter-spacing:-.01em;
+}
+.price-lead-note{
+  margin-top:10px;
+  font-size:.92rem;
+  color:var(--gray-600);
+}
+
+.price-examples{
+  display:grid;
+  gap:1px;
+  background:var(--gray-200);
+  border:1px solid var(--gray-200);
+  margin-top:24px;
+}
+@media (min-width:700px){ .price-examples{ grid-template-columns:repeat(3,1fr); } }
+.price-example-card{
+  background:var(--white);
+  padding:26px 24px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.price-example-label{ font-size:.82rem; color:var(--gray-600); }
+.price-example-range{ font-size:1.15rem; font-weight:700; color:var(--ink); }
+
+.price-note{
+  margin-top:22px;
+  font-size:.78rem;
+  line-height:1.9;
+  color:var(--gray-600);
+  max-width:var(--measure);
+}
+
+.price-cta{ margin-top:32px; }
+
+/* ============================================================
    9. FAQ
 ============================================================= */
 .faq-list{ margin-top:36px; border-top:1px solid var(--gray-200); }
@@ -663,6 +719,7 @@ body.modal-open{ overflow:hidden; }
         <li><a href="#works">制作実績</a></li>
         <li><a href="#about">FRAMEPACTについて</a></li>
         <li><a href="#process">制作の流れ</a></li>
+        <li><a href="#price">料金</a></li>
         <li><a href="#faq">よくある質問</a></li>
       </ul>
     </nav>
@@ -681,10 +738,11 @@ body.modal-open{ overflow:hidden; }
     <li><a href="#works">制作実績</a></li>
     <li><a href="#about">FRAMEPACTについて</a></li>
     <li><a href="#process">制作の流れ</a></li>
+    <li><a href="#price">料金</a></li>
     <li><a href="#faq">よくある質問</a></li>
-    <li><a href="#contact">お問い合わせ</a></li>
   </ul>
   <a href="#contact" class="btn btn--primary">お問い合わせ</a>
+  <p class="mobile-nav-note">ご相談・お見積もりは無料です。お気軽にお問い合わせください。</p>
 </nav>
 
 <main id="top">
@@ -917,6 +975,47 @@ body.modal-open{ overflow:hidden; }
         <div class="process-step reveal"><span class="process-num">03</span><h3>企画・構成</h3><p>目的に合った構成案・台本をご提示し、内容をすり合わせます。</p></div>
         <div class="process-step reveal"><span class="process-num">04</span><h3>映像制作</h3><p>生成AIによる映像制作と、編集・テロップ・音入れを行います。</p></div>
         <div class="process-step reveal"><span class="process-num">05</span><h3>確認・納品</h3><p>内容をご確認いただき、必要に応じて修正の上、納品します。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       料金
+  ============================================================= -->
+  <section class="section" id="price">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">PRICE</span>
+        <h2 class="h2">料金</h2>
+        <p class="lead">まずはお気軽にご相談いただける価格帯からご案内しています。内容に応じて、無理のない形でご提案します。</p>
+      </div>
+
+      <div class="price-lead reveal">
+        <p class="price-lead-stat">10万円台からご相談可能</p>
+        <p class="price-lead-note">内容・尺・生成難易度・納期に応じて個別にお見積もりします。</p>
+      </div>
+
+      <div class="price-examples reveal">
+        <div class="price-example-card">
+          <span class="price-example-label">30秒前後の動画</span>
+          <p class="price-example-range">10万円〜15万円</p>
+        </div>
+        <div class="price-example-card">
+          <span class="price-example-label">60秒前後の動画</span>
+          <p class="price-example-range">15万円〜25万円</p>
+        </div>
+        <div class="price-example-card">
+          <span class="price-example-label">複雑な構成・複数本制作</span>
+          <p class="price-example-range">個別お見積もり</p>
+        </div>
+      </div>
+
+      <p class="price-note reveal">
+        以下に該当する場合は、別途費用が発生することがあります：特殊なAI生成／フェイススワップ・人物置換／AIナレーション／AI楽曲制作／特急対応／大幅な追加修正
+      </p>
+
+      <div class="price-cta reveal">
+        <a href="#contact" class="btn btn--primary">まずは無料で相談する <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
