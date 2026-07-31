@@ -444,6 +444,41 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .faq-answer{ padding:0 4px 26px; color:var(--gray-600); font-size:.95rem; max-width:var(--measure); }
 
 /* ============================================================
+   9-2. 関連サービス（カード形式の内部リンク）
+============================================================= */
+.related-grid{
+  display:grid; grid-template-columns:1fr; gap:24px;
+  margin-top:36px;
+}
+@media (min-width:640px){ .related-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1080px){ .related-grid{ grid-template-columns:repeat(3,1fr); } }
+.related-card{
+  display:block;
+  background:var(--white);
+  border:1px solid var(--gray-200);
+  border-radius:14px;
+  padding:28px 26px;
+  transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.related-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--yellow);
+  box-shadow:0 24px 48px -28px rgba(0,0,0,.22);
+}
+.related-card-title{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  font-size:1.02rem; font-weight:700; color:var(--ink); margin-bottom:10px;
+}
+.related-card-arrow{
+  flex-shrink:0;
+  font-size:1rem;
+  color:var(--yellow-dark);
+  transition:transform .3s var(--ease);
+}
+.related-card:hover .related-card-arrow{ transform:translateX(4px); }
+.related-card-desc{ font-size:.88rem; color:var(--gray-600); line-height:1.65; }
+
+/* ============================================================
    10. 問い合わせCTA（最下部）
 ============================================================= */
 .contact-section{ background:var(--black); color:var(--white); padding:clamp(80px,14vw,160px) 0; text-align:center; }
@@ -628,12 +663,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
         <div class="service-card"><h3 class="service-title">SNS向けPR動画</h3><p class="service-desc">視聴者の興味を引く、短尺で構成した動画です。</p></div>
         <div class="service-card"><h3 class="service-title">ブランドイメージ動画</h3><p class="service-desc">会社やサービスの世界観を、映像で表現します。</p></div>
       </div>
-      <p class="section-link reveal">
-        <a href="/corporate-ai-video.html">企業向けAI動画制作について詳しく見る</a>
-        <a href="/recruit-video.html">採用動画制作について見る</a>
-        <a href="/no-material-ai-video.html">撮影・素材なしでの動画制作について見る</a>
-        <a href="/ai-video-price.html">料金・費用相場を見る</a>
-      </p>
     </div>
   </section>
 
@@ -685,7 +714,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
       <div class="body-copy reveal">
         <p>必要に応じて、実写素材と生成AI映像を組み合わせることもできます。一方で、実際の商品や設備を正確に見せる必要がある場合や、社員インタビュー・施設紹介が中心となる場合は、撮影素材が必要になることがあります。生成AI映像だけですべての目的を満たせるとは限らないため、案件に応じて最適な制作方法をご提案しています。</p>
       </div>
-      <p class="section-link reveal"><a href="/no-material-ai-video.html">撮影・素材なしでの動画制作について詳しく見る</a></p>
     </div>
   </section>
 
@@ -784,7 +812,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
         <li><span class="num">09</span>納期</li>
         <li><span class="num">10</span>納品する画面比率や本数</li>
       </ol>
-      <p class="section-link reveal"><a href="/ai-video-price.html">AI動画制作の料金・費用相場を見る</a></p>
     </div>
   </section>
 
@@ -876,6 +903,45 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   <!-- ============================================================
        問い合わせCTA（最下部）
   ============================================================= -->
+  <!-- ============================================================
+       関連する動画制作サービス
+  ============================================================= -->
+  <section class="section section--offwhite" id="related-services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">RELATED SERVICES</span>
+        <h2 class="h2">関連する動画制作サービス</h2>
+        <p class="lead">目的や制作条件に合わせて、関連するサービスもご覧いただけます。</p>
+      </div>
+      <div class="related-grid reveal">
+        <a class="related-card" href="/corporate-ai-video.html">
+          <span class="related-card-title">企業向けAI動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">企画・構成から、企業向け動画を一貫して制作します。</span>
+        </a>
+        <a class="related-card" href="/no-material-ai-video.html">
+          <span class="related-card-title">撮影・素材なしのAI動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">撮影素材がない状態でも、生成AIや既存資料を活用して制作します。</span>
+        </a>
+        <a class="related-card" href="/recruit-video.html">
+          <span class="related-card-title">採用動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">採用サイト、会社説明会、SNS向けの動画を制作します。</span>
+        </a>
+        <a class="related-card" href="/training-video.html">
+          <span class="related-card-title">研修・マニュアル動画<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">社内研修や業務説明に使用する動画を、資料から制作します。</span>
+        </a>
+        <a class="related-card" href="/ai-video-price.html">
+          <span class="related-card-title">AI動画制作の料金・費用相場<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">動画制作の料金に影響する項目や見積もりの考え方を説明します。</span>
+        </a>
+        <a class="related-card" href="/event-video.html">
+          <span class="related-card-title">展示会・イベント動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">展示会、イベント、サイネージ向けの映像を制作します。</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="contact-section" id="contact">
     <div class="wrap">
       <span class="eyebrow">CONTACT</span>
@@ -921,6 +987,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
             <li><a href="/training-video.html">研修動画・マニュアル動画</a></li>
             <li><a href="/no-material-ai-video.html">撮影・素材なし動画制作</a></li>
             <li><a href="/ai-video-price.html">料金・費用相場</a></li>
+            <li><a href="/event-video.html">展示会・イベント動画制作</a></li>
             <li><a href="#contact">お問い合わせ</a></li>
           </ul>
         </div>

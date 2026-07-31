@@ -661,6 +661,41 @@ body.modal-open{ overflow:hidden; }
 .faq-answer{ padding:0 4px 26px; color:var(--gray-600); font-size:.95rem; max-width:var(--measure); }
 
 /* ============================================================
+   9-2. 関連サービス（カード形式の内部リンク）
+============================================================= */
+.related-grid{
+  display:grid; grid-template-columns:1fr; gap:24px;
+  margin-top:36px;
+}
+@media (min-width:640px){ .related-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1080px){ .related-grid{ grid-template-columns:repeat(3,1fr); } }
+.related-card{
+  display:block;
+  background:var(--white);
+  border:1px solid var(--gray-200);
+  border-radius:14px;
+  padding:28px 26px;
+  transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+.related-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--yellow);
+  box-shadow:0 24px 48px -28px rgba(0,0,0,.22);
+}
+.related-card-title{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  font-size:1.02rem; font-weight:700; color:var(--ink); margin-bottom:10px;
+}
+.related-card-arrow{
+  flex-shrink:0;
+  font-size:1rem;
+  color:var(--yellow-dark);
+  transition:transform .3s var(--ease);
+}
+.related-card:hover .related-card-arrow{ transform:translateX(4px); }
+.related-card-desc{ font-size:.88rem; color:var(--gray-600); line-height:1.65; }
+
+/* ============================================================
    10. 問い合わせ CTA
 ============================================================= */
 .contact-section{ background:var(--black); color:var(--white); padding:clamp(80px,14vw,160px) 0; text-align:center; }
@@ -853,7 +888,6 @@ body.modal-open{ overflow:hidden; }
           <p class="service-desc">素材がない状態からでも、<br>必要な映像を制作します。</p>
         </div>
       </div>
-      <p class="section-link reveal"><a href="/corporate-pr-video.html">企業PR動画・会社紹介動画の制作について見る</a> <a href="/recruit-video.html">企業の魅力を伝える採用動画制作</a> <a href="/training-video.html">研修動画・マニュアル動画制作について見る</a> <a href="/no-material-ai-video.html">撮影・素材なしでの動画制作についてくわしく見る</a></p>
     </div>
   </section>
 
@@ -910,7 +944,6 @@ body.modal-open{ overflow:hidden; }
         <p>私たちは、映像を作ること自体を目的にはしません。企業の想いや情報を整理し、理解・共感・行動へつながる表現を設計します。</p>
         <p>生成AIと映像編集を組み合わせることで、撮影や素材が十分に用意できない場合でも、企業PR、採用、研修、広告、イベントなど、さまざまな目的に合わせた映像制作を可能にします。</p>
       </div>
-      <p class="section-link reveal"><a href="/corporate-ai-video.html">企業向けAI動画制作についてくわしく見る</a></p>
     </div>
   </section>
 
@@ -1020,7 +1053,6 @@ body.modal-open{ overflow:hidden; }
       <p class="price-note reveal">
         以下に該当する場合は、別途費用が発生することがあります：特殊なAI生成／フェイススワップ・人物置換／AIナレーション／AI楽曲制作／特急対応／大幅な追加修正
       </p>
-      <p class="section-link reveal"><a href="/ai-video-price.html">AI動画制作の料金・費用相場についてくわしく見る</a></p>
 
       <div class="price-cta reveal">
         <a href="#contact" class="btn btn--primary">まずは無料で相談する <span class="arrow">→</span></a>
@@ -1082,6 +1114,49 @@ body.modal-open{ overflow:hidden; }
   <!-- ============================================================
        お問い合わせ CTA
   ============================================================= -->
+  <!-- ============================================================
+       関連する動画制作サービス
+  ============================================================= -->
+  <section class="section section--offwhite" id="related-services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">RELATED SERVICES</span>
+        <h2 class="h2">関連する動画制作サービス</h2>
+        <p class="lead">目的や制作条件に合わせて、関連するサービスもご覧いただけます。</p>
+      </div>
+      <div class="related-grid reveal">
+        <a class="related-card" href="/corporate-ai-video.html">
+          <span class="related-card-title">企業向けAI動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">企画・構成から、企業向け動画を一貫して制作します。</span>
+        </a>
+        <a class="related-card" href="/no-material-ai-video.html">
+          <span class="related-card-title">撮影・素材なしのAI動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">撮影素材がない状態でも、生成AIや既存資料を活用して制作します。</span>
+        </a>
+        <a class="related-card" href="/corporate-pr-video.html">
+          <span class="related-card-title">企業PR・会社紹介動画<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">企業やサービスの魅力を、分かりやすい映像に整理します。</span>
+        </a>
+        <a class="related-card" href="/recruit-video.html">
+          <span class="related-card-title">採用動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">採用サイト、会社説明会、SNS向けの動画を制作します。</span>
+        </a>
+        <a class="related-card" href="/training-video.html">
+          <span class="related-card-title">研修・マニュアル動画<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">社内研修や業務説明に使用する動画を、資料から制作します。</span>
+        </a>
+        <a class="related-card" href="/event-video.html">
+          <span class="related-card-title">展示会・イベント動画制作<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">展示会、イベント、サイネージ向けの映像を制作します。</span>
+        </a>
+        <a class="related-card" href="/ai-video-price.html">
+          <span class="related-card-title">AI動画制作の料金・費用相場<span class="related-card-arrow" aria-hidden="true">→</span></span>
+          <span class="related-card-desc">動画制作の料金に影響する項目や見積もりの考え方を説明します。</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="contact-section" id="contact">
     <div class="wrap">
       <span class="eyebrow">CONTACT</span>
@@ -1126,6 +1201,7 @@ body.modal-open{ overflow:hidden; }
             <li><a href="/corporate-pr-video.html">企業PR動画・会社紹介動画</a></li>
             <li><a href="/recruit-video.html">採用動画制作</a></li>
             <li><a href="/training-video.html">研修動画・マニュアル動画</a></li>
+            <li><a href="/event-video.html">展示会・イベント動画制作</a></li>
             <li><a href="/no-material-ai-video.html">撮影・素材なし動画制作</a></li>
             <li><a href="/ai-video-price.html">料金・費用相場</a></li>
             <li><a href="#contact">お問い合わせ</a></li>
