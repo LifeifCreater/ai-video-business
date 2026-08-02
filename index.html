@@ -411,11 +411,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .intro-inner{ max-width:920px; }
 .intro-heading{
   font-family:var(--font-jp),var(--font-en);
-  font-size:clamp(1.5rem,5.5vw,3.2rem);
+  font-size:clamp(1.25rem,6.4vw,3.2rem);
   line-height:1.55; font-weight:800; letter-spacing:-.02em;
   margin-bottom:32px;
   text-wrap:balance;
 }
+.intro-heading .intro-keep{ white-space:nowrap; }
+.intro-heading .intro-break{ display:none; }
+.intro-heading .intro-break--always{ display:block; }
+@media (max-width:959px){ .intro-heading .intro-break--compact{ display:block; } }
+@media (min-width:960px){ .intro-heading .intro-break--wide{ display:block; } }
 .intro-body{ font-size:clamp(1rem,1.4vw,1.15rem); color:var(--gray-600); line-height:2; max-width:640px; }
 
 /* ============================================================
@@ -914,7 +919,7 @@ body.modal-open{ overflow:hidden; }
   <section class="intro">
     <div class="wrap">
       <div class="intro-inner reveal">
-        <p class="intro-heading"><span class="kt">FRAMEPACT</span>は、<span class="kt">生成AI</span>と映像編集の力を掛け合わせ、撮影に頼らない企業映像を制作するクリエイティブスタジオです。</p>
+        <p class="intro-heading"><span class="kt">FRAMEPACT</span>は、<span class="kt">生成AI</span>と<br class="intro-break intro-break--always"><span class="intro-keep">映像編集の力を掛け合わせ、</span><br class="intro-break intro-break--always"><span class="intro-keep">撮影に頼らない企業映像を</span><br class="intro-break intro-break--compact"><span class="intro-keep">制作する</span><br class="intro-break intro-break--wide"><span class="intro-keep">クリエイティブ</span><br class="intro-break intro-break--compact"><span class="intro-keep">スタジオです。</span></p>
         <p class="intro-body">素材が足りない、撮影の時間が取れない、伝えたいイメージが現実の撮影では再現できない。そうした制約を、生成AIによる映像制作で乗り越えます。企画・構成から編集・品質確認まで、人の目と手を通して仕上げることを大切にしています。</p>
       </div>
     </div>
