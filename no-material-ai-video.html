@@ -15,8 +15,8 @@
 <meta name="google-site-verification" content="tMryDzvKuym28F_ahW7J4rW69t-82RCLpqkXgKaip3M">
 
 <!-- favicon：トップページと同じロゴアイコンを使用 -->
-<link rel="icon" type="image/png" href="/images/framepact-logo-white.png">
-<link rel="apple-touch-icon" href="/images/framepact-logo-white.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
 <title>撮影・素材なしでも制作できるAI動画制作｜Framepact</title>
 <meta name="description" content="写真や動画素材がなくてもAIを活用した企業動画制作が可能です。企画・構成から映像生成・編集まで対応。企業PR・採用・研修・SNS動画など幅広く制作します。">
@@ -30,14 +30,14 @@
 <meta property="og:site_name" content="FRAMEPACT">
 <meta property="og:locale" content="ja_JP">
 <!-- OGP画像：トップページと同じ画像を使用 -->
-<meta property="og:image" content="https://framepact.jp/images/ogp-framepact.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:image" content="https://framepact.jp/images/ogp-framepact.png">
+<meta property="og:image:width" content="1731">
+<meta property="og:image:height" content="909">
 <meta property="og:image:alt" content="撮影・素材なしでも制作できるAI動画制作｜Framepact">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="撮影・素材なしでも制作できるAI動画制作｜Framepact">
 <meta name="twitter:description" content="写真や動画素材がなくても、AIを活用した企業動画制作が可能です。企画・構成から映像生成・編集まで対応します。">
-<meta name="twitter:image" content="https://framepact.jp/images/ogp-framepact.jpg">
+<meta name="twitter:image" content="https://framepact.jp/images/ogp-framepact.png">
 
 <!-- ============================================================
      構造化データ（JSON-LD）
@@ -70,7 +70,7 @@
       "@id": "https://framepact.jp/#organization",
       "name": "FRAMEPACT",
       "url": "https://framepact.jp/",
-      "logo": "https://framepact.jp/images/framepact-logo-white.png",
+      "logo": "https://framepact.jp/framepact-logo-white.png",
       "description": "生成AIを活用した企業動画制作。企業PR、採用、研修、広告、イベントなど、目的に合わせた映像制作を行う。"
     },
     {
@@ -171,6 +171,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .section--offwhite{ background:var(--offwhite); }
 
 .h2{ font-size:clamp(2.1rem,5vw,3.6rem); line-height:1.22; }
+@media (max-width:600px){ .desktop-break{ display:none; } }
 .lead{ color:var(--gray-600); font-size:1.05rem; max-width:var(--measure); }
 .section--dark .lead{ color:#c9c9c4; }
 
@@ -253,6 +254,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   background:rgba(10,10,10,.98);
   display:flex; flex-direction:column;
   padding:calc(var(--header-h) + 20px) 28px 40px;
+  overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
   opacity:0; visibility:hidden; transform:translateY(-8px);
   transition:opacity .35s var(--ease), transform .35s var(--ease), visibility 0s linear .35s;
 }
@@ -496,6 +498,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .floating-cta .btn{ box-shadow:0 14px 30px -12px rgba(0,0,0,.5); padding:14px 22px; font-size:.88rem; min-height:auto; }
 @media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } }
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -564,7 +567,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 
       <div class="page-hero-inner">
         <span class="page-hero-tag">素材なし対応</span>
-        <h1 class="page-hero-title">撮影・素材がなくても<br>企業動画は制作できます</h1>
+        <h1 class="page-hero-title">撮影・素材がなくても<br class="desktop-break">企業動画は制作できます</h1>
         <p class="page-hero-sub">AIを活用し、企画・構成・映像生成・編集まで一貫して対応します。</p>
         <p class="page-hero-note">「撮影する時間がない」「動画に使える素材がない」という状態からでも、目的をお伺いした上で構成をご提案し、必要な映像を生成AIで制作します。</p>
         <div class="page-hero-actions">
@@ -834,7 +837,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   <section class="contact-section" id="contact">
     <div class="wrap">
       <span class="eyebrow">CONTACT</span>
-      <h2 class="h2">素材がなくても<br>お気軽にご相談ください</h2>
+      <h2 class="h2">素材がなくても<br class="desktop-break">お気軽にご相談ください</h2>
       <p class="lead">用途や予算が固まっていなくても相談可能です。動画の目的と希望納期をお伝えいただくだけでも見積もりできます。</p>
       <div class="contact-actions">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform" class="btn btn--primary" target="_blank" rel="noopener">
@@ -907,24 +910,44 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   /* ---------------- ハンバーガーメニュー ---------------- */
   var menuToggle = document.getElementById('menuToggle');
   var mobileNav  = document.getElementById('mobileNav');
+  var lastMenuFocus = null;
 
-  function closeMenu(){
+  function getMenuFocusable(){
+    return Array.from(mobileNav.querySelectorAll('a[href], button:not([disabled])'));
+  }
+
+  function closeMenu(restoreFocus){
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.setAttribute('aria-label', 'メニューを開く');
     mobileNav.classList.remove('is-open');
     document.body.style.overflow = '';
+    if(restoreFocus !== false && lastMenuFocus){ lastMenuFocus.focus(); }
   }
   function openMenu(){
+    lastMenuFocus = document.activeElement;
     menuToggle.setAttribute('aria-expanded', 'true');
     menuToggle.setAttribute('aria-label', 'メニューを閉じる');
     mobileNav.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    var focusable = getMenuFocusable();
+    if(focusable.length){ focusable[0].focus(); }
   }
   menuToggle.addEventListener('click', function(){
     var isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeMenu() : openMenu();
+    isOpen ? closeMenu(true) : openMenu();
   });
-  mobileNav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  mobileNav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ closeMenu(false); }); });
+  document.addEventListener('keydown', function(e){
+    if(!mobileNav.classList.contains('is-open')) return;
+    if(e.key === 'Escape'){ e.preventDefault(); closeMenu(true); return; }
+    if(e.key !== 'Tab') return;
+    var focusable = getMenuFocusable();
+    if(!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
 
   /* ---------------- ヘッダー背景 ＆ 固定相談ボタン ---------------- */
   var header = document.getElementById('siteHeader');
