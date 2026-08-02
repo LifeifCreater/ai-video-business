@@ -18,6 +18,12 @@
 <link rel="icon" type="image/png" href="/images/framepact-logo-white.png">
 <link rel="apple-touch-icon" href="/images/framepact-logo-white.png">
 
+<!-- ブランドフォント：欧文はInter、和文はIBM Plex Sans JPを使用し、
+     高級感・静けさを重視したタイポグラフィにしている -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <title>FRAMEPACT｜生成AIを活用した企業動画制作</title>
 <meta name="description" content="FRAMEPACTは、生成AIと映像編集を活用し、撮影や素材がなくても企業PR・採用・研修・広告・イベント動画を制作します。企業の想いを、伝わり行動につながる映像へ。">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -117,27 +123,36 @@
 
 <style>
 /* ============================================================
-   0. デザイントークン
+   0. デザイントークン（Luxury Creative Technology）
+   ・派手なグラデーション、ネオン、ガラスモーフィズムは使用しない
+   ・色数を絞り、余白とタイポグラフィで質感を作る
 ============================================================= */
 :root{
-  --black:#0a0a0a;
-  --charcoal:#161616;
-  --charcoal-2:#202020;
-  --offwhite:#f6f5f1;
+  --black:#111111;
+  --charcoal:#1a1a1a;
+  --charcoal-2:#242424;
+  --offwhite:#f7f7f5;
   --white:#ffffff;
   --ink:#111111;
   --gray-600:#6b6b66;
   --gray-400:#9a9a95;
   --gray-200:#e4e2db;
-  --yellow:#fdc44b;
-  --yellow-dark:#e0a930;
 
-  --font-body:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  /* 控えめなゴールド。既存ロゴのアクセントカラーを落ち着いた色調へ調整 */
+  --yellow:#d6b36a;
+  --yellow-dark:#b89452;
 
-  --header-h:78px;
+  --font-en:'Inter',-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --font-jp:'IBM Plex Sans JP',"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --font-body:var(--font-en),var(--font-jp);
+
+  --header-h:80px;
   --measure:720px;
   --ease:cubic-bezier(.16,.84,.44,1);
-  --dur:.7s;
+  --dur:.8s;
+
+  /* セクション間の余白スケール（140〜220px相当） */
+  --space-section:clamp(96px,14vw,220px);
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -147,69 +162,78 @@ body{
   font-family:var(--font-body);
   background:var(--white);
   color:var(--ink);
-  line-height:1.75;
+  line-height:1.8;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  letter-spacing:.01em;
 }
 img,video{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
-h1,h2,h3{ margin:0; font-weight:700; letter-spacing:-.01em; }
+h1,h2,h3{ margin:0; font-weight:800; letter-spacing:-.02em; }
 p{ margin:0; }
 ul{ margin:0; padding:0; list-style:none; }
 button{ font-family:inherit; cursor:pointer; background:none; border:none; color:inherit; }
 
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
-  outline:3px solid var(--yellow);
-  outline-offset:3px;
+  outline:2px solid var(--yellow);
+  outline-offset:4px;
 }
 
-.wrap{ max-width:1240px; margin:0 auto; padding:0 24px; }
-@media (min-width:768px){ .wrap{ padding:0 48px; } }
+.wrap{ max-width:1320px; margin:0 auto; padding:0 28px; }
+@media (min-width:768px){ .wrap{ padding:0 56px; } }
+@media (min-width:1440px){ .wrap{ padding:0 80px; } }
 
 .measure{ max-width:var(--measure); }
 
 .eyebrow{
-  font-size:.78rem;
-  letter-spacing:.22em;
-  font-weight:700;
-  color:var(--yellow);
+  font-size:.72rem;
+  letter-spacing:.28em;
+  font-weight:600;
+  color:var(--yellow-dark);
   display:inline-block;
-  margin-bottom:14px;
+  margin-bottom:18px;
+  text-transform:uppercase;
 }
 
-.section{ padding:clamp(80px,13vw,180px) 0; }
+.section{ padding:var(--space-section) 0; }
 .section--dark{ background:var(--black); color:var(--white); }
 .section--offwhite{ background:var(--offwhite); }
 
-.h2{ font-size:clamp(2.1rem,5vw,3.6rem); line-height:1.22; }
-.lead{ color:var(--gray-600); font-size:1.05rem; max-width:var(--measure); }
-.section--dark .lead{ color:#c9c9c4; }
+.h2{ font-size:clamp(2rem,4.6vw,3.4rem); line-height:1.2; font-weight:800; letter-spacing:-.02em; }
+.lead{ color:var(--gray-600); font-size:1.05rem; max-width:var(--measure); font-weight:400; }
+.section--dark .lead{ color:#b8b8b3; }
 
-/* スクロール連動フェード */
-.reveal{ opacity:0; transform:translateY(28px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
-.reveal.is-visible{ opacity:1; transform:translateY(0); }
+/* スクロール連動フェード：opacity / translateY / blur のみ */
+.reveal{
+  opacity:0; transform:translateY(32px);
+  filter:blur(6px);
+  transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease), filter var(--dur) var(--ease);
+}
+.reveal.is-visible{ opacity:1; transform:translateY(0); filter:blur(0); }
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
-  .reveal{ opacity:1; transform:none; transition:none; }
+  .reveal{ opacity:1; transform:none; filter:none; transition:none; }
   *{ animation-duration:.001ms !important; transition-duration:.001ms !important; animation-iteration-count:1 !important; }
 }
 
 /* ============================================================
-   1. ボタン
+   1. ボタン（枠線のみ／Hoverで背景反転。塗りつぶし・光る演出は使わない）
 ============================================================= */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
-  padding:19px 38px; font-size:1rem; font-weight:700;
-  border-radius:8px; min-height:56px; white-space:nowrap;
-  transition:transform .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease), box-shadow .3s var(--ease);
+  padding:17px 34px; font-size:.92rem; font-weight:600;
+  letter-spacing:.02em;
+  border-radius:2px; min-height:54px; white-space:nowrap;
+  border:1px solid currentColor;
+  transition:background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
 }
-.btn--primary{ background:var(--yellow); color:var(--black); }
-.btn--primary:hover{ background:var(--yellow-dark); transform:translateY(-3px); box-shadow:0 20px 40px -16px rgba(253,196,75,.45); }
-.btn--ghost{ border:1px solid rgba(255,255,255,.35); color:var(--white); }
-.btn--ghost:hover{ border-color:var(--white); background:rgba(255,255,255,.06); transform:translateY(-3px); box-shadow:0 20px 40px -20px rgba(0,0,0,.5); }
-.btn--dark{ background:var(--black); color:var(--white); }
-.btn--dark:hover{ background:var(--charcoal-2); transform:translateY(-3px); box-shadow:0 20px 40px -20px rgba(0,0,0,.4); }
-.btn .arrow{ transition:transform .25s var(--ease); }
+.btn--primary{ background:var(--white); color:var(--black); border-color:var(--white); }
+.btn--primary:hover{ background:transparent; color:var(--white); }
+.btn--ghost{ background:transparent; border-color:rgba(255,255,255,.5); color:var(--white); }
+.btn--ghost:hover{ background:var(--white); color:var(--black); border-color:var(--white); }
+.btn--dark{ background:transparent; border-color:var(--black); color:var(--black); }
+.btn--dark:hover{ background:var(--black); color:var(--white); }
+.btn .arrow{ transition:transform .3s var(--ease); }
 .btn:hover .arrow{ transform:translateX(4px); }
 
 /* ============================================================
@@ -288,117 +312,155 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 @media (min-width:1080px){ .mobile-nav{ display:none !important; } }
 
 /* ============================================================
-   3. ヒーロー
+   3. ヒーロー（背景動画・フルブリード）
+   ・動画は装飾要素。poster/背景色で動画未配置でも成立する設計
 ============================================================= */
 .hero{
   position:relative;
   min-height:100vh;
-  display:flex; align-items:center;
-  background:var(--black); color:var(--white);
-  padding:calc(var(--header-h) + 40px) 0 80px;
+  min-height:100svh;
+  display:flex; align-items:flex-end;
+  background:#111111; color:var(--white);
   overflow:hidden;
 }
-.hero-grid{
-  position:absolute; inset:0; pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-  background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 75% 65% at 30% 40%, #000 35%, transparent 82%);
+@media (min-width:768px){ .hero{ align-items:center; min-height:calc(100vh - 0px); } }
+.hero-media{ position:absolute; inset:0; z-index:0; background:#111111; }
+.hero-video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 35%;
 }
-.hero-glow{
-  position:absolute; pointer-events:none;
-  width:70vw; height:70vw; max-width:900px; max-height:900px;
-  left:50%; top:-25%; transform:translateX(-50%);
-  background:radial-gradient(circle, rgba(253,196,75,.13) 0%, transparent 65%);
+@media (min-width:768px){ .hero-video{ object-position:center center; } }
+/* 動画の上：左を濃く、右を薄くする黒グラデーション（可読性優先） */
+.hero-overlay{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(90deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.55) 45%, rgba(10,10,10,.32) 100%);
 }
-.hero-inner{ position:relative; z-index:2; width:100%; display:flex; justify-content:center; }
-.hero-content{ width:100%; max-width:840px; text-align:center; display:flex; flex-direction:column; align-items:center; }
+.hero-overlay-bottom{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(0deg, rgba(10,10,10,.65) 0%, rgba(10,10,10,0) 40%);
+}
+@media (max-width:767px){
+  .hero-overlay{ background:linear-gradient(180deg, rgba(10,10,10,.35) 0%, rgba(10,10,10,.35) 30%, rgba(10,10,10,.88) 100%); }
+  .hero-overlay-bottom{ display:none; }
+}
+
+.hero-inner{ position:relative; z-index:2; width:100%; padding:calc(var(--header-h) + 48px) 0 96px; }
+@media (min-width:768px){ .hero-inner{ padding:calc(var(--header-h) + 40px) 0 100px; } }
+.hero-content{ max-width:850px; }
 
 .hero-tag{
-  display:inline-block; font-size:.8rem; letter-spacing:.1em; color:#d8d8d3;
-  border:1px solid rgba(255,255,255,.28); padding:8px 16px; border-radius:999px; margin-bottom:26px;
+  display:block; font-size:.72rem; letter-spacing:.32em; color:#e8e6e0;
+  text-transform:uppercase; font-weight:600; margin-bottom:28px;
 }
-/* ---- 見出しの改行制御 ----
-   ・「映像の力で、」の後は常に改行
-   ・「「伝わる」を」と「「行動」に変える。」はそれぞれ意味単位でno-breakにし、
-     単語の途中（「行動」の間など）で折り返されないようにする
-   ・スマートフォンでは2つの意味単位の間だけ改行する（mobile-break） */
 .hero-title{
-  font-size:clamp(2.4rem,7.2vw,5.2rem);
-  line-height:1.32;
-  letter-spacing:-.01em;
-  margin-bottom:26px;
+  font-family:var(--font-jp),var(--font-en);
+  font-size:clamp(2.4rem,6.4vw,5.75rem);
+  line-height:1.28;
+  letter-spacing:-.02em;
+  font-weight:800;
+  margin-bottom:28px;
   word-break:keep-all;
   overflow-wrap:break-word;
 }
 .hero-title .hero-line{ display:block; }
-.hero-title .no-break{ white-space:nowrap; }
-.hero-title em{ font-style:normal; color:var(--yellow); }
-.mobile-break{ display:none; }
-@media (max-width:600px){ .mobile-break{ display:block; content:""; } }
-.hero-sub{ font-size:clamp(1.05rem,1.6vw,1.3rem); color:#e6e6e1; max-width:620px; margin:0 auto 40px; }
-.hero-actions{ display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
+.hero-sub{
+  font-size:clamp(.95rem,1.4vw,1.15rem);
+  color:#d9d7d0; max-width:560px; margin-bottom:44px;
+  line-height:1.85; font-weight:400;
+}
+.hero-actions{ display:flex; flex-wrap:wrap; gap:16px; }
+@media (max-width:480px){ .hero-actions{ flex-direction:column; align-items:stretch; } .hero-actions .btn{ width:100%; } }
 
 .scroll-indicator{
-  position:absolute; left:50%; bottom:26px; transform:translateX(-50%);
-  display:flex; flex-direction:column; align-items:center; gap:8px;
-  font-size:.68rem; letter-spacing:.14em; color:#a9a9a4; z-index:2;
+  position:absolute; left:0; bottom:32px; z-index:2;
+  display:flex; align-items:center; gap:10px;
+  font-size:.66rem; letter-spacing:.2em; color:#c9c7c0;
 }
-.scroll-indicator .line{ width:1px; height:32px; background:linear-gradient(var(--yellow), transparent); animation:scrollline 1.8s ease-in-out infinite; }
+.scroll-indicator .line{ width:32px; height:1px; background:rgba(255,255,255,.5); position:relative; overflow:hidden; }
+.scroll-indicator .line::after{
+  content:''; position:absolute; inset:0; background:var(--yellow);
+  animation:scrollline 2.2s ease-in-out infinite;
+}
 @keyframes scrollline{
-  0%{ transform:scaleY(0); transform-origin:top; }
-  50%{ transform:scaleY(1); transform-origin:top; }
-  50.1%{ transform-origin:bottom; }
-  100%{ transform:scaleY(0); transform-origin:bottom; }
+  0%{ transform:scaleX(0); transform-origin:left; }
+  50%{ transform:scaleX(1); transform-origin:left; }
+  50.1%{ transform-origin:right; }
+  100%{ transform:scaleX(0); transform-origin:right; }
 }
 @media (max-width:600px){ .scroll-indicator{ display:none; } }
 
 /* ============================================================
-   4. 信頼性の数字
+   3-2. ヒーロー直後の導入セクション
 ============================================================= */
-.stats-strip{ background:var(--offwhite); border-bottom:1px solid var(--gray-200); }
-.stats-grid{ display:grid; grid-template-columns:repeat(2,1fr); }
-@media (min-width:860px){ .stats-grid{ grid-template-columns:repeat(4,1fr); } }
-.stats-item{ padding:38px 26px; border-top:1px solid var(--gray-200); border-left:1px solid var(--gray-200); }
-.stats-grid .stats-item:nth-child(odd){ border-left:none; }
-@media (min-width:860px){
-  .stats-grid .stats-item:nth-child(odd){ border-left:1px solid var(--gray-200); }
-  .stats-grid .stats-item:first-child{ border-left:none; }
+.intro{ padding:var(--space-section) 0; background:var(--white); }
+.intro-inner{ max-width:920px; }
+.intro-heading{
+  font-family:var(--font-jp),var(--font-en);
+  font-size:clamp(1.9rem,4.4vw,3.2rem);
+  line-height:1.5; font-weight:800; letter-spacing:-.02em;
+  margin-bottom:32px;
 }
-.stats-num{ display:block; font-size:clamp(1.9rem,3.6vw,2.7rem); font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; }
-.stats-num small{ font-size:1rem; font-weight:400; margin-left:2px; }
-.stats-label{ display:block; margin-top:8px; font-size:.86rem; color:var(--gray-600); }
+.intro-body{ font-size:clamp(1rem,1.4vw,1.15rem); color:var(--gray-600); line-height:2; max-width:640px; }
 
 /* ============================================================
-   5. サービス（コンパクトなカードグリッド）
+   4. FRAMEPACTを選ぶ理由 ＋ 信頼性の数字
 ============================================================= */
-.service-grid{
+.reasons{ background:var(--offwhite); }
+.reasons-grid{
+  display:grid; grid-template-columns:1fr; gap:40px;
+  margin-top:56px; margin-bottom:64px;
+}
+@media (min-width:768px){ .reasons-grid{ grid-template-columns:repeat(3,1fr); gap:48px; } }
+.reasons-item{ min-width:0; }
+.reasons-num{ display:block; font-size:.8rem; color:var(--yellow-dark); font-weight:600; letter-spacing:.05em; margin-bottom:16px; }
+.reasons-title{
+  font-family:var(--font-jp),var(--font-en);
+  font-size:1.2rem; font-weight:700; color:var(--ink); margin-bottom:12px;
+  word-break:keep-all; overflow-wrap:break-word;
+}
+.reasons-desc{ font-size:.92rem; color:var(--gray-600); line-height:1.85; }
+
+.stats-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:40px 24px; padding-top:48px; border-top:1px solid var(--gray-200); }
+@media (min-width:860px){ .stats-grid{ grid-template-columns:repeat(4,1fr); gap:24px; } }
+.stats-item{ min-width:0; padding:0 24px 0 0; border-left:1px solid var(--gray-200); padding-left:24px; }
+.stats-item:first-child{ border-left:none; padding-left:0; }
+@media (max-width:859px){
+  .stats-item:nth-child(odd){ border-left:none; padding-left:0; }
+  .stats-item:nth-child(even){ border-left:1px solid var(--gray-200); padding-left:24px; }
+}
+.stats-num{ display:block; font-size:clamp(1.9rem,3.6vw,2.7rem); font-weight:800; color:var(--ink); font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+.stats-num small{ font-size:1rem; font-weight:400; margin-left:2px; }
+.stats-label{ display:block; margin-top:10px; font-size:.86rem; color:var(--gray-600); }
+
+/* ============================================================
+   5. サービス（カードなし・大きなタイポグラフィのリスト）
+============================================================= */
+.service-list{ margin-top:56px; border-top:1px solid var(--gray-200); }
+.service-row{
   display:grid;
   grid-template-columns:1fr;
-  gap:1px;
-  background:var(--gray-200);
-  border:1px solid var(--gray-200);
-  margin-top:36px;
+  gap:12px 32px;
+  padding:36px 0;
+  border-bottom:1px solid var(--gray-200);
+  transition:opacity .4s var(--ease);
 }
-@media (min-width:560px){ .service-grid{ grid-template-columns:repeat(2,1fr); } }
-@media (min-width:1080px){ .service-grid{ grid-template-columns:repeat(4,1fr); } }
-.service-card{
-  background:var(--white);
-  padding:28px 24px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  transition:background .2s var(--ease);
+@media (min-width:860px){
+  .service-row{ grid-template-columns:220px 1fr auto; align-items:center; }
 }
-.service-card:hover{ background:var(--offwhite); }
-.service-icon{ width:34px; height:34px; margin-bottom:4px; }
-.service-icon svg{ width:100%; height:100%; }
-.service-eyebrow{ font-size:.7rem; letter-spacing:.16em; color:var(--yellow-dark); font-weight:700; }
-.service-title{ font-size:1.05rem; font-weight:700; }
-.service-desc{ color:var(--gray-600); font-size:.88rem; line-height:1.65; }
-.service-usecase{ font-size:.78rem; color:var(--gray-600); margin-top:auto; padding-top:6px; }
-.service-usecase b{ color:var(--ink); font-weight:700; }
+.service-index{ font-size:.8rem; color:var(--gray-400); font-variant-numeric:tabular-nums; letter-spacing:.05em; }
+.service-title{
+  font-family:var(--font-jp),var(--font-en);
+  font-size:clamp(1.4rem,2.6vw,2rem); font-weight:700; letter-spacing:-.01em; color:var(--ink);
+}
+.service-desc{ color:var(--gray-600); font-size:.98rem; line-height:1.8; max-width:520px; margin-top:8px; }
+@media (min-width:860px){ .service-desc{ margin-top:0; } }
+.service-link{
+  font-size:.82rem; letter-spacing:.03em; color:var(--ink);
+  border-bottom:1px solid var(--gray-200);
+  padding-bottom:2px; white-space:nowrap;
+  transition:color .3s var(--ease), border-color .3s var(--ease);
+}
+.service-row:hover .service-link{ color:var(--yellow-dark); border-color:var(--yellow-dark); }
 
 /* ============================================================
    6. 制作実績（WORKS）：ショーケース風レイアウト
@@ -416,7 +478,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 
 .work-card{
   position:relative;
-  border-radius:20px;
+  border-radius:4px;
   overflow:hidden;
   background:var(--black);
   cursor:pointer;
@@ -425,10 +487,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   width:100%;
   display:flex;
   flex-direction:column;
-  box-shadow:0 1px 2px rgba(0,0,0,.04);
-  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  box-shadow:none;
+  transition:transform .5s var(--ease), box-shadow .5s var(--ease);
 }
-.work-card:hover{ transform:translateY(-4px); box-shadow:0 40px 70px -34px rgba(0,0,0,.5); }
+.work-card:hover{ transform:translateY(-2px); box-shadow:0 30px 60px -36px rgba(0,0,0,.4); }
 @media (min-width:860px){
   .work-card{ flex-direction:row; align-items:stretch; }
 }
@@ -530,19 +592,23 @@ body.modal-open{ overflow:hidden; }
 .about-lead p{ color:var(--gray-600); font-size:1.02rem; }
 
 /* PHILOSOPHY */
-.philosophy{ background:var(--black); color:var(--white); padding:clamp(70px,12vw,150px) 0; }
-.philosophy-lines{ font-size:clamp(1.7rem,4.6vw,3.1rem); line-height:1.5; font-weight:700; }
+.philosophy{ background:var(--black); color:var(--white); padding:var(--space-section) 0; }
+.philosophy-lines{
+  font-family:var(--font-jp),var(--font-en);
+  font-size:clamp(1.7rem,4.8vw,3.4rem); line-height:1.6; font-weight:800;
+  word-break:keep-all; overflow-wrap:break-word;
+}
 .philosophy-lines .line{ display:block; opacity:0; transform:translateY(18px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
 .philosophy-lines .line.is-visible{ opacity:1; transform:translateY(0); }
 .philosophy-lines .line em{ font-style:normal; color:var(--yellow); }
-.philosophy-desc{ margin-top:34px; color:#c9c9c4; font-size:1rem; max-width:640px; }
+.philosophy-desc{ margin-top:40px; color:#b8b8b3; font-size:1.02rem; line-height:1.9; max-width:640px; }
 
 /* NAME ORIGIN */
-.name-origin{ padding:clamp(70px,12vw,140px) 0; }
-.name-origin .measure p{ color:var(--gray-600); font-size:1rem; margin-bottom:14px; }
+.name-origin{ padding:var(--space-section) 0; }
+.name-origin .measure p{ color:var(--gray-600); font-size:1.02rem; line-height:1.9; margin-bottom:16px; }
 .name-equation{
-  margin-top:36px; display:flex; flex-wrap:wrap; align-items:center; gap:16px;
-  font-size:clamp(1.5rem,4vw,2.4rem); font-weight:700;
+  margin-top:44px; display:flex; flex-wrap:wrap; align-items:center; gap:16px;
+  font-size:clamp(1.5rem,4vw,2.4rem); font-weight:800; letter-spacing:-.01em;
 }
 .name-equation .frame{ opacity:0; transform:translateX(-24px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
 .name-equation .impact{ opacity:0; transform:translateX(24px); transition:opacity .6s var(--ease) .15s, transform .6s var(--ease) .15s; }
@@ -554,9 +620,9 @@ body.modal-open{ overflow:hidden; }
 
 /* LOGO CONCEPT */
 .logo-concept{ background:var(--offwhite); }
-.logo-concept-grid{ display:grid; gap:48px; align-items:center; margin-top:20px; }
-@media (min-width:840px){ .logo-concept-grid{ grid-template-columns:1fr 1fr; } }
-.logo-concept-grid p{ color:var(--gray-600); font-size:1rem; margin-bottom:14px; }
+.logo-concept-grid{ display:grid; gap:56px; align-items:center; margin-top:24px; }
+@media (min-width:840px){ .logo-concept-grid{ grid-template-columns:1fr 1fr; gap:72px; } }
+.logo-concept-grid p{ color:var(--gray-600); font-size:1.02rem; line-height:1.9; margin-bottom:16px; }
 .logo-concept-visual{ display:flex; justify-content:center; }
 .logo-concept-visual img{ width:100%; max-width:320px; height:auto; }
 
@@ -564,7 +630,7 @@ body.modal-open{ overflow:hidden; }
    8. 制作の流れ（タイムライン）
 ============================================================= */
 .process{ background:var(--black); color:var(--white); }
-.process-timeline{ margin-top:56px; position:relative; }
+.process-timeline{ margin-top:64px; position:relative; }
 .process-timeline::before{
   content:''; position:absolute; left:23px; top:8px; bottom:8px; width:1px;
   background:rgba(255,255,255,.16);
@@ -575,6 +641,7 @@ body.modal-open{ overflow:hidden; }
 }
 .process-step{
   position:relative; padding:0 0 44px 60px;
+  min-width:0;
   opacity:0; transform:translateY(18px);
   transition:opacity .6s var(--ease), transform .6s var(--ease);
 }
@@ -591,57 +658,62 @@ body.modal-open{ overflow:hidden; }
   font-weight:700; color:var(--yellow);
 }
 @media (min-width:900px){ .process-num{ position:static; margin-bottom:20px; } }
-.process-step h3{ font-size:1.1rem; margin-bottom:8px; }
-.process-step p{ font-size:.9rem; color:#c9c9c4; max-width:280px; }
+.process-step h3{ font-family:var(--font-jp),var(--font-en); font-size:1.12rem; font-weight:700; margin-bottom:10px; }
+.process-step p{ font-size:.9rem; color:#b8b8b3; line-height:1.8; max-width:280px; word-break:keep-all; overflow-wrap:break-word; }
 
 /* ============================================================
-   8-2. 料金
+   8-2. 料金（罫線を最小限にしたリスト形式）
 ============================================================= */
 .price-lead{
-  margin-top:48px;
-  padding:36px 32px;
-  border:1px solid var(--gray-200);
-  border-left:3px solid var(--yellow);
+  margin-top:56px;
+  padding:40px 0;
+  border-top:1px solid var(--gray-200);
+  border-bottom:1px solid var(--gray-200);
 }
 .price-lead-stat{
-  font-size:clamp(1.6rem,3.2vw,2.3rem);
-  font-weight:700;
+  font-family:var(--font-jp),var(--font-en);
+  font-size:clamp(1.7rem,3.4vw,2.5rem);
+  font-weight:800;
   color:var(--ink);
-  letter-spacing:-.01em;
+  letter-spacing:-.02em;
 }
 .price-lead-note{
-  margin-top:10px;
-  font-size:.92rem;
+  margin-top:12px;
+  font-size:.94rem;
   color:var(--gray-600);
+  line-height:1.8;
 }
 
 .price-examples{
   display:grid;
-  gap:1px;
-  background:var(--gray-200);
-  border:1px solid var(--gray-200);
-  margin-top:24px;
+  grid-template-columns:1fr;
+  gap:0;
+  margin-top:8px;
 }
 @media (min-width:700px){ .price-examples{ grid-template-columns:repeat(3,1fr); } }
 .price-example-card{
-  background:var(--white);
-  padding:26px 24px;
+  padding:28px 0;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:10px;
+  border-bottom:1px solid var(--gray-200);
 }
-.price-example-label{ font-size:.82rem; color:var(--gray-600); }
-.price-example-range{ font-size:1.15rem; font-weight:700; color:var(--ink); }
+@media (min-width:700px){
+  .price-example-card{ padding:28px 32px 28px 0; border-bottom:none; border-left:1px solid var(--gray-200); padding-left:32px; }
+  .price-example-card:first-child{ border-left:none; padding-left:0; }
+}
+.price-example-label{ font-size:.84rem; color:var(--gray-600); }
+.price-example-range{ font-size:1.2rem; font-weight:700; color:var(--ink); letter-spacing:-.01em; }
 
 .price-note{
-  margin-top:22px;
-  font-size:.78rem;
+  margin-top:28px;
+  font-size:.8rem;
   line-height:1.9;
   color:var(--gray-600);
   max-width:var(--measure);
 }
 
-.price-cta{ margin-top:32px; }
+.price-cta{ margin-top:40px; }
 
 /* ============================================================
    9. FAQ
@@ -658,33 +730,30 @@ body.modal-open{ overflow:hidden; }
 .faq-icon::before{ width:14px; height:2px; }
 .faq-icon::after{ width:2px; height:14px; transition:transform .25s var(--ease); }
 .faq-item[open] .faq-icon::after{ transform:translate(-50%,-50%) rotate(90deg) scaleY(0); }
-.faq-answer{ padding:0 4px 26px; color:var(--gray-600); font-size:.95rem; max-width:var(--measure); }
+.faq-answer{ padding:0 4px 28px; color:var(--gray-600); font-size:.96rem; line-height:1.85; max-width:var(--measure); }
 
 /* ============================================================
-   9-2. 関連サービス（カード形式の内部リンク）
+   9-2. 関連サービス（カード形式の内部リンク／控えめな装飾）
 ============================================================= */
 .related-grid{
-  display:grid; grid-template-columns:1fr; gap:24px;
-  margin-top:36px;
+  display:grid; grid-template-columns:1fr; gap:1px;
+  background:var(--gray-200); border:1px solid var(--gray-200);
+  margin-top:40px;
 }
 @media (min-width:640px){ .related-grid{ grid-template-columns:repeat(2,1fr); } }
 @media (min-width:1080px){ .related-grid{ grid-template-columns:repeat(3,1fr); } }
 .related-card{
   display:block;
   background:var(--white);
-  border:1px solid var(--gray-200);
-  border-radius:14px;
-  padding:28px 26px;
-  transition:transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+  border-radius:0;
+  padding:32px 28px;
+  transition:background .3s var(--ease);
 }
-.related-card:hover{
-  transform:translateY(-4px);
-  border-color:var(--yellow);
-  box-shadow:0 24px 48px -28px rgba(0,0,0,.22);
-}
+.related-card:hover{ background:var(--offwhite); }
 .related-card-title{
   display:flex; align-items:center; justify-content:space-between; gap:12px;
-  font-size:1.02rem; font-weight:700; color:var(--ink); margin-bottom:10px;
+  font-family:var(--font-jp),var(--font-en);
+  font-size:1.02rem; font-weight:700; color:var(--ink); margin-bottom:12px;
 }
 .related-card-arrow{
   flex-shrink:0;
@@ -693,31 +762,31 @@ body.modal-open{ overflow:hidden; }
   transition:transform .3s var(--ease);
 }
 .related-card:hover .related-card-arrow{ transform:translateX(4px); }
-.related-card-desc{ font-size:.88rem; color:var(--gray-600); line-height:1.65; }
+.related-card-desc{ font-size:.88rem; color:var(--gray-600); line-height:1.75; }
 
 /* ============================================================
    10. 問い合わせ CTA
 ============================================================= */
-.contact-section{ background:var(--black); color:var(--white); padding:clamp(80px,14vw,160px) 0; text-align:center; }
-.contact-section .h2{ margin-bottom:20px; }
-.contact-section .lead{ margin:0 auto 40px; color:#d6d6d1; }
+.contact-section{ background:var(--black); color:var(--white); padding:var(--space-section) 0; text-align:center; }
+.contact-section .h2{ margin-bottom:24px; word-break:keep-all; overflow-wrap:break-word; }
+.contact-section .lead{ margin:0 auto 48px; color:#c9c7c0; }
 .contact-actions{ display:flex; justify-content:center; }
 
 /* ============================================================
    11. フッター
 ============================================================= */
-.site-footer{ background:var(--black); color:#c9c9c4; padding:70px 0 40px; }
-.footer-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:48px; margin-bottom:56px; }
-.logo-lockup--footer{ margin-bottom:18px; }
+.site-footer{ background:var(--black); color:#b8b8b3; padding:88px 0 44px; }
+.footer-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:56px; margin-bottom:64px; }
+.logo-lockup--footer{ margin-bottom:20px; }
 .logo-mark--footer{ width:38px; height:38px; }
 .logo-wordmark--footer{ font-size:1.15rem; }
-.footer-tag{ font-size:.86rem; color:#9a9a95; max-width:280px; }
-.footer-links{ display:flex; flex-wrap:wrap; gap:56px; }
-.footer-col h4{ font-size:.78rem; letter-spacing:.1em; color:#9a9a95; margin-bottom:16px; font-weight:700; }
-.footer-col ul{ display:grid; gap:10px; }
-.footer-col a{ font-size:.92rem; color:#e2e2dd; min-height:32px; display:inline-flex; align-items:center; }
+.footer-tag{ font-size:.86rem; color:#8f8f8a; max-width:280px; line-height:1.8; }
+.footer-links{ display:flex; flex-wrap:wrap; gap:64px; }
+.footer-col h4{ font-size:.72rem; letter-spacing:.16em; color:#8f8f8a; margin-bottom:18px; font-weight:600; }
+.footer-col ul{ display:grid; gap:12px; }
+.footer-col a{ font-size:.92rem; color:#d8d8d3; min-height:32px; display:inline-flex; align-items:center; transition:color .3s var(--ease); }
 .footer-col a:hover{ color:var(--yellow); }
-.footer-bottom{ border-top:1px solid rgba(255,255,255,.12); padding-top:26px; font-size:.8rem; color:#7d7d78; }
+.footer-bottom{ border-top:1px solid rgba(255,255,255,.1); padding-top:28px; font-size:.78rem; color:#6b6b66; }
 
 /* ============================================================
    12. 固定相談ボタン
@@ -747,7 +816,7 @@ body.modal-open{ overflow:hidden; }
       <span class="logo-mark" aria-hidden="true">
         <svg viewBox="0 0 40 40" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="0" width="40" height="40" rx="10" fill="#0a0a0a"/>
-          <path d="M15 12l14 8-14 8V12z" fill="#fdc44b"/>
+          <path d="M15 12l14 8-14 8V12z" fill="#d6b36a"/>
         </svg>
       </span>
       <span class="logo-wordmark">FRAMEPACT</span>
@@ -783,30 +852,42 @@ body.modal-open{ overflow:hidden; }
     <li><a href="#price">料金</a></li>
     <li><a href="#faq">よくある質問</a></li>
   </ul>
-  <a href="#contact" class="btn btn--primary">お問い合わせ</a>
+  <a href="#contact" class="btn btn--ghost mobile-nav-cta">お問い合わせ</a>
   <p class="mobile-nav-note">ご相談・お見積もりは無料です。お気軽にお問い合わせください。</p>
 </nav>
 
 <main id="top">
 
   <!-- ============================================================
-       ファーストビュー
+       ファーストビュー（背景動画）
+       ・動画は装飾目的のショーリールを再利用。音声なし・自動再生・ループ
+       ・prefers-reduced-motion時や読み込み失敗時は静止画（poster）のまま表示される
   ============================================================= -->
   <section class="hero">
-    <div class="hero-grid" aria-hidden="true"></div>
-    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-media" aria-hidden="true">
+      <video
+        class="hero-video"
+        id="heroVideo"
+        poster="/images/works/framepact-showreel-thumbnail.jpg"
+        muted loop playsinline preload="metadata"
+        aria-label="FRAMEPACT制作事例のショーリール映像（音声なし・自動再生）">
+        <source src="/videos/framepact-showreel.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-overlay-bottom" aria-hidden="true"></div>
 
     <div class="wrap hero-inner">
       <div class="hero-content">
-        <span class="hero-tag">企業向けAI動画制作</span>
+        <span class="hero-tag">AI VIDEO CREATIVE STUDIO</span>
         <h1 class="hero-title">
-          <span class="hero-line">映像の力で、</span>
-          <span class="hero-line"><span class="no-break">「伝わる」を</span><br class="mobile-break"><span class="no-break"><em>「行動」</em>に変える。</span></span>
+          <span class="hero-line">AIで、まだ見ぬ映像を。</span>
+          <span class="hero-line">想像を、超えたその先へ。</span>
         </h1>
-        <p class="hero-sub">生成AIと映像編集を活用し、撮影や素材がなくても、企業の想いを映像にします。</p>
+        <p class="hero-sub">生成AIと確かな編集技術を掛け合わせ、これまで映像化できなかった世界を、企業の武器に変える。</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn--primary">制作について相談する</a>
-          <a href="#works" class="btn btn--ghost">制作実績を見る</a>
+          <a href="#works" class="btn btn--ghost">制作事例を見る</a>
+          <a href="#contact" class="btn btn--primary">無料で相談する</a>
         </div>
       </div>
     </div>
@@ -818,10 +899,46 @@ body.modal-open{ overflow:hidden; }
   </section>
 
   <!-- ============================================================
+       導入（ヒーロー直後の価値提示）
+  ============================================================= -->
+  <section class="intro">
+    <div class="wrap">
+      <div class="intro-inner reveal">
+        <p class="intro-heading">FRAMEPACTは、生成AIと映像編集の力を掛け合わせ、撮影に頼らない企業映像を制作するクリエイティブスタジオです。</p>
+        <p class="intro-body">素材が足りない、撮影の時間が取れない、伝えたいイメージが現実の撮影では再現できない。そうした制約を、生成AIによる映像制作で乗り越えます。企画・構成から編集・品質確認まで、人の目と手を通して仕上げることを大切にしています。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        信頼性を伝える数字
   ============================================================= -->
-  <section class="stats-strip" aria-label="経験と実績">
+  <section class="section reasons" id="reasons">
     <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">WHY FRAMEPACT</span>
+        <h2 class="h2">FRAMEPACTを選ぶ理由</h2>
+        <p class="lead">生成AIによる映像制作と、人の目による編集・品質確認を両立させながら、企業の目的に合わせた映像をご提案します。</p>
+      </div>
+
+      <div class="reasons-grid reveal">
+        <div class="reasons-item">
+          <span class="reasons-num">01</span>
+          <h3 class="reasons-title">素材がなくても相談できる</h3>
+          <p class="reasons-desc">撮影素材やイラストが十分に用意できない状態からでも、生成AIを活用して必要な映像を制作します。</p>
+        </div>
+        <div class="reasons-item">
+          <span class="reasons-num">02</span>
+          <h3 class="reasons-title">AI任せで終わらせない</h3>
+          <p class="reasons-desc">構成・台本の設計から、生成した映像の選定、編集、品質確認まで、人の目で確認しながら仕上げます。</p>
+        </div>
+        <div class="reasons-item">
+          <span class="reasons-num">03</span>
+          <h3 class="reasons-title">企画から納品まで一貫対応</h3>
+          <p class="reasons-desc">ヒアリングから構成提案、映像制作、修正、納品まで、窓口を分けずに対応します。</p>
+        </div>
+      </div>
+
       <div class="stats-grid reveal">
         <div class="stats-item">
           <span class="stats-num" data-count="6">0<small>年以上</small></span>
@@ -851,44 +968,46 @@ body.modal-open{ overflow:hidden; }
       <div class="section-head reveal">
         <span class="eyebrow">SERVICES</span>
         <h2 class="h2">サービス</h2>
+        <p class="lead">目的や視聴者に合わせて、企画段階から構成をご提案します。</p>
       </div>
 
-      <div class="service-grid reveal">
-        <div class="service-card">
-          <span class="service-eyebrow">CORPORATE PR</span>
+      <div class="service-list reveal">
+        <a class="service-row" href="/corporate-pr-video.html">
+          <span class="service-index">01</span>
           <h3 class="service-title">企業PR動画</h3>
-          <p class="service-desc">企業の魅力を、<br>映像で分かりやすく伝えます。</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-eyebrow">RECRUITING</span>
+          <span class="service-desc">企業の魅力を、伝わる映像で分かりやすく紹介します。</span>
+          <span class="service-link">詳しく見る →</span>
+        </a>
+        <a class="service-row" href="/recruit-video.html">
+          <span class="service-index">02</span>
           <h3 class="service-title">採用動画</h3>
-          <p class="service-desc">応募したくなる<br>会社の雰囲気を映像化します。</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-eyebrow">TRAINING</span>
+          <span class="service-desc">応募したくなる会社の雰囲気や仕事内容を映像化します。</span>
+          <span class="service-link">詳しく見る →</span>
+        </a>
+        <a class="service-row" href="/training-video.html">
+          <span class="service-index">03</span>
           <h3 class="service-title">研修・マニュアル動画</h3>
-          <p class="service-desc">伝わりにくい内容を、<br>映像で分かりやすく整理します。</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-eyebrow">ADS &amp; SOCIAL</span>
+          <span class="service-desc">伝わりにくい内容を、映像で分かりやすく整理します。</span>
+          <span class="service-link">詳しく見る →</span>
+        </a>
+        <a class="service-row" href="/corporate-ai-video.html">
+          <span class="service-index">04</span>
           <h3 class="service-title">広告・SNS動画</h3>
-          <p class="service-desc">興味を引き、<br>行動につなげる短尺動画です。</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-eyebrow">EVENT</span>
+          <span class="service-desc">興味を引き、行動につなげる短尺動画を制作します。</span>
+          <span class="service-link">詳しく見る →</span>
+        </a>
+        <a class="service-row" href="/event-video.html">
+          <span class="service-index">05</span>
           <h3 class="service-title">イベント映像</h3>
-          <p class="service-desc">参加者の関心を高める<br>映像を制作します。</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-eyebrow">AI-POWERED PRODUCTION</span>
+          <span class="service-desc">展示会やイベントで、参加者の関心を高める映像を制作します。</span>
+          <span class="service-link">詳しく見る →</span>
+        </a>
+        <a class="service-row" href="/no-material-ai-video.html">
+          <span class="service-index">06</span>
           <h3 class="service-title">生成AI映像制作</h3>
-          <p class="service-desc">素材がない状態からでも、<br>必要な映像を制作します。</p>
-        </div>
+          <span class="service-desc">撮影素材がない状態からでも、必要な映像を制作します。</span>
+          <span class="service-link">詳しく見る →</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1185,7 +1304,7 @@ body.modal-open{ overflow:hidden; }
           <span class="logo-mark logo-mark--footer" aria-hidden="true">
             <svg viewBox="0 0 40 40" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
               <rect x="0" y="0" width="40" height="40" rx="10" fill="#1a1a1a"/>
-              <path d="M15 12l14 8-14 8V12z" fill="#fdc44b"/>
+              <path d="M15 12l14 8-14 8V12z" fill="#d6b36a"/>
             </svg>
           </span>
           <span class="logo-wordmark logo-wordmark--footer">FRAMEPACT</span>
@@ -1270,6 +1389,25 @@ body.modal-open{ overflow:hidden; }
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+
+  /* ---------------- ヒーロー背景動画 ----------------
+     ・prefers-reduced-motionが有効な場合は再生せず、posterの静止画のまま表示する
+     ・読み込みや再生に失敗した場合も、背景色とposterでレイアウトが崩れないようにしている */
+  var heroVideo = document.getElementById('heroVideo');
+  if(heroVideo){
+    if(reduceMotion){
+      heroVideo.removeAttribute('autoplay');
+      heroVideo.pause();
+    } else {
+      var playPromise = heroVideo.play();
+      if(playPromise && typeof playPromise.catch === 'function'){
+        playPromise.catch(function(){ /* 自動再生できない場合もposterが表示されるため問題ない */ });
+      }
+    }
+    heroVideo.addEventListener('error', function(){
+      heroVideo.style.display = 'none';
+    });
+  }
 
   /* ---------------- スクロール連動フェード ---------------- */
   var revealTargets = document.querySelectorAll('.reveal, .process-step, .philosophy-lines .line, .name-equation');
