@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FRAMEPACT Cloud Editorial Locks",
+  "type": "object",
+  "required": ["schemaVersion", "staleAfterMinutes", "rules", "locks"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "staleAfterMinutes": { "type": "integer", "minimum": 30 },
+    "rules": { "type": "object" },
+    "locks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["lockKey", "jobId", "workflowType", "sourceId", "acquiredAt", "heartbeatAt", "expiresAt", "state", "branch", "pullRequestUrl", "reviewRequired"],
+        "properties": {
+          "lockKey": { "type": "string" },
+          "jobId": { "type": "string" },
+          "workflowType": { "type": "string" },
+          "sourceId": { "type": "string" },
+          "acquiredAt": { "type": "string", "format": "date-time" },
+          "heartbeatAt": { "type": "string", "format": "date-time" },
+          "expiresAt": { "type": "string", "format": "date-time" },
+          "state": { "enum": ["active", "released", "stale", "sample_only"] },
+          "branch": { "type": ["string", "null"] },
+          "pullRequestUrl": { "type": ["string", "null"] },
+          "reviewRequired": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
