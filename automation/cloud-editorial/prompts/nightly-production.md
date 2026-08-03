@@ -2,7 +2,9 @@
 
 実行: 毎日 02:00 Asia/Tokyo
 
-GitHub上のFRAMEPACTリポジトリを正本として夜間制作を実行する。対象は `planning/approved/` のうち、同じ企画IDのcompleted、waiting_owner、既存Draft PR、active lockがない未処理企画に限る。案件ごとに `nightly_production:PLAN-ID` を重複キーとして取得する。
+GitHub上のFRAMEPACTリポジトリを正本として夜間制作を実行する。対象は `planning/approved/` のうち、同じ企画IDのcompleted、waiting_owner、既存Draft PR、active lockがなく、対応する原稿が `writing/review/` または `writing/approved/` に存在しない未処理企画に限る。案件ごとに `nightly_production:PLAN-ID` を重複キーとして取得する。
+
+対応する原稿、公開HTML、sitemap登録、またはマージ済みPRが確認できた企画は再制作しない。jobに履歴がない場合は既存成果物とGit履歴を照合し、既存のbranch、commit、PRをcompletedとして記録して停止する。判断できない場合は `waiting_owner` とし、新規原稿やPRを作らない。
 
 開始条件をすべて満たすこと。
 
