@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "staleAfterMinutes": 180,
+  "rules": {
+    "lockKey": "workflowType:sourceId",
+    "staleAction": "mark_for_review",
+    "autoDeleteStale": false,
+    "reuseExistingPullRequest": true
+  },
+  "locks": [
+    {
+      "lockKey": "sample:DO-NOT-EXECUTE",
+      "jobId": "SAMPLE-LOCK",
+      "workflowType": "nightly_production",
+      "sourceId": "PLAN-SAMPLE",
+      "acquiredAt": "2026-08-04T00:00:00+09:00",
+      "heartbeatAt": "2026-08-04T00:00:00+09:00",
+      "expiresAt": "2026-08-04T03:00:00+09:00",
+      "state": "sample_only",
+      "branch": "writing/WR-SAMPLE",
+      "pullRequestUrl": null,
+      "reviewRequired": false
+    }
+  ]
+}

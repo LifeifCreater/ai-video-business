@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "deduplicationKey": "workflowType:sourceId",
+  "jobs": [
+    {
+      "jobId": "SAMPLE-WEEKLY-2026-08-09",
+      "workflowType": "weekly_planning",
+      "sourceId": "WEEK-2026-08-10",
+      "status": "queued",
+      "scheduledFor": "2026-08-09T02:00:00+09:00",
+      "startedAt": null,
+      "completedAt": null,
+      "branch": "planning/weekly-2026-08-10",
+      "commitSha": null,
+      "pullRequestUrl": null,
+      "approvalRequired": "planning_owner_approval",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-08-04T00:00:00+09:00"
+    }
+  ]
+}
