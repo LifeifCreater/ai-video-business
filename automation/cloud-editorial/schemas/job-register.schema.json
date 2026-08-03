@@ -14,7 +14,7 @@
         "required": ["jobId", "workflowType", "sourceId", "status", "scheduledFor", "startedAt", "completedAt", "branch", "commitSha", "pullRequestUrl", "approvalRequired", "errorCode", "errorSummary", "retryCount", "lastUpdatedAt"],
         "properties": {
           "jobId": { "type": "string", "minLength": 1 },
-          "workflowType": { "enum": ["weekly_planning", "nightly_production", "approved_article_implementation", "morning_brief"] },
+          "workflowType": { "enum": ["weekly_planning", "nightly_production", "approved_article_implementation", "morning_brief", "mobile_post_state_update", "mobile_article_release"] },
           "sourceId": { "type": "string", "minLength": 1 },
           "status": { "enum": ["queued", "running", "waiting_owner", "completed", "skipped", "failed"] },
           "scheduledFor": { "type": "string", "format": "date-time" },

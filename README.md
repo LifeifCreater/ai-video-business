@@ -363,6 +363,25 @@ ChatGPTから日次確認する場合は、GitHub上の `distribution/publish-re
 
 ダッシュボードのチェック状態はlocalStorageだけに保存され、GitHub上のJSONへ自動反映されません。ChatGPTから最新状態を確認するには、オーナー承認、公開日時、公開URLをJSONへ反映してcommit・pushする必要があります。
 
+### AI編集部モバイル運用
+
+モバイル運用ではChatGPTを唯一の操作画面とし、GitHubは正本と監査履歴として裏側だけで使用します。オーナーはスマートフォンから `記事1確認`、`記事1公開`、`X1`、`note1`、`X1投稿した URL`、`KPI` のような短い指示で操作します。詳細設計は `automation/cloud-editorial/mobile-operations.md`、ChatGPTの実行ルールは `automation/cloud-editorial/prompts/mobile-editorial-console.md` を参照してください。
+
+毎朝9時の最初の表示は「今日やること」だけに絞ります。`記事1`、`X1`、`note1` は朝会がその日だけ有効な固定エイリアスとして原稿ID・投稿IDへ対応付け、書き込み直前にmainの最新状態と再照合します。番号だけから推測して別のコンテンツを操作しません。
+
+| 入力 | ChatGPTの表示・操作 |
+|---|---|
+| `記事1確認` | title、公開URL、PR状態、Checks、残る注意を表示 |
+| `記事1公開` | 承認ゲート確認後、対象PRをReady化・mergeし、Cloudflare結果と公開URLを確認 |
+| `X1` | 本文、記事URL、ハッシュタグ、完成形を表示 |
+| `note1` | タイトル、本文、CTA、ハッシュタグを表示 |
+| `X1投稿した URL` | 投稿IDを確認し、`published`、JST投稿日時、投稿URLを状態専用PRで記録 |
+| `KPI` | 表示、プロフィール、クリック、問い合わせ、公開記事を取得状況付きで表示 |
+
+記事公開以外ではCloudflareを操作しません。X・noteへの投稿はオーナーが手動で行います。ChatGPTはmainへ直接pushせず、状態更新も1操作1ブランチのPRで監査可能にします。記事公開はオーナーの `記事N公開` を明示承認とし、対象PR、必須Checks、競合、HTML、canonical、sitemap、CTAを確認してから実行します。自動マージや複数記事の一括公開は行いません。
+
+KPIは取得できた値だけを表示します。X・noteのプロフィール表示やクリック、アクセス解析、問い合わせ件数の取得元が未接続の場合は、0と推測せず `未取得` と表示します。媒体や解析サービスの認証情報はGitへ保存しません。
+
 ### 次に追加すべき専門担当AI候補
 
 推奨順は次のとおりです。
