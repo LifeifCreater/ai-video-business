@@ -75,6 +75,18 @@
     "approvedArticles": 4,
     "implementationPullRequests": 1
   },
+  "searchConsole": {
+    "generatedAt": "2026-08-04T00:00:00+09:00",
+    "newPublishedUrlCount": 4,
+    "indexedCount": null,
+    "notIndexedCount": null,
+    "errorCount": null,
+    "canonicalMismatchCount": null,
+    "sitemapMissingCount": 0,
+    "ownerActionRequired": [],
+    "nextInspectionAt": "2026-08-05T08:30:00+09:00",
+    "notes": "Search Console API未接続の初期dry-run。nullは未取得。"
+  },
   "alerts": [
     "初回稼働前基準値。Scheduled Tasksの実登録・有効化とGitHub権限はサービス側で確認が必要",
     "既存4企画・4原稿はPR #2で実装済みとしてjob-registerへ移行済み"

@@ -17,6 +17,7 @@
     "draftPullRequests": { "type": "array" },
     "nextScheduledJobs": { "type": "array" },
     "weeklyProgress": { "type": "object" },
-    "alerts": { "type": "array" }
+    "alerts": { "type": "array" },
+    "searchConsole": { "type": ["object", "null"] }
   }
 }

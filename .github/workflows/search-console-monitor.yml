@@ -1,0 +1,76 @@
+name: Search Console monitor
+
+on:
+  schedule:
+    - cron: "30 23 * * *" # 08:30 JST
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [inspect, submit, dry-run]
+        default: dry-run
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  run:
+    if: github.event_name != 'deployment_status' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'production')
+    runs-on: ubuntu-latest
+    concurrency:
+      group: search-console-state
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Restore latest monitoring state
+        run: |
+          git fetch origin state/search-console-monitor:refs/remotes/origin/state/search-console-monitor || true
+          if git show-ref --verify --quiet refs/remotes/origin/state/search-console-monitor; then
+            git checkout origin/state/search-console-monitor -- automation/search-console/search-console-register.json automation/cloud-editorial/morning-brief.json
+          fi
+      - run: pip install --disable-pip-version-check google-auth requests
+      - name: Select mode
+        id: mode
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_MODE: ${{ inputs.mode }}
+        run: |
+          if [ "$EVENT_NAME" = "deployment_status" ]; then echo "value=submit" >> "$GITHUB_OUTPUT";
+          elif [ "$EVENT_NAME" = "schedule" ]; then echo "value=inspect" >> "$GITHUB_OUTPUT";
+          else echo "value=${INPUT_MODE:-dry-run}" >> "$GITHUB_OUTPUT"; fi
+      - name: Verify deployment target
+        if: steps.mode.outputs.value == 'submit'
+        env:
+          ENVIRONMENT_URL: ${{ github.event.deployment_status.environment_url }}
+        run: test "${ENVIRONMENT_URL#https://framepact.jp}" != "$ENVIRONMENT_URL"
+      - name: Run Search Console automation
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ "${{ steps.mode.outputs.value }}" = "dry-run" ]; then
+            python automation/search-console/search_console_automation.py inspect
+            python automation/search-console/search_console_automation.py submit
+          else
+            python automation/search-console/search_console_automation.py "${{ steps.mode.outputs.value }}" --live
+          fi
+      - name: Persist state on dedicated branch
+        if: steps.mode.outputs.value != 'dry-run'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          test -n "$(git status --porcelain automation/search-console/search-console-register.json automation/cloud-editorial/morning-brief.json)" || exit 0
+          git config user.name "framepact-search-console-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git switch -C state/search-console-monitor
+          git add automation/search-console/search-console-register.json automation/cloud-editorial/morning-brief.json
+          git commit -m "Search Console監視状態を更新"
+          git push --force-with-lease origin state/search-console-monitor
+          gh pr list --head state/search-console-monitor --base main --state open --json number --jq '.[0].number' | grep -q . || gh pr create --draft --base main --head state/search-console-monitor --title "Search Console監視状態を更新" --body "Search Console APIの監視結果です。自動マージ・公開操作は行いません。"

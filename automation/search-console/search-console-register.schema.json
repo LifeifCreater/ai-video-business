@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"FRAMEPACT Search Console Register",
+  "type":"object",
+  "required":["schemaVersion","siteUrl","sitemapUrl","generatedAt","lastSitemapSubmissionAt","pages"],
+  "properties":{
+    "schemaVersion":{"const":1},
+    "siteUrl":{"type":"string","format":"uri"},
+    "sitemapUrl":{"type":"string","format":"uri"},
+    "generatedAt":{"type":"string","format":"date-time"},
+    "lastSitemapSubmissionAt":{"type":["string","null"],"format":"date-time"},
+    "pages":{"type":"array","items":{"$ref":"#/$defs/page"}}
+  },
+  "additionalProperties":false,
+  "$defs":{"nullableString":{"type":["string","null"]},"page":{"type":"object","required":["url","pageType","publishedAt","lastModified","sitemapIncluded","sitemapSubmittedAt","inspectionStatus","coverageState","indexingState","robotsTxtState","googleCanonical","userCanonical","lastCrawlTime","referringUrls","pageFetchState","errorInfo","inspectedAt","retryAfter","consecutiveApiFailures","ownerActionRequired","notes"],"properties":{"url":{"type":"string","format":"uri"},"pageType":{"type":"string"},"publishedAt":{"type":["string","null"],"format":"date-time"},"lastModified":{"type":["string","null"],"format":"date"},"sitemapIncluded":{"type":"boolean"},"sitemapSubmittedAt":{"type":["string","null"],"format":"date-time"},"inspectionStatus":{"$ref":"#/$defs/nullableString"},"coverageState":{"$ref":"#/$defs/nullableString"},"indexingState":{"$ref":"#/$defs/nullableString"},"robotsTxtState":{"$ref":"#/$defs/nullableString"},"googleCanonical":{"$ref":"#/$defs/nullableString"},"userCanonical":{"$ref":"#/$defs/nullableString"},"lastCrawlTime":{"type":["string","null"],"format":"date-time"},"referringUrls":{"type":["array","null"],"items":{"type":"string","format":"uri"}},"pageFetchState":{"$ref":"#/$defs/nullableString"},"errorInfo":{"$ref":"#/$defs/nullableString"},"inspectedAt":{"type":["string","null"],"format":"date-time"},"retryAfter":{"type":["string","null"],"format":"date-time"},"consecutiveApiFailures":{"type":"integer","minimum":0},"ownerActionRequired":{"type":"boolean"},"notes":{"$ref":"#/$defs/nullableString"}},"additionalProperties":false}}
+}
