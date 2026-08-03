@@ -1,6 +1,15 @@
 {
   "schemaVersion": 1,
   "deduplicationKey": "workflowType:sourceId",
+  "mobileOperationRules": {
+    "postStateWorkflowType": "mobile_post_state_update",
+    "articleReleaseWorkflowType": "mobile_article_release",
+    "postStateDeduplicationKey": "mobile_post_state_update:canonicalId:publishedUrl",
+    "articleReleaseDeduplicationKey": "mobile_article_release:canonicalId:pullRequestUrl",
+    "requireMainRecheck": true,
+    "directPushToMain": false,
+    "autoMerge": false
+  },
   "jobs": [
     {
       "jobId": "BASELINE-NIGHTLY-PLAN-20260803-001",
