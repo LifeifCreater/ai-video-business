@@ -394,6 +394,16 @@ KPIは取得できた値だけを表示します。X・noteのプロフィール
 
 ## Cloudflare Pages
 
+### Search Console自動運用
+
+公開後のsitemap再送信とURL Inspectionを、PCに依存しないGitHub Actionsで実行します。通常記事へのIndexing APIやSearch Console画面の登録リクエストは使用せず、登録状態の確認と朝会報告に限定します。
+
+- 08:30 JSTにURL Inspectionを実行
+- Cloudflare本番deployment成功後だけsitemapを再送信
+- 09:00の朝会へ重要度順に最大5件を表示
+- SecretはGitHub Actions側で管理し、リポジトリへ保存しない
+- 詳細: [`automation/search-console/README.md`](automation/search-console/README.md)
+
 - Build command: なし
 - Build output directory: `/`（リポジトリルート）
 - Production branch: `main`
