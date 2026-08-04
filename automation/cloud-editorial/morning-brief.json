@@ -76,16 +76,15 @@
     "implementationPullRequests": 1
   },
   "searchConsole": {
-    "generatedAt": "2026-08-04T00:00:00+09:00",
+    "generatedAt": "2026-08-04T18:46:09+09:00",
     "newPublishedUrlCount": 4,
-    "indexedCount": null,
-    "notIndexedCount": null,
-    "errorCount": null,
-    "canonicalMismatchCount": null,
+    "indexedCount": 0,
+    "notIndexedCount": 0,
+    "errorCount": 0,
+    "canonicalMismatchCount": 0,
     "sitemapMissingCount": 0,
     "ownerActionRequired": [],
-    "nextInspectionAt": "2026-08-05T08:30:00+09:00",
-    "notes": "Search Console API未接続の初期dry-run。nullは未取得。"
+    "nextInspectionAt": "2026-08-05T01:52:54+09:00"
   },
   "alerts": [
     "初回稼働前基準値。Scheduled Tasksの実登録・有効化とGitHub権限はサービス側で確認が必要",
