@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-04T00:50:00+09:00",
+  "aliases": {
+    "article1": null,
+    "article2": null,
+    "x1": {
+      "alias": "X1",
+      "canonicalId": "PUB-X-001",
+      "platform": "X",
+      "title": "制作できた≠広告に出せる",
+      "scheduledAt": "2026-08-04T08:10:00+09:00",
+      "approvalStatus": "approved",
+      "publishStatus": "unpublished",
+      "pullRequestUrl": null,
+      "sourceUrl": "https://framepact.jp/ai-video-ad-disclosure.html",
+      "generatedAt": "2026-08-04T00:50:00+09:00"
+    },
+    "x2": null,
+    "note1": {
+      "alias": "note1",
+      "canonicalId": "PUB-NOTE-003",
+      "platform": "note",
+      "title": "企業動画は「一本作ってから切る」より、先に役割を分ける",
+      "scheduledAt": "2026-08-04T12:15:00+09:00",
+      "approvalStatus": "approved",
+      "publishStatus": "unpublished",
+      "pullRequestUrl": null,
+      "sourceUrl": "https://framepact.jp/multi-platform-video-production.html",
+      "generatedAt": "2026-08-04T00:50:00+09:00"
+    },
+    "note2": null
+  },
+  "todayPosts": [
+    {
+      "id": "PUB-X-001",
+      "platform": "X",
+      "scheduledAt": "2026-08-04T08:10:00+09:00",
+      "approvalStatus": "approved",
+      "publishStatus": "unpublished"
+    },
+    {
+      "id": "PUB-NOTE-003",
+      "platform": "note",
+      "scheduledAt": "2026-08-04T12:15:00+09:00",
+      "approvalStatus": "approved",
+      "publishStatus": "unpublished"
+    }
+  ],
+  "ownerApprovals": [],
+  "completedOvernight": [],
+  "failedJobs": [],
+  "draftPullRequests": [],
+  "nextScheduledJobs": [
+    {
+      "workflowType": "nightly_production",
+      "scheduledFor": "2026-08-04T02:00:00+09:00",
+      "expectedResult": "対象なしのためskipped"
+    },
+    {
+      "workflowType": "approved_article_implementation",
+      "scheduledFor": "2026-08-04T04:00:00+09:00",
+      "expectedResult": "対象なしのためskipped"
+    },
+    {
+      "workflowType": "morning_brief",
+      "scheduledFor": "2026-08-04T09:00:00+09:00",
+      "expectedResult": "mainを読み取り専用で再集計"
+    }
+  ],
+  "weeklyProgress": {
+    "planned": 4,
+    "ownerApprovedPlans": 4,
+    "reviewReadyDrafts": 0,
+    "approvedArticles": 4,
+    "implementationPullRequests": 1
+  },
+  "searchConsole": {
+    "generatedAt": "2026-08-04T18:46:09+09:00",
+    "newPublishedUrlCount": 4,
+    "indexedCount": 0,
+    "notIndexedCount": 0,
+    "errorCount": 0,
+    "canonicalMismatchCount": 0,
+    "sitemapMissingCount": 0,
+    "ownerActionRequired": [],
+    "nextInspectionAt": "2026-08-05T01:52:54+09:00"
+  },
+  "alerts": [
+    "初回稼働前基準値。Scheduled Tasksの実登録・有効化とGitHub権限はサービス側で確認が必要",
+    "既存4企画・4原稿はPR #2で実装済みとしてjob-registerへ移行済み"
+  ]
+}

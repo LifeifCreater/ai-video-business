@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FRAMEPACT Morning Brief",
+  "type": "object",
+  "required": ["generatedAt", "todayPosts", "ownerApprovals", "completedOvernight", "failedJobs", "draftPullRequests", "nextScheduledJobs", "weeklyProgress", "alerts"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "aliases": {
+      "type": "object",
+      "required": ["article1", "article2", "x1", "x2", "note1", "note2"]
+    },
+    "todayPosts": { "type": "array" },
+    "ownerApprovals": { "type": "array" },
+    "completedOvernight": { "type": "array" },
+    "failedJobs": { "type": "array" },
+    "draftPullRequests": { "type": "array" },
+    "nextScheduledJobs": { "type": "array" },
+    "weeklyProgress": { "type": "object" },
+    "alerts": { "type": "array" },
+    "searchConsole": { "type": ["object", "null"] }
+  }
+}

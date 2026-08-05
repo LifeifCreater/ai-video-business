@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "mode": "manual",
+  "timezone": "Asia/Tokyo",
+  "nullPolicy": "未取得値は0ではなくnullで記録する",
+  "recordTemplate": {
+    "date": null,
+    "platform": null,
+    "contentId": null,
+    "impressions": null,
+    "likes": null,
+    "replies": null,
+    "reposts": null,
+    "profileVisits": null,
+    "linkClicks": null,
+    "noteViews": null,
+    "siteSessions": null,
+    "formClicks": null,
+    "inquiries": null,
+    "source": null,
+    "recordedAt": null,
+    "notes": null
+  },
+  "records": []
+}

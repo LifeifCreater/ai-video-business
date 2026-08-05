@@ -14,9 +14,8 @@
 <!-- Google Search Console 所有権確認 -->
 <meta name="google-site-verification" content="tMryDzvKuym28F_ahW7J4rW69t-82RCLpqkXgKaip3M">
 
-<!-- favicon設定：profile-icon.pngをそのまま使用 -->
-<link rel="icon" type="image/png" href="profile-icon.png">
-<link rel="apple-touch-icon" href="profile-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
 
 <!-- ============================================================
   基本SEO設定
@@ -197,7 +196,7 @@ button:focus-visible{
   padding:20px 24px 40px;
   transform:translateX(100%);
   transition:transform .35s var(--ease);
-  overflow-y:auto;
+  overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
 }
 .mobile-nav.is-open{ transform:translateX(0); }
 .mobile-nav-top{ display:flex; align-items:center; justify-content:space-between; height:var(--header-h); margin-bottom:var(--gap-sm); }
@@ -361,11 +360,11 @@ button:focus-visible{
 
     <nav class="main-nav" aria-label="サイト内ナビゲーション">
       <ul>
-        <li><a href="index.html#service">サービス</a></li>
-        <li><a href="index.html#reason">特徴</a></li>
-        <li><a href="index.html#flow">制作の流れ</a></li>
+        <li><a href="index.html#services">サービス</a></li>
+        <li><a href="index.html#reasons">特徴</a></li>
+        <li><a href="index.html#process">制作の流れ</a></li>
         <li><a href="index.html#price">料金</a></li>
-        <li><a href="index.html#profile">プロフィール</a></li>
+        <li><a href="index.html#about">プロフィール</a></li>
         <li><a href="index.html#faq">よくある質問</a></li>
       </ul>
     </nav>
@@ -386,11 +385,11 @@ button:focus-visible{
   </div>
   <ul>
     <li><a href="index.html">トップページ</a></li>
-    <li><a href="index.html#service">サービス</a></li>
-    <li><a href="index.html#reason">特徴</a></li>
-    <li><a href="index.html#flow">制作の流れ</a></li>
+    <li><a href="index.html#services">サービス</a></li>
+    <li><a href="index.html#reasons">特徴</a></li>
+    <li><a href="index.html#process">制作の流れ</a></li>
     <li><a href="index.html#price">料金</a></li>
-    <li><a href="index.html#profile">プロフィール</a></li>
+    <li><a href="index.html#about">プロフィール</a></li>
     <li><a href="index.html#faq">よくある質問</a></li>
   </ul>
   <a href="index.html#contact" class="btn btn--primary">動画制作について相談する</a>
@@ -589,26 +588,46 @@ button:focus-visible{
   var menuToggle = document.getElementById('menuToggle');
   var mobileNav  = document.getElementById('mobileNav');
   var mobileNavClose = document.getElementById('mobileNavClose');
+  var lastMenuFocus = null;
 
-  function closeMenu(){
+  function getMenuFocusable(){
+    return Array.from(mobileNav.querySelectorAll('a[href], button:not([disabled])'));
+  }
+
+  function closeMenu(restoreFocus){
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.setAttribute('aria-label', 'メニューを開く');
     mobileNav.classList.remove('is-open');
     document.body.style.overflow = '';
+    if(restoreFocus !== false && lastMenuFocus){ lastMenuFocus.focus(); }
   }
   function openMenu(){
+    lastMenuFocus = document.activeElement;
     menuToggle.setAttribute('aria-expanded', 'true');
     menuToggle.setAttribute('aria-label', 'メニューを閉じる');
     mobileNav.classList.add('is-open');
     document.body.style.overflow = 'hidden';
+    var focusable = getMenuFocusable();
+    if(focusable.length){ focusable[0].focus(); }
   }
   menuToggle.addEventListener('click', function(){
     var isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-    isOpen ? closeMenu() : openMenu();
+    isOpen ? closeMenu(true) : openMenu();
   });
-  if(mobileNavClose){ mobileNavClose.addEventListener('click', closeMenu); }
+  if(mobileNavClose){ mobileNavClose.addEventListener('click', function(){ closeMenu(true); }); }
   mobileNav.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', closeMenu);
+    a.addEventListener('click', function(){ closeMenu(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(!mobileNav.classList.contains('is-open')) return;
+    if(e.key === 'Escape'){ e.preventDefault(); closeMenu(true); return; }
+    if(e.key !== 'Tab') return;
+    var focusable = getMenuFocusable();
+    if(!focusable.length) return;
+    var first = focusable[0];
+    var last = focusable[focusable.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
   });
 
   // ---------------- ヘッダーの背景切り替え ＆ 固定相談ボタンの表示 ----------------

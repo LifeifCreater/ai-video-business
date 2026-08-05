@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>FRAMEPACT 公開準備ダッシュボード</title>
+  <style>
+    :root{color-scheme:light;--ink:#18211f;--muted:#5d6a66;--line:#d7dfdc;--bg:#f3f6f5;--card:#fff;--brand:#16624f;--brand2:#e4f2ed;--warn:#9a4b00;--warnbg:#fff1dc;--ok:#17633f;--okbg:#e6f5ec;--shadow:0 8px 24px rgba(22,45,38,.08)}
+    *{box-sizing:border-box}html{background:var(--bg)}body{margin:0;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.65;overflow-x:hidden}
+    button,input,select,textarea{font:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.top{padding:30px 0 22px;background:#102d26;color:#fff}.top h1{margin:0;font-size:clamp(1.45rem,4vw,2.25rem)}.top p{margin:.4rem 0 0;color:#c8dad4}
+    main{padding:24px 0 56px}.notice{margin-bottom:18px;padding:12px 14px;border:1px solid #e4b56f;border-radius:12px;background:var(--warnbg);color:#6e3900;font-weight:700}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:20px}.stat{padding:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}.stat span{display:block;color:var(--muted);font-size:.78rem}.stat strong{display:block;margin-top:3px;font-size:1.32rem;overflow-wrap:anywhere}.stat.wide{grid-column:span 2}
+    .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-bottom:20px;padding:16px;background:var(--card);border:1px solid var(--line);border-radius:14px}.control{display:grid;gap:4px;min-width:150px}.control label{font-size:.78rem;color:var(--muted);font-weight:700}.control select,.control button{min-height:42px;border:1px solid var(--line);border-radius:9px;background:#fff;padding:8px 11px}.control button{cursor:pointer;font-weight:700;color:var(--brand)}
+    .queue{display:grid;gap:18px}.card{min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden}.card.unapproved{border:2px solid #e09a3b}.card.approved{border-color:#79b597}.card-head{display:flex;align-items:start;justify-content:space-between;gap:12px;padding:18px;border-bottom:1px solid var(--line)}.card-head h2{margin:3px 0 0;font-size:1.18rem}.meta{font-size:.78rem;color:var(--muted)}.badge{display:inline-block;padding:4px 9px;border-radius:999px;font-size:.75rem;font-weight:800;white-space:nowrap}.badge.warn{color:var(--warn);background:var(--warnbg)}.badge.ok{color:var(--ok);background:var(--okbg)}
+    .card-body{padding:18px}.info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:16px}.info{padding:10px 12px;border-radius:10px;background:#f7f9f8;min-width:0}.info b{display:block;font-size:.72rem;color:var(--muted)}.info a,.info span{overflow-wrap:anywhere}
+    .field{margin-top:14px}.field-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}.field-head h3{margin:0;font-size:.9rem}.copy{border:1px solid #9fb8b0;border-radius:8px;background:#fff;color:var(--brand);padding:5px 9px;cursor:pointer;font-weight:700;font-size:.78rem}.copy:hover,.copy:focus-visible{background:var(--brand2)}
+    .content{margin:0;padding:13px;border:1px solid var(--line);border-radius:10px;background:#fbfcfc;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font-family:inherit;max-height:420px;overflow:auto}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.actions .primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .state{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}.check{display:flex;gap:8px;align-items:center;font-weight:700}.check input{width:20px;height:20px;accent-color:var(--brand)}.input-group{display:grid;gap:5px}.input-group label{font-size:.78rem;font-weight:700;color:var(--muted)}.input-group input,.input-group textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px;background:#fff}.input-group textarea{min-height:80px;resize:vertical}.full{grid-column:1/-1}
+    .empty,.error{padding:28px;border-radius:14px;background:#fff;border:1px solid var(--line)}.error{color:#7a2600;border-color:#e2a878}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);padding:10px 16px;border-radius:999px;background:#102d26;color:#fff;font-weight:700;opacity:0;pointer-events:none;transition:.2s;z-index:10}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    @media(max-width:760px){.wrap{width:min(100% - 20px,1180px)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat.wide{grid-column:span 2}.controls{display:grid;grid-template-columns:1fr 1fr}.control{min-width:0}.card-head{display:block}.card-head .badge{margin-top:8px}.info-grid,.state{grid-template-columns:1fr}.content{max-height:340px;font-size:.93rem}.full{grid-column:auto}}
+    @media(max-width:420px){.controls{grid-template-columns:1fr}.stats{gap:8px}.stat{padding:12px}.actions .copy{width:100%}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap"><h1>公開準備ダッシュボード</h1><p>FRAMEPACT AI編集部｜ローカル専用・自動投稿なし</p></div></header>
+  <main class="wrap">
+    <div class="notice">未承認の投稿は公開しないでください。チェック内容はこのブラウザのlocalStorageだけに保存されます。</div>
+    <section class="stats" aria-label="週間集計">
+      <div class="stat"><span>今週の採用</span><strong id="statAll">—</strong></div>
+      <div class="stat"><span>X</span><strong id="statX">—</strong></div>
+      <div class="stat"><span>note</span><strong id="statNote">—</strong></div>
+      <div class="stat"><span>未承認</span><strong id="statPending">—</strong></div>
+      <div class="stat"><span>公開済み</span><strong id="statPublished">—</strong></div>
+      <div class="stat"><span>CTA付き割合</span><strong id="statCta">—</strong></div>
+      <div class="stat wide"><span>次の投稿予定</span><strong id="statNext">—</strong></div>
+      <div class="stat wide"><span>テーマの偏り</span><strong id="statThemes">—</strong></div>
+    </section>
+    <section class="controls" aria-label="表示フィルター">
+      <div class="control"><label for="platformFilter">媒体</label><select id="platformFilter"><option value="all">すべて</option><option value="X">X</option><option value="note">note</option></select></div>
+      <div class="control"><label for="dateFilter">日付</label><select id="dateFilter"><option value="all">すべて</option></select></div>
+      <div class="control"><label>&nbsp;</label><button id="todayButton" type="button">今日だけ表示</button></div>
+      <div class="control"><label>&nbsp;</label><button id="resetFilter" type="button">フィルター解除</button></div>
+    </section>
+    <div id="loadError" class="error" hidden></div>
+    <section id="queue" class="queue" aria-live="polite"></section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite">コピーしました</div>
+  <script>
+  (()=>{
+    'use strict';
+    const QUEUE_URL='publish-ready/publish-queue.json';
+    const STORAGE_KEY='framepact-publish-dashboard-v1';
+    const queueEl=document.getElementById('queue');
+    const platformFilter=document.getElementById('platformFilter');
+    const dateFilter=document.getElementById('dateFilter');
+    const state=readState();
+    let items=[];
+
+    function readState(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(_){return {}}}
+    function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}
+    function localDate(iso){return iso.slice(0,10)}
+    function today(){const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')}
+    function formatDate(iso){return new Intl.DateTimeFormat('ja-JP',{month:'numeric',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit'}).format(new Date(iso))}
+    function getItemState(item){return {...item,...(state[item.id]||{})}}
+    function updateState(id,patch){state[id]={...(state[id]||{}),...patch};saveState();render();updateStats()}
+    function hasCta(item){return item.cta&&item.cta!=='なし'}
+    function completedX(item){return [item.body,(item.hashtags||[]).join(' ')].filter(Boolean).join('\n\n')}
+    function field(label,value){const box=document.createElement('div');box.className='field';const head=document.createElement('div');head.className='field-head';const h=document.createElement('h3');h.textContent=label;const b=copyButton(`${label}をコピー`,value);head.append(h,b);const pre=document.createElement('pre');pre.className='content';pre.textContent=value||'—';box.append(head,pre);return box}
+    function copyButton(label,value,primary=false){const b=document.createElement('button');b.type='button';b.className=`copy${primary?' primary':''}`;b.textContent=label;b.addEventListener('click',()=>copy(value));return b}
+    async function copy(value){const text=value||'';let success=false;try{await navigator.clipboard.writeText(text);success=true}catch(_){const t=document.createElement('textarea');t.value=text;document.body.append(t);t.select();success=document.execCommand('copy');t.remove()}toast(success?`コピーしました（${text.length}文字）`:'コピーできませんでした')}
+    let toastTimer;function toast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),1600)}
+    function info(label,value,link){const d=document.createElement('div');d.className='info';const b=document.createElement('b');b.textContent=label;const v=link?document.createElement('a'):document.createElement('span');v.textContent=value||'—';if(link){v.href=value;v.target='_blank';v.rel='noopener'}d.append(b,v);return d}
+
+    function card(item){
+      const current=getItemState(item);const approved=current.approvalStatus==='approved';
+      const article=document.createElement('article');article.className=`card ${approved?'approved':'unapproved'}`;article.dataset.id=item.id;
+      const head=document.createElement('div');head.className='card-head';const titleWrap=document.createElement('div');const meta=document.createElement('div');meta.className='meta';meta.textContent=`${item.id}｜${item.platform}｜${formatDate(item.scheduledAt)}`;const h=document.createElement('h2');h.textContent=item.title;titleWrap.append(meta,h);const badge=document.createElement('span');badge.className=`badge ${approved?'ok':'warn'}`;badge.textContent=approved?'オーナー承認済み':'オーナー未承認';head.append(titleWrap,badge);
+      const body=document.createElement('div');body.className='card-body';const infos=document.createElement('div');infos.className='info-grid';infos.append(info('テーマ',item.theme),info('投稿目的',item.objective),info('元記事',item.sourceUrl,true),info('CTA',item.cta));body.append(infos);
+      if(item.platform==='note')body.append(field('タイトル',item.title));
+      body.append(field('本文',item.body));
+      if(item.platform==='X'){
+        body.append(field('記事URL',item.sourceUrl),field('ハッシュタグ',(item.hashtags||[]).join(' ')));
+        const actions=document.createElement('div');actions.className='actions';actions.append(copyButton('本文＋URL＋ハッシュタグをコピー',completedX(item),true));body.append(actions);
+      }else{
+        body.append(field('ハッシュタグ',(item.hashtags||[]).join(' ')),field('CTA',item.cta),field('元記事URL',item.sourceUrl));
+      }
+      const controls=document.createElement('div');controls.className='state';
+      const approval=document.createElement('label');approval.className='check';const ac=document.createElement('input');ac.type='checkbox';ac.checked=approved;ac.addEventListener('change',()=>updateState(item.id,{approvalStatus:ac.checked?'approved':'owner_review'}));approval.append(ac,document.createTextNode(' オーナー承認'));
+      const published=document.createElement('label');published.className='check';const pc=document.createElement('input');pc.type='checkbox';pc.checked=current.publishStatus==='published';pc.addEventListener('change',()=>updateState(item.id,{publishStatus:pc.checked?'published':'unpublished'}));published.append(pc,document.createTextNode(' 公開済み'));
+      const url=document.createElement('div');url.className='input-group';const ul=document.createElement('label');ul.textContent='投稿後URL';const ui=document.createElement('input');ui.type='url';ui.placeholder='https://';ui.value=current.publishedUrl||'';ui.addEventListener('change',()=>updateState(item.id,{publishedUrl:ui.value}));url.append(ul,ui);
+      const notes=document.createElement('div');notes.className='input-group full';const nl=document.createElement('label');nl.textContent='備考';const nt=document.createElement('textarea');nt.value=current.notes||'';nt.addEventListener('change',()=>updateState(item.id,{notes:nt.value}));notes.append(nl,nt);
+      controls.append(approval,published,url,notes);body.append(controls);article.append(head,body);return article;
+    }
+    function filtered(){return items.filter(item=>(platformFilter.value==='all'||item.platform===platformFilter.value)&&(dateFilter.value==='all'||localDate(item.scheduledAt)===dateFilter.value))}
+    function render(){queueEl.replaceChildren();const list=filtered();if(!list.length){const e=document.createElement('div');e.className='empty';e.textContent='該当する投稿はありません。';queueEl.append(e);return}list.forEach(i=>queueEl.append(card(i)))}
+    function updateStats(){const current=items.map(getItemState);const pending=current.filter(i=>i.approvalStatus!=='approved').length;const published=current.filter(i=>i.publishStatus==='published').length;const next=current.filter(i=>i.publishStatus!=='published').sort((a,b)=>a.scheduledAt.localeCompare(b.scheduledAt))[0];const counts={};items.forEach(i=>counts[i.theme]=(counts[i.theme]||0)+1);const values=Object.values(counts);const bias=Math.max(...values)-Math.min(...values)<=1?'均等':'偏りあり';document.getElementById('statAll').textContent=`${items.length}件`;document.getElementById('statX').textContent=`${items.filter(i=>i.platform==='X').length}件`;document.getElementById('statNote').textContent=`${items.filter(i=>i.platform==='note').length}件`;document.getElementById('statPending').textContent=`${pending}件`;document.getElementById('statPublished').textContent=`${published}件`;document.getElementById('statCta').textContent=`${Math.round(items.filter(hasCta).length/items.length*100)}%`;document.getElementById('statNext').textContent=next?`${formatDate(next.scheduledAt)}｜${next.title}`:'予定なし';document.getElementById('statThemes').textContent=`${bias}（${Object.entries(counts).map(([k,v])=>`${k} ${v}`).join(' / ')}）`}
+    function setDates(){[...new Set(items.map(i=>localDate(i.scheduledAt)))].sort().forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=d;dateFilter.append(o)})}
+    platformFilter.addEventListener('change',render);dateFilter.addEventListener('change',render);document.getElementById('todayButton').addEventListener('click',()=>{dateFilter.value=today();render()});document.getElementById('resetFilter').addEventListener('click',()=>{platformFilter.value='all';dateFilter.value='all';render()});
+    fetch(QUEUE_URL,{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error(`${r.status} ${r.statusText}`);return r.json()}).then(data=>{if(!Array.isArray(data))throw new Error('キュー形式が配列ではありません');items=data;setDates();render();updateStats()}).catch(error=>{const e=document.getElementById('loadError');e.hidden=false;e.textContent=`publish-queue.jsonを読み込めませんでした。リポジトリ直下でローカルサーバーを起動してください。詳細: ${error.message}`});
+  })();
+  </script>
+</body>
+</html>

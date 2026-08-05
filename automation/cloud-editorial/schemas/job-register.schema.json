@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FRAMEPACT Cloud Editorial Job Register",
+  "type": "object",
+  "required": ["schemaVersion", "deduplicationKey", "jobs"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "deduplicationKey": { "const": "workflowType:sourceId" },
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["jobId", "workflowType", "sourceId", "status", "scheduledFor", "startedAt", "completedAt", "branch", "commitSha", "pullRequestUrl", "approvalRequired", "errorCode", "errorSummary", "retryCount", "lastUpdatedAt"],
+        "properties": {
+          "jobId": { "type": "string", "minLength": 1 },
+          "workflowType": { "enum": ["weekly_planning", "nightly_production", "approved_article_implementation", "morning_brief", "mobile_post_state_update", "mobile_article_release"] },
+          "sourceId": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["queued", "running", "waiting_owner", "completed", "skipped", "failed"] },
+          "scheduledFor": { "type": "string", "format": "date-time" },
+          "startedAt": { "type": ["string", "null"], "format": "date-time" },
+          "completedAt": { "type": ["string", "null"], "format": "date-time" },
+          "branch": { "type": ["string", "null"] },
+          "commitSha": { "type": ["string", "null"] },
+          "pullRequestUrl": { "type": ["string", "null"] },
+          "approvalRequired": { "type": ["string", "null"] },
+          "errorCode": { "type": ["string", "null"] },
+          "errorSummary": { "type": ["string", "null"] },
+          "retryCount": { "type": "integer", "minimum": 0 },
+          "lastUpdatedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}
