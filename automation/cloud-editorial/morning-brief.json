@@ -76,7 +76,7 @@
     "implementationPullRequests": 1
   },
   "searchConsole": {
-    "generatedAt": "2026-08-04T18:46:09+09:00",
+    "generatedAt": "2026-08-05T18:28:32+09:00",
     "newPublishedUrlCount": 4,
     "indexedCount": 0,
     "notIndexedCount": 0,
@@ -84,7 +84,7 @@
     "canonicalMismatchCount": 0,
     "sitemapMissingCount": 0,
     "ownerActionRequired": [],
-    "nextInspectionAt": "2026-08-05T01:52:54+09:00"
+    "nextInspectionAt": "2026-08-06T18:28:32+09:00"
   },
   "alerts": [
     "初回稼働前基準値。Scheduled Tasksの実登録・有効化とGitHub権限はサービス側で確認が必要",
