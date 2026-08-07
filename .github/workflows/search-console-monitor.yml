@@ -52,6 +52,8 @@ jobs:
           ENVIRONMENT_URL: ${{ github.event.deployment_status.environment_url }}
         run: test "${ENVIRONMENT_URL#https://framepact.jp}" != "$ENVIRONMENT_URL"
       - name: Run Search Console automation
+        id: search_console
+        continue-on-error: true
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
         run: |
@@ -62,7 +64,7 @@ jobs:
             python automation/search-console/search_console_automation.py "${{ steps.mode.outputs.value }}" --live
           fi
       - name: Persist state on dedicated branch
-        if: steps.mode.outputs.value != 'dry-run'
+        if: ${{ steps.mode.outputs.value != 'dry-run' && always() }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -74,3 +76,6 @@ jobs:
           git commit -m "Search Console監視状態を更新"
           git push --force-with-lease origin state/search-console-monitor
           gh pr list --head state/search-console-monitor --base main --state open --json number --jq '.[0].number' | grep -q . || gh pr create --draft --base main --head state/search-console-monitor --title "Search Console監視状態を更新" --body "Search Console APIの監視結果です。自動マージ・公開操作は行いません。"
+      - name: Fail when Search Console monitoring failed
+        if: steps.search_console.outcome == 'failure'
+        run: exit 1

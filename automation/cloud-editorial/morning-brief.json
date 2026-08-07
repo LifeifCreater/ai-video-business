@@ -77,11 +77,13 @@
   },
   "searchConsole": {
     "generatedAt": "2026-08-05T18:28:32+09:00",
+    "status": "取得失敗",
     "newPublishedUrlCount": 4,
-    "indexedCount": 0,
-    "notIndexedCount": 0,
-    "errorCount": 0,
-    "canonicalMismatchCount": 0,
+    "indexedCount": null,
+    "notIndexedCount": null,
+    "errorCount": 15,
+    "apiFailureCount": 15,
+    "canonicalMismatchCount": null,
     "sitemapMissingCount": 0,
     "ownerActionRequired": [],
     "nextInspectionAt": "2026-08-06T18:28:32+09:00"

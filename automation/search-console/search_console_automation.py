@@ -66,9 +66,15 @@ def inspect(live):
             result = response.json()["inspectionResult"]["indexStatusResult"]
             p.update(inspectionStatus=result.get("verdict"),coverageState=result.get("coverageState"),indexingState=result.get("indexingState"),robotsTxtState=result.get("robotsTxtState"),googleCanonical=result.get("googleCanonical"),userCanonical=result.get("userCanonical"),lastCrawlTime=result.get("lastCrawlTime"),referringUrls=result.get("referringUrls"),pageFetchState=result.get("pageFetchState"),errorInfo=None,inspectedAt=iso(ts),retryAfter=iso(ts+timedelta(days=1)),consecutiveApiFailures=0)
         except Exception as exc:
-            p["consecutiveApiFailures"] += 1; p["errorInfo"] = type(exc).__name__; p["inspectedAt"] = iso(ts); p["retryAfter"] = iso(ts + timedelta(days=1 if p["consecutiveApiFailures"] < 3 else 7))
+            p["consecutiveApiFailures"] += 1
+            status_code = getattr(getattr(exc, "response", None), "status_code", None)
+            p["errorInfo"] = f"{type(exc).__name__}:HTTP {status_code}" if status_code else type(exc).__name__
+            p["inspectedAt"] = iso(ts); p["retryAfter"] = iso(ts + timedelta(days=1 if p["consecutiveApiFailures"] < 3 else 7))
         judge(p, ts)
     data["generatedAt"] = iso(ts); save(REGISTER, data); update_morning(data, ts)
+    failed = [p for p in targets if p.get("errorInfo")]
+    if failed:
+        raise RuntimeError(f"URL inspection failed for {len(failed)}/{len(targets)} targets")
 
 def submit(live):
     data, ts = load(REGISTER), now(); rows = dict(sitemap_rows())
@@ -88,10 +94,20 @@ def submit(live):
 def update_morning(data, ts):
     brief = load(MORNING); pages = data["pages"]
     indexed = [p for p in pages if p["inspectionStatus"] == "PASS"]
-    errors = [p for p in pages if p["ownerActionRequired"]]
+    known = [p for p in pages if p["inspectionStatus"] is not None]
+    api_failures = [p for p in pages if p.get("errorInfo")]
+    errors = [p for p in pages if p["ownerActionRequired"] or p.get("errorInfo")]
     canonical = [p for p in pages if p["googleCanonical"] and p["userCanonical"] and p["googleCanonical"] != p["userCanonical"]]
     priority = sorted(errors, key=lambda p: ("API" not in (p["notes"] or ""), p["url"]))[:5]
-    brief["searchConsole"]={"generatedAt":iso(ts),"newPublishedUrlCount":sum(1 for p in pages if p["publishedAt"] and datetime.fromisoformat(p["publishedAt"]) >= ts-timedelta(days=7)),"indexedCount":len(indexed),"notIndexedCount":sum(1 for p in pages if p["inspectionStatus"] not in (None,"PASS")),"errorCount":len(errors),"canonicalMismatchCount":len(canonical),"sitemapMissingCount":sum(1 for p in pages if not p["sitemapIncluded"]),"ownerActionRequired":[{"url":p["url"],"reason":p["notes"]} for p in priority],"nextInspectionAt":min((p["retryAfter"] for p in pages if p["retryAfter"]),default=None)}
+    if api_failures and len(api_failures) == len(pages) and not known:
+        status = "取得失敗"
+    elif api_failures:
+        status = "一部取得"
+    elif known:
+        status = "取得済み"
+    else:
+        status = "未取得"
+    brief["searchConsole"]={"generatedAt":iso(ts),"status":status,"newPublishedUrlCount":sum(1 for p in pages if p["publishedAt"] and datetime.fromisoformat(p["publishedAt"]) >= ts-timedelta(days=7)),"indexedCount":len(indexed) if known else None,"notIndexedCount":sum(1 for p in known if p["inspectionStatus"] != "PASS") if known else None,"errorCount":len(errors),"apiFailureCount":len(api_failures),"canonicalMismatchCount":len(canonical) if known else None,"sitemapMissingCount":sum(1 for p in pages if not p["sitemapIncluded"]),"ownerActionRequired":[{"url":p["url"],"reason":p["notes"] or p.get("errorInfo") or "取得失敗"} for p in priority],"nextInspectionAt":min((p["retryAfter"] for p in pages if p["retryAfter"]),default=None)}
     save(MORNING, brief)
 
 if __name__ == "__main__":
