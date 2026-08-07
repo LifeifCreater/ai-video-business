@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FRAMEPACT Editorial Runtime State",
+  "type": "object",
+  "required": ["schemaVersion", "generatedAt", "runs"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "runs": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "required": ["runId", "workflowType", "sourceId", "startedAt", "completedAt", "status", "result", "branch", "commitSha", "pullRequestNumber", "pullRequestUrl", "pullRequestState", "draft", "errorCode"],
+        "properties": {
+          "runId": { "type": "string", "minLength": 1 },
+          "workflowType": { "enum": ["weekly_planning", "nightly_production", "approved_article_implementation"] },
+          "sourceId": { "type": ["string", "null"] },
+          "startedAt": { "type": "string", "format": "date-time" },
+          "completedAt": { "type": "string", "format": "date-time" },
+          "status": { "enum": ["completed", "skipped", "waiting_owner", "failed"] },
+          "result": { "enum": ["draft_pr_created", "existing_result", "no_target", "waiting_owner", "failed"] },
+          "branch": { "type": ["string", "null"] },
+          "commitSha": { "type": ["string", "null"] },
+          "pullRequestNumber": { "type": ["integer", "null"], "minimum": 1 },
+          "pullRequestUrl": { "type": ["string", "null"], "format": "uri" },
+          "pullRequestState": { "enum": ["open", "closed", "merged", null] },
+          "draft": { "type": ["boolean", "null"] },
+          "errorCode": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

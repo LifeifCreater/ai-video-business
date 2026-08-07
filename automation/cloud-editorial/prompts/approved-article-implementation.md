@@ -12,5 +12,6 @@ GitHub上のFRAMEPACTリポジトリを正本として、`writing/approved/` の
 4. HTML、JSON-LD、XML、リンク、CTA、管理マーカー、SEO、390/768/1280px相当のレスポンシブ条件を検査する。
 5. `publish/WR-ID` ブランチを再利用または作成し、commit・push、Draft PRを作る。
 6. jobを `waiting_owner`、approvalRequiredを `merge_and_production_release` として停止する。
+7. `runtime-state-update.md`に従い、本文を含まない実行結果を`data/editorial-state`へ同期する。
 
-mainへpushしない。PRをマージしない。Cloudflare本番公開を行わない。コンフリクトやテスト失敗を自動解決せず朝会へ通知する。
+mainへpushしない。PRをマージしない。Cloudflare本番公開を行わない。状態台帳にもHTML・本文・タイトル・要約を複製しない。コンフリクトやテスト失敗を自動解決せず朝会へ通知する。

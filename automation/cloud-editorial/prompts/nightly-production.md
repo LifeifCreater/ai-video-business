@@ -21,5 +21,6 @@ GitHub上のFRAMEPACTリポジトリを正本として夜間制作を実行す�
 4. X・noteの媒体展開案を作成し、編集レビュー済み候補だけを `publish-queue.json` へ `approvalStatus: owner_review`、`publishStatus: unpublished` で追加する。
 5. `writing/WR-ID` ブランチを再利用または作成し、commit・push、Draft PRを作る。
 6. jobを `waiting_owner`、approvalRequiredを `article_owner_approval` として停止する。
+7. `runtime-state-update.md`に従い、本文を含まない実行結果を`data/editorial-state`へ同期する。
 
-原稿の自動承認、HTML公開実装、投稿、予約、PRマージ、mainへのpushは禁止。利用上限は再試行せず `LIMIT_REACHED` でwaiting_ownerにする。
+原稿の自動承認、HTML公開実装、投稿、予約、PRマージ、mainへのpushは禁止。状態台帳にも原稿・投稿本文、タイトル、要約を複製しない。利用上限は再試行せず `LIMIT_REACHED` でwaiting_ownerにする。

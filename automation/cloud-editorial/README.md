@@ -38,6 +38,7 @@ Codex Cloud／ChatGPT WorkはOpenAI管理のクラウド環境で実行される
 
 - `job-register.json`: `workflowType:sourceId` を一意キーとして進捗とPRを管理
 - `locks.json`: 実行中案件を排他。180分heartbeatなしでstale候補
+- `data/editorial-state`の`runtime-state.json`: 本文を含まないScheduled Task実行メタデータ。朝会の鮮度・結果集計に使用
 - stale lock: 自動削除しない。`state: stale`、`reviewRequired: true` として朝会へ出す
 - branchまたはpullRequestUrlがある案件: 新規作成せず既存を再利用
 - completed、waiting_owner: 同一入力を再処理しない
@@ -70,6 +71,8 @@ Codex Cloud／ChatGPT WorkはOpenAI管理のクラウド環境で実行される
 
 mainへの直接pushと自動マージは禁止。コンフリクトは `GIT_CONFLICT`、CI失敗は `TEST_FAILED` として停止し、朝会へ通知する。
 
+実行状態は成果物ブランチの`morning-brief.json`へ閉じ込めず、`runtime-state-update.md`に従って`data/editorial-state`へ通常pushする。状態台帳には原稿・投稿・HTMLの本文、タイトル、要約を保存せず、未承認成果物を承認済み・公開済みと判定する材料にしない。
+
 ## 初期設定
 
 1. GitHubで対象リポジトリをCodex Cloud環境へ接続する。
@@ -96,7 +99,7 @@ ChatGPTの通常Scheduled TasksはProject内にアップロードされたファ
 
 ## 朝会との連携
 
-朝会は `morning-brief.json` とjob・lock・publish queueを読む。todayPostsは `scheduledAt` がJST当日、`approvalStatus: approved`、`publishStatus: unpublished` のものだけ。owner_reviewは承認待ちとして別表示する。朝会からファイル変更、投稿、mergeをしない。
+朝会はmainのjob・lock・publish queueと、`data/editorial-state`のruntime-stateを分離して読む。todayPostsは `scheduledAt` がJST当日、`approvalStatus: approved`、`publishStatus: unpublished` のものだけ。owner_reviewは承認待ちとして別表示する。朝会からファイル変更、投稿、mergeをしない。
 
 ## エラーと再実行
 

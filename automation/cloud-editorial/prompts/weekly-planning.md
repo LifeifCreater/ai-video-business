@@ -11,5 +11,6 @@ GitHub上のFRAMEPACTリポジトリを正本として週次企画会議を実�
 5. `planning/drafts/` に1企画1ファイルで保存し、`planning/idea-register.md` を更新する。
 6. 専用ブランチ `planning/weekly-YYYY-MM-DD` を既存なら再利用し、commit・pushしてDraft PRを作る。
 7. jobを `waiting_owner`、approvalRequiredを `planning_owner_approval` として停止する。
+8. `runtime-state-update.md`に従い、本文を含まない実行結果を`data/editorial-state`へ同期する。
 
-未承認企画を執筆、HTML化、公開、投稿しない。mainへpushしない。コンフリクトを自動解決しない。秘密情報をログやファイルへ書かない。
+未承認企画を執筆、HTML化、公開、投稿しない。mainへpushしない。状態台帳にも企画本文・タイトル・要約を複製しない。コンフリクトを自動解決しない。秘密情報をログやファイルへ書かない。
