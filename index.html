@@ -582,17 +582,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .work-modal-video-wrap{ position:relative; width:100%; aspect-ratio:9/16; max-height:70vh; background:#000; }
 .work-modal-video-wrap video,
 .work-modal-video-wrap iframe{ width:100%; height:100%; object-fit:contain; background:#000; border:0; display:block; }
+.work-modal-video-wrap video[hidden],
+.work-modal-video-wrap iframe[hidden]{ display:none; }
 .work-modal-video-wrap.is-landscape{ aspect-ratio:16/9; max-height:none; }
 .work-modal-body.is-landscape{ max-width:min(960px,94vw); }
-.work-modal.is-expanded{ padding:0; }
-.work-modal.is-expanded .work-modal-body{
-  width:100vw; height:100dvh; max-width:none; max-height:none;
-  border-radius:0;
-}
-.work-modal.is-expanded .work-modal-video-wrap{
-  flex:1; min-height:0; max-height:none; aspect-ratio:auto;
-}
-.work-modal.is-expanded .work-modal-info{ display:none; }
 .work-modal-error{
   position:absolute; inset:0;
   display:flex; align-items:center; justify-content:center; text-align:center;
@@ -617,16 +610,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   display:flex; align-items:center; justify-content:center;
 }
 .work-modal-close:hover{ background:rgba(255,255,255,.22); }
-.work-modal-expand{
-  position:absolute; top:14px; left:14px; z-index:2;
-  min-width:44px; height:40px; padding:0 14px; border-radius:999px;
-  background:rgba(17,17,17,.72); color:var(--white);
-  display:flex; align-items:center; justify-content:center; gap:8px;
-  font-size:.78rem; font-weight:600;
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-}
-.work-modal-expand:hover{ background:rgba(17,17,17,.9); }
-.work-modal-expand svg{ width:17px; height:17px; }
 body.modal-open{ overflow:hidden; }
 
 /* ============================================================
@@ -1080,16 +1063,12 @@ body.modal-open{ overflow:hidden; }
   <div class="work-modal" id="workModal" role="dialog" aria-modal="true" aria-labelledby="workModalTitle">
     <div class="work-modal-backdrop" id="workModalBackdrop"></div>
     <div class="work-modal-body">
-      <button class="work-modal-expand" id="workModalExpand" type="button" aria-label="画面いっぱいに表示" aria-pressed="false">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span id="workModalExpandLabel">画面いっぱいに表示</span>
-      </button>
       <button class="work-modal-close" id="workModalClose" aria-label="閉じる">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
       <div class="work-modal-video-wrap">
         <video id="workModalVideo" controls playsinline preload="metadata"></video>
-        <iframe id="workModalYoutube" title="YouTube動画プレイヤー" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" hidden></iframe>
+        <iframe id="workModalYoutube" title="YouTube動画プレイヤー" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen hidden></iframe>
         <p class="work-modal-error" id="workModalError" hidden>動画を読み込めませんでした。時間を置いて再度お試しください。</p>
       </div>
       <div class="work-modal-info">
@@ -1611,19 +1590,12 @@ body.modal-open{ overflow:hidden; }
 
     list.forEach(function(work){
       var source = getWorkVideoSource(work);
-      var opensYoutube = source && source.type === 'youtube';
-      var card = document.createElement(opensYoutube ? 'a' : 'button');
-      if(opensYoutube){
-        card.href = source.url;
-        card.target = '_blank';
-        card.rel = 'noopener noreferrer';
-      } else {
-        card.type = 'button';
-      }
+      var card = document.createElement('button');
+      card.type = 'button';
       card.className = 'work-card';
-      if(!opensYoutube){ card.setAttribute('aria-haspopup', 'dialog'); }
+      card.setAttribute('aria-haspopup', 'dialog');
       card.setAttribute('data-id', work.id);
-      card.setAttribute('aria-label', work.title + (opensYoutube ? 'をYouTubeで見る' : 'の動画を再生'));
+      card.setAttribute('aria-label', work.title + 'の動画を再生');
 
       var tagsHtml = (work.tags || []).map(function(t){ return '<span class="work-tag">' + escapeHtml(t) + '</span>'; }).join('');
       var safeTitle = escapeHtml(work.title);
@@ -1655,13 +1627,11 @@ body.modal-open{ overflow:hidden; }
         '<span class="work-title">' + safeTitle + '</span>' +
         '<span class="work-desc">' + escapeHtml(work.description) + '</span>' +
         '<span class="work-tags">' + tagsHtml + '</span>' +
-        '<span class="work-cta">' + (opensYoutube ? 'YouTubeで見る' : '動画を再生する') + ' <span aria-hidden="true">→</span></span>';
+        '<span class="work-cta">動画を再生する <span aria-hidden="true">→</span></span>';
 
       card.appendChild(thumbWrap);
       card.appendChild(info);
-      if(!opensYoutube){
-        card.addEventListener('click', function(){ openWorkModal(work); });
-      }
+      card.addEventListener('click', function(){ openWorkModal(work); });
       worksGrid.appendChild(card);
     });
 
@@ -1687,8 +1657,6 @@ body.modal-open{ overflow:hidden; }
   var workModal = document.getElementById('workModal');
   var workModalBackdrop = document.getElementById('workModalBackdrop');
   var workModalClose = document.getElementById('workModalClose');
-  var workModalExpand = document.getElementById('workModalExpand');
-  var workModalExpandLabel = document.getElementById('workModalExpandLabel');
   var workModalVideo = document.getElementById('workModalVideo');
   var workModalYoutube = document.getElementById('workModalYoutube');
   var workModalYoutubeLink = document.getElementById('workModalYoutubeLink');
@@ -1733,7 +1701,6 @@ body.modal-open{ overflow:hidden; }
     workModalYoutube.removeAttribute('src');
     workModalYoutubeLink.hidden = true;
     workModalYoutubeLink.removeAttribute('href');
-    setWorkModalExpanded(false);
 
     var source = getWorkVideoSource(work);
     var isLandscape = work.orientation === 'landscape';
@@ -1745,7 +1712,7 @@ body.modal-open{ overflow:hidden; }
 
     if(source && source.type === 'youtube'){
       workModalYoutube.hidden = false;
-      workModalYoutube.src = 'https://www.youtube-nocookie.com/embed/' + source.id + '?autoplay=1&rel=0&fs=0';
+      workModalYoutube.src = 'https://www.youtube-nocookie.com/embed/' + source.id + '?autoplay=1&rel=0';
       workModalYoutubeLink.hidden = false;
       workModalYoutubeLink.href = source.url;
     } else if(source){
@@ -1776,7 +1743,6 @@ body.modal-open{ overflow:hidden; }
     workModalVideo.load();
     workModalYoutube.removeAttribute('src');
     workModalYoutube.hidden = true;
-    setWorkModalExpanded(false);
 
     workModal.classList.remove('is-open');
     document.body.classList.remove('modal-open');
@@ -1788,10 +1754,6 @@ body.modal-open{ overflow:hidden; }
 
   function onModalKeydown(e){
     if(e.key === 'Escape'){
-      if(workModal.classList.contains('is-expanded')){
-        setWorkModalExpanded(false);
-        return;
-      }
       closeWorkModal();
       return;
     }
@@ -1809,18 +1771,8 @@ body.modal-open{ overflow:hidden; }
     }
   }
 
-  function setWorkModalExpanded(expanded){
-    workModal.classList.toggle('is-expanded', expanded);
-    workModalExpand.setAttribute('aria-pressed', expanded ? 'true' : 'false');
-    workModalExpand.setAttribute('aria-label', expanded ? '元の大きさに戻す' : '画面いっぱいに表示');
-    workModalExpandLabel.textContent = expanded ? '元の大きさに戻す' : '画面いっぱいに表示';
-  }
-
   workModalClose.addEventListener('click', closeWorkModal);
   workModalBackdrop.addEventListener('click', closeWorkModal);
-  workModalExpand.addEventListener('click', function(){
-    setWorkModalExpanded(!workModal.classList.contains('is-expanded'));
-  });
 
   /* ---------------- 数字のカウントアップ（reduced-motion時はスキップ） ---------------- */
   var statNums = document.querySelectorAll('.stats-num[data-count]');
