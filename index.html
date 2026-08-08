@@ -1556,13 +1556,16 @@ body.modal-open{ overflow:hidden; }
   }
 
   function getWorkVideoSource(work){
+    var localVideo = work.video || work.videoUrl || work.videoSrc || '';
+    if(localVideo){
+      return { type:'video', url:localVideo };
+    }
     var youtubeUrl = work.youtubeUrl || work.youtube || '';
     var youtubeId = getYoutubeId(youtubeUrl);
     if(youtubeId){
       return { type:'youtube', id:youtubeId, url:youtubeUrl };
     }
-    var localVideo = work.video || work.videoUrl || work.videoSrc || '';
-    return localVideo ? { type:'video', url:localVideo } : null;
+    return null;
   }
 
   function getWorkThumbnail(work, source){
@@ -1608,12 +1611,19 @@ body.modal-open{ overflow:hidden; }
 
     list.forEach(function(work){
       var source = getWorkVideoSource(work);
-      var card = document.createElement('button');
-      card.type = 'button';
+      var opensYoutube = source && source.type === 'youtube';
+      var card = document.createElement(opensYoutube ? 'a' : 'button');
+      if(opensYoutube){
+        card.href = source.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      } else {
+        card.type = 'button';
+      }
       card.className = 'work-card';
-      card.setAttribute('aria-haspopup', 'dialog');
+      if(!opensYoutube){ card.setAttribute('aria-haspopup', 'dialog'); }
       card.setAttribute('data-id', work.id);
-      card.setAttribute('aria-label', work.title + 'の動画を再生');
+      card.setAttribute('aria-label', work.title + (opensYoutube ? 'をYouTubeで見る' : 'の動画を再生'));
 
       var tagsHtml = (work.tags || []).map(function(t){ return '<span class="work-tag">' + escapeHtml(t) + '</span>'; }).join('');
       var safeTitle = escapeHtml(work.title);
@@ -1645,11 +1655,13 @@ body.modal-open{ overflow:hidden; }
         '<span class="work-title">' + safeTitle + '</span>' +
         '<span class="work-desc">' + escapeHtml(work.description) + '</span>' +
         '<span class="work-tags">' + tagsHtml + '</span>' +
-        '<span class="work-cta">動画を再生する <span aria-hidden="true">→</span></span>';
+        '<span class="work-cta">' + (opensYoutube ? 'YouTubeで見る' : '動画を再生する') + ' <span aria-hidden="true">→</span></span>';
 
       card.appendChild(thumbWrap);
       card.appendChild(info);
-      card.addEventListener('click', function(){ openWorkModal(work); });
+      if(!opensYoutube){
+        card.addEventListener('click', function(){ openWorkModal(work); });
+      }
       worksGrid.appendChild(card);
     });
 
