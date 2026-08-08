@@ -580,7 +580,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   display:flex; flex-direction:column;
 }
 .work-modal-video-wrap{ position:relative; width:100%; aspect-ratio:9/16; max-height:70vh; background:#000; }
-.work-modal-video-wrap video{ width:100%; height:100%; object-fit:contain; background:#000; }
+.work-modal-video-wrap video,
+.work-modal-video-wrap iframe{ width:100%; height:100%; object-fit:contain; background:#000; border:0; display:block; }
+.work-modal-video-wrap.is-landscape{ aspect-ratio:16/9; max-height:none; }
+.work-modal-body.is-landscape{ max-width:min(960px,94vw); }
 .work-modal-error{
   position:absolute; inset:0;
   display:flex; align-items:center; justify-content:center; text-align:center;
@@ -592,6 +595,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .work-modal-info{ padding:18px 20px 22px; color:var(--white); }
 .work-modal-info h3{ font-size:1.05rem; margin-bottom:6px; }
 .work-modal-info p{ font-size:.86rem; color:#c9c9c4; }
+.work-modal-youtube{
+  display:inline-flex; align-items:center; gap:7px; margin-top:12px;
+  color:var(--yellow); font-size:.82rem; font-weight:700;
+  border-bottom:1px solid rgba(214,179,106,.45); padding-bottom:2px;
+}
+.work-modal-youtube[hidden]{ display:none; }
 .work-modal-close{
   position:absolute; top:14px; right:14px; z-index:2;
   width:40px; height:40px; border-radius:50%;
@@ -1057,11 +1066,13 @@ body.modal-open{ overflow:hidden; }
       </button>
       <div class="work-modal-video-wrap">
         <video id="workModalVideo" controls playsinline preload="metadata"></video>
+        <iframe id="workModalYoutube" title="YouTube動画プレイヤー" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe>
         <p class="work-modal-error" id="workModalError" hidden>動画を読み込めませんでした。時間を置いて再度お試しください。</p>
       </div>
       <div class="work-modal-info">
         <h3 id="workModalTitle"></h3>
         <p id="workModalDesc"></p>
+        <a class="work-modal-youtube" id="workModalYoutubeLink" href="#" target="_blank" rel="noopener noreferrer" hidden>YouTubeで見る <span aria-hidden="true">&#8599;</span></a>
       </div>
     </div>
   </div>
@@ -1473,8 +1484,35 @@ body.modal-open{ overflow:hidden; }
       orientation: "portrait",
       featured: true,
       published: true
+    },
+    {
+      id: "luxury-skincare-pr",
+      title: "高級スキンケアブランド PR動画",
+      category: "広告動画",
+      description: "高級スキンケアブランドを想定し、企画・映像生成・編集・音響・仕上げまで一貫して制作したポートフォリオ作品です。",
+      youtubeUrl: "https://youtu.be/dlV_P4kCxRY",
+      tags: ["商品PR", "スキンケア", "生成AI動画", "ポートフォリオ"],
+      orientation: "landscape",
+      featured: true,
+      published: true
     }
   ];
+
+  /*
+    YouTube実績の追加例：通常動画・共有URL・Shorts URLに対応。
+    thumbnailを省略するとYouTubeのサムネイルを自動表示します。
+
+    {
+      id: "product-promotion",
+      title: "商品プロモーション映像",
+      category: "広告動画",
+      description: "商品の世界観を短尺映像で表現したプロモーション事例。",
+      youtubeUrl: "https://www.youtube.com/watch?v=VIDEO_ID",
+      tags: ["商品PR", "SNS広告"],
+      orientation: "landscape",
+      published: true
+    }
+  */
 
   var worksGrid = document.getElementById('worksGrid');
   var worksToolbar = document.getElementById('worksToolbar');
@@ -1487,6 +1525,30 @@ body.modal-open{ overflow:hidden; }
     return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
+  function getYoutubeId(url){
+    if(!url) return '';
+    var value = String(url).trim();
+    var match = value.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+    return match ? match[1] : '';
+  }
+
+  function getWorkVideoSource(work){
+    var youtubeUrl = work.youtubeUrl || work.youtube || '';
+    var youtubeId = getYoutubeId(youtubeUrl);
+    if(youtubeId){
+      return { type:'youtube', id:youtubeId, url:youtubeUrl };
+    }
+    var localVideo = work.video || work.videoUrl || work.videoSrc || '';
+    return localVideo ? { type:'video', url:localVideo } : null;
+  }
+
+  function getWorkThumbnail(work, source){
+    if(work.thumbnail) return work.thumbnail;
+    return source && source.type === 'youtube'
+      ? 'https://i.ytimg.com/vi/' + source.id + '/maxresdefault.jpg'
+      : '';
+  }
+
   // ---------------- 表示条件を満たす作品だけを対象にする ----------------
   // ・published が true であること
   // ・動画（video / videoUrl / videoSrc）が設定されていること
@@ -1494,9 +1556,10 @@ body.modal-open{ overflow:hidden; }
   // いずれかを満たさない項目は、空の枠や壊れた画像として出さず、DOMへ一切出力しない。
   function getVisibleWorks(){
     return worksData.filter(function(work){
-      var videoPath = work.video || work.videoUrl || work.videoSrc;
-      var hasVideo = !!(videoPath && String(videoPath).trim() !== '');
-      var hasThumbnail = !!(work.thumbnail && String(work.thumbnail).trim() !== '');
+      var source = getWorkVideoSource(work);
+      var thumbnail = getWorkThumbnail(work, source);
+      var hasVideo = !!source;
+      var hasThumbnail = !!(thumbnail && String(thumbnail).trim() !== '');
       var isPublished = work.published === true;
       return isPublished && hasVideo && hasThumbnail;
     });
@@ -1521,6 +1584,7 @@ body.modal-open{ overflow:hidden; }
     });
 
     list.forEach(function(work){
+      var source = getWorkVideoSource(work);
       var card = document.createElement('button');
       card.type = 'button';
       card.className = 'work-card';
@@ -1532,7 +1596,7 @@ body.modal-open{ overflow:hidden; }
       var safeTitle = escapeHtml(work.title);
 
       var thumbImg = document.createElement('img');
-      thumbImg.src = work.thumbnail;
+      thumbImg.src = getWorkThumbnail(work, source);
       thumbImg.alt = work.title + 'のサムネイル';
       thumbImg.loading = 'lazy';
       thumbImg.decoding = 'async';
@@ -1589,6 +1653,10 @@ body.modal-open{ overflow:hidden; }
   var workModalBackdrop = document.getElementById('workModalBackdrop');
   var workModalClose = document.getElementById('workModalClose');
   var workModalVideo = document.getElementById('workModalVideo');
+  var workModalYoutube = document.getElementById('workModalYoutube');
+  var workModalYoutubeLink = document.getElementById('workModalYoutubeLink');
+  var workModalVideoWrap = workModal.querySelector('.work-modal-video-wrap');
+  var workModalBody = workModal.querySelector('.work-modal-body');
   var workModalTitle = document.getElementById('workModalTitle');
   var workModalDesc = document.getElementById('workModalDesc');
   var workModalError = document.getElementById('workModalError');
@@ -1623,23 +1691,42 @@ body.modal-open{ overflow:hidden; }
     workModalVideo.pause();
     workModalVideo.removeAttribute('src');
     workModalVideo.load();
+    workModalVideo.hidden = true;
+    workModalYoutube.hidden = true;
+    workModalYoutube.removeAttribute('src');
+    workModalYoutubeLink.hidden = true;
+    workModalYoutubeLink.removeAttribute('href');
+
+    var source = getWorkVideoSource(work);
+    var isLandscape = work.orientation === 'landscape';
+    workModalVideoWrap.classList.toggle('is-landscape', isLandscape);
+    workModalBody.classList.toggle('is-landscape', isLandscape);
 
     workModal.classList.add('is-open');
     document.body.classList.add('modal-open');
 
-    workModalVideo.src = work.video;
-    workModalVideo.controls = true;
-    workModalVideo.playsInline = true;
-    workModalVideo.preload = 'metadata';
+    if(source && source.type === 'youtube'){
+      workModalYoutube.hidden = false;
+      workModalYoutube.src = 'https://www.youtube-nocookie.com/embed/' + source.id + '?autoplay=1&rel=0';
+      workModalYoutubeLink.hidden = false;
+      workModalYoutubeLink.href = source.url;
+    } else if(source){
+      workModalVideo.hidden = false;
+      workModalVideo.src = source.url;
+      workModalVideo.controls = true;
+      workModalVideo.playsInline = true;
+      workModalVideo.preload = 'metadata';
+      workModalVideo.load();
 
-    workModalVideo.load();
-
-    workModalVideo.addEventListener('canplay', function playOnce(){
-      workModalVideo.removeEventListener('canplay', playOnce);
-      workModalVideo.play().catch(function(){
-        // 自動再生できない場合も、標準controlsの再生ボタンから再生できる状態を維持する
+      workModalVideo.addEventListener('canplay', function playOnce(){
+        workModalVideo.removeEventListener('canplay', playOnce);
+        workModalVideo.play().catch(function(){
+          // 自動再生できない場合も、標準controlsの再生ボタンから再生できる状態を維持する
+        });
       });
-    });
+    } else {
+      showModalError();
+    }
 
     workModalClose.focus();
     document.addEventListener('keydown', onModalKeydown);
@@ -1649,6 +1736,8 @@ body.modal-open{ overflow:hidden; }
     workModalVideo.pause();
     workModalVideo.removeAttribute('src');
     workModalVideo.load();
+    workModalYoutube.removeAttribute('src');
+    workModalYoutube.hidden = true;
 
     workModal.classList.remove('is-open');
     document.body.classList.remove('modal-open');
