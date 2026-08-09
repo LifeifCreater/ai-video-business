@@ -420,6 +420,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .founder-portrait{
   position:relative;
   width:min(100%,560px);
+  margin:0;
+  min-width:0;
+  justify-self:center;
   aspect-ratio:3/4;
   overflow:hidden;
   background:var(--gray-200);
@@ -468,8 +471,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   transform:translate(-50%,-50%);
 }
 @media (max-width:420px){
-  .founder-portrait-caption{ right:118px; }
+  .founder-portrait-caption{ left:18px; right:18px; bottom:112px; }
   .founder-avatar{ width:82px; height:82px; right:18px; bottom:18px; }
+  .founder-title{ font-size:clamp(1.65rem,8vw,1.9rem); line-height:1.4; margin-bottom:26px; }
 }
 .founder-copy{ max-width:680px; }
 .founder-title{
@@ -723,6 +727,21 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .work-modal-close:hover{ background:rgba(255,255,255,.22); }
 body.modal-open{ overflow:hidden; }
 
+@media (max-width:859px){
+  .work-card.is-landscape .work-thumb-wrap{ aspect-ratio:16/9; max-width:none; }
+}
+
+@media (max-width:600px){
+  .work-modal{ padding:12px; }
+  .work-modal-body{ max-height:calc(100dvh - 24px); border-radius:12px; }
+  .work-modal-info{
+    min-height:0;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+}
+
 /* ============================================================
    7. FRAMEPACTについて
 ============================================================= */
@@ -942,6 +961,19 @@ body.modal-open{ overflow:hidden; }
 .floating-cta.is-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
 .floating-cta .btn{ box-shadow:0 14px 30px -12px rgba(0,0,0,.5); padding:14px 22px; font-size:.88rem; min-height:auto; }
 @media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } }
+
+@media (max-width:480px){
+  .stats-grid{ gap:32px 16px; }
+  .stats-item,
+  .stats-item:nth-child(odd),
+  .stats-item:nth-child(even){ border-left:none; padding-left:0; padding-right:0; }
+  .work-info{ padding:26px 22px 28px; }
+  .floating-cta{ right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); }
+}
+
+@media (max-width:360px){
+  .hero-title{ font-size:clamp(1.18rem,6vw,1.4rem); letter-spacing:-.035em; }
+}
 
 .section-head{ max-width:var(--measure); }
 </style>
@@ -1751,7 +1783,7 @@ body.modal-open{ overflow:hidden; }
       var source = getWorkVideoSource(work);
       var card = document.createElement('button');
       card.type = 'button';
-      card.className = 'work-card';
+      card.className = 'work-card' + (work.orientation === 'landscape' ? ' is-landscape' : ' is-portrait');
       card.setAttribute('aria-haspopup', 'dialog');
       card.setAttribute('data-id', work.id);
       card.setAttribute('aria-label', work.title + 'の動画を再生');
