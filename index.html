@@ -87,8 +87,8 @@
       "@type": "Person",
       "@id": "https://framepact.jp/#person",
       "name": "よっしー",
-      "jobTitle": "企業動画プロデューサー",
-      "description": "大手日系IT企業で動画制作・情報発信を3年以上担当し、個人としてYouTube運用を6年以上継続。生成AIを活用した企業動画制作ブランド「FRAMEPACT」を運営している。",
+      "jobTitle": "FRAMEPACT創業者・企業動画プロデューサー",
+      "description": "大手日系IT企業で動画制作・情報発信を3年以上担当し、個人としてYouTube運用を6年以上継続。企業やサービスの想いを、伝わり行動につながる映像へ変える動画制作ブランド「FRAMEPACT」を運営している。",
       "worksFor": { "@id": "https://framepact.jp/#organization" }
     },
     {
@@ -405,7 +405,118 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 @media (max-width:600px){ .scroll-indicator{ display:none; } }
 
 /* ============================================================
-   3-2. ヒーロー直後の導入セクション
+   3-2. 創業者ストーリー
+============================================================= */
+.founder-story{ padding:var(--space-section) 0; background:var(--offwhite); }
+.founder-story-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:56px;
+  align-items:center;
+}
+@media (min-width:900px){
+  .founder-story-grid{ grid-template-columns:minmax(320px,.86fr) minmax(0,1.14fr); gap:clamp(72px,8vw,128px); }
+}
+.founder-portrait{
+  position:relative;
+  width:min(100%,560px);
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:var(--gray-200);
+}
+.founder-portrait::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 58%,rgba(7,7,7,.62) 100%);
+  pointer-events:none;
+}
+.founder-portrait > img{ width:100%; height:100%; object-fit:cover; object-position:center center; }
+.founder-portrait-caption{
+  position:absolute;
+  left:24px;
+  right:136px;
+  bottom:22px;
+  z-index:1;
+  color:var(--white);
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.founder-portrait-caption strong{ font-size:1rem; letter-spacing:.02em; }
+.founder-portrait-caption span{ font-size:.72rem; letter-spacing:.16em; color:#deddd8; text-transform:uppercase; }
+.founder-avatar{
+  position:absolute;
+  right:22px;
+  bottom:22px;
+  z-index:2;
+  width:94px;
+  height:94px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid rgba(255,255,255,.9);
+  background:var(--charcoal);
+  box-shadow:0 14px 28px rgba(0,0,0,.28);
+}
+.founder-avatar img{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:420%;
+  height:auto;
+  max-width:none;
+  transform:translate(-50%,-50%);
+}
+@media (max-width:420px){
+  .founder-portrait-caption{ right:118px; }
+  .founder-avatar{ width:82px; height:82px; right:18px; bottom:18px; }
+}
+.founder-copy{ max-width:680px; }
+.founder-title{
+  font-family:var(--font-jp),var(--font-en);
+  font-size:clamp(1.9rem,4.4vw,3.35rem);
+  line-height:1.45;
+  font-weight:800;
+  letter-spacing:-.025em;
+  margin-bottom:32px;
+}
+.founder-greeting{ font-size:1.08rem; font-weight:700; color:var(--ink); margin-bottom:18px; }
+.founder-body{ display:grid; gap:18px; color:var(--gray-600); font-size:1rem; line-height:2; }
+.founder-belief{
+  margin:34px 0 0;
+  padding:24px 0 24px 24px;
+  border-left:2px solid var(--yellow);
+  font-family:var(--font-jp),var(--font-en);
+  font-size:clamp(1.12rem,2vw,1.35rem);
+  font-weight:700;
+  line-height:1.75;
+  color:var(--ink);
+}
+.founder-history{ margin-top:44px; border-top:1px solid var(--gray-200); }
+.founder-history-item{
+  display:grid;
+  grid-template-columns:56px 1fr;
+  gap:16px;
+  padding:22px 0;
+  border-bottom:1px solid var(--gray-200);
+}
+.founder-history-num{ font-size:.75rem; color:var(--yellow-dark); font-weight:700; letter-spacing:.08em; }
+.founder-history-item h3{ font-family:var(--font-jp),var(--font-en); font-size:1rem; margin-bottom:6px; }
+.founder-history-item p{ color:var(--gray-600); font-size:.9rem; line-height:1.75; }
+.founder-note-link{ margin-top:30px; }
+.founder-note-link a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding-bottom:3px;
+  border-bottom:1px solid var(--yellow-dark);
+  font-size:.9rem;
+  font-weight:700;
+}
+.founder-note-link a:hover{ color:var(--yellow-dark); }
+
+/* ============================================================
+   3-3. 導入セクション
 ============================================================= */
 .intro{ padding:var(--space-section) 0; background:var(--white); }
 .intro-inner{ max-width:920px; }
@@ -854,7 +965,7 @@ body.modal-open{ overflow:hidden; }
       <ul>
         <li><a href="#services">サービス</a></li>
         <li><a href="#works">制作実績</a></li>
-        <li><a href="#about">FRAMEPACTについて</a></li>
+        <li><a href="#founder">創業者の想い</a></li>
         <li><a href="#process">制作の流れ</a></li>
         <li><a href="/column.html">お役立ち記事</a></li>
         <li><a href="#price">料金</a></li>
@@ -874,7 +985,7 @@ body.modal-open{ overflow:hidden; }
   <ul>
     <li><a href="#services">サービス</a></li>
     <li><a href="#works">制作実績</a></li>
-    <li><a href="#about">FRAMEPACTについて</a></li>
+    <li><a href="#founder">創業者の想い</a></li>
     <li><a href="#process">制作の流れ</a></li>
     <li><a href="/column.html">お役立ち記事</a></li>
     <li><a href="#price">料金</a></li>
@@ -925,7 +1036,55 @@ body.modal-open{ overflow:hidden; }
   </section>
 
   <!-- ============================================================
-       導入（ヒーロー直後の価値提示）
+       創業者ストーリー
+  ============================================================= -->
+  <section class="founder-story" id="founder">
+    <div class="wrap founder-story-grid">
+      <figure class="founder-portrait reveal">
+        <img src="/profile-icon.png" alt="FRAMEPACT創業者 よっしー" width="1021" height="1361" loading="lazy" decoding="async">
+        <figcaption class="founder-portrait-caption">
+          <strong>よっしー</strong>
+          <span>Founder / Creative Director</span>
+        </figcaption>
+        <span class="founder-avatar" aria-hidden="true">
+          <img src="/profile-icon.png" alt="" width="1021" height="1361" loading="lazy" decoding="async">
+        </span>
+      </figure>
+
+      <div class="founder-copy reveal">
+        <span class="eyebrow">FOUNDER'S STORY</span>
+        <h2 class="founder-title">伝えたい想いが、<br>素材や体制の制約で<br>埋もれないように。</h2>
+        <p class="founder-greeting">はじめまして。FRAMEPACT創業者のよっしーです。</p>
+        <div class="founder-body">
+          <p>私の映像制作の原点は、個人で始めたYouTubeでした。自分が伝えたいことを詰め込んでも、必ずしも視聴者に届くわけではない。公開後の反応を見ながら、冒頭の見せ方や言葉の順番、映像のテンポを何度も見直す中で、同じ内容でも伝え方によって人の受け取り方が変わることを学びました。</p>
+          <p>その後、企業の動画制作と情報発信に携わりました。正確な情報をそのまま並べるだけでは、伝えたい相手に届かないことがあります。誰に何を届けるのか、何を残して何を削るのかを整理し、関係者と認識を合わせながら形にする。この経験が、現在の制作姿勢の土台になっています。</p>
+          <p>個人で動画制作の依頼を受けるようになると、「使える素材がない」「完成イメージをうまく言葉にできない」という相談にも出会いました。目的や届けたい相手を一緒に整理し、何もないところから必要な映像を組み立てる。その経験から、依頼者が本当に困っているのは編集作業そのものではなく、伝えたいことをどう映像にすればよいか分からないことなのだと気づきました。</p>
+          <p>FRAMEPACTが目指すのは、ただ動画を制作して納品することではありません。企業やサービスの想いがきちんと伝わり、その先でエンドユーザーが「もっと知りたい」「使ってみたい」「行動してみたい」と感じる映像をつくることです。そのために、目的を聞き、情報を整理し、誰に何を届け、どのような行動につなげたいのかまで一緒に考えます。</p>
+        </div>
+        <p class="founder-belief">ただ動画を作るだけではなく、<br>想いを伝え、エンドユーザーが行動したくなる映像へ。</p>
+
+        <div class="founder-history" aria-label="創業者の経歴">
+          <div class="founder-history-item">
+            <span class="founder-history-num">01</span>
+            <div><h3>個人の発信者として</h3><p>YouTube運用を6年以上継続。企画・撮影・編集・発信を自ら行い、視聴者に届く表現を磨いてきました。</p></div>
+          </div>
+          <div class="founder-history-item">
+            <span class="founder-history-num">02</span>
+            <div><h3>企業の伝え手として</h3><p>大手日系IT企業で、動画制作と情報発信を3年以上担当。企業の情報を正確に、分かりやすく届ける実務に携わっています。</p></div>
+          </div>
+          <div class="founder-history-item">
+            <span class="founder-history-num">03</span>
+            <div><h3>FRAMEPACTの創業へ</h3><p>生成AIと映像編集を組み合わせ、素材がない段階からでも、企画から納品まで一貫して向き合う制作ブランドを立ち上げました。</p></div>
+          </div>
+        </div>
+
+        <p class="founder-note-link"><a href="https://note.com/framepact" target="_blank" rel="noopener noreferrer">noteでFRAMEPACTの考え方を読む <span aria-hidden="true">&#8599;</span></a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       導入（FRAMEPACTの価値提示）
   ============================================================= -->
   <section class="intro">
     <div class="wrap">
