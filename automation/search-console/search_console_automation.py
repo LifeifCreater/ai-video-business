@@ -30,8 +30,9 @@ def credentials(scopes):
     return AuthorizedSession(service_account.Credentials.from_service_account_info(json.loads(raw), scopes=scopes))
 
 def eligible(page, ts):
+    # retryAfterがある間はownerActionRequiredでも期日前に再試行しない。
+    if page["retryAfter"]: return datetime.fromisoformat(page["retryAfter"]) <= ts
     if page["ownerActionRequired"]: return True
-    if page["retryAfter"] and datetime.fromisoformat(page["retryAfter"]) <= ts: return True
     if page["inspectionStatus"] not in (None, "PASS"): return True
     return bool(page["publishedAt"] and datetime.fromisoformat(page["publishedAt"]) <= ts - timedelta(days=1) and not page["inspectedAt"])
 
@@ -42,7 +43,8 @@ def judge(page, ts):
     if page["indexingState"] in ("BLOCKED_BY_META_TAG", "BLOCKED_BY_HTTP_HEADER"): reasons.append("noindex検出")
     if page["googleCanonical"] and page["userCanonical"] and page["googleCanonical"] != page["userCanonical"]: reasons.append("canonical不一致")
     if page["pageFetchState"] in ("NOT_FOUND", "SERVER_ERROR"): reasons.append(page["pageFetchState"])
-    if page["consecutiveApiFailures"] >= 3: reasons.append("API取得3回連続失敗")
+    if page.get("errorInfo") and ("HTTP 401" in page["errorInfo"] or "HTTP 403" in page["errorInfo"]): reasons.append("API認証・権限エラー")
+    elif page["consecutiveApiFailures"] >= 3: reasons.append("API取得3回連続失敗")
     if page["publishedAt"] and ts - datetime.fromisoformat(page["publishedAt"]) >= timedelta(days=7) and page["inspectionStatus"] != "PASS": reasons.append("公開7日後も未登録")
     if page["coverageState"] and "Crawled" in page["coverageState"] and page["inspectionStatus"] != "PASS": reasons.append("クロール済みだが未登録継続")
     page["ownerActionRequired"] = bool(reasons)
@@ -58,6 +60,9 @@ def inspect(live):
         if eligible(p, ts): targets.append(p)
     if not live:
         print(json.dumps({"mode":"dry-run","property":data["siteUrl"],"sitemap":data["sitemapUrl"],"sitemapUrls":len(rows),"inspectionTargets":[p["url"] for p in targets],"authentication":"not tested"}, ensure_ascii=False, indent=2)); return
+    if not targets:
+        data["generatedAt"] = iso(ts); save(REGISTER, data); update_morning(data, ts)
+        return
     session = credentials(["https://www.googleapis.com/auth/webmasters.readonly"])
     for p in targets:
         try:
@@ -69,7 +74,8 @@ def inspect(live):
             p["consecutiveApiFailures"] += 1
             status_code = getattr(getattr(exc, "response", None), "status_code", None)
             p["errorInfo"] = f"{type(exc).__name__}:HTTP {status_code}" if status_code else type(exc).__name__
-            p["inspectedAt"] = iso(ts); p["retryAfter"] = iso(ts + timedelta(days=1 if p["consecutiveApiFailures"] < 3 else 7))
+            cooldown_days = 7 if status_code in (401, 403) or p["consecutiveApiFailures"] >= 3 else 1
+            p["inspectedAt"] = iso(ts); p["retryAfter"] = iso(ts + timedelta(days=cooldown_days))
         judge(p, ts)
     data["generatedAt"] = iso(ts); save(REGISTER, data); update_morning(data, ts)
     failed = [p for p in targets if p.get("errorInfo")]
