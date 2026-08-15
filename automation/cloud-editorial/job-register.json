@@ -163,6 +163,23 @@
       "errorSummary": null,
       "retryCount": 0,
       "lastUpdatedAt": "2026-08-14T11:15:14.901+09:00"
+    },
+    {
+      "jobId": "WEEKLY-PLANNING-WEEK-2026-08-17",
+      "workflowType": "weekly_planning",
+      "sourceId": "WEEK-2026-08-17",
+      "status": "waiting_owner",
+      "scheduledFor": "2026-08-16T01:00:00+09:00",
+      "startedAt": "2026-08-16T01:01:25+09:00",
+      "completedAt": null,
+      "branch": "planning/weekly-2026-08-17",
+      "commitSha": null,
+      "pullRequestUrl": null,
+      "approvalRequired": "planning_owner_approval",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-08-16T01:12:00+09:00"
     }
   ]
 }
