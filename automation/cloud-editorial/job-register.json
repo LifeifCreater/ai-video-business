@@ -173,13 +173,13 @@
       "startedAt": "2026-08-16T01:01:25+09:00",
       "completedAt": null,
       "branch": "planning/weekly-2026-08-17",
-      "commitSha": null,
-      "pullRequestUrl": null,
+      "commitSha": "8cfeba77ff1b43ee579394b0b625bb4afeab5453",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/17",
       "approvalRequired": "planning_owner_approval",
       "errorCode": null,
       "errorSummary": null,
       "retryCount": 0,
-      "lastUpdatedAt": "2026-08-16T01:12:00+09:00"
+      "lastUpdatedAt": "2026-08-16T01:10:00+09:00"
     }
   ]
 }
