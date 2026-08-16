@@ -8,4 +8,5 @@
 - sitemap: `sitemap.xml`
 - 本文変更: なし（承認済み本文をHTML化）
 - 検査: title、description、H1、canonical、OGP、JSON-LD、CTA、sitemap重複、管理情報混入を確認
-- 公開状態: merge・本番確認待ち
+- 公開状態: 公開済み（2026-08-16、本番確認済み）
+- 公開PR: https://github.com/LifeifCreater/ai-video-business/pull/24

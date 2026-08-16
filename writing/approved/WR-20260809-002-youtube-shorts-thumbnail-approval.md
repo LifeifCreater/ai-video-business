@@ -12,9 +12,11 @@
 - 調査ID: RES-20260816-001
 - 対象読者: YouTube Shortsを企業PR、採用広報、イベント告知に使う広報・マーケティング・採用担当者
 - 主要CTA: https://framepact.jp/corporate-pr-video.html
-- ステータス: 原稿承認済み / 公開実装承認済み / 未公開
+- ステータス: 公開済み
 - 作成日: 2026-08-16
 - 公開承認: 承認済み（2026-08-16、オーナー）
+- 公開操作: 完了（2026-08-16）
+- 公開URL: https://framepact.jp/youtube-shorts-thumbnail-approval.html
 
 ## description
 
