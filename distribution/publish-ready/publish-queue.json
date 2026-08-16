@@ -309,5 +309,57 @@
     "publishStatus": "unpublished",
     "publishedAt": "",
     "publishedUrl": ""
+  },
+  {
+    "id": "PUB-X-009",
+    "platform": "X",
+    "theme": "YouTube Shortsの入口設計",
+    "sourceArticle": "youtube-shorts-thumbnail-approval.html",
+    "sourceUrl": "https://framepact.jp/youtube-shorts-thumbnail-approval.html",
+    "title": "企業Shorts、公開前に決める4つの入口",
+    "body": "企業のYouTube Shortsは、本編が完成しても公開準備が終わったとは限りません。\n\n冒頭、代表フレーム、カスタムサムネイル、タイトル。\n\nこの4つを後から決めると、人物・商品・ロゴ・文言の承認をやり直しやすくなります。",
+    "completedText": "企業のYouTube Shortsは、本編が完成しても公開準備が終わったとは限りません。\n\n冒頭、代表フレーム、カスタムサムネイル、タイトル。\n\nこの4つを後から決めると、人物・商品・ロゴ・文言の承認をやり直しやすくなります。\n\nhttps://framepact.jp/youtube-shorts-thumbnail-approval.html\n\n#YouTubeShorts #企業動画",
+    "hashtags": [
+      "#YouTubeShorts",
+      "#企業動画"
+    ],
+    "cta": "公開後の記事で入口4要素を確認",
+    "proposedAt": "",
+    "objective": "課題認知と記事遷移",
+    "notes": "7投稿スレッド候補。記事公開後にURL・各投稿文字数・YouTubeの提供状況を再確認。自動投稿・予約は禁止。",
+    "accountUrl": "https://x.com/yossy_FRAMEPACT",
+    "accountDisplayName": "よっしー｜AI動画制作",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": ""
+  },
+  {
+    "id": "PUB-NOTE-005",
+    "platform": "note",
+    "theme": "YouTube Shortsの入口設計",
+    "sourceArticle": "youtube-shorts-thumbnail-approval.html",
+    "sourceUrl": "https://framepact.jp/youtube-shorts-thumbnail-approval.html",
+    "title": "企業のYouTube Shortsは「本編完成」で終わらない。公開前に決めたい4つの入口",
+    "body": "企業のショート動画を制作するとき、本編の確認が終わってから一覧で見える画像やタイトルの判断が残ることがあります。冒頭、代表フレーム、カスタムサムネイル、タイトルを別成果物として設計し、本編と同じ版番号で管理する方法を整理します。",
+    "completedText": "",
+    "hashtags": [
+      "#YouTubeShorts",
+      "#企業動画"
+    ],
+    "cta": "原稿公開後の記事と企業PR動画サービスを確認",
+    "proposedAt": "",
+    "objective": "実務課題の整理と記事遷移",
+    "notes": "記事公開後にURLを確定し、本文・CTA・ハッシュタグを分離してオーナーが手動投稿。自動投稿・予約は禁止。",
+    "accountUrl": "",
+    "accountDisplayName": "",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": ""
   }
 ]
