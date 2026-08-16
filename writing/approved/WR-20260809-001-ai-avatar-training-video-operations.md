@@ -12,9 +12,9 @@
 - 調査ID: RES-20260815-001
 - 対象読者: 企業の人事、研修、社内広報、情報システム、コンプライアンス担当者
 - 主要CTA: https://framepact.jp/training-video.html
-- ステータス: 原稿承認済み / 公開実装承認済み / 未公開
+- ステータス: 公開済み
 - 作成日: 2026-08-15
-- 公開承認: 承認済み（2026-08-16、オーナー）
+- 公開承認: 承認済み（2026-08-16、オーナー）\n- 公開操作: 完了（2026-08-16）\n- 公開URL: https://framepact.jp/ai-avatar-training-video-operations.html
 
 ## description
 
