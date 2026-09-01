@@ -10,7 +10,8 @@
 - SEO再レビュー: `R2合格`
 - 編集・校正再レビュー: `R2合格`
 - HTML変更: `未実施`
-- 公開状態: `未公開`
+- 公開状態: `公開済み（2026-08-03、本番確認済み）`
+- 公開PR: `https://github.com/LifeifCreater/ai-video-business/pull/2`
 
 ## 既存実装の調査結果
 
