@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "siteUrl": "https://framepact.jp/",
   "sitemapUrl": "https://framepact.jp/sitemap.xml",
-  "generatedAt": "2026-08-05T18:28:32+09:00",
+  "generatedAt": "2026-09-06T10:15:18+09:00",
   "lastSitemapSubmissionAt": null,
   "pages": [
     {
@@ -21,12 +21,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/corporate-ai-video.html",
@@ -44,12 +44,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/ai-video-price.html",
@@ -67,12 +67,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/no-material-ai-video.html",
@@ -90,12 +90,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/corporate-pr-video.html",
@@ -113,12 +113,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/recruit-video.html",
@@ -136,12 +136,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/training-video.html",
@@ -159,12 +159,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/event-video.html",
@@ -182,18 +182,18 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/column.html",
       "pageType": "column_index",
       "publishedAt": null,
-      "lastModified": "2026-08-03",
+      "lastModified": "2026-08-16",
       "sitemapIncluded": true,
       "sitemapSubmittedAt": null,
       "inspectionStatus": null,
@@ -205,12 +205,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/what-is-ai-video-production.html",
@@ -228,12 +228,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/ai-video-vs-traditional-video.html",
@@ -251,12 +251,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 1,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 10,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー"
     },
     {
       "url": "https://framepact.jp/ai-video-outsourcing-checklist.html",
@@ -274,12 +274,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 2,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。公開7日未満は経過観察。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 12,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー、公開7日後も未登録"
     },
     {
       "url": "https://framepact.jp/ai-video-ad-disclosure.html",
@@ -297,12 +297,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 2,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。公開7日未満は経過観察。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 12,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー、公開7日後も未登録"
     },
     {
       "url": "https://framepact.jp/ai-video-data-management.html",
@@ -320,12 +320,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 2,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。公開7日未満は経過観察。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 12,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー、公開7日後も未登録"
     },
     {
       "url": "https://framepact.jp/multi-platform-video-production.html",
@@ -343,12 +343,12 @@
       "lastCrawlTime": null,
       "referringUrls": null,
       "pageFetchState": null,
-      "errorInfo": "HTTPError",
-      "inspectedAt": "2026-08-05T18:28:32+09:00",
-      "retryAfter": "2026-08-06T18:28:32+09:00",
-      "consecutiveApiFailures": 2,
-      "ownerActionRequired": false,
-      "notes": "sitemap.xmlから初期登録。API未実行。公開7日未満は経過観察。"
+      "errorInfo": "HTTPError:HTTP 403",
+      "inspectedAt": "2026-09-05T10:17:22+09:00",
+      "retryAfter": "2026-09-12T10:17:22+09:00",
+      "consecutiveApiFailures": 12,
+      "ownerActionRequired": true,
+      "notes": "API認証・権限エラー、公開7日後も未登録"
     }
   ]
 }
