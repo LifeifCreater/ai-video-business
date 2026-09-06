@@ -76,17 +76,38 @@
     "implementationPullRequests": 1
   },
   "searchConsole": {
-    "generatedAt": "2026-08-05T18:28:32+09:00",
+    "generatedAt": "2026-09-06T10:15:18+09:00",
     "status": "取得失敗",
-    "newPublishedUrlCount": 4,
+    "newPublishedUrlCount": 0,
     "indexedCount": null,
     "notIndexedCount": null,
     "errorCount": 15,
     "apiFailureCount": 15,
     "canonicalMismatchCount": null,
     "sitemapMissingCount": 0,
-    "ownerActionRequired": [],
-    "nextInspectionAt": "2026-08-06T18:28:32+09:00"
+    "ownerActionRequired": [
+      {
+        "url": "https://framepact.jp/",
+        "reason": "API認証・権限エラー"
+      },
+      {
+        "url": "https://framepact.jp/ai-video-ad-disclosure.html",
+        "reason": "API認証・権限エラー、公開7日後も未登録"
+      },
+      {
+        "url": "https://framepact.jp/ai-video-data-management.html",
+        "reason": "API認証・権限エラー、公開7日後も未登録"
+      },
+      {
+        "url": "https://framepact.jp/ai-video-outsourcing-checklist.html",
+        "reason": "API認証・権限エラー、公開7日後も未登録"
+      },
+      {
+        "url": "https://framepact.jp/ai-video-price.html",
+        "reason": "API認証・権限エラー"
+      }
+    ],
+    "nextInspectionAt": "2026-09-12T10:17:22+09:00"
   },
   "alerts": [
     "初回稼働前基準値。Scheduled Tasksの実登録・有効化とGitHub権限はサービス側で確認が必要",
