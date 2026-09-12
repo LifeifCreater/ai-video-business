@@ -231,6 +231,23 @@
       "errorSummary": null,
       "retryCount": 0,
       "lastUpdatedAt": "2026-08-16T15:38:32+09:00"
+    },
+    {
+      "jobId": "WEEKLY-PLANNING-WEEK-2026-08-31",
+      "workflowType": "weekly_planning",
+      "sourceId": "WEEK-2026-08-31",
+      "status": "waiting_owner",
+      "scheduledFor": "2026-08-30T01:00:00+09:00",
+      "startedAt": "2026-08-30T00:59:42+09:00",
+      "completedAt": null,
+      "branch": "planning/weekly-2026-08-31",
+      "commitSha": "3678194e4f30ef0f20598eb08cc495c2fcaf5722",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/27",
+      "approvalRequired": "planning_owner_approval",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-08-30T01:06:24+09:00"
     }
   ]
 }
