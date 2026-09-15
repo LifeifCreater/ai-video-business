@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>FRAMEPACT — Homepage Concept</title>
+<style>
+:root{
+  --bg:#0a0a0a;
+  --ink:#f5f4ef;
+  --muted:#a3a19a;
+  --line:rgba(255,255,255,.16);
+  --soft:#151515;
+  --accent:#d6b36a;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --pad:clamp(20px,4vw,64px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter','IBM Plex Sans JP',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+button{font:inherit}
+::selection{background:var(--accent);color:#111}
+
+.site-header{position:fixed;z-index:100;top:0;left:0;right:0;height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);mix-blend-mode:difference;color:#fff;transition:background .35s var(--ease),backdrop-filter .35s var(--ease)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.04em;font-size:1.02rem}
+.brand img{width:28px;height:28px;object-fit:contain}
+.nav{display:flex;align-items:center;gap:28px;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase}
+.nav a{position:relative;padding:8px 0}
+.nav a::after{content:'';position:absolute;left:0;right:100%;bottom:2px;height:1px;background:currentColor;transition:right .35s var(--ease)}
+.nav a:hover::after{right:0}
+.nav-cta{border:1px solid currentColor!important;padding:10px 15px!important}
+.nav-cta::after{display:none}
+.menu{display:none;background:none;border:0;color:inherit;padding:8px;cursor:pointer;font-size:.78rem;letter-spacing:.12em}
+
+.hero{min-height:100svh;position:relative;display:grid;align-items:end;overflow:hidden;background:#111}
+.hero-media{position:absolute;inset:0}
+.hero-media video{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,8,8,.17) 0%,rgba(8,8,8,.18) 40%,rgba(8,8,8,.88) 100%)}
+.hero-copy{position:relative;z-index:2;padding:150px var(--pad) clamp(46px,7vw,90px);width:100%}
+.hero-kicker{display:flex;align-items:center;gap:12px;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:#d5d3cc;margin-bottom:24px}
+.hero-kicker::before{content:'';width:42px;height:1px;background:var(--accent)}
+.hero h1{font-size:clamp(3.6rem,11.7vw,10.7rem);line-height:.82;letter-spacing:-.075em;margin:0;font-weight:800;text-transform:uppercase;max-width:1500px}
+.hero h1 span{display:block}
+.hero-bottom{margin-top:36px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px}
+.hero-sub{margin:0;max-width:630px;font-family:'IBM Plex Sans JP',sans-serif;font-size:clamp(.95rem,1.2vw,1.12rem);line-height:1.95;color:#d7d5cf}
+.hero-links{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:48px;padding:0 20px;border:1px solid rgba(255,255,255,.5);font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
+.pill:hover{background:#fff;color:#111;border-color:#fff;transform:translateY(-2px)}
+.pill--accent{background:var(--accent);color:#111;border-color:var(--accent)}
+.pill--accent:hover{background:#fff;border-color:#fff}
+
+.marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap;background:#0d0d0d}
+.marquee-track{display:inline-flex;gap:44px;align-items:center;padding:18px 0;animation:marquee 28s linear infinite;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:#b7b4ad}
+.marquee-track b{color:var(--ink);font-weight:500}
+.marquee-track i{width:4px;height:4px;background:var(--accent);border-radius:50%;display:inline-block}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+.section{padding:clamp(95px,13vw,190px) var(--pad)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:26px}
+.eyebrow .num{color:var(--accent)}
+.display{font-size:clamp(2.9rem,7.6vw,8.2rem);line-height:.91;letter-spacing:-.065em;margin:0;font-weight:700;text-transform:uppercase}
+.jp-display{font-family:'IBM Plex Sans JP',sans-serif;font-size:clamp(2.2rem,5.7vw,6rem);line-height:1.18;letter-spacing:-.045em;margin:0;font-weight:600;max-width:1220px}
+
+.work{padding-top:clamp(110px,13vw,180px)}
+.work-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;margin-bottom:48px}
+.work-meta{text-align:right;color:var(--muted);font-size:.72rem;line-height:1.8;letter-spacing:.06em;text-transform:uppercase}
+.showreel{position:relative;background:#111;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line)}
+.showreel video{width:100%;height:100%;object-fit:cover;background:#111}
+.showreel-label{position:absolute;left:20px;top:20px;z-index:2;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;background:rgba(10,10,10,.72);padding:9px 12px;backdrop-filter:blur(8px)}
+.work-caption{display:flex;justify-content:space-between;gap:28px;border-bottom:1px solid var(--line);padding:22px 0 0 0;min-height:92px}
+.work-caption h3{margin:0;font-size:1rem;font-weight:500}
+.work-caption p{margin:0;color:var(--muted);font-size:.78rem;text-align:right;line-height:1.7}
+
+.statement{background:#f1efe8;color:#111;position:relative;overflow:hidden}
+.statement::after{content:'FRAMEPACT';position:absolute;right:-.04em;bottom:-.2em;font-size:clamp(7rem,22vw,22rem);font-weight:900;letter-spacing:-.09em;line-height:.75;color:rgba(0,0,0,.035);pointer-events:none}
+.statement .eyebrow{color:#77736d}
+.statement-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(38px,9vw,140px);align-items:start}
+.statement-small{font-size:.82rem;line-height:1.9;color:#6f6b65;max-width:280px}
+.statement-copy{font-family:'IBM Plex Sans JP',sans-serif;font-size:clamp(1.7rem,3.8vw,4.15rem);line-height:1.45;letter-spacing:-.045em;margin:0;font-weight:500;max-width:1040px}
+.statement-copy em{font-style:normal;border-bottom:2px solid var(--accent)}
+
+.capabilities{background:#0a0a0a}
+.cap-list{margin-top:58px;border-top:1px solid var(--line)}
+.cap-row{display:grid;grid-template-columns:80px 1fr auto;gap:24px;align-items:center;min-height:128px;border-bottom:1px solid var(--line);transition:padding .45s var(--ease),background .45s var(--ease)}
+.cap-row:hover{padding:0 22px;background:#111}
+.cap-num{font-size:.66rem;letter-spacing:.18em;color:var(--accent)}
+.cap-name{font-size:clamp(1.6rem,4vw,4.2rem);line-height:1;letter-spacing:-.055em;text-transform:uppercase;font-weight:600}
+.cap-jp{text-align:right;color:var(--muted);font-family:'IBM Plex Sans JP',sans-serif;font-size:.86rem;line-height:1.7}
+.cap-arrow{display:inline-block;margin-left:14px;transition:transform .35s var(--ease)}
+.cap-row:hover .cap-arrow{transform:translate(6px,-2px)}
+
+.why{background:#111}
+.why-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:60px}
+.why-card{background:#111;padding:clamp(32px,4vw,58px);min-height:360px;display:flex;flex-direction:column;justify-content:space-between;transition:background .35s var(--ease)}
+.why-card:hover{background:#161616}
+.why-index{font-size:.66rem;letter-spacing:.16em;color:var(--accent)}
+.why-card h3{font-family:'IBM Plex Sans JP',sans-serif;font-size:clamp(1.45rem,2.4vw,2.65rem);line-height:1.35;letter-spacing:-.035em;margin:70px 0 18px;font-weight:600}
+.why-card p{margin:0;color:var(--muted);font-family:'IBM Plex Sans JP',sans-serif;font-size:.9rem;line-height:1.9;max-width:360px}
+
+.founder{display:grid;grid-template-columns:minmax(280px,.72fr) 1.28fr;gap:clamp(44px,9vw,130px);align-items:center}
+.founder-photo{position:relative;aspect-ratio:3/4;overflow:hidden;background:#141414}
+.founder-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter .5s var(--ease),transform .8s var(--ease)}
+.founder-photo:hover img{filter:grayscale(0);transform:scale(1.018)}
+.founder-copy h2{font-family:'IBM Plex Sans JP',sans-serif;font-size:clamp(2rem,4.8vw,5.1rem);line-height:1.25;letter-spacing:-.05em;margin:0 0 34px;font-weight:600}
+.founder-copy p{font-family:'IBM Plex Sans JP',sans-serif;color:#b9b6af;line-height:2.05;max-width:690px;margin:0 0 28px;font-size:.95rem}
+.founder-facts{display:flex;gap:34px;flex-wrap:wrap;margin:38px 0 0;padding:28px 0 0;border-top:1px solid var(--line)}
+.fact b{display:block;font-size:1.2rem;font-weight:500;color:var(--ink);margin-bottom:4px}
+.fact span{font-size:.7rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+.price-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:36px var(--pad);background:#0d0d0d}
+.price-strip strong{font-size:clamp(1.35rem,2.7vw,2.5rem);font-weight:500;letter-spacing:-.04em}
+.price-strip p{margin:8px 0 0;color:var(--muted);font-family:'IBM Plex Sans JP',sans-serif;font-size:.84rem}
+
+.final-cta{min-height:76svh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(90px,12vw,160px) var(--pad) 34px;background:#d6b36a;color:#101010}
+.final-cta .eyebrow{color:#5f5034}
+.final-cta h2{font-size:clamp(3.5rem,11vw,11rem);line-height:.82;letter-spacing:-.08em;margin:0;font-weight:800;text-transform:uppercase;max-width:1350px}
+.final-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-top:80px;padding-top:24px;border-top:1px solid rgba(0,0,0,.25)}
+.final-row p{font-family:'IBM Plex Sans JP',sans-serif;max-width:600px;margin:0;line-height:1.8;font-size:.9rem}
+.final-button{display:inline-flex;align-items:center;justify-content:center;background:#101010;color:#fff;min-height:58px;padding:0 26px;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;transition:transform .3s var(--ease),background .3s var(--ease)}
+.final-button:hover{transform:translateY(-3px);background:#fff;color:#111}
+
+.footer{padding:34px var(--pad) 45px;display:flex;justify-content:space-between;gap:26px;align-items:center;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:#77756f;background:#0a0a0a}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer a:hover{color:#fff}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .nav{display:none}
+  .menu{display:block}
+  .site-header.open{mix-blend-mode:normal;background:rgba(10,10,10,.98)}
+  .site-header.open .nav{position:fixed;display:flex;inset:78px 0 auto 0;background:#0a0a0a;padding:24px var(--pad) 36px;flex-direction:column;align-items:flex-start;gap:6px;border-top:1px solid var(--line)}
+  .site-header.open .nav a{font-size:1rem;padding:14px 0;width:100%;border-bottom:1px solid var(--line)}
+  .hero-bottom{align-items:flex-start;flex-direction:column}
+  .hero-links{justify-content:flex-start}
+  .statement-grid{grid-template-columns:1fr}
+  .statement-small{max-width:540px}
+  .why-grid{grid-template-columns:1fr}
+  .why-card{min-height:280px}
+  .founder{grid-template-columns:1fr}
+  .founder-photo{max-width:520px}
+}
+@media(max-width:680px){
+  .site-header{height:68px}
+  .hero-copy{padding-top:122px}
+  .hero h1{font-size:clamp(3.35rem,17vw,5.3rem);line-height:.86}
+  .hero-sub{font-size:.9rem}
+  .hero-links{width:100%}
+  .pill{flex:1;min-width:145px}
+  .work-head{grid-template-columns:1fr}
+  .work-meta{text-align:left}
+  .showreel{aspect-ratio:9/12}
+  .showreel video{object-fit:cover}
+  .work-caption{flex-direction:column;gap:8px;padding-bottom:22px}
+  .work-caption p{text-align:left}
+  .cap-row{grid-template-columns:48px 1fr;min-height:110px}
+  .cap-jp{grid-column:2;text-align:left;padding-bottom:22px}
+  .cap-row:hover{padding:0}
+  .why-card h3{margin-top:46px}
+  .founder-facts{gap:24px}
+  .price-strip{grid-template-columns:1fr}
+  .price-strip .pill{width:max-content}
+  .final-row{flex-direction:column;align-items:flex-start}
+  .final-button{width:100%}
+  .footer{align-items:flex-start;flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="site-header" id="header">
+  <a class="brand" href="#top"><img src="/images/framepact-logo-mark.png" alt=""><span>FRAMEPACT</span></a>
+  <nav class="nav" id="nav" aria-label="メインナビゲーション">
+    <a href="#works">Works</a>
+    <a href="#capabilities">Services</a>
+    <a href="#about">About</a>
+    <a href="/ai-video-price.html">Price</a>
+    <a href="/column.html">Journal</a>
+    <a class="nav-cta" href="/#contact">Contact</a>
+  </nav>
+  <button class="menu" id="menu" aria-controls="nav" aria-expanded="false">MENU</button>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="/videos/framepact-hero.webp">
+      <source src="/images/framepact-hero.webm" type="video/webm">
+      <source src="/videos/framepact-hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-copy">
+    <div class="hero-kicker">AI Video Creative Studio · Tokyo</div>
+    <h1><span>Imagine it.</span><span>We frame it.</span></h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">撮れないものまで、映像に。<br>生成AIと編集技術で、想像の中にしかなかった世界を企業のクリエイティブへ。</p>
+      <div class="hero-links">
+        <a class="pill" href="#works">View showreel ↘</a>
+        <a class="pill pill--accent" href="/#contact">Start a project ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <b>AI FILM</b><i></i><span>BRAND MOVIE</span><i></i><span>PROMOTION</span><i></i><span>RECRUIT</span><i></i><span>EVENT</span><i></i><span>SOCIAL</span><i></i>
+    <b>AI FILM</b><i></i><span>BRAND MOVIE</span><i></i><span>PROMOTION</span><i></i><span>RECRUIT</span><i></i><span>EVENT</span><i></i><span>SOCIAL</span><i></i>
+  </div>
+</div>
+
+<section class="section work" id="works">
+  <div class="work-head reveal">
+    <div>
+      <div class="eyebrow"><span class="num">01</span> Selected Works</div>
+      <h2 class="display">Watch<br>the work.</h2>
+    </div>
+    <div class="work-meta">FRAMEPACT SHOWREEL<br>AI + EDITING / 2026</div>
+  </div>
+  <div class="showreel reveal">
+    <span class="showreel-label">Selected Reel — 00:41</span>
+    <video controls playsinline preload="metadata" poster="/images/works/framepact-showreel-thumbnail.jpg">
+      <source src="/videos/framepact-showreel.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="work-caption reveal">
+    <h3>FRAMEPACT / Production Showreel</h3>
+    <p>企業PR・広告・SNS・イベントなど、<br>生成AIを活用した映像表現の一部をご紹介します。</p>
+  </div>
+</section>
+
+<section class="section statement">
+  <div class="eyebrow reveal"><span class="num">02</span> Our Philosophy</div>
+  <div class="statement-grid">
+    <p class="statement-small reveal">素材がない。撮影できない。現実には存在しない。<br><br>その制約を、表現の終わりにしないために。</p>
+    <p class="statement-copy reveal">FRAMEPACTは、<em>「撮れない」から始まる映像制作</em>を得意とするクリエイティブスタジオです。AIを使うことではなく、伝えたいものを映像として成立させることを目的にしています。</p>
+  </div>
+</section>
+
+<section class="section capabilities" id="capabilities">
+  <div class="eyebrow reveal"><span class="num">03</span> What We Create</div>
+  <h2 class="display reveal">Capabilities</h2>
+  <div class="cap-list">
+    <a class="cap-row reveal" href="/corporate-ai-video.html"><span class="cap-num">01</span><span class="cap-name">Brand Film <span class="cap-arrow">↗</span></span><span class="cap-jp">企業PR・ブランドムービー</span></a>
+    <a class="cap-row reveal" href="/recruit-video.html"><span class="cap-num">02</span><span class="cap-name">Recruit <span class="cap-arrow">↗</span></span><span class="cap-jp">採用・カルチャー映像</span></a>
+    <a class="cap-row reveal" href="/training-video.html"><span class="cap-num">03</span><span class="cap-name">Training <span class="cap-arrow">↗</span></span><span class="cap-jp">研修・マニュアル動画</span></a>
+    <a class="cap-row reveal" href="/event-video.html"><span class="cap-num">04</span><span class="cap-name">Event <span class="cap-arrow">↗</span></span><span class="cap-jp">イベント・オープニング映像</span></a>
+    <a class="cap-row reveal" href="/exhibition-video.html"><span class="cap-num">05</span><span class="cap-name">Promotion <span class="cap-arrow">↗</span></span><span class="cap-jp">広告・展示会・SNSプロモーション</span></a>
+  </div>
+</section>
+
+<section class="section why">
+  <div class="eyebrow reveal"><span class="num">04</span> Why FRAMEPACT</div>
+  <h2 class="jp-display reveal">AI任せにしない。<br>映像として、ちゃんと強くする。</h2>
+  <div class="why-grid">
+    <article class="why-card reveal"><span class="why-index">01 / NO MATERIAL</span><div><h3>素材ゼロから、<br>世界をつくる。</h3><p>撮影素材やイラストがない状態でも、目的から必要なカットを設計し、生成AIで映像化します。</p></div></article>
+    <article class="why-card reveal"><span class="why-index">02 / HUMAN DIRECTION</span><div><h3>生成して終わり、<br>にしない。</h3><p>構成・テンポ・音・テロップまで、人の目で編集。AI映像を「使える映像」に仕上げます。</p></div></article>
+    <article class="why-card reveal"><span class="why-index">03 / ONE STOP</span><div><h3>企画から納品まで、<br>ひとつの視点で。</h3><p>目的整理、構成、生成、編集、納品まで一貫対応。完成イメージが曖昧な段階から相談できます。</p></div></article>
+  </div>
+</section>
+
+<section class="section founder" id="about">
+  <figure class="founder-photo reveal"><img src="/profile-icon.png" alt="FRAMEPACT Founder よっしー" loading="lazy"></figure>
+  <div class="founder-copy reveal">
+    <div class="eyebrow"><span class="num">05</span> Founder / Creative Director</div>
+    <h2>映像を作る前に、<br>「何を伝えるか」を<br>一緒に考える。</h2>
+    <p>個人のYouTube運用と、企業での動画制作・情報発信。その両方で学んだのは、映像は“作ること”より“伝わること”の方が大切だということでした。</p>
+    <p>FRAMEPACTでは、生成AIを単なる効率化ツールとして使うのではなく、これまで撮影できなかったイメージを形にするための制作手段として活用しています。</p>
+    <div class="founder-facts">
+      <div class="fact"><b>6+ YEARS</b><span>YouTube Operation</span></div>
+      <div class="fact"><b>3+ YEARS</b><span>Corporate Communication</span></div>
+      <div class="fact"><b>AI × EDIT</b><span>Creative Direction</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="price-strip">
+  <div><strong>プロジェクトの規模に合わせて、必要な制作だけ。</strong><p>尺・表現・生成難易度に合わせて個別にお見積もりします。</p></div>
+  <a class="pill" href="/ai-video-price.html">View pricing ↗</a>
+</div>
+
+<section class="final-cta">
+  <div>
+    <div class="eyebrow"><span class="num">06</span> Start a Project</div>
+    <h2>Make the<br>impossible<br>visible.</h2>
+  </div>
+  <div class="final-row">
+    <p>「こんな映像、作れる？」くらいの段階から大丈夫です。目的・予算・納期に合わせて、実現方法を一緒に考えます。</p>
+    <a class="final-button" href="/#contact">制作について相談する ↗</a>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <span>© 2026 FRAMEPACT</span>
+  <div class="footer-links"><a href="/operator.html">Operator</a><a href="/privacy.html">Privacy</a><a href="/column.html">Journal</a><a href="/">Current Site</a></div>
+</footer>
+
+<script>
+const header=document.getElementById('header');
+const menu=document.getElementById('menu');
+menu?.addEventListener('click',()=>{const open=header.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'CLOSE':'MENU';});
+document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>{header.classList.remove('open');menu?.setAttribute('aria-expanded','false');if(menu)menu.textContent='MENU';}));
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
