@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 JST = timezone(timedelta(hours=9))
 ROOT = Path(__file__).resolve().parents[2]
 REGISTER = ROOT / "automation/search-console/search-console-register.json"
+CONFIG = ROOT / "automation/search-console/search-console-config.json"
 SITEMAP = ROOT / "sitemap.xml"
 MORNING = ROOT / "automation/cloud-editorial/morning-brief.json"
 
@@ -16,6 +17,18 @@ def now(): return datetime.now(JST)
 def iso(dt): return dt.isoformat(timespec="seconds")
 def load(path): return json.loads(path.read_text())
 def save(path, data): path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+
+def load_register():
+    # Configuration stays on main; restored monitoring state must not override it.
+    data, config = load(REGISTER), load(CONFIG)
+    if data["siteUrl"] != config["siteUrl"]:
+        # Retry failures from the old property once, retaining diagnostic history.
+        for page in data["pages"]:
+            error = page.get("errorInfo") or ""
+            if "HTTP 401" in error or "HTTP 403" in error:
+                page["retryAfter"] = None
+    data.update(siteUrl=config["siteUrl"], sitemapUrl=config["sitemapUrl"])
+    return data
 
 def sitemap_rows():
     root = ET.parse(SITEMAP).getroot()
@@ -51,7 +64,7 @@ def judge(page, ts):
     page["notes"] = "、".join(reasons) if reasons else ("公開7日未満の未登録は経過観察。" if page["inspectionStatus"] not in (None, "PASS") else page["notes"])
 
 def inspect(live):
-    data, ts = load(REGISTER), now()
+    data, ts = load_register(), now()
     rows = dict(sitemap_rows())
     targets = []
     for p in data["pages"]:
@@ -83,7 +96,7 @@ def inspect(live):
         raise RuntimeError(f"URL inspection failed for {len(failed)}/{len(targets)} targets")
 
 def submit(live):
-    data, ts = load(REGISTER), now(); rows = dict(sitemap_rows())
+    data, ts = load_register(), now(); rows = dict(sitemap_rows())
     invalid = [p["url"] for p in data["pages"] if p["url"] not in rows or rows[p["url"]] != p["lastModified"]]
     recent = data["lastSitemapSubmissionAt"] and datetime.fromisoformat(data["lastSitemapSubmissionAt"]) > ts - timedelta(hours=6)
     if not live:

@@ -60,3 +60,8 @@ Dを「公開前確認を完了し、オーナーが手動投稿開始日を決�
 - 記事8ページには既存の問い合わせCTAと関連ページ導線がある。記事の文脈別CTAは維持し、共通テンプレートでX/noteリンクを静的HTMLへ追加する。
 - 2026-09-16 14:03 JST頃、Search Console monitor run `35045218817` の再実行でサイトマップ送信時のHTTP 403を再確認。
 - Google側作業: GitHub Actionsの `GSC_SERVICE_ACCOUNT_JSON` に対応するサービスアカウントを、対象プロパティ `https://framepact.jp/` のユーザーと権限で確認・付与する。秘密鍵は共有しない。Google側の変更後にmonitorを再実行して確認する。このPRではGoogle側の権限を変更しない。
+
+
+### 2026-09-16 追記: Search Consoleの指定先訂正
+
+その後の実画面確認で、登録済みプロパティは `sc-domain:framepact.jp` で、サービスアカウントには「フル」権限があると判明。上記のGoogle側権限付与案は不要。監視が別のURLプレフィックス `https://framepact.jp/` を指定していたため、GitHub側の設定をドメインプロパティへ合わせる。上記403の再実行記録は過去の結果として保持する。
