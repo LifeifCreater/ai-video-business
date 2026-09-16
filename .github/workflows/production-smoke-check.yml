@@ -1,0 +1,96 @@
+name: Production smoke check
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-smoke-check
+  cancel-in-progress: true
+
+jobs:
+  verify-production:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Wait for Cloudflare Pages to reflect main
+        shell: bash
+        run: |
+          set -euo pipefail
+          matched=0
+          for attempt in $(seq 1 36); do
+            echo "Deployment check attempt ${attempt}/36"
+            curl -fsSL --connect-timeout 10 --max-time 30 \
+              -H 'Cache-Control: no-cache' \
+              "https://framepact.jp/?deploy-check=${GITHUB_SHA}" \
+              -o /tmp/live-index.html || true
+
+            if [ -s /tmp/live-index.html ]; then
+              python - <<'PY'
+from pathlib import Path
+
+def norm(path):
+    text = Path(path).read_text(encoding='utf-8').replace('\r\n', '\n').strip()
+    return text
+
+expected = norm('index.html')
+live = norm('/tmp/live-index.html')
+raise SystemExit(0 if expected == live else 1)
+PY
+              if [ $? -eq 0 ]; then
+                matched=1
+                echo "Production homepage matches main."
+                break
+              fi
+            fi
+            sleep 15
+          done
+
+          if [ "$matched" -ne 1 ]; then
+            echo "Production homepage did not match main within 9 minutes."
+            exit 1
+          fi
+
+      - name: Verify critical production routes
+        shell: bash
+        run: |
+          set -euo pipefail
+          urls=(
+            "https://framepact.jp/"
+            "https://framepact.jp/column.html"
+            "https://framepact.jp/corporate-ai-video.html"
+            "https://framepact.jp/ai-video-ad-disclosure.html"
+            "https://framepact.jp/ai-video-data-management.html"
+            "https://framepact.jp/multi-platform-video-production.html"
+            "https://framepact.jp/ai-avatar-training-video-operations.html"
+            "https://framepact.jp/youtube-shorts-thumbnail-approval.html"
+          )
+          for url in "${urls[@]}"; do
+            echo "Checking $url"
+            curl -fsSL --connect-timeout 10 --max-time 30 "$url" -o /dev/null
+          done
+
+      - name: Verify site navigation and social routes
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL -H 'Cache-Control: no-cache' "https://framepact.jp/?nav-check=${GITHUB_SHA}" -o /tmp/home.html
+          grep -q '/column.html' /tmp/home.html
+          grep -q 'https://x.com/yossy_FRAMEPACT' /tmp/home.html
+          grep -q 'https://note.com/framepact' /tmp/home.html
+
+          curl -fsSL "https://framepact.jp/column.html" -o /tmp/column.html
+          grep -q 'AI動画制作のお役立ち記事' /tmp/column.html
+
+      - name: Summary
+        run: |
+          echo "Production deployment verified against main."
+          echo "Critical routes and homepage-to-content/social navigation are reachable."
