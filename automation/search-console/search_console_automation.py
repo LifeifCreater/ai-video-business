@@ -101,7 +101,10 @@ def submit(live):
     recent = data["lastSitemapSubmissionAt"] and datetime.fromisoformat(data["lastSitemapSubmissionAt"]) > ts - timedelta(hours=6)
     if not live:
         print(json.dumps({"mode":"dry-run","deploymentVerification":"required","sitemapUrls":len(rows),"metadataMismatches":invalid,"wouldSubmit":not invalid and not recent,"authentication":"not tested"}, ensure_ascii=False, indent=2)); return
-    if invalid or recent: raise RuntimeError("sitemap metadata mismatch or submission cooldown active")
+    if invalid: raise RuntimeError("sitemap metadata mismatch")
+    if recent:
+        print("Sitemap submission skipped: successful submission within the last 6 hours.")
+        return
     session = credentials(["https://www.googleapis.com/auth/webmasters"])
     endpoint = "https://www.googleapis.com/webmasters/v3/sites/{}/sitemaps/{}".format(quote(data["siteUrl"], safe=""), quote(data["sitemapUrl"], safe=""))
     response = session.put(endpoint, timeout=30); response.raise_for_status()
