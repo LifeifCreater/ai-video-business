@@ -419,3 +419,15 @@ KPIは取得できた値だけを表示します。X・noteのプロフィール
 ```sh
 ruby scripts/check-site.rb
 ```
+
+## 記事の共通SNS導線と投稿整理
+
+記事末尾のX・noteリンクは `templates/article-social.html` が共通元です。更新後に
+`python3 scripts/sync-article-social.py` を実行し、生成された記事HTMLもコミットします。
+`python3 scripts/sync-article-social.py --check` で同期漏れを確認できます。リンクは静的HTMLなのでJavaScriptなしでも表示されます。記事ごとの問い合わせCTAと関連サービスは各記事で維持します。
+
+承認済み・未公開13投稿の分類と手動投稿日程案は
+[`distribution/publish-ready/publication-plan-20260916.md`](distribution/publish-ready/publication-plan-20260916.md) を参照してください。
+本文・承認・公開記録の正本は従来どおり `publish-queue.json` です。計画ファイルは投稿予約ではありません。
+
+PRではサイトリンクと共通SNS導線を検査します。本番検査はトップだけでなく記事8ページも対象に、実行対象コミットのHTMLと一致するまで待機します。

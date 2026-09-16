@@ -19,34 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ github.sha }}
 
-      - name: Wait for Cloudflare Pages to reflect main
-        shell: bash
-        run: |
-          set -euo pipefail
-          matched=0
-          for attempt in $(seq 1 36); do
-            echo "Deployment check attempt ${attempt}/36"
-            curl -fsSL --connect-timeout 10 --max-time 30 \
-              -H 'Cache-Control: no-cache' \
-              "https://framepact.jp/?deploy-check=${GITHUB_SHA}" \
-              -o /tmp/live-index.html || true
+      - name: Verify static article navigation
+        run: python3 scripts/sync-article-social.py --check
 
-            if [ -s /tmp/live-index.html ]; then
-              if python -c "from pathlib import Path; norm=lambda p: Path(p).read_text(encoding='utf-8').replace('\\r\\n','\\n').strip(); raise SystemExit(0 if norm('index.html') == norm('/tmp/live-index.html') else 1)"; then
-                matched=1
-                echo "Production homepage matches main."
-                break
-              fi
-            fi
-            sleep 15
-          done
-
-          if [ "$matched" -ne 1 ]; then
-            echo "Production homepage did not match main within 9 minutes."
-            exit 1
-          fi
+      - name: Wait for production homepage and articles to reflect this commit
+        run: python3 scripts/check-production.py
 
       - name: Verify critical production routes
         shell: bash
