@@ -34,18 +34,15 @@ jobs:
               -o /tmp/live-index.html || true
 
             if [ -s /tmp/live-index.html ]; then
-              python - <<'PY'
+              if python - <<'PY'
 from pathlib import Path
 
 def norm(path):
-    text = Path(path).read_text(encoding='utf-8').replace('\r\n', '\n').strip()
-    return text
+    return Path(path).read_text(encoding='utf-8').replace('\r\n', '\n').strip()
 
-expected = norm('index.html')
-live = norm('/tmp/live-index.html')
-raise SystemExit(0 if expected == live else 1)
+raise SystemExit(0 if norm('index.html') == norm('/tmp/live-index.html') else 1)
 PY
-              if [ $? -eq 0 ]; then
+              then
                 matched=1
                 echo "Production homepage matches main."
                 break
