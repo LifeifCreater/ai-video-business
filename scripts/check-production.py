@@ -3,9 +3,9 @@
 from concurrent.futures import ThreadPoolExecutor
 import importlib.util
 import os
+import subprocess
 from pathlib import Path
 import time
-from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parent.parent
 spec = importlib.util.spec_from_file_location('article_social', ROOT / 'scripts/sync-article-social.py')
@@ -17,8 +17,13 @@ def matches(page):
     route = '/' if page.name == 'index.html' else '/' + page.name
     url = 'https://framepact.jp' + route + '?deploy-check=' + os.environ.get('GITHUB_SHA', 'manual')
     try:
-        with urlopen(Request(url, headers={'Cache-Control': 'no-cache'}), timeout=20) as response:
-            live = response.read().decode('utf-8').replace('\r\n', '\n').strip()
+        # Preserve the existing smoke check's curl transport and certificate handling.
+        response = subprocess.run(
+            ['curl', '-fsSL', '--connect-timeout', '10', '--max-time', '20',
+             '-H', 'Cache-Control: no-cache', url],
+            check=True, capture_output=True, timeout=25,
+        )
+        live = response.stdout.decode('utf-8').replace('\r\n', '\n').strip()
         return page.name, live == page.read_text().strip()
     except Exception as error:
         print(f'{page.name}: {type(error).__name__}', flush=True)
