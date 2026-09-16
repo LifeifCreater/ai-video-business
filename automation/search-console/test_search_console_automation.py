@@ -3,11 +3,28 @@ import tempfile
 import unittest
 from datetime import datetime
 from pathlib import Path
+from unittest.mock import patch
 
 import search_console_automation as automation
 
 
 class SearchConsoleSummaryTests(unittest.TestCase):
+    def test_recent_success_skips_network_but_metadata_errors_still_fail(self):
+        timestamp = datetime.fromisoformat("2026-09-16T15:30:00+09:00")
+        data = {"lastSitemapSubmissionAt": "2026-09-16T15:09:00+09:00",
+                "pages": [{"url": "https://framepact.jp/", "lastModified": "2026-09-16"}]}
+        with patch.object(automation, "load_register", return_value=data), \
+             patch.object(automation, "now", return_value=timestamp), \
+             patch.object(automation, "sitemap_rows", return_value=[("https://framepact.jp/", "2026-09-16")]), \
+             patch.object(automation, "credentials") as credentials, \
+             patch.object(automation, "save") as save:
+            automation.submit(True)
+            credentials.assert_not_called()
+            save.assert_not_called()
+            data["pages"][0]["lastModified"] = "2026-09-15"
+            with self.assertRaisesRegex(RuntimeError, "metadata mismatch"):
+                automation.submit(True)
+
     def test_future_retry_date_suppresses_owner_action_retry(self):
         page = {
             "ownerActionRequired": True,
