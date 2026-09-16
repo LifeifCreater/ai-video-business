@@ -15,7 +15,7 @@ GitHub Actionsを実行基盤、GitHubの専用stateブランチを監視状態�
 
 1. Google CloudプロジェクトでSearch Console APIを有効化する。
 2. 専用service accountを作成する。
-3. Search Consoleの `https://framepact.jp/` プロパティへservice accountのメールアドレスを「フル」ユーザーとして追加する。sitemap送信に必要だが、所有者権限は付与しない。
+3. Search Consoleの `framepact.jp` ドメインプロパティ（API指定: `sc-domain:framepact.jp`）へservice accountのメールアドレスを「フル」ユーザーとして追加する。sitemap送信に必要だが、所有者権限は付与しない。
 4. service account JSONをGitHub Actions Secret `GSC_SERVICE_ACCOUNT_JSON` に登録する。ファイルや`.env`としてcommitしない。
 5. Cloudflare Pagesの本番成功がGitHubの`deployment_status`（environment=`production`、environment URLがframepact.jp）へ反映されることを確認する。反映されない場合、sitemap送信は起動しない。
 6. ActionsのWorkflow permissionsをRead and writeにし、Pull Requestsの作成を許可する。
@@ -53,3 +53,14 @@ python3 automation/search-console/search_console_automation.py submit
 - Sitemaps API: `sitemaps.submit`（書込scope）
 - URL Inspection API: `index.inspect`（読取scopeで利用可能）
 - Search Console APIはOAuth 2.0認証を使用
+
+
+## プロパティ設定と監視状態
+
+`search-console-config.json` がプロパティとサイトマップURLの正本です。
+`state/search-console-monitor` から復元した台帳より優先します。
+2026-09-16、実画面でドメインプロパティとサービスアカウントのフル権限を確認。
+以前の `https://framepact.jp/` は別のURLプレフィックスプロパティを指しており、送信が403で失敗していました。
+プロパティ変更時は旧プロパティでの401/403の再試行待ちだけを解除し、エラー履歴と他の待機期限は保持します。
+
+API仕様: https://developers.google.com/webmaster-tools/v1/sitemaps/submit

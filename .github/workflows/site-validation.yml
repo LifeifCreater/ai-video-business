@@ -16,3 +16,5 @@ jobs:
         run: ruby scripts/check-site.rb
       - name: Check shared article social links
         run: python3 scripts/sync-article-social.py --check
+      - name: Check Search Console state and property handling
+        run: python3 -m unittest discover -s automation/search-console -p 'test_*.py'
