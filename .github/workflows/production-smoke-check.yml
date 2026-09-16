@@ -34,15 +34,7 @@ jobs:
               -o /tmp/live-index.html || true
 
             if [ -s /tmp/live-index.html ]; then
-              if python - <<'PY'
-from pathlib import Path
-
-def norm(path):
-    return Path(path).read_text(encoding='utf-8').replace('\r\n', '\n').strip()
-
-raise SystemExit(0 if norm('index.html') == norm('/tmp/live-index.html') else 1)
-PY
-              then
+              if python -c "from pathlib import Path; norm=lambda p: Path(p).read_text(encoding='utf-8').replace('\\r\\n','\\n').strip(); raise SystemExit(0 if norm('index.html') == norm('/tmp/live-index.html') else 1)"; then
                 matched=1
                 echo "Production homepage matches main."
                 break
