@@ -1,0 +1,33 @@
+name: AI team definition validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - AGENTS.md
+      - agents/**
+      - secretary/business-team-router.md
+      - tasks/business-task-template.md
+      - business/team-outputs/**
+      - scripts/check-ai-team.py
+      - scripts/test_ai_team.py
+      - .github/workflows/ai-team-validation.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate-definitions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate role registry and internal documentation links
+        run: python3 scripts/check-ai-team.py
+      - name: Test role-definition guardrails
+        run: python3 -m unittest discover -s scripts -p 'test_ai_team.py'
