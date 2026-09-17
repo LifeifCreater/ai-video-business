@@ -34,42 +34,74 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Restore latest monitoring state
         run: |
           git fetch origin state/search-console-monitor:refs/remotes/origin/state/search-console-monitor || true
           if git show-ref --verify --quiet refs/remotes/origin/state/search-console-monitor; then
             git checkout origin/state/search-console-monitor -- automation/search-console/search-console-register.json automation/cloud-editorial/morning-brief.json
           fi
+
       - run: pip install --disable-pip-version-check google-auth requests
+
       - name: Select mode
         id: mode
         env:
           EVENT_NAME: ${{ github.event_name }}
           INPUT_MODE: ${{ inputs.mode }}
         run: |
-          if [ "$EVENT_NAME" = "deployment_status" ] || [ "$EVENT_NAME" = "workflow_run" ]; then echo "value=submit" >> "$GITHUB_OUTPUT";
-          elif [ "$EVENT_NAME" = "schedule" ]; then echo "value=inspect" >> "$GITHUB_OUTPUT";
-          else echo "value=${INPUT_MODE:-dry-run}" >> "$GITHUB_OUTPUT"; fi
+          if [ "$EVENT_NAME" = "deployment_status" ] || [ "$EVENT_NAME" = "workflow_run" ]; then
+            echo "value=submit" >> "$GITHUB_OUTPUT"
+          elif [ "$EVENT_NAME" = "schedule" ]; then
+            echo "value=inspect" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=${INPUT_MODE:-dry-run}" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Verify deployment target
         if: github.event_name == 'deployment_status' && steps.mode.outputs.value == 'submit'
         env:
           ENVIRONMENT_URL: ${{ github.event.deployment_status.environment_url }}
         run: test "${ENVIRONMENT_URL#https://framepact.jp}" != "$ENVIRONMENT_URL"
+
       - name: Run Search Console automation
         id: search_console
         continue-on-error: true
         env:
           GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
         run: |
-          if [ "${{ steps.mode.outputs.value }}" = "dry-run" ]; then
-            python automation/search-console/search_console_automation.py inspect
-            python automation/search-console/search_console_automation.py submit
-          else
-            python automation/search-console/search_console_automation.py "${{ steps.mode.outputs.value }}" --live
-          fi
+          case "${{ steps.mode.outputs.value }}" in
+            dry-run)
+              python automation/search-console/search_console_automation.py inspect
+              python automation/search-console/search_console_automation.py submit
+              ;;
+            submit)
+              python automation/search-console/search_console_automation.py submit --live
+              python automation/search-console/search_console_automation.py inspect --live
+              ;;
+            inspect)
+              python automation/search-console/search_console_automation.py inspect --live
+              ;;
+            *)
+              echo "Unsupported mode" >&2
+              exit 1
+              ;;
+          esac
+
+      - name: Validate generated state
+        id: validation
+        if: always()
+        continue-on-error: true
+        run: |
+          ruby scripts/check-site.rb
+          python3 scripts/sync-article-social.py --check
+          python3 scripts/check-publish-queue.py
+          python3 -m unittest discover -s automation/search-console -p 'test_*.py'
+
       - name: Persist state on dedicated branch
         if: ${{ steps.mode.outputs.value != 'dry-run' && always() }}
         env:
@@ -82,7 +114,11 @@ jobs:
           git add automation/search-console/search-console-register.json automation/cloud-editorial/morning-brief.json
           git commit -m "Search Console監視状態を更新"
           git push --force-with-lease origin state/search-console-monitor
-          gh pr list --head state/search-console-monitor --base main --state open --json number --jq '.[0].number' | grep -q . || gh pr create --draft --base main --head state/search-console-monitor --title "Search Console監視状態を更新" --body "Search Console APIの監視結果です。自動マージ・公開操作は行いません。"
-      - name: Fail when Search Console monitoring failed
-        if: steps.search_console.outcome == 'failure'
+          gh pr list --head state/search-console-monitor --base main --state open --json number --jq '.[0].number' | grep -q . || \
+            gh pr create --draft --base main --head state/search-console-monitor \
+              --title "Search Console監視状態を更新" \
+              --body "Search Console APIの監視結果です。自動マージ・公開操作は行いません。"
+
+      - name: Fail when monitoring or validation failed
+        if: steps.search_console.outcome == 'failure' || steps.validation.outcome == 'failure'
         run: exit 1
