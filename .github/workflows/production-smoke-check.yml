@@ -27,6 +27,9 @@ jobs:
       - name: Wait for production homepage and articles to reflect this commit
         run: python3 scripts/check-production.py
 
+      - name: Verify canonical routes and aliases
+        run: python3 scripts/check-routing.py https://framepact.jp
+
       - name: Verify critical production routes
         shell: bash
         run: |

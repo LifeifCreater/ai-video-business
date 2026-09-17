@@ -22,3 +22,13 @@ jobs:
         run: python3 scripts/check-publish-queue.py
       - name: Check Search Console state and property handling
         run: python3 -m unittest discover -s automation/search-console -p 'test_*.py'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Cloudflare canonical routes
+        run: |
+          python3 -c "import shutil; shutil.copytree('.', '/tmp/framepact-routing-assets', ignore=shutil.ignore_patterns('.git', '.wrangler', 'node_modules', '__pycache__'))"
+          npx --yes wrangler@4.133.0 dev --local --assets /tmp/framepact-routing-assets --ip 127.0.0.1 --port 8787 > /tmp/framepact-wrangler.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" || true' EXIT
+          python3 scripts/check-routing.py http://127.0.0.1:8787 || { cat /tmp/framepact-wrangler.log; exit 1; }

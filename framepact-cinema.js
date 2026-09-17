@@ -75,3 +75,15 @@ routeHash();playbackUi(false);
 // The supplied WebP is the first frame and remains the fallback behind the original film.
 setTimeout(()=>{if(!reduceMotion.matches&&!userChangedPlayback&&!document.hidden){ambientWanted=true;if(!dialogs.some(d=>d.open))startAmbient();}},1800);
 reduceMotion.addEventListener('change',e=>{if(e.matches){ambientWanted=false;ambient.pause();playbackUi(false)}});
+
+// Delegate to include consultation links created inside dialogs.
+// A click is not a completed inquiry: keep it separate from generate_lead.
+document.addEventListener('click', function(event) {
+  const link = event.target.closest && event.target.closest('a');
+  if (!link || link.href !== contactUrl || typeof gtag !== 'function') return;
+  gtag('event', 'contact_form_click', {
+    source_page: 'home',
+    link_url: contactUrl,
+    link_text: (link.textContent || '').trim()
+  });
+});
