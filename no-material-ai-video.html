@@ -86,7 +86,7 @@
       "@type": "FAQPage",
       "@id": "https://framepact.jp/no-material-ai-video.html#faq",
       "mainEntity": [
-        { "@type": "Question", "name": "本当に素材なしで作れますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、写真や動画素材がまったくない状態からでもご相談いただけます。会社概要やサービス内容などの情報をもとに、必要な映像を生成AIで制作します。" } },
+        { "@type": "Question", "name": "本当に素材なしで作れますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、写真や動画素材がまったくない状態からでもご相談いただけます。会社概要やサービス内容などの情報をもとに、生成AIや既存資料を活用した制作方法を検討します。内容によっては追加素材が必要です。" } },
         { "@type": "Question", "name": "写真が1枚しかありません。それでも大丈夫ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、ご相談ください。お手元の写真を参考にしながら、不足する部分は生成AIで補って制作することができます。" } },
         { "@type": "Question", "name": "ロゴだけでも作れますか？", "acceptedAnswer": { "@type": "Answer", "text": "ロゴのみでもご相談は可能です。会社概要やサービス内容などをあわせてお伺いできると、より構成を検討しやすくなります。" } },
         { "@type": "Question", "name": "AIっぽくならないようにできますか？", "acceptedAnswer": { "@type": "Answer", "text": "表現方法や編集の工夫によって、生成AI映像特有の違和感を抑えることは可能です。ご希望のトーンを伺った上で、実現できる範囲をご提案します。" } },
@@ -497,6 +497,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .floating-cta.is-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
 .floating-cta .btn{ box-shadow:0 14px 30px -12px rgba(0,0,0,.5); padding:14px 22px; font-size:.88rem; min-height:auto; }
 @media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } }
+@media (min-width:1080px){ #planning-guide .service-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -564,9 +565,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 
       <div class="page-hero-inner">
         <span class="page-hero-tag">素材なし対応</span>
-        <h1 class="page-hero-title">撮影・素材がなくても<br class="desktop-break">企業動画は制作できます</h1>
+        <h1 class="page-hero-title">撮影素材がない企業動画も<br class="desktop-break">企画から相談できます</h1>
         <p class="page-hero-sub">AIを活用し、企画・構成・映像生成・編集まで一貫して対応します。</p>
-        <p class="page-hero-note">「撮影する時間がない」「動画に使える素材がない」という状態からでも、目的をお伺いした上で構成をご提案し、必要な映像を生成AIで制作します。</p>
+        <p class="page-hero-note">「撮影する時間がない」「動画に使える素材がない」という状態からでも、目的をお伺いした上で構成をご提案し、生成AIや既存資料を活用した制作方法を検討します。内容によっては追加素材が必要です。</p>
         <div class="page-hero-actions">
           <a href="#contact" class="btn btn--primary">素材なしで相談する</a>
           <a href="#reasons" class="btn btn--ghost">できる理由を見る</a>
@@ -574,6 +575,15 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
       </div>
     </div>
   </section>
+
+<section class="section section--offwhite" id="planning-guide"><div class="wrap">
+<div class="section-head reveal"><span class="eyebrow">PLANNING GUIDE</span><h2 class="h2">素材がない場合にできること・確認すること</h2><p class="lead">会社資料やWebサイトを起点に、生成映像・図解・文字で伝える部分と、実物の素材が必要な部分を分けます。</p></div>
+<div class="service-grid reveal"><div class="service-card"><h3 class="service-title">資料から説明を組み立てる</h3><p class="service-desc">会社概要、サービス説明、ロゴなどの使用可能な資料から、伝える相手とメッセージを整理します。資料が不足する場合はヒアリングし、追加情報の必要性を確認します。</p></div>
+<div class="service-card"><h3 class="service-title">AIでイメージを表現する</h3><p class="service-desc">理念や将来像など、実際の出来事の記録ではない表現に生成映像を検討します。生成した映像は人が選定・編集し、説明内容との整合を確認します。</p></div>
+<div class="service-card"><h3 class="service-title">実物の正確さを優先する</h3><p class="service-desc">商品仕様、施設、社員の様子、導入成果など、事実として伝える内容には確認できる資料や実写が必要な場合があります。生成映像で実在の実績や記録を作ることはしません。</p></div></div>
+<div class="body-copy reveal"><p><a class="inline-link" href="/corporate-pr-video.html">素材の条件に合わせて企業PR動画を検討する</a></p><p>ご相談時は、目的・視聴者・使用場所・希望時期・予算の目安・現在の素材を分かる範囲でお知らせください。企画・構成から必要な制作範囲を整理します。対応範囲や費用は内容を確認して個別にご案内します。</p></div>
+<div class="mid-cta reveal"><a href="#contact" class="btn btn--primary">企画・制作範囲を相談する</a></div>
+</div></section>
 
   <!-- ============================================================
        こんなお悩みありませんか
@@ -660,7 +670,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
         <div class="service-card"><h3 class="service-title">採用動画</h3><p class="service-desc">仕事内容や社風を伝え、理解を深めます。</p></div>
         <div class="service-card"><h3 class="service-title">研修動画</h3><p class="service-desc">複雑な内容を映像で分かりやすく整理します。</p></div>
         <div class="service-card"><h3 class="service-title">展示会動画</h3><p class="service-desc">会場での発信に使える映像を制作します。</p></div>
-        <div class="service-card"><h3 class="service-title">イベント動画</h3><p class="service-desc">イベントの案内や記録映像を制作します。</p></div>
+        <div class="service-card"><h3 class="service-title">イベント動画</h3><p class="service-desc">イベントの案内やテーマを伝える映像を制作します。</p></div>
         <div class="service-card"><h3 class="service-title">SNS動画</h3><p class="service-desc">視聴者の興味を引く短尺動画です。</p></div>
         <div class="service-card"><h3 class="service-title">広告動画</h3><p class="service-desc">行動につなげる訴求力のある動画です。</p></div>
       </div>
@@ -759,7 +769,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
       <div class="faq-list reveal">
         <details class="faq-item">
           <summary>本当に素材なしで作れますか？<span class="faq-icon" aria-hidden="true"></span></summary>
-          <div class="faq-answer">はい、写真や動画素材がまったくない状態からでもご相談いただけます。会社概要やサービス内容などの情報をもとに、必要な映像を生成AIで制作します。</div>
+          <div class="faq-answer">はい、写真や動画素材がまったくない状態からでもご相談いただけます。会社概要やサービス内容などの情報をもとに、生成AIや既存資料を活用した制作方法を検討します。内容によっては追加素材が必要です。</div>
         </details>
         <details class="faq-item">
           <summary>写真が1枚しかありません。それでも大丈夫ですか？<span class="faq-icon" aria-hidden="true"></span></summary>
