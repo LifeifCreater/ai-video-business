@@ -406,5 +406,61 @@
     "publishedUrl": "",
     "publicationDisposition": "candidate",
     "ownerScheduleRequired": true
+  },
+  {
+    "id": "PUB-X-010",
+    "platform": "X",
+    "theme": "AI生成差し込みカット管理",
+    "sourceArticle": "WR-20260913-001",
+    "sourceUrl": "",
+    "title": "生成できた≠企業動画に採用できる",
+    "body": "企業動画の編集中に足りないBロールやつなぎ素材をAIで生成できる場面は増えました。\\n\\nただし、生成できたことと公開物に採用できることは別です。\\n\\n役割、尺・比率、参照素材、生成条件、確認者、採否、公開先をカット単位で記録する。見栄えだけでなく、なぜ使えると判断したかを残すことが大切です。",
+    "completedText": "企業動画の編集中に足りないBロールやつなぎ素材をAIで生成できる場面は増えました。\\n\\nただし、生成できたことと公開物に採用できることは別です。\\n\\n役割、尺・比率、参照素材、生成条件、確認者、採否、公開先をカット単位で記録する。見栄えだけでなく、なぜ使えると判断したかを残すことが大切です。\\n\\n#AI動画 #動画制作",
+    "hashtags": [
+      "#AI動画",
+      "#動画制作"
+    ],
+    "cta": "原稿公開後に管理表を確認",
+    "proposedAt": "2026-09-18T02:02:24+09:00",
+    "objective": "認知獲得・記事遷移",
+    "notes": "スレッド案はdistribution/x/DIST-20260918-001-x.md。投稿日時と記事URLは未確定。オーナー承認前に投稿しない。",
+    "accountUrl": "https://x.com/yossy_FRAMEPACT",
+    "accountDisplayName": "よっしー｜AI動画制作",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": "",
+    "publicationDisposition": "candidate",
+    "ownerScheduleRequired": true
+  },
+  {
+    "id": "PUB-NOTE-006",
+    "platform": "note",
+    "theme": "AI生成差し込みカット管理",
+    "sourceArticle": "WR-20260913-001",
+    "sourceUrl": "",
+    "title": "企業動画の「足りない1カット」をAIで作る前に、残しておきたいこと",
+    "body": "企業動画の編集中に不足した差し込みカットを生成AIで補うときは、作りたい絵より先に役割を決めます。必要尺、比率、前後の動き、禁止要素、参照素材の出典と利用範囲、使用した機能・モデル・生成日・版を記録します。確認は事実、ブランド、素材、媒体、公開判断へ分け、採用・修正・保留・破棄の理由を残します。生成できることと企業の公開物へ採用できることを分け、公開版まで追える台帳にすることが大切です。",
+    "hashtags": [
+      "#AI動画",
+      "#動画制作",
+      "#生成AI"
+    ],
+    "cta": "原稿公開後に7項目と管理表を案内。企業向けAI動画制作ページへ誘導。",
+    "proposedAt": "2026-09-18T02:02:24+09:00",
+    "objective": "信頼形成・記事遷移",
+    "notes": "完成案はdistribution/note/DIST-20260918-001-note.md。投稿日時と記事URLは未確定。オーナー承認前に投稿しない。",
+    "accountUrl": "https://note.com/framepact",
+    "accountDisplayName": "よっしー｜AI動画制作",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": "",
+    "publicationDisposition": "candidate",
+    "ownerScheduleRequired": true
   }
 ]
