@@ -162,6 +162,24 @@ class SearchConsoleSummaryTests(unittest.TestCase):
         self.assertFalse(page["ownerActionRequired"])
         self.assertEqual(page["notes"], "")
 
+    def test_unindexed_age_and_localized_coverage(self):
+        timestamp = datetime.fromisoformat("2026-09-17T09:00:00+09:00")
+        cases = [
+            (None, "検出 - インデックス未登録", False, "公開日不明"),
+            ("2026-09-16T09:00:00+09:00", "Discovered", False, "公開7日未満"),
+            ("2026-09-10T09:00:00+09:00", "Discovered", True, "公開7日後"),
+            (None, "クロール済み - インデックス未登録", True, "クロール済み"),
+            (None, "Crawled - currently not indexed", True, "クロール済み"),
+        ]
+        for published, coverage, action, note in cases:
+            with self.subTest(published=published, coverage=coverage):
+                page = automation.new_page("https://example.com/", None, {})
+                page.update(publishedAt=published, coverageState=coverage,
+                            inspectionStatus="NEUTRAL")
+                automation.judge(page, timestamp)
+                self.assertEqual(page["ownerActionRequired"], action)
+                self.assertIn(note, page["notes"])
+
     def test_api_failures_are_not_reported_as_zero_errors(self):
         pages = [
             {

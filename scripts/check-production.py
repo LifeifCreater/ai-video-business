@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Wait for the homepage and every article to match this checkout in production."""
+"""Wait for every public HTML page to match this checkout in production."""
 from concurrent.futures import ThreadPoolExecutor
 import importlib.util
 import os
@@ -31,7 +31,7 @@ def matches(page):
 
 
 def main():
-    pages = [ROOT / 'index.html', *social.article_pages()]
+    pages = sorted(page for page in ROOT.glob('*.html') if page.name != '404.html')
     deadline = time.monotonic() + 540
     attempt = 0
     while time.monotonic() < deadline:

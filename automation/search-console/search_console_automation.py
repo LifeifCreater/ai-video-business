@@ -204,7 +204,7 @@ def judge(page, ts):
         reasons.append("公開7日後も未登録")
     if (
         page["coverageState"]
-        and "Crawled" in page["coverageState"]
+        and any(label in page["coverageState"] for label in ("Crawled", "クロール済み"))
         and page["inspectionStatus"] != "PASS"
     ):
         reasons.append("クロール済みだが未登録継続")
@@ -216,7 +216,10 @@ def judge(page, ts):
         # Clear stale authentication/error notes after recovery.
         page["notes"] = ""
     elif page["inspectionStatus"] not in (None, "PASS"):
-        page["notes"] = "公開7日未満の未登録は経過観察。"
+        if not page["publishedAt"]:
+            page["notes"] = "公開日不明のため経過日数を判定できません。公開日を確認してください。"
+        else:
+            page["notes"] = "公開7日未満の未登録は経過観察。"
 
 
 def inspect(live):
