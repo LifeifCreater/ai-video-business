@@ -1,0 +1,25 @@
+name: Editorial recovery
+
+on:
+  push:
+    branches:
+      - fix/editorial-recovery-20260917
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Repair editorial state and validate
+        run: python3 scripts/editorial-recovery.py
