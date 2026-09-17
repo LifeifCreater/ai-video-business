@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "updatedOn": "2026-09-17",
+  "sourceMainSha": "00ef00c6759711d44023d7fa590e80676fa7aea6",
+  "definitionKind": "role_prompts",
+  "memberCount": 16,
+  "finalApprover": "owner",
+  "coordinatorId": "secretary",
+  "commonPolicyPath": "AGENTS.md",
+  "businessRouterPath": "secretary/business-team-router.md",
+  "businessTaskTemplatePath": "tasks/business-task-template.md",
+  "publicOutputPolicyPath": "business/team-outputs/README.md",
+  "privateOutputRoot": null,
+  "newRoleRuntime": {
+    "executionMode": "on_demand",
+    "scheduledTasksCreated": false,
+    "independentAgentsProvisioned": false,
+    "externalConnectionsProvisioned": false,
+    "externalActionsAllowed": false,
+    "directMainWritesAllowed": false,
+    "automaticOwnerApprovalAllowed": false
+  },
+  "members": [
+    {"id": "coo", "name": "AI COO", "group": "leadership", "definitionPath": "leadership/coo.md", "new": false},
+    {"id": "secretary", "name": "コンテンツ統括秘書", "group": "coordination", "definitionPath": "secretary/secretary.md", "new": false},
+    {"id": "researcher", "name": "AI動画リサーチ担当", "group": "editorial", "definitionPath": "agents/researcher.md", "new": false},
+    {"id": "content_strategist", "name": "コンテンツ企画担当", "group": "editorial", "definitionPath": "agents/content-strategist.md", "new": false},
+    {"id": "content_writer", "name": "コンテンツライター担当", "group": "editorial", "definitionPath": "agents/content-writer.md", "new": false},
+    {"id": "seo_specialist", "name": "SEO担当", "group": "editorial", "definitionPath": "agents/seo-specialist.md", "new": false},
+    {"id": "editor_proofreader", "name": "編集・校正担当", "group": "editorial", "definitionPath": "agents/editor-proofreader.md", "new": false},
+    {"id": "channel_distribution", "name": "媒体展開担当", "group": "editorial", "definitionPath": "agents/channel-distribution-specialist.md", "new": false},
+    {"id": "editor_in_chief", "name": "編集長", "group": "editorial", "definitionPath": "agents/editor-in-chief.md", "new": false},
+    {"id": "sales_business_development", "name": "AI営業・事業開発担当", "group": "revenue", "definitionPath": "agents/sales-business-development.md", "new": true},
+    {"id": "proposal_estimation", "name": "AI提案・見積設計担当", "group": "revenue", "definitionPath": "agents/proposal-estimation.md", "new": true},
+    {"id": "production_producer", "name": "AI制作プロデューサー／案件PM", "group": "production", "definitionPath": "agents/production-producer.md", "new": true},
+    {"id": "growth_cro", "name": "AIグロース・CRO担当", "group": "growth", "definitionPath": "agents/growth-cro.md", "new": true},
+    {"id": "creative_director", "name": "AIクリエイティブディレクター", "group": "production", "definitionPath": "agents/creative-director.md", "new": true},
+    {"id": "contracts_rights_risk", "name": "AI契約・権利リスク担当", "group": "risk", "definitionPath": "agents/contracts-rights-risk.md", "new": true},
+    {"id": "management_accounting", "name": "AI管理会計・財務担当", "group": "finance", "definitionPath": "agents/management-accounting.md", "new": true}
+  ]
+}
