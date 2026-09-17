@@ -24,3 +24,7 @@ GitHub接続を使い、mainの正本と`data/editorial-state`の実行状態台
 Search Consoleについては、open中の `state/search-console-monitor` Draft PRがあればその `automation/cloud-editorial/morning-brief.json` を優先し、なければmainを読む。`searchConsole` を重要度順に最大5件だけ表示する。新規公開URL数、登録済み数、未登録数、エラー数、canonical不一致数、sitemap未掲載数、オーナー対応URL、次回確認予定を示す。nullは未取得であり、0または正常と解釈しない。
 
 401/403など同一原因のAPI取得失敗が複数URLにあり、次回確認日時が未来ならURLを個別列挙しない。「Search Console API認証・権限エラー／再試行保留中／次回確認日時」の1行へ集約する。API取得失敗数をGoogle上の未登録ページ数として扱わない。
+
+runtime-stateの最新`completedAt`または`generatedAt`が現在のJSTから26時間を超えて古い場合は、「失敗0件」と断定せず「実行状態未取得／runtime-state更新停止」としてalertsへ1件表示する。過去分はScheduled Tasksの確定ログがある場合だけ復元し、推測で埋めない。
+
+Search Consoleの`retryEligibleAt`はURL検査を再実行できる最短時刻、`nextScheduledRunAt`はワークフローの次回定期実行時刻として分けて表示する。両方がある場合は混同せず併記する。`monitoringMissingCount`が1以上ならsitemapと監視台帳の差分としてalertsへ表示する。
