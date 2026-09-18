@@ -31,3 +31,5 @@
 | `DIST-20260803-002` | `ai-video-ad-disclosure.html` | note | `distribution/note/DIST-20260803-002-note.md` | 媒体展開担当 | `編集長合格` | `approved` | `2026-08-05` |  |  | 元記事／問い合わせ | 読了、記事遷移、問い合わせ遷移 | 承認済み・未公開。時刻は仮説 |
 | `DIST-20260803-003` | `multi-platform-video-production.html` | X | `distribution/x/DIST-20260803-003-x.md` | 媒体展開担当 | `編集長選定済み（一部採用）` | `approved` | `2026-08-06 / 2026-08-08` |  |  | 元記事を読む | 表示、反応、記事遷移 | 採用分は承認済み・未投稿。時刻は仮説 |
 | `DIST-20260803-003` | `multi-platform-video-production.html` | note | `distribution/note/DIST-20260803-003-note.md` | 媒体展開担当 | `編集長合格` | `approved` | `2026-08-04` |  |  | 元記事／問い合わせ | 読了、記事遷移、問い合わせ遷移 | 承認済み・未公開。時刻は仮説 |
+| `DIST-20260918-001` | `WR-20260913-001` | X | `distribution/x/DIST-20260918-001-x.md` | 媒体展開担当 | `編集長合格` | `owner_review` |  |  |  | 原稿公開後に管理表を確認 | 表示、反応、記事遷移 | 投稿日時・記事URLは未確定 |
+| `DIST-20260918-001` | `WR-20260913-001` | note | `distribution/note/DIST-20260918-001-note.md` | 媒体展開担当 | `編集長合格` | `owner_review` |  |  |  | 原稿公開後に7項目を確認／問い合わせ | 読了、記事遷移、問い合わせ遷移 | 投稿日時・記事URLは未確定 |
