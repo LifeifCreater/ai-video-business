@@ -265,6 +265,23 @@
       "errorSummary": null,
       "retryCount": 0,
       "lastUpdatedAt": "2026-09-18T02:09:37+09:00"
+    },
+    {
+      "jobId": "NIGHTLY-PRODUCTION-PLAN-20260913-002",
+      "workflowType": "nightly_production",
+      "sourceId": "PLAN-20260913-002",
+      "status": "waiting_owner",
+      "scheduledFor": "2026-09-19T02:00:00+09:00",
+      "startedAt": "2026-09-19T01:59:47+09:00",
+      "completedAt": "2026-09-19T02:05:26+09:00",
+      "branch": "writing/WR-20260913-002",
+      "commitSha": null,
+      "pullRequestUrl": null,
+      "approvalRequired": "article_owner_approval",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-09-19T02:05:26+09:00"
     }
   ]
 }
