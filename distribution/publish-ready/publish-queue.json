@@ -462,5 +462,63 @@
     "publishedUrl": "",
     "publicationDisposition": "candidate",
     "ownerScheduleRequired": true
+  },
+  {
+    "id": "PUB-X-011",
+    "platform": "X",
+    "theme": "AI会話音声の分離・補正と承認",
+    "sourceArticle": "WR-20260913-002",
+    "sourceUrl": "",
+    "title": "聞きやすい≠内容確認済み",
+    "body": "AIで会話音声を聞きやすくできても、発言内容や話者まで正しいとは限りません。\n\n原音を残し、加工目的と許容範囲を決める。数値、固有名詞、否定、話者の切り替わりは処理前後で確認する。音質・内容・公開の承認も分ける。\n\n企業動画では「補正済み」と「内容確認済み」を同じにしないことが大切です。",
+    "completedText": "AIで会話音声を聞きやすくできても、発言内容や話者まで正しいとは限りません。\n\n原音を残し、加工目的と許容範囲を決める。数値、固有名詞、否定、話者の切り替わりは処理前後で確認する。音質・内容・公開の承認も分ける。\n\n企業動画では「補正済み」と「内容確認済み」を同じにしないことが大切です。\n\n#AI動画 #研修動画 #動画制作",
+    "hashtags": [
+      "#AI動画",
+      "#研修動画",
+      "#動画制作"
+    ],
+    "cta": "原稿公開後に7項目を確認",
+    "proposedAt": "2026-09-19T01:59:47+09:00",
+    "objective": "認知獲得・記事遷移",
+    "notes": "スレッド案はdistribution/x/DIST-20260919-001-x.md。投稿日時と記事URLは未確定。オーナー承認前に投稿しない。",
+    "accountUrl": "https://x.com/yossy_FRAMEPACT",
+    "accountDisplayName": "よっしー｜AI動画制作",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": "",
+    "publicationDisposition": "candidate",
+    "ownerScheduleRequired": true
+  },
+  {
+    "id": "PUB-NOTE-007",
+    "platform": "note",
+    "theme": "AI会話音声の分離・補正と承認",
+    "sourceArticle": "WR-20260913-002",
+    "sourceUrl": "",
+    "title": "AIで会話音声を聞きやすくする前に、企業動画で決めたい承認基準",
+    "body": "研修、採用、インタビューなどの企業動画でAI音声処理を使う前に、原音・作業版・公開版を分け、加工目的と許容範囲を決めます。数値、固有名詞、否定、話者対応は処理前後で確認し、音質・内容・公開の承認を分離します。確認できない場合は、再編集、原音使用、字幕や図解、再収録、公開停止へ戻せる条件を決めます。",
+    "completedText": "",
+    "hashtags": [
+      "#AI動画",
+      "#研修動画",
+      "#動画制作"
+    ],
+    "cta": "原稿公開後に7項目を案内。研修・教育動画制作ページへ誘導。",
+    "proposedAt": "2026-09-19T01:59:47+09:00",
+    "objective": "信頼形成・記事遷移",
+    "notes": "完成案はdistribution/note/DIST-20260919-001-note.md。投稿日時と記事URLは未確定。オーナー承認前に投稿しない。",
+    "accountUrl": "https://note.com/framepact",
+    "accountDisplayName": "よっしー｜AI動画制作",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": "",
+    "publicationDisposition": "candidate",
+    "ownerScheduleRequired": true
   }
 ]
