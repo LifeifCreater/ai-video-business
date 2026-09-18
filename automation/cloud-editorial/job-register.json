@@ -273,15 +273,15 @@
       "status": "waiting_owner",
       "scheduledFor": "2026-09-19T02:00:00+09:00",
       "startedAt": "2026-09-19T01:59:47+09:00",
-      "completedAt": "2026-09-19T02:05:26+09:00",
+      "completedAt": "2026-09-19T02:06:25+09:00",
       "branch": "writing/WR-20260913-002",
-      "commitSha": null,
-      "pullRequestUrl": null,
+      "commitSha": "6044a77bff267ef4e49e50c622eefe7d6bf79369",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/49",
       "approvalRequired": "article_owner_approval",
       "errorCode": null,
       "errorSummary": null,
       "retryCount": 0,
-      "lastUpdatedAt": "2026-09-19T02:05:26+09:00"
+      "lastUpdatedAt": "2026-09-19T02:06:25+09:00"
     }
   ]
 }
