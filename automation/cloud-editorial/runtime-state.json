@@ -1,7 +1,23 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-19T04:02:27+09:00",
+  "generatedAt": "2026-09-20T01:06:34+09:00",
   "runs": [
+    {
+      "runId": "weekly_planning:2026-09-20T00:59:54+09:00",
+      "workflowType": "weekly_planning",
+      "sourceId": "WEEK-2026-09-21",
+      "startedAt": "2026-09-20T00:59:54+09:00",
+      "completedAt": "2026-09-20T01:06:34+09:00",
+      "status": "waiting_owner",
+      "result": "draft_pr_created",
+      "branch": "planning/weekly-2026-09-21",
+      "commitSha": "8ec8b867f8cdbbe7971f2ad2f6e4ca3f17722cf2",
+      "pullRequestNumber": 50,
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/50",
+      "pullRequestState": "open",
+      "draft": true,
+      "errorCode": null
+    },
     {
       "runId": "approved_article_implementation:2026-09-19T04:01:36+09:00",
       "workflowType": "approved_article_implementation",
