@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<!-- Google tag (gtag.js)：既存サイトと同じ測定IDを使用 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFRM2G8C7C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HFRM2G8C7C');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="tMryDzvKuym28F_ahW7J4rW69t-82RCLpqkXgKaip3M">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<title>AIで会話音声を分離・補正する前に決める7つの承認基準｜Framepact</title>
+<meta name="description" content="AIで会話音声のノイズ低減や話者分離を行う前に、原音保管、加工目的、許容範囲、聞き取り確認、版管理、承認者、差し戻し条件を決める実務上の7項目を整理します。">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="canonical" href="https://framepact.jp/ai-audio-processing-approval.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="AIで会話音声を分離・補正する前に決める7つの承認基準｜Framepact">
+<meta property="og:description" content="AIで会話音声のノイズ低減や話者分離を行う前に、原音保管、加工目的、許容範囲、聞き取り確認、版管理、承認者、差し戻し条件を決める実務上の7項目を整理します。">
+<meta property="og:url" content="https://framepact.jp/ai-audio-processing-approval.html">
+<meta property="og:site_name" content="FRAMEPACT">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://framepact.jp/images/ogp-framepact.png">
+<meta property="og:image:width" content="1731">
+<meta property="og:image:height" content="909">
+<meta property="og:image:alt" content="生成AIを使った動画広告で企業が確認すべき表示・審査・社内承認">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AIで会話音声を分離・補正する前に決める7つの承認基準｜Framepact">
+<meta name="twitter:description" content="AIで会話音声のノイズ低減や話者分離を行う前に、原音保管、加工目的、許容範囲、聞き取り確認、版管理、承認者、差し戻し条件を決める実務上の7項目を整理します。">
+<meta name="twitter:image" content="https://framepact.jp/images/ogp-framepact.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://framepact.jp/ai-audio-processing-approval.html#webpage",
+      "url": "https://framepact.jp/ai-audio-processing-approval.html",
+      "name": "AIで会話音声を分離・補正する前に決める7つの承認基準",
+      "description": "AIアバターを研修・社内説明動画へ使う前に、本人同意、台本承認、公開範囲、版管理、異動・退職時の差し替えなど、企業が制作前に決めたい7つの運用ルールを整理します。",
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://framepact.jp/ai-audio-processing-approval.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ホーム",
+          "item": "https://framepact.jp/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "お役立ち記事",
+          "item": "https://framepact.jp/column.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AIで会話音声を分離・補正する前に決める7つの承認基準",
+          "item": "https://framepact.jp/ai-audio-processing-approval.html"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://framepact.jp/#organization",
+      "name": "FRAMEPACT",
+      "url": "https://framepact.jp/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framepact.jp/images/framepact-logo-mark.png"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://framepact.jp/ai-audio-processing-approval.html#article",
+      "headline": "AIで会話音声を分離・補正する前に決める7つの承認基準",
+      "description": "AIアバターを研修・社内説明動画へ使う前に、本人同意、台本承認、公開範囲、版管理、異動・退職時の差し替えなど、企業が制作前に決めたい7つの運用ルールを整理します。",
+      "image": "https://framepact.jp/images/ogp-framepact.png",
+      "datePublished": "2026-09-21",
+      "dateModified": "2026-09-21",
+      "author": {
+        "@id": "https://framepact.jp/#organization"
+      },
+      "publisher": {
+        "@id": "https://framepact.jp/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://framepact.jp/ai-audio-processing-approval.html#webpage"
+      },
+      "inLanguage": "ja"
+    }
+  ]
+}
+</script>
+
+<style>
+:root{
+  --black:#0a0a0a; --charcoal:#161616; --charcoal-2:#202020;
+  --offwhite:#f6f5f1; --white:#fff; --ink:#111; --gray-600:#6b6b66;
+  --gray-400:#9a9a95; --gray-200:#e4e2db; --yellow:#fdc44b; --yellow-dark:#e0a930;
+  --font-body:-apple-system,BlinkMacSystemFont,"Helvetica Neue","Segoe UI","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+  --header-h:78px; --measure:720px; --ease:cubic-bezier(.16,.84,.44,1); --dur:.7s;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:var(--header-h)}
+body{margin:0;font-family:var(--font-body);background:var(--white);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block} a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;font-weight:700;letter-spacing:-.01em} p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none} button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}.measure{max-width:var(--measure)}
+.section{padding:clamp(56px,9vw,120px) 0}.section--offwhite{background:var(--offwhite)}
+.h2{font-size:clamp(1.8rem,4vw,3rem);line-height:1.3}.lead{color:var(--gray-600);font-size:1.02rem;max-width:var(--measure)}
+.eyebrow{font-size:.78rem;letter-spacing:.22em;font-weight:700;color:var(--yellow);display:inline-block;margin-bottom:14px}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.reveal.is-visible{opacity:1;transform:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:19px 38px;font-size:1rem;font-weight:700;border-radius:8px;min-height:56px;white-space:nowrap;transition:transform .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
+.btn--primary{background:var(--yellow);color:var(--black)}.btn--primary:hover{background:var(--yellow-dark);transform:translateY(-3px);box-shadow:0 20px 40px -16px rgba(253,196,75,.45)}
+.site-header{position:fixed;inset:0 0 auto;z-index:300;height:var(--header-h);display:flex;align-items:center;background:transparent;border-bottom:1px solid transparent;transition:background .35s var(--ease),border-color .35s var(--ease)}
+.site-header.is-scrolled{background:rgba(10,10,10,.82);border-bottom-color:rgba(255,255,255,.08);backdrop-filter:blur(14px)}
+.header-inner{width:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:inline-flex;align-items:center;gap:12px;color:var(--white)}.logo-mark{width:34px;height:34px}.logo-mark img{width:100%;height:100%;object-fit:contain}.logo-wordmark{font-size:1.1rem;font-weight:800;letter-spacing:.12em}
+.main-nav{display:none}.main-nav ul{display:flex;gap:28px;align-items:center}.main-nav a{color:#e8e8e3;font-size:.87rem}.header-cta{display:none;padding:12px 24px;min-height:44px}
+.menu-toggle{width:44px;height:44px;display:flex;align-items:center;justify-content:center}.menu-toggle span,.menu-toggle span::before,.menu-toggle span::after{display:block;width:22px;height:2px;background:var(--white);position:relative;transition:.3s}.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0}.menu-toggle span::before{top:-7px}.menu-toggle span::after{top:7px}.menu-toggle[aria-expanded="true"] span{background:transparent}.menu-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}.menu-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+.mobile-nav{position:fixed;inset:0;z-index:290;background:var(--black);padding:100px 24px 40px;transform:translateX(100%);transition:transform .35s var(--ease);overflow-y:auto}.mobile-nav.is-open{transform:none}.mobile-nav ul{display:grid;gap:4px}.mobile-nav a{color:var(--white);display:flex;align-items:center;min-height:52px;border-bottom:1px solid rgba(255,255,255,.12)}.mobile-nav .btn{margin-top:24px;color:var(--black);border:0}.mobile-nav-note{color:var(--gray-400);font-size:.82rem;margin-top:14px}
+.page-hero{position:relative;overflow:hidden;background:var(--black);color:var(--white);padding:calc(var(--header-h) + 72px) 0 82px}.page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px}.page-hero-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(253,196,75,.13);filter:blur(90px);right:-180px;top:-220px}.breadcrumb{position:relative;z-index:2;display:flex;gap:9px;align-items:center;flex-wrap:wrap;font-size:.8rem;color:#a9a9a4;margin-bottom:34px}.breadcrumb a{color:#d0d0ca}.breadcrumb a:hover{color:var(--yellow)}
+.page-hero-inner{position:relative;z-index:2;max-width:900px}.page-hero-tag{display:block;color:var(--yellow);font-size:.78rem;letter-spacing:.18em;font-weight:700;margin-bottom:18px}.page-hero-title{font-size:clamp(2.1rem,5.6vw,4rem);line-height:1.2;max-width:1000px}.page-hero-sub{font-size:clamp(1rem,1.5vw,1.1rem);color:#e1e1dc;max-width:720px;margin-top:24px}.article-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:24px;font-size:.82rem;color:#cfcac0}
+.article-lead{max-width:var(--measure)}.article-lead p{font-size:1.05rem;color:var(--gray-600);line-height:1.95}.article-lead p+p{margin-top:18px}
+.toc{margin-top:34px;padding:24px 26px;border:1px solid var(--gray-200);border-radius:12px;background:var(--offwhite);max-width:var(--measure)}.toc-title{font-weight:700;font-size:.8rem;letter-spacing:.08em;color:var(--gray-600);margin-bottom:14px}.toc-list{display:grid;gap:10px;counter-reset:toc}.toc-list li{counter-increment:toc}.toc-list a{display:flex;gap:10px;font-size:.92rem}.toc-list a::before{content:counter(toc) ".";color:var(--yellow-dark);font-weight:700}.toc-list a:hover{color:var(--yellow-dark)}
+.section-head{max-width:var(--measure);margin-bottom:28px}.body-copy{max-width:var(--measure);font-size:1rem}.body-copy h3{font-size:1.2rem;margin:32px 0 14px}.body-copy p+p,.body-copy ul+p,.body-copy ol+p{margin-top:20px}.body-copy p+ul,.body-copy p+ol{margin-top:18px}.body-copy ul,.body-copy ol{display:grid;gap:10px;padding-left:1.3em}.body-copy ul{list-style:disc}.body-copy ol{list-style:decimal}.body-copy li{padding-left:.2em}.inline-link{border-bottom:1px solid var(--yellow);font-weight:700}.inline-link:hover{color:var(--yellow-dark)}
+.summary-list{max-width:var(--measure);padding:28px 30px;border-left:5px solid var(--yellow);background:var(--white);box-shadow:0 18px 40px rgba(0,0,0,.06)}.body-copy+.summary-list,.summary-list+.body-copy{margin-top:20px}.section--offwhite .summary-list{background:var(--white)}.summary-list ol{padding-left:1.4em;list-style:decimal;display:grid;gap:12px}
+.related-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:32px}.related-card{display:block;padding:24px;border:1px solid var(--gray-200);border-radius:12px;background:var(--white);transition:.3s}.related-card:hover{transform:translateY(-4px);border-color:var(--yellow);box-shadow:0 18px 36px rgba(0,0,0,.08)}.related-card-title{display:flex;justify-content:space-between;gap:12px;font-weight:700}.related-card-desc{display:block;color:var(--gray-600);font-size:.86rem;line-height:1.65;margin-top:10px}.related-card-arrow{color:var(--yellow-dark)}
+.contact-section{background:var(--black);color:var(--white);padding:clamp(70px,12vw,140px) 0;text-align:center}.contact-section .h2{margin-bottom:18px}.contact-section .lead{margin:0 auto 36px;color:#d6d6d1}.contact-actions{display:flex;justify-content:center}
+.site-footer{background:var(--charcoal);color:var(--white);padding:70px 0 28px}.footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:48px;margin-bottom:50px}.footer-tag{font-size:.86rem;color:#aaa;max-width:300px;margin-top:18px}.footer-links{display:flex;flex-wrap:wrap;gap:58px}.footer-col h4{font-size:.72rem;letter-spacing:.16em;color:#888;margin:0 0 16px}.footer-col ul{display:grid;gap:10px}.footer-col a{font-size:.9rem;color:#d8d8d3}.footer-col a:hover{color:var(--yellow)}.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.78rem;color:#777}
+.floating-cta{position:fixed;right:16px;bottom:16px;z-index:150;opacity:0;transform:translateY(12px);pointer-events:none;transition:.3s}.floating-cta.is-visible{opacity:1;transform:none;pointer-events:auto}.floating-cta .btn{padding:14px 22px;font-size:.88rem;min-height:auto;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+@media(min-width:640px){.related-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:768px){.wrap{padding:0 48px}.summary-list{padding:32px 38px}}
+@media(min-width:1080px){.main-nav{display:block}.header-cta{display:inline-flex}.menu-toggle{display:none}.mobile-nav{display:none!important}.related-grid{grid-template-columns:repeat(3,1fr)}.floating-cta{right:28px;bottom:28px}}
+@media(max-width:480px){.btn{width:100%;padding:17px 20px;white-space:normal}.page-hero{padding-bottom:62px}.footer-links{gap:34px}.floating-cta{left:16px}.floating-cta .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+</style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="/" class="brand" aria-label="FRAMEPACT トップへ戻る"><span class="logo-mark" aria-hidden="true"><img src="/images/framepact-logo-mark.png" alt="" width="34" height="34" decoding="async"></span><span class="logo-wordmark">FRAMEPACT</span></a>
+    <nav class="main-nav" aria-label="サイト内ナビゲーション"><ul><li><a href="/#services">サービス</a></li><li><a href="/#works">制作実績</a></li><li><a href="/#about">FRAMEPACTについて</a></li><li><a href="/#process">制作の流れ</a></li><li><a href="/column.html">お役立ち記事</a></li><li><a href="/#price">料金</a></li><li><a href="/#faq">よくある質問</a></li></ul></nav>
+    <a href="#contact" class="btn btn--primary header-cta">お問い合わせ</a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="メニューを開く"><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
+  <ul><li><a href="/#services">サービス</a></li><li><a href="/#works">制作実績</a></li><li><a href="/#about">FRAMEPACTについて</a></li><li><a href="/#process">制作の流れ</a></li><li><a href="/column.html">お役立ち記事</a></li><li><a href="/#price">料金</a></li><li><a href="/#faq">よくある質問</a></li></ul>
+  <a href="#contact" class="btn btn--primary">お問い合わせ</a>
+  <p class="mobile-nav-note">企画や素材が固まっていない段階でもご相談いただけます。</p>
+</nav>
+
+<main><section class="page-hero"><div class="page-hero-grid" aria-hidden="true"></div><div class="page-hero-glow" aria-hidden="true"></div><div class="wrap"><nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">ホーム</a><span aria-hidden="true">/</span><a href="/column.html">お役立ち記事</a><span aria-hidden="true">/</span><span>AI会話音声の分離・補正</span></nav><div class="page-hero-inner"><span class="page-hero-tag">お役立ち記事</span><h1 class="page-hero-title">AIで会話音声を分離・補正する前に決める7つの承認基準</h1><p class="page-hero-sub">AIで会話音声のノイズ低減や話者分離を行う前に、原音保管、加工目的、許容範囲、聞き取り確認、版管理、承認者、差し戻し条件を決める実務上の7項目を整理します。</p><p class="article-meta"><span>公開日：<time datetime="2026-09-21">2026年9月21日</time></span><span>更新日：<time datetime="2026-09-21">2026年9月21日</time></span></p></div></div></section><section class="section" id="intro"><div class="wrap"><div class="article-lead reveal"><p>研修、採用、インタビュー、イベント記録などの企業動画では、収録後に空調音や周囲の音が気になったり、二人の発話が重なって聞き取りにくくなったりすることがあります。</p><p>Adobeは2026年9月8日、Premiereの新しいAI音声機能をpublic betaとして発表しました。公式説明では、Enhance Audioによる会話・音楽・環境音・効果音の調整、Separate Crosstalkによる重なった2人の話者の別トラック化、Dynamic Auto Duckingによる音量バランス調整が案内されています。</p><p>こうした機能は編集の選択肢を増やします。しかし、聞きやすくなった音声が、発言内容、話者、意図、固有名詞、数値まで正しいことを自動で保証するわけではありません。企業動画で大切なのは、処理機能だけでなく、何を変えてよいか、誰が確認するか、どの版を公開するかを先に決めることです。</p></div></div></section><section class="section section--offwhite" id="section-1"><div class="wrap"><div class="section-head reveal"><h2 class="h2">1. 「聞きやすさ」と「内容の正しさ」を分ける</h2></div><div class="body-copy reveal"><p>最初に、音声処理の目的を一文で決めます。</p><ul><li>定常的なノイズを抑え、発言を聞き取りやすくする</li><li>会話とBGMのバランスを整える</li><li>重なった二人の発話を確認しやすいトラックへ分ける</li><li>音量差を小さくし、研修動画を継続して視聴しやすくする</li></ul><p>ここで避けたいのは、「補正したから正しい」「分離できたから話者を特定できた」と考えることです。音が明瞭になっても、言葉の聞き違い、話者の取り違え、文脈の欠落は残る可能性があります。</p><p>処理後の音声は、内容確認をしやすくする資料として扱い、発言の正しさは別の確認工程にします。</p></div></div></section>
+<section class="section " id="section-2"><div class="wrap"><div class="section-head reveal"><h2 class="h2">2. 原音・作業版・公開版を分けて保管する</h2></div><div class="body-copy reveal"><p>音声処理へ入る前に、元の収録データを変更せず保管します。</p><ul><li>原音: 収録時の状態を保持する読み取り専用の基準データ</li><li>作業版: ノイズ低減、話者分離、音量調整などを試す編集データ</li><li>確認版: 内容責任者や登壇者が確認する書き出し</li><li>公開版: 承認された映像と音声を組み合わせた最終ファイル</li></ul><p>ファイル名には案件ID、収録日、版番号、処理内容を対応させます。作業版だけが残ると、処理前後の差を確認できません。</p><p>原音の保存期間や保管場所、アクセス権は、録音同意、社内規程、契約、個人情報の扱いに応じて決めます。</p></div></div></section>
+<section class="section section--offwhite" id="section-3"><div class="wrap"><div class="section-head reveal"><h2 class="h2">3. 加工目的と許容範囲を先に決める</h2></div><div class="body-copy reveal"><p>「きれいにする」だけでは、編集者と確認者の判断がずれます。案件ごとに、許容する加工と避ける加工を決めます。</p><p>例として、定常ノイズの低減、BGMとの音量調整、短い無音部の整理は許容し、単語の生成、発言順の変更、意味が変わる切り貼りは行わない、といった線引きです。</p><p>特に研修、採用、経営者メッセージ、社内規程の説明では、聞きやすさを優先するあまり、言いよどみ、否定、留保、強調の位置を変えないよう注意します。</p><p>使う機能、対象区間、設定、担当者、処理日を記録し、再編集できる状態にします。</p></div></div></section>
+<section class="section " id="section-4"><div class="wrap"><div class="section-head reveal"><h2 class="h2">4. 数値・固有名詞・否定・話者対応を重点確認する</h2></div><div class="body-copy reveal"><p>全編を同じ強さで確認するのではなく、誤りの影響が大きい箇所を決めます。</p><ul><li>金額、割合、日付、回数、型番</li><li>人名、会社名、商品名、部署名</li><li>「ない」「できない」「対象外」などの否定</li><li>条件や例外を示す表現</li><li>発言者が切り替わる箇所</li><li>二人の声が重なった箇所</li><li>字幕、テロップ、資料と対応する発言</li></ul><p>Separate CrosstalkについてAdobeが説明しているのは、重なった2人の話者を別トラックへ分ける機能です。3人以上への対応や、話者の本人確認、すべての素材での完全な分離までは公式発表から断定しません。</p><p>重要箇所は原音、処理後音声、必要に応じて収録メモや登壇資料を照合します。</p></div></div></section>
+<section class="section section--offwhite" id="section-5"><div class="wrap"><div class="section-head reveal"><h2 class="h2">5. 処理前後を比較し、差分を残す</h2></div><div class="body-copy reveal"><p>確認時は、処理後だけを聞くのではなく、原音と同じ区間を比較します。</p><p>差分記録には、少なくとも次を含めます。</p><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse"><tr><th style="text-align:left;padding:10px;border-bottom:1px solid #ddd">項目</th><th style="text-align:left;padding:10px;border-bottom:1px solid #ddd">記録内容</th></tr><tr><td style="padding:10px;border-bottom:1px solid #ddd">区間</td><td style="padding:10px;border-bottom:1px solid #ddd">タイムコードまたはクリップID</td></tr><tr><td style="padding:10px;border-bottom:1px solid #ddd">目的</td><td style="padding:10px;border-bottom:1px solid #ddd">ノイズ低減、話者分離、音量調整など</td></tr><tr><td style="padding:10px;border-bottom:1px solid #ddd">使用機能</td><td style="padding:10px;border-bottom:1px solid #ddd">機能名、対象版、処理日</td></tr><tr><td style="padding:10px;border-bottom:1px solid #ddd">変更点</td><td style="padding:10px;border-bottom:1px solid #ddd">聞こえ方やバランスの変化</td></tr><tr><td style="padding:10px;border-bottom:1px solid #ddd">内容確認</td><td style="padding:10px;border-bottom:1px solid #ddd">数値、固有名詞、否定、話者対応</td></tr><tr><td style="padding:10px;border-bottom:1px solid #ddd">判断</td><td style="padding:10px;border-bottom:1px solid #ddd">採用、修正、保留、原音使用</td></tr><tr><td style="padding:10px;border-bottom:1px solid #ddd">確認者</td><td style="padding:10px;border-bottom:1px solid #ddd">編集、内容責任者、登壇者、公開責任者</td></tr></table></div><p>波形や自動判定だけでなく、人が実際に聞いて差分を確認します。聞き取りに自信がない箇所は推測で確定せず、保留マーカーを残します。</p></div></div></section>
+<section class="section " id="section-6"><div class="wrap"><div class="section-head reveal"><h2 class="h2">6. 内容・音質・公開の承認を分ける</h2></div><div class="body-copy reveal"><p>一人へ「全部確認してください」と依頼すると、誰が何を保証したのか曖昧になります。</p><ul><li>編集担当: ノイズ、音量、つながり、映像との同期</li><li>内容責任者: 発言内容、数値、固有名詞、資料との一致</li><li>登壇者・話者: 自分の発言や意図との一致（必要な案件）</li><li>法務・コンプライアンス等: 公開範囲、機密、同意、表現上の確認（必要な案件）</li><li>公開責任者: 残った論点、字幕、映像、音声、公開版の最終判断</li></ul><p>音質の合格は、内容や公開の承認を兼ねません。各承認の対象ファイルと版番号を記録します。</p></div></div></section>
+<section class="section section--offwhite" id="section-7"><div class="wrap"><div class="section-head reveal"><h2 class="h2">7. 再編集・原音採用・公開停止の条件を決める</h2></div><div class="body-copy reveal"><p>処理結果を使わない条件も先に決めます。</p><ul><li>数値や固有名詞を確実に聞き取れない</li><li>話者の対応を確認できない</li><li>音声が不自然になり、発言の印象が変わる</li><li>字幕や資料と一致しない</li><li>録音・加工・公開の許諾を確認できない</li><li>原音との比較記録がない</li><li>使用した機能や対象版を特定できない</li></ul><p>条件に当てはまる場合は、設定を変えて再編集する、原音を使う、該当箇所を字幕や図解へ置き換える、再収録する、公開を止める、といった判断へ戻します。</p><p>AI処理を使うこと自体を目的にせず、伝達の正確さと確認可能性を優先します。</p></div></div></section>
+<section class="section " id="section-8"><div class="wrap"><div class="section-head reveal"><h2 class="h2">ツールの機能と企業の承認を混同しない</h2></div><div class="body-copy reveal"><p>Adobeの2026年9月8日発表では、新しいAI音声ツールはpublic betaです。提供状況、対象版、対応素材、話者数、出力は更新される可能性があります。制作時点の公式情報、利用画面、契約条件を確認してください。</p><p>また、音声処理は録音同意、人物の権利、機密情報、外部サービスへの入力可否、公開範囲を自動で解決しません。案件ごとに必要な確認を行います。</p><p>FRAMEPACTでは、企業、法人、団体向けに研修・教育動画を含む動画制作へ対応しています。生成AIを使う場合も、出力をそのまま納品せず、人が編集、構成調整、テロップ、音声、色味、品質確認を行い、使用範囲は案件ごとに調整します。</p></div></div></section>
+<section class="section section--offwhite" id="section-9"><div class="wrap"><div class="section-head reveal"><h2 class="h2">発注前に共有したい最小チェックリスト</h2></div><div class="body-copy reveal"><ul><li>原音の保存場所とアクセス権</li><li>音声処理の目的</li><li>許容する加工と禁止する加工</li><li>数値、固有名詞、否定、話者対応の重点区間</li><li>原音と処理後を比較する担当者</li><li>内容、音質、公開の各承認者</li><li>再編集、原音採用、再収録、公開停止の条件</li></ul><p>収録済み素材をどう扱うか決まっていない段階でも大丈夫です。研修・教育動画の構成、音声、字幕、確認工程を整理したい方は、<a class="inline-link" href="https://framepact.jp/training-video.html">FRAMEPACTの研修・教育動画制作</a>からご相談ください。</p></div></div></section>
+<section class="section " id="section-10"><div class="wrap"><div class="section-head reveal"><h2 class="h2">参考情報</h2></div><div class="body-copy reveal"><ul><li>Adobe公式ブログ「Generate and create directly in your timeline with new AI-powered innovations in Premiere and After Effects」（2026-09-08公開、2026-09-19確認）</li><li>  https://blog.adobe.com/en/publish/2026/09/08/generate-create-directly-in-your-timeline-with-new-ai-powered-innovations-in-premiere-after-effects</li><li>FRAMEPACTサービス情報正本（2026-09-19確認）</li></ul><p>※本稿は企業動画の制作・承認設計に関する一般的な情報です。個別の法的判断や、音声の証拠性・真正性の保証を示すものではありません。</p></div></div></section><section class="section section--offwhite" id="related"><div class="wrap"><div class="section-head reveal"><span class="eyebrow">RELATED</span><h2 class="h2">関連記事・サービス</h2></div><div class="related-grid reveal"><a class="related-card" href="/training-video.html"><span class="related-card-title">研修・教育動画制作<span class="related-card-arrow">→</span></span><span class="related-card-desc">社内研修や説明動画の制作サービスをご案内します。</span></a><a class="related-card" href="/ai-video-data-management.html"><span class="related-card-title">AI動画制作のデータ管理<span class="related-card-arrow">→</span></span><span class="related-card-desc">人物・音声を含む素材共有前の確認項目を整理します。</span></a><a class="related-card" href="/ai-video-outsourcing-checklist.html"><span class="related-card-title">AI動画制作を外注する前の5項目<span class="related-card-arrow">→</span></span><span class="related-card-desc">目的、権利、品質、見積、進行を確認します。</span></a></div></div></section><section class="contact-section" id="contact"><div class="wrap"><span class="eyebrow">CONTACT</span><h2 class="h2">研修・教育動画制作のご相談</h2><p class="lead">音声、字幕、確認工程を含め、目的に合わせた動画制作をご相談いただけます。</p><div class="contact-actions"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform" class="btn btn--primary" target="_blank" rel="noopener">問い合わせフォームを開く</a></div></div></section></main>
+
+<footer class="site-footer"><div class="wrap"><div class="footer-top"><div><span class="brand"><span class="logo-mark" aria-hidden="true"><img src="/images/framepact-logo-mark.png" alt="" width="38" height="38" loading="lazy" decoding="async"></span><span class="logo-wordmark">FRAMEPACT</span></span><p class="footer-tag">生成AIを活用した企業動画制作。映像の力で、「伝わる」を「行動」に変える。</p></div><div class="footer-links">
+<!-- article-social:start -->
+<div class="footer-col" data-article-social>
+  <h4>FOLLOW</h4>
+  <ul>
+    <li><a href="https://x.com/yossy_FRAMEPACT" target="_blank" rel="me noopener">Xで発信を読む</a></li>
+    <li><a href="https://note.com/framepact" target="_blank" rel="me noopener">noteで記事を読む</a></li>
+  </ul>
+</div>
+<!-- article-social:end -->
+<div class="footer-col"><h4>SITE</h4><ul><li><a href="/#services">サービス</a></li><li><a href="/#works">制作実績</a></li><li><a href="/#about">FRAMEPACTについて</a></li><li><a href="/column.html">お役立ち記事</a></li><li><a href="/ai-video-price.html">料金・費用相場</a></li><li><a href="#contact">お問い合わせ</a></li></ul></div><div class="footer-col"><h4>LEGAL</h4><ul><li><a href="/privacy.html">プライバシーポリシー</a></li></ul></div></div></div><p class="footer-bottom">&copy; <span id="year"></span> FRAMEPACT</p></div></footer>
+<div class="floating-cta" id="floatingCta"><a href="#contact" class="btn btn--primary" aria-label="お問い合わせセクションへ移動">相談する</a></div>
+
+<script>
+(function(){
+  'use strict';
+  var yearEl=document.getElementById('year');if(yearEl){yearEl.textContent=new Date().getFullYear();}
+  var menuToggle=document.getElementById('menuToggle');var mobileNav=document.getElementById('mobileNav');var lastMenuFocus=null;
+  function getMenuFocusable(){return Array.from(mobileNav.querySelectorAll('a[href],button:not([disabled])'));}
+  function closeMenu(restore){menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','メニューを開く');mobileNav.classList.remove('is-open');document.body.style.overflow='';if(restore!==false&&lastMenuFocus){lastMenuFocus.focus();}}
+  function openMenu(){lastMenuFocus=document.activeElement;menuToggle.setAttribute('aria-expanded','true');menuToggle.setAttribute('aria-label','メニューを閉じる');mobileNav.classList.add('is-open');document.body.style.overflow='hidden';var f=getMenuFocusable();if(f.length){f[0].focus();}}
+  menuToggle.addEventListener('click',function(){menuToggle.getAttribute('aria-expanded')==='true'?closeMenu(true):openMenu();});
+  mobileNav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){closeMenu(false);});});
+  document.addEventListener('keydown',function(e){if(!mobileNav.classList.contains('is-open'))return;if(e.key==='Escape'){e.preventDefault();closeMenu(true);return;}if(e.key!=='Tab')return;var f=getMenuFocusable();if(!f.length)return;var first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}});
+  var header=document.getElementById('siteHeader');var floatingCta=document.getElementById('floatingCta');var hero=document.querySelector('.page-hero');
+  function onScroll(){header.classList.toggle('is-scrolled',window.scrollY>10);floatingCta.classList.toggle('is-visible',hero.getBoundingClientRect().bottom<0);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var targets=document.querySelectorAll('.reveal');
+  if('IntersectionObserver'in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:.12});targets.forEach(function(el){observer.observe(el);});}else{targets.forEach(function(el){el.classList.add('is-visible');});}
+  var formUrl='https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform';
+  document.querySelectorAll('a[href="'+formUrl+'"]').forEach(function(link){link.addEventListener('click',function(){if(typeof gtag==='function'){gtag('event','contact_form_click',{event_category:'contact',event_label:location.pathname});}});});
+})();
+</script>
+</body>
+</html>
