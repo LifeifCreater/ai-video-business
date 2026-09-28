@@ -2,13 +2,7 @@
 <html lang="ja">
 <head>
 <!-- Google tag (gtag.js)：既存サイトと同じ測定IDを使用 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFRM2G8C7C"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HFRM2G8C7C');
-</script>
+<script src="/framepact-analytics.js?v=20260929"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google Search Console 所有権確認（トップページと同じ） -->
@@ -1049,29 +1043,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
     revealTargets.forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-  /* ---------------- お問い合わせフォーム（Googleフォーム）クリック計測 ---------------- */
-  var GA_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform';
-  function initContactFormTracking(){
-    var formLinks = document.querySelectorAll('a[href="' + GA_FORM_URL + '"]');
-    formLinks.forEach(function(link){
-      if(link.getAttribute('data-ga-tracked') === 'true') return;
-      link.setAttribute('data-ga-tracked', 'true');
-      link.addEventListener('click', function(){
-        if(typeof gtag === 'function'){
-          gtag('event', 'contact_form_click', {
-            link_url: link.href,
-            link_text: (link.textContent || '').trim(),
-            source_page: 'event-video'
-          });
-        }
-      });
-    });
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initContactFormTracking);
-  } else {
-    initContactFormTracking();
-  }
 })();
 </script>
 

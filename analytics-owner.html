@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>自分のアクセスの設定｜FRAMEPACT</title></head>
+<body><main>
+<h1>自分のアクセスを集計から除く</h1>
+<p>このブラウザでの閲覧を、今後のアクセス解析に含めないよう設定できます。スマートフォンや別のブラウザでも、それぞれ設定してください。</p>
+<p id="status" role="status" aria-live="polite"></p>
+<button id="exclude" type="button">このブラウザを集計から除く</button>
+<button id="include" type="button">通常の集計に戻す</button>
+<p>このページ自体は計測されません。過去のアクセスには影響しません。ブラウザの保存データを消すと、再設定が必要です。</p>
+<a href="/">サイトに戻る</a>
+</main><script>
+(function(){
+  const key='framepact.analytics.internal',status=document.getElementById('status');
+  function show(){try{status.textContent=localStorage.getItem(key)==='1'?'現在：このブラウザは集計対象外です。':'現在：通常の集計対象です。';}catch(_){status.textContent='保存設定を利用できません。ブラウザの設定をご確認ください。';}}
+  function save(value){try{localStorage.setItem(key,value);show();status.textContent+=' 開いているFRAMEPACTのタブは再読み込みしてください。';}catch(_){status.textContent='設定を保存できませんでした。変更は完了していません。';}}
+  document.getElementById('exclude').addEventListener('click',()=>save('1'));
+  document.getElementById('include').addEventListener('click',()=>save('0'));show();
+})();
+</script></body></html>
