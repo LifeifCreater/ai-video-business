@@ -13,7 +13,7 @@ REGISTER = Path("agents/team-register.json")
 NEW_ROLE_IDS = {
     "sales_business_development", "proposal_estimation", "production_producer",
     "growth_cro", "creative_director", "contracts_rights_risk",
-    "management_accounting",
+    "management_accounting", "yossy_ai",
 }
 REQUIRED_SECTIONS = (
     "使命", "共通ルール", "入力", "担当範囲と手順", "成果物", "連携",
@@ -21,7 +21,8 @@ REQUIRED_SECTIONS = (
 )
 POLICY_KEYS = (
     "commonPolicyPath", "businessRouterPath", "businessTaskTemplatePath",
-    "publicOutputPolicyPath",
+    "publicOutputPolicyPath", "ownerDecisionProfilePath", "internalPdcaPath",
+    "ownerDecisionTemplatePath",
 )
 FALSE_RUNTIME_KEYS = (
     "scheduledTasksCreated", "independentAgentsProvisioned",
@@ -118,7 +119,9 @@ def validate(root: Path, data: object) -> list[str]:
                 if f"`{role_id}`" not in text:
                     errors.append(f"{path}: missing role ID")
     if new_ids != NEW_ROLE_IDS:
-        errors.append("New roles differ from the seven requested roles")
+        errors.append("New roles differ from the requested specialist and yossy roles")
+    if data.get("ownerCriteriaReviewerId") != "yossy_ai":
+        errors.append("ownerCriteriaReviewerId must be yossy_ai")
     if "coo" not in ids or "secretary" not in ids:
         errors.append("Existing leadership and coordination roles must be retained")
 
@@ -146,7 +149,7 @@ def main() -> int:
         print(f"ERROR: {error}", file=sys.stderr)
     if errors:
         return 1
-    print(f"AI team definitions: OK ({len(data['members'])} roles, 7 new; no agents executed)")
+    print(f"AI team definitions: OK ({len(data['members'])} roles, {len(NEW_ROLE_IDS)} new; no agents executed)")
     return 0
 
 
