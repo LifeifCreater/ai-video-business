@@ -20,9 +20,17 @@ class TeamDefinitionTests(unittest.TestCase):
     def test_register_and_links_are_valid(self):
         self.assertEqual(checker.validate(ROOT, self.data), [])
 
-    def test_sixteen_roles_include_seven_new(self):
-        self.assertEqual(len(self.data["members"]), 16)
-        self.assertEqual(sum(m["new"] for m in self.data["members"]), 7)
+    def test_seventeen_roles_include_yossy(self):
+        self.assertEqual(len(self.data["members"]), 17)
+        self.assertEqual(sum(m["new"] for m in self.data["members"]), 8)
+
+    def test_yossy_cannot_be_final_approver(self):
+        self.data["finalApprover"] = "yossy_ai"
+        self.assertIn("finalApprover must be owner", checker.validate(ROOT, self.data))
+
+    def test_yossy_reviewer_is_required(self):
+        self.data["ownerCriteriaReviewerId"] = "owner"
+        self.assertIn("ownerCriteriaReviewerId must be yossy_ai", checker.validate(ROOT, self.data))
 
     def test_duplicate_role_is_rejected(self):
         self.data["members"].append(copy.deepcopy(self.data["members"][0]))

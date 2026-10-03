@@ -24,3 +24,7 @@ GitHub上のFRAMEPACTリポジトリを正本として夜間制作を実行す�
 7. `runtime-state-update.md`に従い、本文を含まない実行結果を`data/editorial-state`へ同期する。
 
 原稿の自動承認、HTML公開実装、投稿、予約、PRマージ、mainへのpushは禁止。状態台帳にも原稿・投稿本文、タイトル、要約を複製しない。利用上限は再試行せず `LIMIT_REACHED` でwaiting_ownerにする。
+
+## よっしーAIによる内部適合レビュー
+
+開始時にmainの `agents/team-register.json`、`agents/yossy-ai.md`、`leadership/yossy-decision-profile.md`、`secretary/yossy-pdca.md`を読み、定義が取得できる場合だけ適合レビューを行う。秘書経由で同じ依頼範囲の内部修正を最大2巡行い、結果は成果物のレビュー欄へ記録する。本人の企画・原稿・公開承認を生成せず、既存開始条件・重複防止・状態同期・停止条件を維持する。同一アシスタントの役割切替はその旨を記録する。未取得の定義を実行済みにしない。

@@ -1,11 +1,12 @@
-# FRAMEPACT AIチーム — 16の役割定義
+# FRAMEPACT AIチーム — 17の役割定義
 
-更新日: 2026-09-17。既存9役に、営業から利益管理までを担当する7役を追加する。名簿の正本は [team-register.json](team-register.json)。これは役割プロンプトの構成であり、16個の独立したAIや常駐タスクの起動を意味しない。mainへの取り込み前は追加提案として扱う。
+更新日: 2026-10-03。既存16役に、オーナーの判断基準をレビューするよっしーAIを追加する。名簿の正本は [team-register.json](team-register.json)。これは役割プロンプトの構成であり、17個の独立したAIや常駐タスクの起動を意味しない。mainへの取り込み前は追加提案として扱う。
 
 ## 体制
 
 | 区分 | 担当 | 主な成果物 |
 |---|---|---|
+| 経営・統括 | [よっしーAI](yossy-ai.md) | オーナー基準への適合評価・内部改善への差し戻し |
 | 経営・統括 | [AI COO](../leadership/coo.md) | 事業目的・優先順位・KPIの判断案 |
 | 経営・統括 | [コンテンツ統括秘書](../secretary/secretary.md) | タスク分解・割当・品質・承認記録 |
 | 編集部 | [AI動画リサーチ](researcher.md) | 出典・日付・確度のある調査資料 |
@@ -52,3 +53,7 @@
 ## 検証
 
 `python3 scripts/check-ai-team.py` で名簿・役割ファイル・内部リンク・共通安全設定を検査する。`python3 -m unittest discover -s scripts -p 'test_ai_team.py'` で異常系も検証する。これらは文書構造の検査であり、モデルの性能・独立稼働・外部API接続のテストではない。
+
+## よっしーAIの起動
+
+「よっしーAIで判断して」で判断基準レビューを依頼できる。[判断基準](../leadership/yossy-decision-profile.md)と[内部PDCA](../secretary/yossy-pdca.md)を読み、秘書経由で内部修正を回す。本人承認は代行しない。定期タスクの実行時読込は別途確認する。

@@ -6,6 +6,9 @@ on:
     paths:
       - AGENTS.md
       - agents/**
+      - leadership/yossy-decision-profile.md
+      - secretary/yossy-pdca.md
+      - tasks/yossy-decision-template.md
       - secretary/business-team-router.md
       - tasks/business-task-template.md
       - business/team-outputs/**
