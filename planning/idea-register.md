@@ -21,3 +21,36 @@
 | `PLAN-20260913-002` | 企画承認済み・執筆待ち | 2 | 研修・教育動画 | 2026-09-17 オーナー指示「全て対応」 |
 
 公開承認、SNS投稿、予約投稿は別工程とし、この承認では実施しない。
+
+## 2026-10-04 週次企画候補（オーナー判断待ち）
+
+依頼元タスク: `weekly_planning:WEEK-2026-10-05`
+
+| 企画ID / 候補 | 公式情報日 | FRAMEPACTとの関係 | 実務課題 | 問い合わせへの近さ | CTA | 判断 |
+|---|---|---:|---:|---:|---|---|
+| `PLAN-20261004-001` AIナレーションの固有名詞・抑揚・速度承認表 | 2026-09-29 | 5 | 5 | 5 | 研修・教育動画 | 推奨1 |
+| `PLAN-20261004-002` 字幕の可読性・ブランド・端末確認表 | 2026-09-30 | 5 | 5 | 5 | 企業PR動画 | 推奨2 |
+| `PLAN-20261004-003` AI高画質化の原本保管・比較・採用基準 | 2026-09-23 | 5 | 5 | 5 | 企業向けAI動画制作 | 推奨3 |
+| YouTube動画の冒頭カットA/Bテスト台帳 | 2026-09-23 | 4 | 4 | 3 | 企業PR動画 | 保留。「coming soon」で提供範囲が未確定。KPI企画とも近い |
+| YouTube動的サムネイルの承認ルール | 2026-09-23 | 4 | 4 | 3 | 企業PR動画 | 見送り。既存のShortsサムネイル承認記事とカニバリ |
+| YouTube会話型編集の変更履歴 | 2026-09-23 | 4 | 4 | 3 | SNS・広告用動画 | 保留。段階提供の確認が必要で、AI初稿レビュー企画とも近い |
+| Adobe in GeminiによるSNS展開版のブランド確認 | 2026-09-24 | 4 | 4 | 3 | SNS・広告用動画 | 見送り。既存の複数媒体制作設計と検索意図が近い |
+| Vimeoの動画差し替え・旧版復元台帳 | 2026-10-02 | 5 | 5 | 4 | 企業PR動画 | 見送り。Draft PR #54の差し替え・ロールバック企画と重複 |
+| Google Vidsの1080p・尺・延長確認 | 2026-09-23 | 4 | 4 | 3 | 企業向けAI動画制作 | 見送り。生成差し込みカット管理記事とカニバリが強い |
+| TikTokのAI生成表示・Content Credentials確認 | 2026-09更新 | 4 | 5 | 3 | SNS・広告用動画 | 見送り。広告表示記事とDraft PR #54のContent Credentials企画に重複 |
+
+### 一次情報
+
+- Google Workspace Updates（2026-09-29）: https://workspaceupdates.googleblog.com/2026/09/create-more-natural-expressive-ai-voiceovers-in-Google-Vids-with-upgraded-Gemini-3.8-Flash-Lite-TTS.html
+- Google Workspace Updates（2026-09-30）: https://workspaceupdates.googleblog.com/2026/09/customize-style-of-your-captions-in-Google-Vids.html
+- Adobe Blog（2026-09-23）: https://blog.adobe.com/en/publish/2026/09/23/adobe-completes-acquisition-of-topaz-labs
+- YouTube Blog（2026-09-23）: https://blog.youtube/news-and-events/made-on-youtube-new-tools-power-creation-journey/
+- Adobe Blog（2026-09-24）: https://blog.adobe.com/en/publish/2026/09/24/adobe-comes-to-gemini-expands-what-you-can-do-in-claude
+- Vimeo Product Updates（2026-10-02項目）: https://vimeo.com/product-updates
+- Google Workspace Updates（2026-09-23）: https://workspaceupdates.googleblog.com/2026/09/gemini-omni-11-flash-now-in-vids-with-improved-extension-quality-1080p-and-duration-control.html
+- TikTok Newsroom（2026-09更新確認）: https://newsroom.tiktok.com/helping-people-spot-and-understand-ai-generated-content-on-tiktok-ca?lang=en-CA
+
+確認日: `2026-10-04`。各推奨企画の再確認期限: `2026-11-04`。
+
+3件とも企画承認、原稿承認、公開承認、SNS投稿承認は未承認。オーナーが「採用 / 修正 / 保留 / 却下」を判断する。
+
