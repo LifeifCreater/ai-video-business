@@ -299,6 +299,23 @@
       "errorSummary": null,
       "retryCount": 0,
       "lastUpdatedAt": "2026-09-21T04:03:00+09:00"
+    },
+    {
+      "jobId": "IMPLEMENT-WR-20261003-001",
+      "workflowType": "approved_article_implementation",
+      "sourceId": "WR-20261003-001",
+      "status": "waiting_owner",
+      "scheduledFor": null,
+      "startedAt": "2026-10-03T14:20:00+09:00",
+      "completedAt": "2026-10-03T14:35:00+09:00",
+      "branch": "publish/WR-20261003-001-r2",
+      "commitSha": "341c9d287f67b210d06d1c74c5b728421a03b264",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/58",
+      "approvalRequired": "merge_and_production_release",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-10-03T14:35:00+09:00"
     }
   ]
 }
