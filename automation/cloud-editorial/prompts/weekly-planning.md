@@ -14,3 +14,7 @@ GitHub上のFRAMEPACTリポジトリを正本として週次企画会議を実�
 8. `runtime-state-update.md`に従い、本文を含まない実行結果を`data/editorial-state`へ同期する。
 
 未承認企画を執筆、HTML化、公開、投稿しない。mainへpushしない。状態台帳にも企画本文・タイトル・要約を複製しない。コンフリクトを自動解決しない。秘密情報をログやファイルへ書かない。
+
+## よっしーAIによる内部適合レビュー
+
+開始時にmainの `agents/team-register.json`、`agents/yossy-ai.md`、`leadership/yossy-decision-profile.md`、`secretary/yossy-pdca.md`を読み、定義が取得できる場合だけ適合レビューを行う。秘書経由で同じ依頼範囲の内部修正を最大2巡行い、結果は成果物のレビュー欄へ記録する。本人の企画・原稿・公開承認を生成せず、既存開始条件・重複防止・状態同期・停止条件を維持する。同一アシスタントの役割切替はその旨を記録する。未取得の定義を実行済みにしない。
