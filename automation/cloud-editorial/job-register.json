@@ -350,6 +350,23 @@
       "errorSummary": null,
       "retryCount": 0,
       "lastUpdatedAt": "2026-10-04T02:07:08+09:00"
+    },
+    {
+      "jobId": "NIGHTLY-PRODUCTION-PLAN-20260927-002",
+      "workflowType": "nightly_production",
+      "sourceId": "PLAN-20260927-002",
+      "status": "waiting_owner",
+      "scheduledFor": "2026-10-07T02:00:00+09:00",
+      "startedAt": "2026-10-07T02:04:55+09:00",
+      "completedAt": "2026-10-07T02:09:04+09:00",
+      "branch": "writing/WR-20260927-002",
+      "commitSha": "f4ec28e547d1b956d1ab49cf1b1275fb7868941c",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/69",
+      "approvalRequired": "article_owner_approval",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-10-07T02:09:04+09:00"
     }
   ]
 }
