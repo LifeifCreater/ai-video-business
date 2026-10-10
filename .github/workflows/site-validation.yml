@@ -25,6 +25,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check analytics exclusion and contact measurement
+        run: |
+          node --test tests/analytics.test.cjs
+          python3 -m unittest discover -s automation/analytics -p 'test_*.py'
       - name: Verify Cloudflare canonical routes
         run: |
           python3 -c "import shutil; shutil.copytree('.', '/tmp/framepact-routing-assets', ignore=shutil.ignore_patterns('.git', '.wrangler', 'node_modules', '__pycache__'))"
