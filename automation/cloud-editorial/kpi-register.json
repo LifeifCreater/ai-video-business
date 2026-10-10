@@ -21,5 +21,24 @@
     "recordedAt": null,
     "notes": null
   },
-  "records": []
+  "records": [
+    {
+      "date": "2026-10-07",
+      "platform": "site",
+      "contentId": "framepact.jp:2026-09-10_2026-10-07",
+      "impressions": 141,
+      "likes": null,
+      "replies": null,
+      "reposts": null,
+      "profileVisits": null,
+      "linkClicks": null,
+      "noteViews": null,
+      "siteSessions": 128,
+      "formClicks": 5,
+      "inquiries": null,
+      "source": "GSC Wizard / GA4 property 547125968 + Search Console sc-domain:framepact.jp",
+      "recordedAt": "2026-10-10T19:45:10+09:00",
+      "notes": "集計期間 2026-09-10〜2026-10-07。GA4: active users 98、page views 210、key events 6、contact_form_click 5（3 users）、generate_lead raw event 1。generate_leadはフォーム側の送信完了・受信記録との照合が未検証のためinquiriesには計上しない。ChatGPT流入 13 sessions（全sessionsの10.16%）、engaged sessions 9、key events 2。GSC: clicks 0、impressions 141、avg position 51.69、settled through 2026-10-06。内部アクセス除外機能の本番反映前の期間を含むため、オーナー自身のアクセスが混在する可能性あり。"
+    }
+  ]
 }
