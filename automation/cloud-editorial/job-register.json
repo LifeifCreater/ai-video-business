@@ -253,7 +253,7 @@
       "jobId": "NIGHTLY-PRODUCTION-PLAN-20260913-001",
       "workflowType": "nightly_production",
       "sourceId": "PLAN-20260913-001",
-      "status": "waiting_owner",
+      "status": "completed",
       "scheduledFor": "2026-09-18T02:00:00+09:00",
       "startedAt": "2026-09-18T02:02:24+09:00",
       "completedAt": "2026-09-18T02:09:06+09:00",
@@ -264,13 +264,13 @@
       "errorCode": null,
       "errorSummary": null,
       "retryCount": 0,
-      "lastUpdatedAt": "2026-09-18T02:09:37+09:00"
+      "lastUpdatedAt": "2026-10-10T17:58:00+09:00"
     },
     {
       "jobId": "NIGHTLY-PRODUCTION-PLAN-20260913-002",
       "workflowType": "nightly_production",
       "sourceId": "PLAN-20260913-002",
-      "status": "waiting_owner",
+      "status": "completed",
       "scheduledFor": "2026-09-19T02:00:00+09:00",
       "startedAt": "2026-09-19T01:59:47+09:00",
       "completedAt": "2026-09-19T02:07:48+09:00",
@@ -281,7 +281,7 @@
       "errorCode": null,
       "errorSummary": null,
       "retryCount": 0,
-      "lastUpdatedAt": "2026-09-19T02:07:48+09:00"
+      "lastUpdatedAt": "2026-10-10T17:58:00+09:00"
     },
     {
       "jobId": "IMPLEMENT-WR-20260913-002",
@@ -321,7 +321,7 @@
       "jobId": "WEEKLY-PLANNING-WEEK-2026-10-05",
       "workflowType": "weekly_planning",
       "sourceId": "WEEK-2026-10-05",
-      "status": "waiting_owner",
+      "status": "completed",
       "scheduledFor": "2026-10-04T01:00:00+09:00",
       "startedAt": "2026-10-04T01:00:11+09:00",
       "completedAt": "2026-10-04T01:05:56+09:00",
@@ -332,7 +332,7 @@
       "errorCode": null,
       "errorSummary": null,
       "retryCount": 0,
-      "lastUpdatedAt": "2026-10-04T01:05:56+09:00"
+      "lastUpdatedAt": "2026-10-10T17:58:00+09:00"
     },
     {
       "jobId": "NIGHTLY-PRODUCTION-PLAN-20261003-001",
@@ -352,23 +352,6 @@
       "lastUpdatedAt": "2026-10-04T02:07:08+09:00"
     },
     {
-      "jobId": "NIGHTLY-PRODUCTION-PLAN-20260927-002",
-      "workflowType": "nightly_production",
-      "sourceId": "PLAN-20260927-002",
-      "status": "waiting_owner",
-      "scheduledFor": "2026-10-07T02:00:00+09:00",
-      "startedAt": "2026-10-07T02:04:55+09:00",
-      "completedAt": "2026-10-07T02:09:04+09:00",
-      "branch": "writing/WR-20260927-002",
-      "commitSha": "f4ec28e547d1b956d1ab49cf1b1275fb7868941c",
-      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/69",
-      "approvalRequired": "article_owner_approval",
-      "errorCode": null,
-      "errorSummary": null,
-      "retryCount": 0,
-      "lastUpdatedAt": "2026-10-07T02:09:04+09:00"
-    },
-    {
       "jobId": "NIGHTLY-PRODUCTION-PLAN-20260927-003",
       "workflowType": "nightly_production",
       "sourceId": "PLAN-20260927-003",
@@ -384,6 +367,40 @@
       "errorSummary": null,
       "retryCount": 0,
       "lastUpdatedAt": "2026-10-09T02:00:48.009+09:00"
+    },
+    {
+      "jobId": "NIGHTLY-PRODUCTION-PLAN-20260927-002",
+      "workflowType": "nightly_production",
+      "sourceId": "PLAN-20260927-002",
+      "status": "completed",
+      "scheduledFor": "2026-10-07T02:00:00+09:00",
+      "startedAt": "2026-10-07T02:04:55+09:00",
+      "completedAt": "2026-10-07T02:09:04+09:00",
+      "branch": "writing/WR-20260927-002",
+      "commitSha": "f4ec28e547d1b956d1ab49cf1b1275fb7868941c",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/69",
+      "approvalRequired": "article_owner_approval",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-10-10T17:58:00+09:00"
+    },
+    {
+      "jobId": "WEEKLY-PLANNING-WEEK-2026-10-12",
+      "workflowType": "weekly_planning",
+      "sourceId": "WEEK-2026-10-12",
+      "status": "waiting_owner",
+      "scheduledFor": "2026-10-11T01:00:00+09:00",
+      "startedAt": "2026-10-11T00:57:45+09:00",
+      "completedAt": null,
+      "branch": "planning/weekly-2026-10-12",
+      "commitSha": "716d0a7c12e48b8632647b15f4654dd6500e4176",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/75",
+      "approvalRequired": "planning_owner_approval",
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-10-11T01:03:21.839+09:00"
     }
   ]
 }
