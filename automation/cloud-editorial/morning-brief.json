@@ -76,35 +76,22 @@
     "implementationPullRequests": 1
   },
   "searchConsole": {
-    "generatedAt": "2026-09-18T10:47:07+09:00",
+    "generatedAt": "2026-10-17T10:26:21+09:00",
     "status": "取得済み",
     "newPublishedUrlCount": 0,
-    "indexedCount": 13,
-    "notIndexedCount": 6,
-    "errorCount": 3,
+    "indexedCount": 24,
+    "notIndexedCount": 1,
+    "errorCount": 0,
     "apiFailureCount": 0,
     "canonicalMismatchCount": 0,
     "sitemapMissingCount": 0,
-    "sitemapUrlCount": 19,
-    "registerUrlCount": 19,
+    "sitemapUrlCount": 25,
+    "registerUrlCount": 25,
     "monitoringMissingCount": 0,
-    "ownerActionRequired": [
-      {
-        "url": "https://framepact.jp/ai-video-ad-disclosure.html",
-        "reason": "公開7日後も未登録"
-      },
-      {
-        "url": "https://framepact.jp/ai-video-outsourcing-checklist.html",
-        "reason": "公開7日後も未登録"
-      },
-      {
-        "url": "https://framepact.jp/multi-platform-video-production.html",
-        "reason": "公開7日後も未登録"
-      }
-    ],
-    "nextInspectionAt": "2026-09-18T18:47:38+09:00",
-    "retryEligibleAt": "2026-09-18T18:47:38+09:00",
-    "nextScheduledRunAt": "2026-09-19T08:30:00+09:00"
+    "ownerActionRequired": [],
+    "nextInspectionAt": "2026-10-17T10:35:00+09:00",
+    "retryEligibleAt": "2026-10-17T10:35:00+09:00",
+    "nextScheduledRunAt": "2026-10-18T08:30:00+09:00"
   },
   "alerts": [
     "初回稼働前基準値。Scheduled Tasksの実登録・有効化とGitHub権限はサービス側で確認が必要",
