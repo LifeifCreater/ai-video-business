@@ -122,3 +122,50 @@ main `384271e435a8bf05ac87d7237534f7e9d32d9440` の企画・原稿・媒体台�
 
 企画2件とも未承認。オーナー判断は各案の「採用 / 修正 / 保留 / 却下」。原稿作成、HTML化、公開、投稿は行っていない。
 
+## 2026-10-25 週次企画候補（オーナー判断待ち）
+
+依頼元タスク: `weekly_planning:WEEK-2026-10-26`。調査対象は直近30日（2026-09-25〜2026-10-25、日本時間）を優先。候補10件から推奨2件。下表は定性的評価であり、検索量・商談率の実測スコアではない。
+
+| 企画ID / 候補 | 公式情報日 | FRAMEPACTとの関係 | 企業担当者の実務課題 | 問い合わせへの近さ | CTA / 判断 |
+|---|---|---|---|---|---|
+| `PLAN-20261025-001` 動画の速度変更後に確認する内容・音声・字幕の整合 | 2026-10-23 | 高：研修・説明動画の編集 | 高：手順、字幕、音声のずれ | 高：素材・用途・尺を持った相談 | 研修・教育動画 / 推奨1 |
+| `PLAN-20261025-002` 元動画から音声を分離した後の版・用途・同期管理 | 2026-10-23 | 高：イベント等の素材編集 | 高：原音、場面、話者、公開版の管理 | 高：素材・用途・確認者を持った相談 | イベント動画 / 推奨2 |
+| Gemini NotebookのVideo Overview生成前レビュー | 2026-10-21 | 高：資料から動画を作る工程 | 高：入力資料と要約範囲 | 中 | 見送り。`PLAN-20260927-003`の文書要約・省略・更新設計と`PLAN-20261018-002`の段階別承認に重複 |
+| Eleven Realtime Translationの多言語音声確認 | 2026-10-21 | 中：イベント・音声には関連 | 高：言語、用語、話者の承認 | 低〜中 | 保留。alphaのEnterprise APIであり、FRAMEPACTの承認済みサービスにリアルタイム翻訳は含まれない |
+| YouTubeの動画カットA/Bテスト | 2026-09-23 | 高：広告・配信版に関連 | 高：フック違いの承認 | 中 | 保留。優先30日範囲外かつcoming soon。既存の複数媒体設計・広告承認との分離も必要 |
+| ElevenCreative Instant Soundtracks | 2026-10-15 | 高：音楽・効果音に関連 | 高：音と映像の整合 | 高 | 見送り。既存の音楽・音声・効果音仕様と前週判断に重複 |
+| Google Vidsのpoint-in-time editing | 2026-10-06 | 高：編集確認に関連 | 高：時点ごとの表示確認 | 高 | 見送り。`PLAN-20261011-002`のタイムコード修正指示とカニバリ |
+| TikTok SymphonyへのSeedance 2.5統合 | 2026-10-05 | 中：広告用AI動画に関連 | 中：プラットフォーム内生成 | 中 | 見送り。既存の広告承認・複数媒体制作設計と重複し、ツール固有の運用記事へ寄りやすい |
+| YouTubeの自動高解像度化 | 2026-10月確認 | 高：公開後の画質に関連 | 高：原本と表示解像度 | 中 | 見送り。`PLAN-20261004-003`の高画質化・原本・比較・採用基準と重複 |
+| ElevenCreative Brand Kit | 2026-10-09 | 高：ブランド確認 | 高：資産・禁止表現の管理 | 高 | 見送り。`PLAN-20261011-001`と同一テーマ |
+
+### 一次情報と対象版
+
+確認日はいずれも `2026-10-25`。推奨企画の再確認期限は `2026-11-25`、執筆時にも再検証する。
+
+- Google Workspace Updates「Adjust video clip playback speed directly in Google Vids」（公開2026-10-23、Google Vids公式発表時点）: https://workspaceupdates.googleblog.com/2026/10/adjust-video-clip-playback-speed-directly-in-Google-Vids.html
+- Google Workspace Updates「Extract audio tracks in Google Vids」（公開2026-10-23、Google Vids公式発表時点）: https://workspaceupdates.googleblog.com/2026/10/extract-audio-tracks-in-Google-Vids.html
+- Google Workspace Updates「Gain more creative control over Slide Decks and Video Overviews in Gemini Notebook」（公開2026-10-21、公式発表時点）: https://workspaceupdates.googleblog.com/2026/10/gain-more-creative-control-over-slide-Decks-and-Video-Overviews-in-Gemini-Notebook.html
+- ElevenLabs「Eleven Realtime Translation」（公開2026-10-21、alpha / ElevenAPI enterprise）: https://elevenlabs.io/blog/realtime-translation
+- YouTube Official Blog「New tools to power your creation journey from start to finish」（公開2026-09-23、動画A/Bテストはcoming soon）: https://blog.youtube/news-and-events/made-on-youtube-new-tools-power-creation-journey/
+- ElevenLabs「Introducing Instant Soundtracks」（公開2026-10-15、ElevenCreative公式発表時点）: https://elevenlabs.io/blog/introducing-instant-soundtracks
+- Google Workspace Updates「Point-in-time editing now available in Google Vids」（公開2026-10-06、公式発表時点）: https://workspaceupdates.googleblog.com/2026/10/point-in-time-editing-now-available-in-Google-Vids.html
+- TikTok Newsroom「TikTok Unveils AI-Powered Updates for Advertisers」（公開2026-10-05、公式発表時点）: https://newsroom.tiktok.com/tiktok-unveils-ai-powered-updates-for-advertisers-driving-discovery-action-and-measurable-business-outcomes
+- YouTube Official Blog「5 New Features to Help Creators Shine on TV Screens」（2026-10月確認、公式発表ページ。正確な公開日を確定できないため採用事実の根拠には使わない）: https://blog.youtube/news-and-events/new-features-to-help-creators/
+- ElevenLabs「Introducing Brand Kit」（公開2026-10-09、ElevenCreative公式発表時点）: https://elevenlabs.io/blog/introducing-brand-kit
+
+日付不明のページ、提供元以外の記事、アクセス不能な情報は採用事実の根拠に使っていない。提供元の効率・品質・売上効果の表現は一般化せず、FRAMEPACTの採用ツール・価格・納期・成果保証にも変換しない。
+
+### 重複・導線・承認確認
+
+main `ea53b10462d65130d6cdad190c6791a5681cd721` の正本、公開HTML、`column.html`、企画・原稿・媒体台帳、既存PRを照合。今週キーのjob、同名branch、PR、active/stale lockは開始時になかった。open Draft PR #48はSearch Console監視更新で、本企画とは別件。
+
+- 推奨1は速度変更後の内容・音声・字幕整合へ限定。マイクロラーニング、タイムコード指示、ラフ/完成承認を再掲しない。
+- 推奨2は元動画の音声を独立トラック化した後の版・用途・同期管理へ限定。AI音声補正、生成ナレーション、データ管理全般を再掲しない。
+- 主CTAは研修・教育動画とイベント動画へ分散。前週の企業PR・企業向けAI動画とも重ならない。公開順は未決定で、1記事1主CTA。
+- 必要性の薄い3件目は追加しない。X・noteの展開案、本文、キュー、既存状態は変更しない。
+- よっしーAI基準・秘書レビューは同一アシスタントによる役割切替で1巡。独立レビューではない。2案とも条件付き合格であり、本人承認ではない。
+
+企画2件とも未承認。オーナー判断は各案の「採用 / 修正 / 保留 / 却下」。原稿作成、HTML化、公開、投稿は行っていない。
+
+
