@@ -1,14 +1,14 @@
 # 研修動画を倍速にする前に｜映像・音声・字幕を確認する実務チェックリスト
 
 ## 原稿管理情報
-- 原稿ID: \`WR-20261025-001\`
-- 企画ID: \`PLAN-20261025-001\`
+- 原稿ID: `WR-20261025-001`
+- 企画ID: `PLAN-20261025-001`
 - 対象媒体: FRAMEPACT公式コラム
 - 対象読者: 人事・研修・社内広報・カスタマーサクセス・制作発注担当者
 - 制作日: 2026-10-25
 - 執筆の位置付け: オーナーの「原稿化を進めたい」という依頼に基づく先行下書き。企画承認の台帳記録は未反映
 - ステータス: **下書き／SEO・編集レビュー未実施／原稿未承認／未公開**
-- 想定URLスラッグ: \`training-video-playback-speed-checklist.html\`（仮、未実装）
+- 想定URLスラッグ: `training-video-playback-speed-checklist.html`（仮、未実装）
 - 主検索意図: 研修動画 再生速度／操作説明動画 倍速 注意点
 - 主要CTA: https://framepact.jp/training-video.html
 
@@ -123,6 +123,6 @@ FRAMEPACTでは、企業・法人・団体向けの研修・教育動画制作�
 ### 参考情報と公開前確認
 - Google Workspace Updates「Adjust video clip playback speed directly in Google Vids」2026-10-23発表（2026-10-25確認）: https://workspaceupdates.googleblog.com/2026/10/adjust-video-clip-playback-speed-directly-in-Google-Vids.html
 - 公式情報の再確認期限: 2026-11-25。提供状況・対象アカウント・音声・字幕挙動は利用環境で確認
-- FRAMEPACTサービス情報正本: \`business/framepact-service-facts.md\`（2026-10-25確認）
+- FRAMEPACTサービス情報正本: `business/framepact-service-facts.md`（2026-10-25確認）
 - 本文の確認項目は編集実務の提案であり、Googleの公式基準ではありません
 - 個別の安全基準や社内規程の適否は各社の内容責任者が判断してください
