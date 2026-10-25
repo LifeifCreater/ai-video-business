@@ -8,4 +8,14 @@
 @media(max-height:530px){main{overflow-y:auto;overscroll-behavior:contain}.scene{min-height:370px;inset:0 0 auto;position:absolute;padding:15px 0}.scene.active{position:relative}.opening-aside,.scene-indicator{display:none}.transport{padding-bottom:10px}.transport-top{margin-bottom:10px}.masthead{height:65px}.ending .end-credits{position:static;margin-top:20px}}
 @media(prefers-reduced-motion:reduce){.scene,.original-hero,#ambient-film,.film-still img,.timeline button>i{transition:none;transform:none;filter:none}dialog[open]{animation:none}}
 
+/* Service entries are real links for indexing and keyboard navigation; the visual design stays unchanged. */
+.service-list>a{width:100%;display:flex;align-items:center;gap:20px;border-bottom:1px solid var(--line);padding:12px 5px;text-align:left;transition:background .3s,padding .3s}
+.service-list>a:hover{background:#ffc43d0c;padding-left:12px}
+.service-list>a>span{font-size:11px;color:var(--gold)}
+.service-list>a>div{font-size:16px;line-height:1.5;flex:1}
+.service-list>a>b{font-size:18px;font-weight:400;color:#9da698}
+@media(min-width:1500px){.service-list>a{padding:18px 5px}.service-list>a>div{font-size:18px}}
+@media(max-width:760px){.service-list>a{padding:8px 0;gap:15px}.service-list>a>div{font-size:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}.service-list>a>span{font-size:9px}.service-list>a>b{font-size:16px}}
+@media(max-height:680px) and (min-width:761px){.service-list>a{padding:8px 5px}}
+
 #info-content .pricing-plans dt{font-size:16px;font-weight:500}#info-content .pricing-plans dt small{display:block;font-size:13px;font-weight:400;color:#afb6a8;line-height:1.8;margin-top:8px;max-width:330px}#info-content .pricing-plans>div{align-items:flex-start;padding:20px 0}#info-content .pricing-plans dd{font-size:22px}@media(max-width:480px){#info-content .pricing-plans>div{flex-wrap:wrap;gap:8px}#info-content .pricing-plans dt{flex-basis:100%}#info-content .pricing-plans dd{font-size:20px;margin-left:auto}}

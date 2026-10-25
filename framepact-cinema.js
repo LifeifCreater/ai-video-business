@@ -66,7 +66,13 @@ const infoCopy={
  faq:['よくある質問',questions.map(([q,a])=>'<details><summary>'+q+'</summary><p>'+a+'</p></details>').join('')]
 };
 function showInfo(title,html){document.getElementById('info-title').textContent=title;document.getElementById('info-content').innerHTML=html;openDialog(info);info.scrollTop=0}
-document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',()=>{const [title,en,copy,url]=services[Number(b.dataset.service)];showInfo(title,'<p class="eyebrow">'+en+'</p><p>'+copy+'</p><a href="https://framepact.jp/'+url+'" target="_blank" rel="noopener">サービスの詳細を見る ↗</a>')}));
+document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',e=>{
+  // Real links remain crawlable and work without JavaScript. Ordinary clicks keep the original preview dialog.
+  if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  if(b.matches('a'))e.preventDefault();
+  const [title,en,copy,url]=services[Number(b.dataset.service)];
+  showInfo(title,'<p class="eyebrow">'+en+'</p><p>'+copy+'</p><a href="/'+url+'">サービスの詳細を見る ↗</a>');
+}));
 document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const [title,html]=infoCopy[b.dataset.info];showInfo(title,html)}));
 const works=[{title:'FRAMEPACT 制作技術紹介',video:'https://framepact.jp/videos/framepact-showreel.mp4',description:'生成AIと映像編集を組み合わせた制作事例をまとめたショーリール。'},{title:'高級スキンケアブランド PR動画',youtube:'dlV_P4kCxRY',description:'高級スキンケアブランドを想定したポートフォリオ作品。企画から映像生成、編集、音響、仕上げまで一貫して制作。'},{title:'災害時研修動画',youtube:'dTmCFYJe3EQ',description:'地震発生から避難所運営、地域での支え合いまでを、AI映像と編集で構成した研修コンテンツ。'}];
 document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>{const w=works[Number(b.dataset.work)];document.getElementById('film-title').textContent=w.title;document.getElementById('film-description').textContent=w.description;let media;if(w.youtube){media=document.createElement('iframe');media.src='https://www.youtube-nocookie.com/embed/'+w.youtube+'?autoplay=1&rel=0';media.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';media.allowFullscreen=true;media.title=w.title;document.getElementById('film-direct').href='https://youtu.be/'+w.youtube;}else{media=document.createElement('video');media.src=w.video;media.controls=true;media.autoplay=true;media.playsInline=true;document.getElementById('film-direct').href=w.video;}document.getElementById('film-content').replaceChildren(media);openDialog(film)}));
