@@ -92,7 +92,10 @@ class HomepageInquiryTests(unittest.TestCase):
             self.assertIn(label, contact["text"])
         self.assertFalse(self.page.select("form"))
         self.assertTrue(self.page.select("script", src="/framepact-analytics.js?v=20261010"))
-        self.assertTrue(self.page.select("script", src="/framepact-cinema.js?v=20261003-pricing"))
+        cinema_scripts = [n["attrs"].get("src", "") for n in self.page.select("script")
+                          if n["attrs"].get("src", "").split("?", 1)[0] == "/framepact-cinema.js"]
+        self.assertEqual(len(cinema_scripts), 1)
+        self.assertTrue(cinema_scripts[0].startswith("/framepact-cinema.js?v="))
 
     def test_no_javascript_fallback_has_real_destinations(self):
         links = [n for n in self.page.select("a") if ("noscript", None) in n["parents"]]
