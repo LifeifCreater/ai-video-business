@@ -25,9 +25,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Check analytics exclusion and contact measurement
+      - name: Check analytics, SEO and contact measurement
         run: |
-          node --test tests/analytics.test.cjs
+          node --test tests/*.test.cjs
           python3 -m unittest discover -s automation/analytics -p 'test_*.py'
       - name: Verify Cloudflare canonical routes
         run: |
