@@ -1,14 +1,14 @@
 # 動画から音声を分離した後に確認したいこと｜原音・利用目的・映像との同期管理
 
 ## 原稿管理情報
-- 原稿ID: \`WR-20261025-002\`
-- 企画ID: \`PLAN-20261025-002\`
+- 原稿ID: `WR-20261025-002`
+- 企画ID: `PLAN-20261025-002`
 - 対象媒体: FRAMEPACT公式コラム
 - 対象読者: 企業の広報・イベント・人事・採用・動画制作発注担当者
 - 制作日: 2026-10-25
 - 執筆の位置付け: オーナーの「原稿化を進めたい」という依頼に基づく先行下書き。企画承認の台帳記録は未反映
 - ステータス: **下書き／SEO・編集レビュー未実施／原稿未承認／未公開**
-- 想定URLスラッグ: \`video-audio-track-extraction-checklist.html\`（仮、未実装）
+- 想定URLスラッグ: `video-audio-track-extraction-checklist.html`（仮、未実装）
 - 主検索意図: 動画 音声 分離 注意点／音声トラック 編集／イベント動画 音声 編集
 - 主要CTA: https://framepact.jp/event-video.html
 
@@ -124,6 +124,6 @@ FRAMEPACTでは、企業・法人・団体向けのイベント動画制作に�
 ### 参考情報と公開前確認
 - Google Workspace Updates「Extract audio tracks in Google Vids」2026-10-23発表（2026-10-25確認）: https://workspaceupdates.googleblog.com/2026/10/extract-audio-tracks-in-google-vids.html
 - 公式情報の再確認期限: 2026-11-25。提供状況、対応アカウント、細部の挙動は利用環境で確認
-- FRAMEPACTサービス情報正本: \`business/framepact-service-facts.md\`（2026-10-25確認）
+- FRAMEPACTサービス情報正本: `business/framepact-service-facts.md`（2026-10-25確認）
 - 本文の管理方法は制作実務上の提案であり、Googleの公式チェックリストや法的判断ではありません
 - 音声・肖像・機密情報・公開範囲は案件ごとに必要な確認を行ってください
