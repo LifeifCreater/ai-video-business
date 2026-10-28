@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Local-only Chromium smoke checks; never submit the production inquiry form."""
-import contextlib
 import functools
 import http.server
 import os
@@ -33,6 +32,12 @@ try:
             page.on("pageerror", lambda error: errors.append(str(error)))
             page.goto(base, wait_until="networkidle")
             assert page.locator(".contact-shortcut").is_visible(), (width, "header consultation missing")
+            assert page.locator(".contact-shortcut").evaluate("""el => {
+                const r = el.getBoundingClientRect();
+                return r.width > 0 && r.height >= 44 && r.left >= 0 && r.right <= innerWidth &&
+                    r.top >= 0 && r.bottom <= innerHeight &&
+                    el.contains(document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2));
+            }"""), (width, "header consultation clipped or overlapped")
             assert page.locator(".contact-shortcut").get_attribute("href").startswith("https://docs.google.com/forms/")
             assert page.evaluate("window.FramepactAnalytics.isExcluded()"), "local preview must not send analytics"
             assert page.evaluate("window.dataLayer.length") == 0
@@ -40,7 +45,7 @@ try:
             for index in range(6):
                 page.locator(f'.timeline [data-go="{index}"]').click()
                 page.wait_for_timeout(80)
-                assert page.locator(".scene.active").get_attribute("id") in ["opening", "possibilities", "works", "human", "process", "contact"]
+                assert page.locator(".scene.active").get_attribute("id") == ["opening", "possibilities", "works", "human", "process", "contact"][index]
                 assert page.locator(".scene:not(.active):not([inert])").count() == 0
                 for link in page.locator(".scene.active a").all():
                     link.scroll_into_view_if_needed()
@@ -60,6 +65,7 @@ try:
             assert page.locator("#info-dialog").is_visible()
             page.keyboard.press("Escape")
             assert not page.locator("#info-dialog").is_visible()
+            page.locator('.timeline [data-go="4"]').click()
             page.locator('[data-info="pricing"]').first.click()
             assert page.locator("#info-dialog").is_visible()
             page.locator("#info-dialog .dialog-close").click()

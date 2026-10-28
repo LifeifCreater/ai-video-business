@@ -29,10 +29,12 @@ jobs:
         run: |
           node --test tests/*.test.cjs
           python3 -m unittest discover -s automation/analytics -p 'test_*.py'
+      - name: Install pinned local routing runtime
+        run: npm install --prefix /tmp/framepact-routing-runtime --no-audit --no-fund wrangler@4.133.0
       - name: Verify Cloudflare canonical routes
         run: |
           python3 -c "import shutil; shutil.copytree('.', '/tmp/framepact-routing-assets', ignore=shutil.ignore_patterns('.git', '.wrangler', 'node_modules', '__pycache__'))"
-          npx --yes wrangler@4.133.0 dev --local --assets /tmp/framepact-routing-assets --ip 127.0.0.1 --port 8787 > /tmp/framepact-wrangler.log 2>&1 &
+          /tmp/framepact-routing-runtime/node_modules/.bin/wrangler dev --local --assets /tmp/framepact-routing-assets --ip 127.0.0.1 --port 8787 > /tmp/framepact-wrangler.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" || true' EXIT
           python3 scripts/check-routing.py http://127.0.0.1:8787 || { cat /tmp/framepact-wrangler.log; exit 1; }
