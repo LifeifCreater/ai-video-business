@@ -11,6 +11,7 @@ const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 let current=0,lastChange=0,wheelSum=0,wheelReset,ambientWanted=false,userChangedPlayback=false;
 function showScene(n,updateHash=true){
  if(!Number.isInteger(n)||n<0||n>=scenes.length)return;
+ const activeEl=document.activeElement;
  dialogs.forEach(d=>{if(d.open)d.close()});
  current=n;lastChange=Date.now();wheelSum=0;
  scenes.forEach((s,i)=>{const active=i===n;s.classList.toggle('active',active);s.inert=!active;s.setAttribute('aria-hidden',String(!active))});
@@ -18,7 +19,6 @@ function showScene(n,updateHash=true){
  document.querySelectorAll('.timeline [data-go]').forEach(b=>{if(Number(b.dataset.go)===n)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
  document.getElementById('scene-number').textContent=String(n+1).padStart(2,'0');
  document.getElementById('chapter-kicker').textContent=chapters[n][0];document.getElementById('chapter-title').textContent=chapters[n][1];
- const activeEl=document.activeElement;
  prev.disabled=n===0;next.disabled=n===scenes.length-1;
  if(updateHash)history.replaceState(null,'','#'+ids[n]);
  // Keep keyboard focus on the visible chapter after a scene change.
