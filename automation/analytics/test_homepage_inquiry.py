@@ -91,7 +91,10 @@ class HomepageInquiryTests(unittest.TestCase):
         for label in ["用途", "希望納期", "ご予算", "分かる範囲"]:
             self.assertIn(label, contact["text"])
         self.assertFalse(self.page.select("form"))
-        self.assertTrue(self.page.select("script", src="/framepact-analytics.js?v=20261010"))
+        analytics_scripts = [n["attrs"].get("src", "") for n in self.page.select("script")
+                             if n["attrs"].get("src", "").split("?", 1)[0] == "/framepact-analytics.js"]
+        self.assertEqual(len(analytics_scripts), 1)
+        self.assertTrue(analytics_scripts[0].startswith("/framepact-analytics.js?v="))
         cinema_scripts = [n["attrs"].get("src", "") for n in self.page.select("script")
                           if n["attrs"].get("src", "").split("?", 1)[0] == "/framepact-cinema.js"]
         self.assertEqual(len(cinema_scripts), 1)

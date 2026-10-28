@@ -4,7 +4,7 @@
 
 - サイト21ページは共通の `framepact-analytics.js` を使用する。
 - `contact_form_click` はGoogleフォームへのクリックのみ。実際の送信成功を表す `generate_lead` をブラウザのクリックから作らない。
-- 料金ページとトップページ内の料金ダイアログは `pricing_view` で計測する。
+- 料金ページとトップページ内の料金ダイアログは `pricing_view` で計測する。ダイアログは実際に開いた時の `framepact:pricing-view` 通知だけで記録し、ボタンクリックと `/#price` の直接リンク・ハッシュ遷移を同じ経路で扱う。ボタンの汎用クリックとの二重計測はしない。
 - クリックには `source_page`, `landing_page`, `observed_referrer`, `contact_channel`, `click_time_utc`, `measurement_version` を付ける。
 - `observed_referrer` はブラウザで観測した参照元の分類であり、GA4のセッション帰属を置き換えない。入口情報の保存はタブ単位で30分のページ間非活動後に更新。GA4セッションの厳密な再現ではない。
 - 自分の除外設定は `/analytics-owner.html` でブラウザごとに行う。保存成功を確認し、他のタブを再読み込みする。新しい端末・プライベートブラウズ・保存データ削除後は再設定。過去の内部アクセスは消えない。

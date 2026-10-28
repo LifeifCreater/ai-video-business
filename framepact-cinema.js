@@ -18,18 +18,37 @@ function showScene(n,updateHash=true){
  document.querySelectorAll('.timeline [data-go]').forEach(b=>{if(Number(b.dataset.go)===n)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
  document.getElementById('scene-number').textContent=String(n+1).padStart(2,'0');
  document.getElementById('chapter-kicker').textContent=chapters[n][0];document.getElementById('chapter-title').textContent=chapters[n][1];
+ const activeEl=document.activeElement;
  prev.disabled=n===0;next.disabled=n===scenes.length-1;
  if(updateHash)history.replaceState(null,'','#'+ids[n]);
  // Keep keyboard focus on the visible chapter after a scene change.
- const activeEl=document.activeElement;if(activeEl&&activeEl.closest('.scene')&&!activeEl.closest('.scene').classList.contains('active'))document.querySelector('.timeline [data-go="'+n+'"]').focus({preventScroll:true});
+ if(activeEl&&((activeEl.closest('.scene')&&!activeEl.closest('.scene').classList.contains('active'))||((activeEl===prev||activeEl===next)&&activeEl.disabled)))document.querySelector('.timeline [data-go="'+n+'"]').focus({preventScroll:true});
 }
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showScene(Number(b.dataset.go))));
 document.querySelector('.brand').addEventListener('click',e=>{e.preventDefault();showScene(0)});
 prev.addEventListener('click',()=>showScene(current-1));next.addEventListener('click',()=>showScene(current+1));
 window.addEventListener('hashchange',routeHash);
-window.addEventListener('keydown',e=>{if(dialogs.some(d=>d.open)||e.altKey||e.ctrlKey||e.metaKey||['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName))return;if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();showScene(current+1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();showScene(current-1)}else if(e.key==='Home'){e.preventDefault();showScene(0)}else if(e.key==='End'){e.preventDefault();showScene(5)}});
+function chapterScrollTarget(){
+ const scene=scenes[current],main=cinema.querySelector('main');
+ return scene.scrollHeight>scene.clientHeight+1?scene:main.scrollHeight>main.clientHeight+1?main:null;
+}
+function chapterOverflows(){return Boolean(chapterScrollTarget())}
+window.addEventListener('keydown',e=>{
+ if(dialogs.some(d=>d.open)||e.altKey||e.ctrlKey||e.metaKey||['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)||e.target.isContentEditable)return;
+ const scroller=chapterScrollTarget();
+ if(scroller&&['PageDown','PageUp','Home','End'].includes(e.key)){
+  e.preventDefault();
+  if(e.key==='Home'||e.key==='End')scroller.scrollTo({top:e.key==='Home'?0:scroller.scrollHeight,behavior:'auto'});
+  else scroller.scrollBy({top:scroller.clientHeight*.8*(e.key==='PageDown'?1:-1),behavior:'auto'});
+  return;
+ }
+ if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();showScene(current+1)}
+ else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();showScene(current-1)}
+ else if(e.key==='Home'){e.preventDefault();showScene(0)}
+ else if(e.key==='End'){e.preventDefault();showScene(scenes.length-1)}
+});
 // A deliberate wheel gesture dissolves to a chapter; it never moves a long page.
-cinema.addEventListener('wheel',e=>{if(dialogs.some(d=>d.open)||window.innerHeight<=530||e.ctrlKey)return;e.preventDefault();if(Date.now()-lastChange<1100)return;wheelSum+=e.deltaY*(e.deltaMode===1?16:1);clearTimeout(wheelReset);wheelReset=setTimeout(()=>{wheelSum=0},150);if(Math.abs(wheelSum)>65)showScene(current+(wheelSum>0?1:-1));},{passive:false});
+cinema.addEventListener('wheel',e=>{if(dialogs.some(d=>d.open)||window.innerHeight<=530||e.ctrlKey||chapterOverflows())return;e.preventDefault();if(Date.now()-lastChange<1100)return;wheelSum+=e.deltaY*(e.deltaMode===1?16:1);clearTimeout(wheelReset);wheelReset=setTimeout(()=>{wheelSum=0},150);if(Math.abs(wheelSum)>65)showScene(current+(wheelSum>0?1:-1));},{passive:false});
 let touchStart=null;
 document.getElementById('story').addEventListener('touchstart',e=>{if(e.touches.length===1)touchStart={x:e.touches[0].clientX,y:e.touches[0].clientY};},{passive:true});
 document.getElementById('story').addEventListener('touchend',e=>{if(!touchStart||dialogs.some(d=>d.open))return;const dx=e.changedTouches[0].clientX-touchStart.x,dy=e.changedTouches[0].clientY-touchStart.y;touchStart=null;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.3)showScene(current+(dx<0?1:-1));},{passive:true});
@@ -65,18 +84,18 @@ const infoCopy={
  founder:['創業者の想い','<p class="eyebrow">FOUNDER’S NOTE</p><h3>伝えたい想いが、素材や体制の制約で埋もれないように。</h3><p>はじめまして。FRAMEPACT創業者のよっしーです。</p><p>私の原点は、個人で始めたYouTubeでした。公開後の反応を見ながら、冒頭の見せ方や言葉の順番、映像のテンポを何度も見直す中で、同じ内容でも伝え方によって人の受け取り方が変わることを学びました。</p><p>企業の動画制作と情報発信では、誰に何を届けるのか、何を残して何を削るのかを整理し、関係者と認識を合わせながら形にする経験を重ねました。</p><p>「使える素材がない」「完成イメージを言葉にできない」。そうしたご相談に、目的や届けたい相手を一緒に整理するところから向き合います。</p><p>目指すのは、動画をつくって納品することの先。企業やサービスの想いが伝わり、見た人が「もっと知りたい」「使ってみたい」と感じる映像をつくることです。</p><h3>FRAME + IMPACT</h3><p>一つひとつの映像表現を通じて、人の心と行動を動かしたい。黄色の再生マークと、そこから走り出す人の姿には、その想いを込めています。</p>'],
  faq:['よくある質問',questions.map(([q,a])=>'<details><summary>'+q+'</summary><p>'+a+'</p></details>').join('')]
 };
-function showInfo(title,html){document.getElementById('info-title').textContent=title;document.getElementById('info-content').innerHTML=html;openDialog(info);info.scrollTop=0}
+function showInfo(title,html,kind){document.getElementById('info-title').textContent=title;document.getElementById('info-content').innerHTML=html;openDialog(info);info.scrollTop=0;if(kind==='pricing')document.dispatchEvent(new Event('framepact:pricing-view'))}
 document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click',e=>{
   // Real links remain crawlable and work without JavaScript. Ordinary clicks keep the original preview dialog.
   if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
   if(b.matches('a'))e.preventDefault();
   const [title,en,copy,url]=services[Number(b.dataset.service)];
-  showInfo(title,'<p class="eyebrow">'+en+'</p><p>'+copy+'</p><a href="/'+url+'">サービスの詳細を見る ↗</a>');
+  showInfo(title,'<p class="eyebrow">'+en+'</p><p>'+copy+'</p><div class="dialog-actions"><a href="/'+url+'">サービスの詳細を見る ↗</a><a href="'+contactUrl+'" target="_blank" rel="noopener" aria-label="制作を相談する（Googleフォーム・別タブ）">制作を相談する ↗</a></div>');
 }));
-document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const [title,html]=infoCopy[b.dataset.info];showInfo(title,html)}));
+document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const [title,html]=infoCopy[b.dataset.info];showInfo(title,html,b.dataset.info)}));
 const works=[{title:'FRAMEPACT 制作技術紹介',video:'https://framepact.jp/videos/framepact-showreel.mp4',description:'生成AIと映像編集を組み合わせた制作事例をまとめたショーリール。'},{title:'高級スキンケアブランド PR動画',youtube:'dlV_P4kCxRY',description:'高級スキンケアブランドを想定したポートフォリオ作品。企画から映像生成、編集、音響、仕上げまで一貫して制作。'},{title:'災害時研修動画',youtube:'dTmCFYJe3EQ',description:'地震発生から避難所運営、地域での支え合いまでを、AI映像と編集で構成した研修コンテンツ。'}];
 document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>{const w=works[Number(b.dataset.work)];document.getElementById('film-title').textContent=w.title;document.getElementById('film-description').textContent=w.description;let media;if(w.youtube){media=document.createElement('iframe');media.src='https://www.youtube-nocookie.com/embed/'+w.youtube+'?autoplay=1&rel=0';media.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';media.allowFullscreen=true;media.title=w.title;document.getElementById('film-direct').href='https://youtu.be/'+w.youtube;}else{media=document.createElement('video');media.src=w.video;media.controls=true;media.autoplay=true;media.playsInline=true;document.getElementById('film-direct').href=w.video;}document.getElementById('film-content').replaceChildren(media);openDialog(film)}));
-function routeHash(){const key=location.hash.slice(1),aliases={reasons:3,services:1,about:3,founder:3,price:4,faq:4};showScene(aliases[key]??Math.max(0,ids.indexOf(key)),false);if(key==='price'||key==='faq'){const [title,html]=infoCopy[key==='price'?'pricing':'faq'];showInfo(title,html);}}
+function routeHash(){const key=location.hash.slice(1),aliases={reasons:3,services:1,about:3,founder:3,price:4,faq:4};showScene(aliases[key]??Math.max(0,ids.indexOf(key)),false);if(key==='price'||key==='faq'){const [title,html]=infoCopy[key==='price'?'pricing':'faq'];showInfo(title,html,key==='price'?'pricing':'faq');}}
 routeHash();playbackUi(false);
 // The supplied WebP is the first frame and remains the fallback behind the original film.
 setTimeout(()=>{if(!reduceMotion.matches&&!userChangedPlayback&&!document.hidden){ambientWanted=true;if(!dialogs.some(d=>d.open))startAmbient();}},1800);

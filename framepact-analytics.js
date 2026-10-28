@@ -91,9 +91,8 @@
     visit.lastSeen = Date.now();
     write('sessionStorage', SESSION, JSON.stringify(visit));
   });
-  // Cinema homepage pricing opens a dialog rather than a new page.
-  document.addEventListener('click', function (event) {
-    const button = event.target.closest && event.target.closest('[data-info="pricing"]');
-    if (button) gtag('event', 'pricing_view', params());
+  // Count actual dialog openings, including #price links, not merely button clicks.
+  document.addEventListener('framepact:pricing-view', function () {
+    gtag('event', 'pricing_view', params());
   });
 })();

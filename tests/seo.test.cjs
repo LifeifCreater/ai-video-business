@@ -96,7 +96,8 @@ test('modified pages have fresh sitemap lastmod entries', () => {
   const pages = ['index.html', ...primaryPages];
   for (const page of pages) {
     const url = page === 'index.html' ? 'https://framepact.jp/' : canonical(page);
-    assert.ok(sitemap.includes(`<loc>${url}</loc>\n    <lastmod>2026-10-25</lastmod>`), `${url}: sitemap lastmod`);
+    const lastmod = page === 'index.html' ? '2026-10-28' : '2026-10-25';
+    assert.ok(sitemap.includes(`<loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>`), `${url}: sitemap lastmod`);
   }
 });
 
@@ -129,4 +130,11 @@ test('XML sitemap lists exactly the indexable HTML pages', () => {
   const sitemap = [...read('sitemap.xml').matchAll(/<loc>https:\/\/framepact\.jp(\/[^<]*)<\/loc>/g)]
     .map(match => match[1] === '/' ? 'index.html' : match[1].slice(1));
   assert.deepEqual(sitemap.slice().sort(), indexable.slice().sort());
+});
+
+test('consultation links remain available in the header and service previews',()=>{
+  const html=read('index.html'),script=read('framepact-cinema.js');
+  assert.match(html,/<a class="quiet contact-shortcut" href="https:\/\/docs\.google\.com\/forms\/[^"]+" target="_blank" rel="noopener" aria-label="[^"]+別タブ[^"]*"/);
+  assert.match(script,/class="dialog-actions"/);
+  assert.match(script,/href="'\+contactUrl\+'" target="_blank" rel="noopener" aria-label="[^"]+別タブ[^"]*"/);
 });

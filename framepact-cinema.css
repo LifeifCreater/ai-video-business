@@ -19,3 +19,10 @@
 @media(max-height:680px) and (min-width:761px){.service-list>a{padding:8px 5px}}
 
 #info-content .pricing-plans dt{font-size:16px;font-weight:500}#info-content .pricing-plans dt small{display:block;font-size:13px;font-weight:400;color:#afb6a8;line-height:1.8;margin-top:8px;max-width:330px}#info-content .pricing-plans>div{align-items:flex-start;padding:20px 0}#info-content .pricing-plans dd{font-size:22px}@media(max-width:480px){#info-content .pricing-plans>div{flex-wrap:wrap;gap:8px}#info-content .pricing-plans dt{flex-basis:100%}#info-content .pricing-plans dd{font-size:20px;margin-left:auto}}
+
+/* Keep long chapters reachable at small viewport sizes and enlarged text. */
+.scene{overflow-y:auto;overscroll-behavior:contain;justify-content:safe center;scroll-padding-block:12px}
+.dialog-actions{display:flex;flex-wrap:wrap;gap:12px 24px}
+.end-credits{position:static;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.contact-shortcut{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:760px){.header-right{gap:16px}.contact-shortcut{display:inline-flex;font-size:11px}.contact-shortcut span{margin-left:6px}.index-button{min-height:44px;min-width:44px;justify-content:center}.index-button>span{display:none}.end-credits{position:static;flex-wrap:wrap;margin-top:20px}.ending{padding-block:8px}}
