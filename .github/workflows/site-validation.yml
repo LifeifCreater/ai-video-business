@@ -36,3 +36,20 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid" || true' EXIT
           python3 scripts/check-routing.py http://127.0.0.1:8787 || { cat /tmp/framepact-wrangler.log; exit 1; }
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser test runtime
+        run: |
+          python -m pip install playwright==1.62.0
+          python -m playwright install --with-deps chromium
+      - name: Check local homepage navigation and mobile layout
+        run: python scripts/check-homepage-browser.py
+      - name: Save browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: homepage-browser-check
+          path: /tmp/framepact-browser-check
+          if-no-files-found: ignore
+          retention-days: 7
