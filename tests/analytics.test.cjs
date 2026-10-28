@@ -19,6 +19,7 @@ function boot({host='framepact.jp', path='/', exclude=false, blocked=false, save
   Object.defineProperty(context,'gtag',{get:()=>window.gtag});
   vm.runInNewContext(code,context);
   return {window,scripts,session,click(href){for(const fn of events.click||[])fn({target:{closest:s=>s==='a[href]'?{href}:null}});},
+    dispatch(name){for(const fn of events[name]||[])fn({type:name});},
     calls(){return window.dataLayer.map(x=>Array.from(x));}};
 }
 test('internal and preview visits send nothing and load no Google tag',()=>{
@@ -60,4 +61,17 @@ test('every tracked public page uses one shared bootstrap and no legacy click em
     if(text.includes('/framepact-analytics.js')){count++;assert.equal(text.split('/framepact-analytics.js').length,2);}
   }
   assert.equal(count,25);
+});
+
+test('actual pricing dialog openings count once without generating leads',()=>{
+  const app=boot();
+  app.dispatch('framepact:pricing-view');
+  assert.equal(app.calls().filter(x=>x[1]==='pricing_view').length,1);
+  app.dispatch('framepact:pricing-view');
+  assert.equal(app.calls().filter(x=>x[1]==='pricing_view').length,2);
+  assert.equal(app.calls().filter(x=>x[1]==='generate_lead').length,0);
+  for(const args of [{exclude:true},{host:'preview.pages.dev'}]){
+    const excluded=boot(args);excluded.dispatch('framepact:pricing-view');
+    assert.equal(excluded.calls().length,0);
+  }
 });
