@@ -6,7 +6,7 @@ import os
 from pathlib import Path
 import threading
 
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = Path(os.environ.get("BROWSER_CHECK_OUTPUT", "/tmp/framepact-browser-check"))
@@ -62,11 +62,11 @@ try:
             assert page.evaluate("window.FramepactAnalytics.isExcluded()")
             page.screenshot(path=str(OUTPUT / f"{width}x{height}-philosophy.png"), full_page=True)
             page.locator('a[href="/#contact"]').click()
-            assert page.locator(".scene.active").get_attribute("id") == "contact"
+            expect(page.locator(".scene.active")).to_have_attribute("id", "contact")
             page.go_back(wait_until="networkidle")
             assert page.locator("h1").is_visible()
             page.go_back(wait_until="networkidle")
-            assert page.locator(".scene.active").get_attribute("id") == "human"
+            expect(page.locator(".scene.active")).to_have_attribute("id", "human")
             # Scroll keys operate on overflowing content, not chapter navigation.
             page.goto(base + "/#opening", wait_until="networkidle")
             page.add_style_tag(content=".opening-copy{min-height:1200px}")
