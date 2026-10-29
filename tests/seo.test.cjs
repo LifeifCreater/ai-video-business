@@ -96,7 +96,7 @@ test('modified pages have fresh sitemap lastmod entries', () => {
   const pages = ['index.html', ...primaryPages];
   for (const page of pages) {
     const url = page === 'index.html' ? 'https://framepact.jp/' : canonical(page);
-    const lastmod = page === 'index.html' ? '2026-10-28' : '2026-10-25';
+    const lastmod = page === 'index.html' ? '2026-10-29' : '2026-10-25';
     assert.ok(sitemap.includes(`<loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>`), `${url}: sitemap lastmod`);
   }
 });
@@ -137,4 +137,21 @@ test('consultation links remain available in the header and service previews',()
   assert.match(html,/<a class="quiet contact-shortcut" href="https:\/\/docs\.google\.com\/forms\/[^"]+" target="_blank" rel="noopener" aria-label="[^"]+別タブ[^"]*"/);
   assert.match(script,/class="dialog-actions"/);
   assert.match(script,/href="'\+contactUrl\+'" target="_blank" rel="noopener" aria-label="[^"]+別タブ[^"]*"/);
+});
+
+
+test('philosophy page is discoverable, canonical and uses the existing consultation route', () => {
+  const html = read('philosophy.html');
+  assert.match(read('index.html'), /href="\/philosophy\.html"/);
+  assert.equal(firstMatch(html, /<link rel="canonical" href="([^"]+)"/, 'canonical'), canonical('philosophy.html'));
+  assert.equal(meta(html, 'property', 'og:url'), canonical('philosophy.html'));
+  assert.equal(meta(html, 'property', 'og:title'), firstMatch(html, /<title>([^<]+)<\/title>/, 'title'));
+  assert.match(html, /href="\/#contact"/);
+  assert.match(html, /世界観を大切に。/u);
+  assert.match(html, /完成の先にある成果まで。/u);
+  assert.match(html, /制作範囲や修正内容、納期への影響/u);
+  for (const alias of ['/philosophy', '/philosophy/', '/philosophy/index.html']) {
+    assert.ok(read('_redirects').includes(`${alias} /philosophy.html 301`));
+  }
+  assert.match(read('sitemap.xml'), /<loc>https:\/\/framepact.jp\/philosophy.html<\/loc>\s*<lastmod>2026-10-29<\/lastmod>/);
 });
