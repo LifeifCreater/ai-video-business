@@ -53,6 +53,20 @@ try:
                     box = link.bounding_box()
                     assert box and box["y"] >= 0 and box["y"] < height, (width, index, "unreachable link")
                 page.screenshot(path=str(OUTPUT / f"{width}x{height}-chapter-{index}.png"))
+            # The philosophy is a real page; navigation and returning to contact remain usable.
+            page.goto(base + "/#human", wait_until="networkidle")
+            page.locator('a[href="/philosophy.html"]').click()
+            assert page.url == base + "/philosophy.html"
+            assert page.locator("h1").inner_text().replace("\n", "") == "世界観を大切に。完成の先にある成果まで。"
+            assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), (width, "philosophy overflow")
+            assert page.evaluate("window.FramepactAnalytics.isExcluded()")
+            page.screenshot(path=str(OUTPUT / f"{width}x{height}-philosophy.png"), full_page=True)
+            page.locator('a[href="/#contact"]').click()
+            assert page.locator(".scene.active").get_attribute("id") == "contact"
+            page.go_back(wait_until="networkidle")
+            assert page.locator("h1").is_visible()
+            page.go_back(wait_until="networkidle")
+            assert page.locator(".scene.active").get_attribute("id") == "human"
             # Scroll keys operate on overflowing content, not chapter navigation.
             page.goto(base + "/#opening", wait_until="networkidle")
             page.add_style_tag(content=".opening-copy{min-height:1200px}")

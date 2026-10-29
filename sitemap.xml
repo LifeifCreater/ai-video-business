@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://framepact.jp/</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/corporate-ai-video.html</loc>
@@ -88,5 +88,9 @@
   <url><loc>https://framepact.jp/corporate-pr-video-storyboard.html</loc><lastmod>2026-10-03</lastmod></url>
   <url><loc>https://framepact.jp/video-production-brief-template.html</loc><lastmod>2026-10-03</lastmod></url>
   <url><loc>https://framepact.jp/customer-voices.html</loc><lastmod>2026-10-03</lastmod></url>
+  <url>
+    <loc>https://framepact.jp/philosophy.html</loc>
+    <lastmod>2026-10-29</lastmod>
+  </url>
 </urlset>
 
