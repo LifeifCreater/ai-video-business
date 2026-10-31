@@ -40,11 +40,11 @@
       "workflowType": "weekly_planning",
       "sourceId": "WEEK-2026-11-02",
       "acquiredAt": "2026-11-01T01:04:37+09:00",
-      "heartbeatAt": "2026-11-01T01:07:54.896+09:00",
+      "heartbeatAt": "2026-11-01T01:08:15.542+09:00",
       "expiresAt": "2026-11-01T04:04:37+09:00",
       "state": "released",
       "branch": "planning/weekly-2026-11-02",
-      "pullRequestUrl": null,
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/86",
       "reviewRequired": false
     }
   ]
