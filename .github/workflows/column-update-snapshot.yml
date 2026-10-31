@@ -1,29 +1,54 @@
-name: Column update snapshot (temporary)
+name: Apply column update (temporary)
 on:
   push:
     branches: [fix/column-compact-publish-remove-note-20261031]
     paths: [.github/workflows/column-update-snapshot.yml]
 permissions:
-  contents: read
+  contents: write
 jobs:
-  snapshot:
+  apply:
+    if: github.ref == 'refs/heads/fix/column-compact-publish-remove-note-20261031'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          persist-credentials: false
-      - name: Export public source fixture
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source lease and install pinned renderer
         run: |
-          mkdir -p /tmp/column-update-source
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git diff --exit-code 80d4e5f06682e2b70ea7a25a8805b33ce761ce90 HEAD -- '*.html' sitemap.xml _redirects writing templates/article-social.html scripts/check-responsive-browser.py .github/workflows/production-smoke-check.yml .github/workflows/responsive-validation.yml tests/analytics.test.cjs tests/seo.test.cjs
+          python -m pip install beautifulsoup4==4.14.3 markdown-it-py==4.2.0
+      - name: Apply and validate the owner-approved patch
+        run: |
+          python scripts/apply-column-update-once.py
+          ruby scripts/check-site.rb
+          python scripts/sync-article-social.py --check
+          node --test tests/*.test.cjs
+          git diff --check
+      - name: Commit on the isolated branch and remove temporary helpers
+        run: |
+          git rm scripts/apply-column-update-once.py .github/workflows/column-update-snapshot.yml
+          git add -A
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: publish five reviewed columns, compact mobile index and remove note promotion'
+          git push origin HEAD:refs/heads/fix/column-compact-publish-remove-note-20261031
+      - name: Export patched public source for byte verification
+        run: |
+          mkdir -p /tmp/column-update-patched
           python3 - <<'PY'
           import subprocess, zipfile
-          paths = subprocess.check_output(['git','ls-files','-z','--','*.html','*.css','*.js','scripts','tests','images','.github/workflows','AGENTS.md','_headers','_redirects','wrangler.jsonc','.assetsignore','sitemap.xml','robots.txt','writing','planning','research','secretary/task-router.md','business/framepact-service-facts.md','automation/cloud-editorial/job-register.json']).decode().split('\0')
-          with zipfile.ZipFile('/tmp/column-update-source/site.zip','w',zipfile.ZIP_DEFLATED) as z:
+          paths = subprocess.check_output(['git','ls-files','-z','--','*.html','*.css','*.js','*.png','*.ico','scripts','tests','images','videos/*.webp','.github/workflows','AGENTS.md','_headers','_redirects','wrangler.jsonc','.assetsignore','sitemap.xml','robots.txt','writing','planning','research','secretary/task-router.md','business/framepact-service-facts.md','automation/cloud-editorial/job-register.json']).decode().split('\0')
+          with zipfile.ZipFile('/tmp/column-update-patched/site.zip','w',zipfile.ZIP_DEFLATED) as z:
               for path in filter(None,paths): z.write(path,path)
           PY
-          git rev-parse HEAD > /tmp/column-update-source/commit.txt
+          git rev-parse HEAD > /tmp/column-update-patched/commit.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: column-update-source
-          path: /tmp/column-update-source
+          name: column-update-patched
+          path: /tmp/column-update-patched
           retention-days: 1
