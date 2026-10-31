@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-31",
+  "approval": "2026-10-31 owner instruction to publish all completed unlisted articles and merge",
+  "articles": [
+    {
+      "id": "WR-20261025-001",
+      "source": "writing/inbox/WR-20261025-001-video-speed-change-approval-check.md",
+      "url": "/training-video-playback-speed-checklist.html",
+      "title": "研修動画の倍速編集チェックリスト｜映像・音声・字幕のずれを防ぐ",
+      "description": "研修・操作説明動画を制作時に倍速編集する際の確認項目を紹介。速度を変える区間、画面操作、音声・字幕の同期、注意表示を、変更前後の記録表で点検します。",
+      "category": "training",
+      "categoryLabel": "研修・マニュアル",
+      "createdAt": "2026-10-25",
+      "publishedAt": "2026-10-31"
+    },
+    {
+      "id": "WR-20261025-002",
+      "source": "writing/inbox/WR-20261025-002-source-audio-extraction-governance.md",
+      "url": "/video-audio-track-extraction-checklist.html",
+      "title": "動画から音声トラックを抽出した後のチェックリスト｜別場面への配置と同期",
+      "description": "動画から取り出した音声を別の場面へ使う前に、元素材の区間、配置先、発言の文脈、口元・動作・字幕との同期を確認。AI音声分離との違いと、制作会社へ共有できる対応表を紹介します。",
+      "category": "materials",
+      "categoryLabel": "音声・映像編集",
+      "createdAt": "2026-10-25",
+      "publishedAt": "2026-10-31"
+    },
+    {
+      "id": "WR-20260927-003",
+      "source": "writing/review/WR-20260927-003-document-to-video-summary-governance-reviewed.md",
+      "url": "/document-to-video-summary-governance.html",
+      "title": "マニュアルを動画化する前に｜原稿・省略・更新の決め方",
+      "description": "マニュアルや説明資料を動画化する前に、正本文書の版、残す内容、省略条件、台本照合、確認担当、文書改訂時の更新方法を整理する実務手順と照合表を紹介します。",
+      "category": "training",
+      "categoryLabel": "研修・マニュアル",
+      "createdAt": "2026-10-09",
+      "publishedAt": "2026-10-31"
+    },
+    {
+      "id": "WR-20260920-001",
+      "source": "writing/review/WR-20260920-001-training-video-structure-reviewed.md",
+      "url": "/training-video-structure.html",
+      "title": "研修動画を短くするには？内容の分け方と制作前の確認事項",
+      "description": "長い研修・説明動画を分ける前に、対象者、学習目的、前提、順序、必須の注意事項、理解確認、更新責任を整理する方法と企画表を紹介します。",
+      "category": "training",
+      "categoryLabel": "研修・マニュアル",
+      "createdAt": "2026-10-08",
+      "publishedAt": "2026-10-31"
+    },
+    {
+      "id": "WR-20260927-002",
+      "source": "writing/review/WR-20260927-002-published-video-replacement-rollback-reviewed.md",
+      "url": "/published-video-replacement-rollback.html",
+      "title": "企業動画の修正・差し替えで失敗しないために｜更新範囲と確認手順",
+      "description": "公開済みの企業動画を修正・差し替えするときに、変更範囲、利用先、新旧版、確認担当、反映確認、旧版の扱いを整理する実務手順と更新確認表を紹介します。",
+      "category": "operations",
+      "categoryLabel": "公開・更新管理",
+      "createdAt": "2026-10-07",
+      "publishedAt": "2026-10-31"
+    }
+  ]
+}

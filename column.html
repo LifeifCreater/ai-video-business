@@ -346,8 +346,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <link rel="stylesheet" href="/framepact-responsive.css?v=20261031">
+<link rel="stylesheet" href="/framepact-column.css?v=20261031">
+<script src="/framepact-column.js?v=20261031" defer></script>
 </head>
-<body>
+<body class="column-index">
 
 <!-- ============================================================
      ヘッダー（トップページと共通デザイン）
@@ -412,7 +414,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
       <div class="page-hero-inner">
         <span class="page-hero-tag">COLUMN</span>
         <h1 class="page-hero-title">AI動画制作のお役立ち記事</h1>
-        <p class="page-hero-sub">AI動画制作、企業動画、料金、活用方法、注意点など、企業担当者に向けた情報を発信しています。</p>
+        <p class="page-hero-sub">企画・料金・AI活用の疑問を、記事で解決。</p>
       </div>
     </div>
   </section>
@@ -420,97 +422,88 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   <!-- ============================================================
        記事一覧
   ============================================================= -->
-  <section class="section" id="article-list">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">ARTICLES</span>
-        <h2 class="h2">記事一覧</h2>
-      </div>
-
-      <div class="article-list">
-        <a class="article-card" href="/corporate-pr-video-storyboard.html"><span class="article-card-category">企業PR動画・構成と台本</span><span class="article-card-title">企業PR動画の構成・台本の作り方｜30秒・60秒の具体例</span><span class="article-card-desc">企業PR動画の構成を、目的の整理から30秒・60秒の台本例、AI映像と実写素材の使い分け、社内確認まで解説。制作会社への相談に使える構成メモも紹介します。</span><span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span></a>
-        <a class="article-card" href="/video-production-brief-template.html"><span class="article-card-category">動画制作・依頼書テンプレート</span><span class="article-card-title">動画制作の依頼書テンプレート｜見積もり前に整理する項目と記入例</span><span class="article-card-desc">企業向け動画制作の依頼書に使える記入欄と架空の記入例を紹介。目的・素材・納品・修正・確認日程を整理し、同じ条件で見積もりを比べるための実務ガイドです。</span><span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span></a>
-        <a class="article-card" href="/video-production-company-vs-ai-creator.html">
-          <span class="article-card-category">動画制作・発注比較</span>
-          <span class="article-card-title">動画制作会社と個人のAI動画制作、どちらに依頼すべき？7つの比較ポイント</span>
-          <span class="article-card-desc">動画制作会社と個人・少人数のAI動画制作を、制作体制、コミュニケーション、AI表現、大規模案件への対応など7項目で比較します。</span>
-          <span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-
-        <a class="article-card" href="/ai-generated-insert-shot-register.html">
-          <span class="article-card-category">AI動画素材・制作管理</span>
-          <span class="article-card-title">AI生成の差し込みカットを企業動画へ入れる前に作る7項目の管理台帳</span>
-          <span class="article-card-desc">企業動画の編集で不足したBロールやつなぎ素材を生成AIで補う前に、役割、尺、参照素材、生成条件、権利確認、採否、承認者をカット単位で管理する7項目を整理します。</span>
-          <span class="article-card-meta"><time datetime="2026-09-21">2026年9月21日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-        <a class="article-card" href="/ai-audio-processing-approval.html">
-          <span class="article-card-category">AI音声・研修動画</span>
-          <span class="article-card-title">AIで会話音声を分離・補正する前に決める7つの承認基準</span>
-          <span class="article-card-desc">AIで会話音声のノイズ低減や話者分離を行う前に、原音保管、加工目的、許容範囲、聞き取り確認、版管理、承認者、差し戻し条件を決める実務上の7項目を整理します。</span>
-          <span class="article-card-meta"><time datetime="2026-09-21">2026年9月21日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-        <a class="article-card" href="/youtube-shorts-thumbnail-approval.html">
-          <span class="article-card-category">YouTube Shorts・企業動画</span>
-          <span class="article-card-title">YouTube Shortsのサムネイル対応で変わる、企業ショート動画の企画・承認設計</span>
-          <span class="article-card-desc">YouTube Shortsの冒頭、代表フレーム、カスタムサムネイル、タイトルを別々の成果物として設計し、本編と同じ版番号で承認する方法を企業担当者向けに整理します。</span>
-          <span class="article-card-meta"><time datetime="2026-08-16">2026年8月16日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-        <a class="article-card" href="/ai-avatar-training-video-operations.html">
-          <span class="article-card-category">AIアバター・研修動画</span>
-          <span class="article-card-title">AIアバターで企業の研修・説明動画を作る前に決める7つの運用ルール</span>
-          <span class="article-card-desc">AIアバターを研修・社内説明動画へ使う前に、本人同意、台本承認、公開範囲、版管理、異動・退職時の差し替えなど、企業が制作前に決めたい7つの運用ルールを整理します。</span>
-          <span class="article-card-meta"><time datetime="2026-08-16">2026年8月16日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-        <a class="article-card" href="/ai-video-ad-disclosure.html">
-          <span class="article-card-category">AI動画広告・社内承認</span>
-          <span class="article-card-title">生成AIを使った動画広告で企業が確認すべき表示・審査・社内承認</span>
-          <span class="article-card-desc">媒体ごとの表示・申告、広告審査、素材確認、社内承認、公開後の記録を整理します。</span>
-          <span class="article-card-meta"><time datetime="2026-08-03">2026年8月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-        <a class="article-card" href="/ai-video-data-management.html">
-          <span class="article-card-category">AI動画制作・データ管理</span>
-          <span class="article-card-title">AI動画制作で機密情報を渡す前に確認したいデータ管理7項目</span>
-          <span class="article-card-desc">情報分類、学習利用、保存、外部サービス、権限、削除、代替制作方法を解説します。</span>
-          <span class="article-card-meta"><time datetime="2026-08-03">2026年8月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-        <a class="article-card" href="/multi-platform-video-production.html">
-          <span class="article-card-category">企業動画・媒体別展開</span>
-          <span class="article-card-title">企業動画をYouTube・SNS・広告へ展開するための制作設計</span>
-          <span class="article-card-desc">媒体ごとの目的、尺、比率、字幕、構図、CTA、納品内容を制作前に整理します。</span>
-          <span class="article-card-meta"><time datetime="2026-08-03">2026年8月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span>
-        </a>
-        <a class="article-card" href="/ai-video-outsourcing-checklist.html">
-          <span class="article-card-category">AI動画制作の外注・発注</span>
-          <span class="article-card-title">企業がAI動画制作を外注する前に確認すべき5つの項目</span>
-          <span class="article-card-desc">企業がAI動画制作を外注する前に確認したい、目的、利用条件・権利、品質、見積範囲、進め方の5項目を解説します。</span>
-          <span class="article-card-meta">
-            <time datetime="2026-08-03">2026年8月3日</time>
-            <span class="article-card-arrow" aria-hidden="true">記事を読む →</span>
-          </span>
-        </a>
-        <a class="article-card" href="/ai-video-vs-traditional-video.html">
-          <span class="article-card-category">AI動画制作の基礎知識</span>
-          <span class="article-card-title">AI動画制作と従来の動画制作の違い｜費用・期間・品質・向いている用途を比較</span>
-          <span class="article-card-desc">AI動画制作と従来の動画制作の違いを、撮影、費用、制作期間、品質、向いている用途などの観点から比較し、判断のポイントを解説します。</span>
-          <span class="article-card-meta">
-            <time datetime="2026-08-01">2026年8月1日</time>
-            <span class="article-card-arrow" aria-hidden="true">記事を読む →</span>
-          </span>
-        </a>
-        <a class="article-card" href="/what-is-ai-video-production.html">
-          <span class="article-card-category">AI動画制作の基礎知識</span>
-          <span class="article-card-title">AI動画制作とは？企業での活用方法・メリット・注意点を解説</span>
-          <span class="article-card-desc">AI動画制作とは何か、企業での活用例、従来の動画制作との違い、メリットと注意点、依頼時のポイントを分かりやすく解説します。</span>
-          <span class="article-card-meta">
-            <time datetime="2026-07-31">2026年7月31日</time>
-            <span class="article-card-arrow" aria-hidden="true">記事を読む →</span>
-          </span>
-        </a>
-      </div>
-
-      <p class="article-list-note">今後、AI動画制作に関するお役立ち情報を順次追加していく予定です。</p>
-    </div>
-  </section>
+<section class="section" id="article-list"><div class="wrap"><div class="section-head"><h2 class="h2">記事を探す</h2><p class="column-status" id="column-status" role="status" aria-live="polite" aria-atomic="true">全18記事｜新しい順</p></div><div class="column-tools" data-column-controls hidden><label for="column-search">キーワードで探す<input type="search" id="column-search" placeholder="例：研修、料金、音声" maxlength="100" autocomplete="off" aria-controls="column-cards"></label><label for="column-category">テーマ<select id="column-category" aria-controls="column-cards"><option value="">すべて</option><option value="training">研修・マニュアル</option><option value="planning">企画・発注</option><option value="materials">AI・素材・音声</option><option value="operations">公開・運用</option></select></label><button class="column-reset" id="column-reset" type="button">条件をクリア</button></div><div class="article-list" id="column-cards"><a class="article-card" data-category="training" href="/training-video-playback-speed-checklist.html"><span class="article-card-category">研修・マニュアル</span><span class="article-card-title">研修動画の倍速編集チェックリスト｜映像・音声・字幕のずれを防ぐ</span><span class="article-card-desc">研修・操作説明動画を制作時に倍速編集する際の確認項目を紹介。速度を変える区間、画面操作、音声・字幕の同期、注意表示を、変更前後の記録表で点検します。</span><span class="article-card-meta"><time datetime="2026-10-31">2026年10月31日</time><span class="article-card-arrow" aria-hidden="true">読む →</span></span></a>
+<a class="article-card" data-category="materials" href="/video-audio-track-extraction-checklist.html"><span class="article-card-category">音声・映像編集</span><span class="article-card-title">動画から音声トラックを抽出した後のチェックリスト｜別場面への配置と同期</span><span class="article-card-desc">動画から取り出した音声を別の場面へ使う前に、元素材の区間、配置先、発言の文脈、口元・動作・字幕との同期を確認。AI音声分離との違いと、制作会社へ共有できる対応表を紹介します。</span><span class="article-card-meta"><time datetime="2026-10-31">2026年10月31日</time><span class="article-card-arrow" aria-hidden="true">読む →</span></span></a>
+<a class="article-card" data-category="training" href="/document-to-video-summary-governance.html"><span class="article-card-category">研修・マニュアル</span><span class="article-card-title">マニュアルを動画化する前に｜原稿・省略・更新の決め方</span><span class="article-card-desc">マニュアルや説明資料を動画化する前に、正本文書の版、残す内容、省略条件、台本照合、確認担当、文書改訂時の更新方法を整理する実務手順と照合表を紹介します。</span><span class="article-card-meta"><time datetime="2026-10-31">2026年10月31日</time><span class="article-card-arrow" aria-hidden="true">読む →</span></span></a>
+<a class="article-card" data-category="training" href="/training-video-structure.html"><span class="article-card-category">研修・マニュアル</span><span class="article-card-title">研修動画を短くするには？内容の分け方と制作前の確認事項</span><span class="article-card-desc">長い研修・説明動画を分ける前に、対象者、学習目的、前提、順序、必須の注意事項、理解確認、更新責任を整理する方法と企画表を紹介します。</span><span class="article-card-meta"><time datetime="2026-10-31">2026年10月31日</time><span class="article-card-arrow" aria-hidden="true">読む →</span></span></a>
+<a class="article-card" data-category="operations" href="/published-video-replacement-rollback.html"><span class="article-card-category">公開・更新管理</span><span class="article-card-title">企業動画の修正・差し替えで失敗しないために｜更新範囲と確認手順</span><span class="article-card-desc">公開済みの企業動画を修正・差し替えするときに、変更範囲、利用先、新旧版、確認担当、反映確認、旧版の扱いを整理する実務手順と更新確認表を紹介します。</span><span class="article-card-meta"><time datetime="2026-10-31">2026年10月31日</time><span class="article-card-arrow" aria-hidden="true">読む →</span></span></a>
+<a class="article-card" data-category="planning" href="/corporate-pr-video-storyboard.html"><span class="article-card-category">企業PR動画・構成と台本</span><span class="article-card-title">企業PR動画の構成・台本の作り方｜30秒・60秒の具体例</span><span class="article-card-desc">企業PR動画の構成を、目的の整理から30秒・60秒の台本例、AI映像と実写素材の使い分け、社内確認まで解説。制作会社への相談に使える構成メモも紹介します。</span><span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span></a>
+<a class="article-card" data-category="planning" href="/video-production-brief-template.html"><span class="article-card-category">動画制作・依頼書テンプレート</span><span class="article-card-title">動画制作の依頼書テンプレート｜見積もり前に整理する項目と記入例</span><span class="article-card-desc">企業向け動画制作の依頼書に使える記入欄と架空の記入例を紹介。目的・素材・納品・修正・確認日程を整理し、同じ条件で見積もりを比べるための実務ガイドです。</span><span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span></a>
+<a class="article-card" data-category="planning" href="/video-production-company-vs-ai-creator.html">
+<span class="article-card-category">動画制作・発注比較</span>
+<span class="article-card-title">動画制作会社と個人のAI動画制作、どちらに依頼すべき？7つの比較ポイント</span>
+<span class="article-card-desc">動画制作会社と個人・少人数のAI動画制作を、制作体制、コミュニケーション、AI表現、大規模案件への対応など7項目で比較します。</span>
+<span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="materials" href="/ai-generated-insert-shot-register.html">
+<span class="article-card-category">AI動画素材・制作管理</span>
+<span class="article-card-title">AI生成の差し込みカットを企業動画へ入れる前に作る7項目の管理台帳</span>
+<span class="article-card-desc">企業動画の編集で不足したBロールやつなぎ素材を生成AIで補う前に、役割、尺、参照素材、生成条件、権利確認、採否、承認者をカット単位で管理する7項目を整理します。</span>
+<span class="article-card-meta"><time datetime="2026-09-21">2026年9月21日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="materials" href="/ai-audio-processing-approval.html">
+<span class="article-card-category">AI音声・研修動画</span>
+<span class="article-card-title">AIで会話音声を分離・補正する前に決める7つの承認基準</span>
+<span class="article-card-desc">AIで会話音声のノイズ低減や話者分離を行う前に、原音保管、加工目的、許容範囲、聞き取り確認、版管理、承認者、差し戻し条件を決める実務上の7項目を整理します。</span>
+<span class="article-card-meta"><time datetime="2026-09-21">2026年9月21日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="operations" href="/youtube-shorts-thumbnail-approval.html">
+<span class="article-card-category">YouTube Shorts・企業動画</span>
+<span class="article-card-title">YouTube Shortsのサムネイル対応で変わる、企業ショート動画の企画・承認設計</span>
+<span class="article-card-desc">YouTube Shortsの冒頭、代表フレーム、カスタムサムネイル、タイトルを別々の成果物として設計し、本編と同じ版番号で承認する方法を企業担当者向けに整理します。</span>
+<span class="article-card-meta"><time datetime="2026-08-16">2026年8月16日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="training" href="/ai-avatar-training-video-operations.html">
+<span class="article-card-category">AIアバター・研修動画</span>
+<span class="article-card-title">AIアバターで企業の研修・説明動画を作る前に決める7つの運用ルール</span>
+<span class="article-card-desc">AIアバターを研修・社内説明動画へ使う前に、本人同意、台本承認、公開範囲、版管理、異動・退職時の差し替えなど、企業が制作前に決めたい7つの運用ルールを整理します。</span>
+<span class="article-card-meta"><time datetime="2026-08-16">2026年8月16日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="operations" href="/ai-video-ad-disclosure.html">
+<span class="article-card-category">AI動画広告・社内承認</span>
+<span class="article-card-title">生成AIを使った動画広告で企業が確認すべき表示・審査・社内承認</span>
+<span class="article-card-desc">媒体ごとの表示・申告、広告審査、素材確認、社内承認、公開後の記録を整理します。</span>
+<span class="article-card-meta"><time datetime="2026-08-03">2026年8月3日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="materials" href="/ai-video-data-management.html">
+<span class="article-card-category">AI動画制作・データ管理</span>
+<span class="article-card-title">AI動画制作で機密情報を渡す前に確認したいデータ管理7項目</span>
+<span class="article-card-desc">情報分類、学習利用、保存、外部サービス、権限、削除、代替制作方法を解説します。</span>
+<span class="article-card-meta"><time datetime="2026-08-03">2026年8月3日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="operations" href="/multi-platform-video-production.html">
+<span class="article-card-category">企業動画・媒体別展開</span>
+<span class="article-card-title">企業動画をYouTube・SNS・広告へ展開するための制作設計</span>
+<span class="article-card-desc">媒体ごとの目的、尺、比率、字幕、構図、CTA、納品内容を制作前に整理します。</span>
+<span class="article-card-meta"><time datetime="2026-08-03">2026年8月3日</time><span aria-hidden="true" class="article-card-arrow">読む →</span></span>
+</a>
+<a class="article-card" data-category="planning" href="/ai-video-outsourcing-checklist.html">
+<span class="article-card-category">AI動画制作の外注・発注</span>
+<span class="article-card-title">企業がAI動画制作を外注する前に確認すべき5つの項目</span>
+<span class="article-card-desc">企業がAI動画制作を外注する前に確認したい、目的、利用条件・権利、品質、見積範囲、進め方の5項目を解説します。</span>
+<span class="article-card-meta">
+<time datetime="2026-08-03">2026年8月3日</time>
+<span aria-hidden="true" class="article-card-arrow">読む →</span>
+</span>
+</a>
+<a class="article-card" data-category="planning" href="/ai-video-vs-traditional-video.html">
+<span class="article-card-category">AI動画制作の基礎知識</span>
+<span class="article-card-title">AI動画制作と従来の動画制作の違い｜費用・期間・品質・向いている用途を比較</span>
+<span class="article-card-desc">AI動画制作と従来の動画制作の違いを、撮影、費用、制作期間、品質、向いている用途などの観点から比較し、判断のポイントを解説します。</span>
+<span class="article-card-meta">
+<time datetime="2026-08-01">2026年8月1日</time>
+<span aria-hidden="true" class="article-card-arrow">読む →</span>
+</span>
+</a>
+<a class="article-card" data-category="planning" href="/what-is-ai-video-production.html">
+<span class="article-card-category">AI動画制作の基礎知識</span>
+<span class="article-card-title">AI動画制作とは？企業での活用方法・メリット・注意点を解説</span>
+<span class="article-card-desc">AI動画制作とは何か、企業での活用例、従来の動画制作との違い、メリットと注意点、依頼時のポイントを分かりやすく解説します。</span>
+<span class="article-card-meta">
+<time datetime="2026-07-31">2026年7月31日</time>
+<span aria-hidden="true" class="article-card-arrow">読む →</span>
+</span>
+</a></div><p class="column-empty" id="column-empty" hidden>一致する記事がありません。キーワードやテーマを変えてお試しください。</p><div class="column-more" data-column-more hidden><button type="button" id="column-next" aria-controls="column-cards">さらに6件を見る</button><button type="button" id="column-all" aria-controls="column-cards">すべて表示</button></div><noscript><p class="article-list-note">すべての記事を表示しています。</p></noscript></div></section>
 
 </main>
 

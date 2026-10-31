@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://framepact.jp/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/corporate-ai-video.html</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://framepact.jp/corporate-pr-video.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/recruit-video.html</loc>
@@ -26,11 +26,11 @@
   </url>
   <url>
     <loc>https://framepact.jp/training-video.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/event-video.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/exhibition-video.html</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://framepact.jp/column.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/what-is-ai-video-production.html</loc>
@@ -74,7 +74,7 @@
   </url>
   <url>
     <loc>https://framepact.jp/ai-audio-processing-approval.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-31</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/video-production-company-vs-ai-creator.html</loc>
@@ -92,5 +92,10 @@
     <loc>https://framepact.jp/philosophy.html</loc>
     <lastmod>2026-10-29</lastmod>
   </url>
+  <url><loc>https://framepact.jp/training-video-playback-speed-checklist.html</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://framepact.jp/video-audio-track-extraction-checklist.html</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://framepact.jp/document-to-video-summary-governance.html</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://framepact.jp/training-video-structure.html</loc><lastmod>2026-10-31</lastmod></url>
+  <url><loc>https://framepact.jp/published-video-replacement-rollback.html</loc><lastmod>2026-10-31</lastmod></url>
 </urlset>
 

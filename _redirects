@@ -1,5 +1,5 @@
 /x https://x.com/yossy_FRAMEPACT 302
-/note https://note.com/framepact 302
+/note /column.html 302
 
 # Keep the existing canonical .html URLs; serve the homepage at /.
 / /index.html 200
@@ -93,3 +93,20 @@
 /philosophy /philosophy.html 301
 /philosophy/ /philosophy.html 301
 /philosophy/index.html /philosophy.html 301
+
+# Reviewed columns published 2026-10-31.
+/training-video-playback-speed-checklist /training-video-playback-speed-checklist.html 301
+/training-video-playback-speed-checklist/ /training-video-playback-speed-checklist.html 301
+/training-video-playback-speed-checklist/index.html /training-video-playback-speed-checklist.html 301
+/video-audio-track-extraction-checklist /video-audio-track-extraction-checklist.html 301
+/video-audio-track-extraction-checklist/ /video-audio-track-extraction-checklist.html 301
+/video-audio-track-extraction-checklist/index.html /video-audio-track-extraction-checklist.html 301
+/document-to-video-summary-governance /document-to-video-summary-governance.html 301
+/document-to-video-summary-governance/ /document-to-video-summary-governance.html 301
+/document-to-video-summary-governance/index.html /document-to-video-summary-governance.html 301
+/training-video-structure /training-video-structure.html 301
+/training-video-structure/ /training-video-structure.html 301
+/training-video-structure/index.html /training-video-structure.html 301
+/published-video-replacement-rollback /published-video-replacement-rollback.html 301
+/published-video-replacement-rollback/ /published-video-replacement-rollback.html 301
+/published-video-replacement-rollback/index.html /published-video-replacement-rollback.html 301
