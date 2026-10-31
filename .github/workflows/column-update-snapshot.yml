@@ -29,9 +29,10 @@ jobs:
           python scripts/sync-article-social.py --check
           node --test tests/*.test.cjs
           git diff --check
-      - name: Commit on the isolated branch and remove temporary helpers
+      - name: Commit content only on the isolated branch
         run: |
-          git rm scripts/apply-column-update-once.py .github/workflows/column-update-snapshot.yml
+          git restore --source=HEAD -- .github/workflows/production-smoke-check.yml .github/workflows/responsive-validation.yml
+          git rm scripts/apply-column-update-once.py
           git add -A
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
