@@ -49,14 +49,13 @@ jobs:
             curl -fsSL --connect-timeout 10 --max-time 30 "$url" -o /dev/null
           done
 
-      - name: Verify site navigation and social routes
+      - name: Verify site navigation and paused social promotion
         shell: bash
         run: |
           set -euo pipefail
           curl -fsSL -H 'Cache-Control: no-cache' "https://framepact.jp/?nav-check=${GITHUB_SHA}" -o /tmp/home.html
           grep -q '/column.html' /tmp/home.html
-          grep -q 'https://x.com/yossy_FRAMEPACT' /tmp/home.html
-          if grep -Eq 'https?://(www\.)?note\.com' /tmp/home.html; then echo 'Unexpected note link'; exit 1; fi
+          if grep -Eiq 'https?://([a-z0-9-]+\.)*(x\.com|twitter\.com|t\.co|note\.com)([/[:space:]"?#]|$)' /tmp/home.html; then echo 'Unexpected paused social destination'; exit 1; fi
 
           curl -fsSL "https://framepact.jp/column.html" -o /tmp/column.html
           grep -q 'AI動画制作のお役立ち記事' /tmp/column.html
@@ -64,4 +63,4 @@ jobs:
       - name: Summary
         run: |
           echo "Production deployment verified against main."
-          echo "Critical routes and homepage-to-content/social navigation are reachable."
+          echo "Critical routes and homepage-to-content navigation are reachable; social promotion remains paused."
