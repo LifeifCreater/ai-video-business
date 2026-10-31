@@ -1,0 +1,75 @@
+/* Shared layout safeguards for phones, foldable viewports and tablets.
+   Use the available viewport, not a device name or a fixed panel resolution. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overflow-wrap: anywhere; }
+:where(.wrap, .measure, .body-copy, .article-list, .header-inner, .footer-inner) > * { min-width: 0; }
+:where(img, video, iframe) { max-width: 100%; }
+
+/* The article list stays visible even if JavaScript or IntersectionObserver fails. */
+.article-list {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+}
+.article-card { min-width: 0; }
+.article-card-meta { flex-wrap: wrap; }
+
+/* Preserve existing table scrollers rather than clipping or shrinking table text. */
+:where(.table-wrap, .table-scroll, .comparison-wrap) { max-width: 100%; }
+:where(.body-copy, .article-body) :where(p, li, a, th, td) { overflow-wrap: anywhere; }
+
+@media (max-width: 1079px) {
+  .btn { max-width: 100%; white-space: normal; text-align: center; }
+  .contact-buttons, .hero-actions { flex-wrap: wrap; }
+  .footer-links { max-width: 100%; }
+}
+
+/* Safe-area-aware fixed controls; never reserve a hard-coded Duo sidebar. */
+.floating-cta {
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+}
+.mobile-nav {
+  padding-left: max(28px, env(safe-area-inset-left, 0px));
+  padding-right: max(28px, env(safe-area-inset-right, 0px));
+  padding-bottom: max(40px, env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 1080px) {
+  .floating-cta { right: max(28px, env(safe-area-inset-right, 0px)); bottom: max(28px, env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Homepage chapters retain their original design and stay scrollable on resize. */
+.cinema .scene, .cinema main, .cinema .split > *, .cinema .human-layout > * { min-width: 0; min-height: 0; }
+.cinema .timeline { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.cinema .service-list > a > div { min-width: 0; }
+.cinema :where(.gold-button, .line-button) { max-width: 100%; }
+#chapter-index, #info-dialog, #film-dialog { box-sizing: border-box; overflow-y: auto; overflow-wrap: anywhere; }
+.cinema .masthead {
+  padding-left: max(4.4%, env(safe-area-inset-left, 0px));
+  padding-right: max(4.4%, env(safe-area-inset-right, 0px));
+}
+.cinema .transport {
+  padding-left: max(4.4%, env(safe-area-inset-left, 0px));
+  padding-right: max(4.4%, env(safe-area-inset-right, 0px));
+  padding-bottom: max(20px, env(safe-area-inset-bottom, 0px));
+}
+@media (hover: none) and (pointer: coarse) {
+  .cinema .timeline button, .cinema .next-controls button, .cinema .ambient-toggle,
+  dialog .dialog-close, .cinema .service-list > a { min-height: 44px; }
+  .cinema .next-controls button { min-width: 44px; }
+}
+@media (max-height: 530px) {
+  .cinema .transport { padding-bottom: max(10px, env(safe-area-inset-bottom, 0px)); }
+}
+
+/* Size the homepage's reading area from the actual header/footer, including
+   touch targets, toolbar height changes and fold/rotation — not a model preset. */
+.cinema { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.cinema > .masthead { position: relative; grid-row: 1; }
+.cinema > main { position: relative; inset: auto; grid-row: 2; margin: 12px 6.3% 20px; }
+.cinema > .transport { position: relative; grid-row: 3; }
+@media (max-width: 760px) {
+  .cinema > main { margin: 12px 7% 14px; }
+}
+@media (max-height: 530px) {
+  .cinema { min-height: 0; }
+  .cinema > main { margin-top: 8px; margin-bottom: 8px; }
+}
