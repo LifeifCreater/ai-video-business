@@ -1,0 +1,24 @@
+name: Column update snapshot (temporary)
+on:
+  push:
+    branches: [fix/column-compact-publish-remove-note-20261031]
+    paths: [.github/workflows/column-update-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Export public source fixture
+        run: |
+          mkdir -p /tmp/column-update-source
+          git archive --format=zip --output=/tmp/column-update-source/site.zip HEAD '*.html' '*.css' '*.js' scripts tests images .github/workflows AGENTS.md _headers _redirects wrangler.jsonc .assetsignore sitemap.xml robots.txt writing planning publishing research secretary/task-router.md business/framepact-service-facts.md automation/cloud-editorial/job-register.json
+          git rev-parse HEAD > /tmp/column-update-source/commit.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: column-update-source
+          path: /tmp/column-update-source
+          retention-days: 1
