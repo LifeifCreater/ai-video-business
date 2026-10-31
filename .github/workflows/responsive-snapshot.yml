@@ -1,0 +1,24 @@
+name: Responsive snapshot (temporary)
+on:
+  push:
+    branches: [fix/column-duo-responsive-20261031]
+    paths: [.github/workflows/responsive-snapshot.yml]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Export static-site test fixture (no customer data)
+        run: |
+          mkdir -p /tmp/framepact-responsive-source
+          git archive --format=zip --output=/tmp/framepact-responsive-source/site.zip HEAD '*.html' '*.css' '*.js' scripts tests images .github/workflows AGENTS.md _headers _redirects wrangler.jsonc .assetsignore sitemap.xml robots.txt
+          git rev-parse HEAD > /tmp/framepact-responsive-source/commit.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: responsive-source
+          path: /tmp/framepact-responsive-source
+          retention-days: 1
