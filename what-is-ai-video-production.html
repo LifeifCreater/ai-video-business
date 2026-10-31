@@ -187,7 +187,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .lead{ color:var(--gray-600); font-size:1.02rem; max-width:var(--measure); }
 .section--dark .lead{ color:#c9c9c4; }
 
-.reveal{ opacity:0; transform:translateY(24px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.reveal{ opacity:1; transform:none; transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
 .reveal.is-visible{ opacity:1; transform:translateY(0); }
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
@@ -516,6 +516,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .section--dark .inline-link{ color:var(--white); }
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<link rel="stylesheet" href="/framepact-responsive.css?v=20261031">
 </head>
 <body>
 

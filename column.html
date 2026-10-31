@@ -134,7 +134,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .h2{ font-size:clamp(2rem,4.6vw,3.2rem); line-height:1.25; }
 .lead{ color:var(--gray-600); font-size:1.02rem; max-width:var(--measure); }
 
-.reveal{ opacity:0; transform:translateY(24px); transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.reveal{ opacity:1; transform:none; transition:opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
 .reveal.is-visible{ opacity:1; transform:translateY(0); }
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
@@ -345,6 +345,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 @media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } }
 </style>
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<link rel="stylesheet" href="/framepact-responsive.css?v=20261031">
 </head>
 <body>
 
@@ -421,12 +422,12 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
   ============================================================= -->
   <section class="section" id="article-list">
     <div class="wrap">
-      <div class="section-head reveal">
+      <div class="section-head">
         <span class="eyebrow">ARTICLES</span>
         <h2 class="h2">記事一覧</h2>
       </div>
 
-      <div class="article-list reveal">
+      <div class="article-list">
         <a class="article-card" href="/corporate-pr-video-storyboard.html"><span class="article-card-category">企業PR動画・構成と台本</span><span class="article-card-title">企業PR動画の構成・台本の作り方｜30秒・60秒の具体例</span><span class="article-card-desc">企業PR動画の構成を、目的の整理から30秒・60秒の台本例、AI映像と実写素材の使い分け、社内確認まで解説。制作会社への相談に使える構成メモも紹介します。</span><span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span></a>
         <a class="article-card" href="/video-production-brief-template.html"><span class="article-card-category">動画制作・依頼書テンプレート</span><span class="article-card-title">動画制作の依頼書テンプレート｜見積もり前に整理する項目と記入例</span><span class="article-card-desc">企業向け動画制作の依頼書に使える記入欄と架空の記入例を紹介。目的・素材・納品・修正・確認日程を整理し、同じ条件で見積もりを比べるための実務ガイドです。</span><span class="article-card-meta"><time datetime="2026-10-03">2026年10月3日</time><span class="article-card-arrow" aria-hidden="true">記事を読む →</span></span></a>
         <a class="article-card" href="/video-production-company-vs-ai-creator.html">
@@ -507,7 +508,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
         </a>
       </div>
 
-      <p class="article-list-note reveal">今後、AI動画制作に関するお役立ち情報を順次追加していく予定です。</p>
+      <p class="article-list-note">今後、AI動画制作に関するお役立ち情報を順次追加していく予定です。</p>
     </div>
   </section>
 
