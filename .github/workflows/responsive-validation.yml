@@ -5,9 +5,10 @@ on:
     paths:
       - '**/*.html'
       - 'framepact-*.css'
-      - 'framepact-cinema.js'
+      - 'framepact-*.js'
       - 'scripts/check-responsive-browser.py'
       - 'tests/responsive.test.cjs'
+      - 'scripts/check-column-browser.py'
       - '.github/workflows/responsive-validation.yml'
 permissions:
   contents: read
@@ -42,6 +43,7 @@ jobs:
             sizes='768x600 806x600 867x648 890x626 951x669 1024x768 1280x800 1440x900'
           fi
           python scripts/check-responsive-browser.py --engine "$ENGINE" --viewports $sizes
+          python scripts/check-column-browser.py --engine "$ENGINE"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

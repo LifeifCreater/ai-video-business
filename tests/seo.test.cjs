@@ -96,7 +96,7 @@ test('modified pages have fresh sitemap lastmod entries', () => {
   const pages = ['index.html', ...primaryPages];
   for (const page of pages) {
     const url = page === 'index.html' ? 'https://framepact.jp/' : canonical(page);
-    const lastmod = page === 'index.html' ? '2026-10-29' : '2026-10-25';
+    const lastmod = ['index.html','training-video.html','event-video.html','corporate-pr-video.html'].includes(page) ? '2026-10-31' : '2026-10-25';
     assert.ok(sitemap.includes(`<loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>`), `${url}: sitemap lastmod`);
   }
 });

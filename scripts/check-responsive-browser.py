@@ -63,6 +63,8 @@ def main():
      check(not errors,[file.name,w,h,'JS errors',errors])
      if file.name=='column.html':
       cards=page.locator('.article-card');check(cards.count()==CARD_COUNT and CARD_COUNT>0,[file.name,'card count changed'])
+      check(page.locator('.article-card:not([hidden])').count()==min(6,CARD_COUNT),[file.name,'initial pagination'])
+      if page.locator('#column-all').is_visible():page.locator('#column-all').click()
       for i in [0,cards.count()-1]:
        cards.nth(i).evaluate("e=>e.scrollIntoView({block:'center',behavior:'instant'})");check(cards.nth(i).evaluate(HIT),[file.name,w,h,i,'card unreachable'])
       cards.first.evaluate("e=>e.scrollIntoView({block:'center',behavior:'instant'})")
@@ -82,6 +84,7 @@ def main():
    ctx=browser.new_context(viewport={'width':466,'height':562},has_touch=True,reduced_motion='reduce');ctx.route('**/*',route)
    for name in ([] if args.layout_only else ['column.html','index.html']):
     page=ctx.new_page();load(page,name)
+    if name=='column.html' and page.locator('#column-all').is_visible():page.locator('#column-all').click()
     for w,h in [(466,562),(951,669),(669,951),(382,648),(592,466),(890,520),(466,678)]:
      page.set_viewport_size({'width':w,'height':h});page.wait_for_timeout(30)
      if name=='column.html':

@@ -60,7 +60,7 @@ test('every tracked public page uses one shared bootstrap and no legacy click em
     assert.ok(!text.includes('contact_form_click'),name);
     if(text.includes('/framepact-analytics.js')){count++;assert.equal(text.split('/framepact-analytics.js').length,2);}
   }
-  assert.equal(count,26);
+  assert.equal(count,31);
 });
 
 test('actual pricing dialog openings count once without generating leads',()=>{
