@@ -168,4 +168,43 @@ main `ea53b10462d65130d6cdad190c6791a5681cd721` の正本、公開HTML、`column
 
 企画2件とも未承認。オーナー判断は各案の「採用 / 修正 / 保留 / 却下」。原稿作成、HTML化、公開、投稿は行っていない。
 
+## 2026-11-01 週次企画候補（オーナー判断待ち）
+
+- 対象週: `WEEK-2026-11-02`
+- 重複キー: `weekly_planning:WEEK-2026-11-02`
+- 調査期間: 2026-10-02〜2026-11-01
+- 正本基準: main `1f6476cbfc022d7ffeded054cb62c8db6846d4d6`
+- 公式一次情報の確認日: 2026-11-01
+- 推奨: 1件（最大3件の枠に対し、重複回避を優先して1件に限定）
+- X・note: 変更なし。企画会議ではサイト記事企画のみを扱う
+
+| 候補 | 一次情報 | FRAMEPACTとの関係 | 実務課題 | 問い合わせへの近さ | 判定 |
+|---|---|---:|---:|---:|---|
+| AI動画の納品ファイルを決める前に確認したい画質・容量・編集用途（`PLAN-20261101-001`） | Runway Dev、2026-10-21/27 | 高 | 高 | 高 | 推奨1 |
+| AI効果音生成の指示と確認項目 | ElevenLabs、2026-10-29 | 中 | 高 | 中 | 見送り。過去の音響仕様企画と公開済み音声系記事に近い |
+| 動画生成ワークフローの版管理 | Runway Dev、2026-10-26 | 中 | 中 | 低 | 保留。API運用が現行サービス正本より先行 |
+| 参照画像・中間フレームを使う生成設計 | Runway Dev、2026-10-23 | 中 | 中 | 中 | 保留。ブランドキット、商品境界、参照素材企画との重複が大きい |
+| ベクター素材の生成と動画制作への受け渡し | Runway Dev、2026-10-28 | 低 | 中 | 低 | 保留。動画制作の中心課題から遠い |
+| Google Vidsの高画質化・1080p出力 | Google Workspace、2026-10-29 | 中 | 中 | 中 | 見送り。`PLAN-20261004-003` のアップスケーリング企画と重複 |
+| インタラクティブ世界モデルの企業動画活用 | Google DeepMind、2026-10-27 | 低 | 低 | 低 | 見送り。研究プレビューで一般提供を確認できない |
+
+### 推奨理由
+
+- 直近の公式更新を、特定ツールの紹介ではなく、企業担当者が発注・受け入れ時に使える仕様表へ変換できる
+- 既存記事が扱う承認フロー、アップスケーリング、媒体別比率、公開後差し替えと検索意図を分離できる
+- 研修・イベント系CTAが続いた後に、法人向けAI動画制作の相談導線へ戻せる
+- 公式情報で確認できないコーデック、色空間、互換性は断定せず、執筆時の検証項目として残せる
+
+### 公式一次情報
+
+- Runway Developer Changelog（2026-10-21、23、26、27、28）  
+  https://docs.dev.runwayml.com/api-details/api_changelog/
+- ElevenLabs “Sound Effects v3”（2026-10-29）  
+  https://elevenlabs.io/blog/sound-effects-v3
+- Google Workspace product announcements（2026-10-29）  
+  https://workspace.google.com/blog/product-announcements/october-workspace-drops-edit-markdown-talk-to-gmail-and-docs-translate-meetings-and-more
+- Google DeepMind “Genie 4”（2026-10-27）  
+  https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/
+
+次回の外部事実再確認期限は2026-12-01。ただし、企画承認後の執筆開始時にも公式ページを再確認する。
 
