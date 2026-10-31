@@ -1,0 +1,51 @@
+name: Responsive validation
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'framepact-*.css'
+      - 'framepact-cinema.js'
+      - 'scripts/check-responsive-browser.py'
+      - 'tests/responsive.test.cjs'
+      - '.github/workflows/responsive-validation.yml'
+permissions:
+  contents: read
+jobs:
+  responsive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+        group: [narrow, wide]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned browser runtime
+        run: |
+          python -m pip install playwright==1.62.0
+          python -m playwright install --with-deps ${{ matrix.engine }}
+      - name: Check all public pages, folding, menus and dialogs
+        env:
+          ENGINE: ${{ matrix.engine }}
+          GROUP: ${{ matrix.group }}
+        run: |
+          if [ "$GROUP" = narrow ]; then
+            sizes='320x568 382x562 390x664 466x562 466x678 592x466 626x730 669x760'
+          else
+            sizes='768x600 806x600 867x648 890x626 951x669 1024x768 1280x800 1440x900'
+          fi
+          python scripts/check-responsive-browser.py --engine "$ENGINE" --viewports $sizes
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: responsive-${{ matrix.engine }}-${{ matrix.group }}
+          path: /tmp/framepact-responsive-check
+          if-no-files-found: ignore
+          retention-days: 7
