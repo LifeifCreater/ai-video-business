@@ -15,7 +15,12 @@ jobs:
       - name: Export public source fixture
         run: |
           mkdir -p /tmp/column-update-source
-          git archive --format=zip --output=/tmp/column-update-source/site.zip HEAD '*.html' '*.css' '*.js' scripts tests images .github/workflows AGENTS.md _headers _redirects wrangler.jsonc .assetsignore sitemap.xml robots.txt writing planning publishing research secretary/task-router.md business/framepact-service-facts.md automation/cloud-editorial/job-register.json
+          python3 - <<'PY'
+          import subprocess, zipfile
+          paths = subprocess.check_output(['git','ls-files','-z','--','*.html','*.css','*.js','scripts','tests','images','.github/workflows','AGENTS.md','_headers','_redirects','wrangler.jsonc','.assetsignore','sitemap.xml','robots.txt','writing','planning','research','secretary/task-router.md','business/framepact-service-facts.md','automation/cloud-editorial/job-register.json']).decode().split('\0')
+          with zipfile.ZipFile('/tmp/column-update-source/site.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for path in filter(None,paths): z.write(path,path)
+          PY
           git rev-parse HEAD > /tmp/column-update-source/commit.txt
       - uses: actions/upload-artifact@v4
         with:
