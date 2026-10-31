@@ -1,0 +1,70 @@
+name: Apply paused X links (temporary)
+on:
+  push:
+    branches: [fix/pause-x-site-links-20261031]
+    paths: [.github/workflows/pause-x-apply.yml]
+permissions:
+  contents: read
+jobs:
+  apply:
+    if: github.ref == 'refs/heads/fix/pause-x-site-links-20261031'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Verify source lease
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git merge-base --is-ancestor 6f40a500b716ed7aef60c3c19d73ae63d0386756 HEAD
+          git diff --exit-code 6f40a500b716ed7aef60c3c19d73ae63d0386756 HEAD -- ':(top,glob)*.html' _redirects
+      - name: Apply reviewed link removal without changing article bodies
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          root = Path('.')
+          old = '<div class="footer-col" data-article-social>\n  <h4>FOLLOW</h4>\n  <ul>\n    <li><a href="https://x.com/yossy_FRAMEPACT" target="_blank" rel="me noopener">Xで発信を読む</a></li>\n    </ul>\n</div>'
+          slot = '<!-- External social promotion is paused by owner request. Keep this shared slot empty until explicitly resumed. -->'
+          assert (root / 'templates/article-social.html').read_text().strip() == slot
+          start, end = '<!-- article-social:start -->', '<!-- article-social:end -->'
+          pattern = re.compile(re.escape(start) + r'\n(.*?)\n' + re.escape(end), re.S)
+          pending = {}
+          for page in sorted(root.glob('*.html')):
+              html = page.read_text()
+              if start in html:
+                  assert pattern.findall(html) == [old], page.name
+                  pending[page] = pattern.sub(lambda _: start+'\n'+slot+'\n'+end, html)
+          assert len(pending) == 19, len(pending)
+          page = root / 'index.html'
+          html = page.read_text()
+          for text in ['<link rel="me" href="https://x.com/yossy_FRAMEPACT">\n', '"sameAs":["https://x.com/yossy_FRAMEPACT"],', '<a href="https://x.com/yossy_FRAMEPACT" target="_blank" rel="noopener">X ↗</a>']:
+              assert html.count(text) == 1, text
+              html = html.replace(text, '')
+          pending[page] = html
+          page = root / '_redirects'
+          text = page.read_text()
+          assert text.count('/x https://x.com/yossy_FRAMEPACT 302') == 1
+          pending[page] = text.replace('/x https://x.com/yossy_FRAMEPACT 302', '/x /column.html 302')
+          for page, content in pending.items():
+              page.write_text(content)
+          print('Updated 19 managed footer slots, the homepage and /x. Article bodies and queues unchanged.')
+          PY
+          python3 scripts/sync-article-social.py --check
+          ruby -EUTF-8:UTF-8 scripts/check-site.rb
+          node --test tests/*.test.cjs
+          git diff --check
+      - name: Commit only public HTML and route changes on the fix branch
+        shell: bash
+        run: |
+          git add -- ':(top,glob)*.html' _redirects
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'fix: remove X promotion from all public pages and disable external shortcut'
+          test "$(git ls-remote origin refs/heads/fix/pause-x-site-links-20261031 | cut -f1)" = "$GITHUB_SHA"
+          git push origin HEAD:refs/heads/fix/pause-x-site-links-20261031
