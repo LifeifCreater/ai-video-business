@@ -93,10 +93,63 @@ document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click
   showInfo(title,'<p class="eyebrow">'+en+'</p><p>'+copy+'</p><div class="dialog-actions"><a href="/'+url+'">サービスの詳細を見る ↗</a><a href="'+contactUrl+'" target="_blank" rel="noopener" aria-label="制作を相談する（Googleフォーム・別タブ）">制作を相談する ↗</a></div>');
 }));
 document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const [title,html]=infoCopy[b.dataset.info];showInfo(title,html,b.dataset.info)}));
-const works=[{title:'FRAMEPACT 制作技術紹介',video:'https://framepact.jp/videos/framepact-showreel.mp4',description:'生成AIと映像編集を組み合わせた制作事例をまとめたショーリール。'},{title:'高級スキンケアブランド PR動画',youtube:'dlV_P4kCxRY',description:'高級スキンケアブランドを想定したポートフォリオ作品。企画から映像生成、編集、音響、仕上げまで一貫して制作。'},{title:'災害時研修動画',youtube:'dTmCFYJe3EQ',description:'地震発生から避難所運営、地域での支え合いまでを、AI映像と編集で構成した研修コンテンツ。'}];
-document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>{const w=works[Number(b.dataset.work)];document.getElementById('film-title').textContent=w.title;document.getElementById('film-description').textContent=w.description;let media;if(w.youtube){media=document.createElement('iframe');media.src='https://www.youtube-nocookie.com/embed/'+w.youtube+'?autoplay=1&rel=0';media.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';media.allowFullscreen=true;media.title=w.title;document.getElementById('film-direct').href='https://youtu.be/'+w.youtube;}else{media=document.createElement('video');media.src=w.video;media.controls=true;media.autoplay=true;media.playsInline=true;document.getElementById('film-direct').href=w.video;}document.getElementById('film-content').replaceChildren(media);openDialog(film)}));
+const works=[
+ {title:'FRAMEPACT 制作技術紹介',video:'https://framepact.jp/videos/framepact-showreel.mp4',portfolioId:'showreel',reference:'FRAMEPACT ショーリール',description:'生成AIと映像編集を組み合わせた制作事例をまとめたショーリール。さまざまな映像表現から、ご希望のイメージをご相談いただけます。'},
+ {title:'高級スキンケアブランド PR動画',youtube:'dlV_P4kCxRY',portfolioId:'brand-pr',reference:'高級スキンケアブランド PR動画',detailUrl:'/corporate-pr-video.html',detailLabel:'ブランドPR動画の制作を知る ↗',publicNote:'高級スキンケアブランドを想定したポートフォリオ作品です。',description:'高級スキンケアブランドを想定したポートフォリオ作品。企画から映像生成、編集、音響、仕上げまで一貫して制作。'},
+ {title:'災害時研修動画',youtube:'dTmCFYJe3EQ',portfolioId:'training',reference:'災害時研修動画',detailUrl:'/training-video.html',detailLabel:'研修動画の制作を知る ↗',description:'地震発生から避難所運営、地域での支え合いまでを、AI映像と編集で構成した研修コンテンツ。'},
+ {title:'実在人物を映画の世界へ。MV制作実績①',youtube:'s6zJ-bgTsDo',portfolioId:'mv-1',reference:'MV制作実績①（女騎士）',detailUrl:'/mv-portfolio.html#mv-1',publicNote:'掲載映像は公開用に編集したポートフォリオ版です。顔にはモザイクを施し、音源も差し替えています。掲載時間は公開版の尺です。',description:'女騎士が重い扉を押し開き、剣を掲げて仲間と進む物語。企画から動画生成・編集まで、全編を一人で一貫制作しました。人物の見え方や扉の動きなど、細部まで調整しています。公開版は1分7秒。'},
+ {title:'実在人物を映画の世界へ。MV制作実績②',youtube:'L0W4Vx75RtE',portfolioId:'mv-2',reference:'MV制作実績②（金龍）',detailUrl:'/mv-portfolio.html#mv-2',publicNote:'掲載映像は公開用に編集したポートフォリオ版です。顔にはモザイクを施し、音源も差し替えています。掲載時間は公開版の尺です。',description:'日本神話を思わせる架空の世界を旅する人物と、光る道の先から現れる金龍を描いたMV。企画から動画生成・編集まで、全編を一人で一貫制作し、人物の統一感と光の演出まで調整しました。公開版は1分11秒。'},
+ {title:'ご友人サプライズ動画制作',youtube:'n_Ttvon0-AU',portfolioId:'mv-3',reference:'制作実績③（サプライズ映像）',detailUrl:'/mv-portfolio.html#mv-3',publicNote:'掲載時間は公開版の尺です。ご友人の誕生日に向けて制作したサプライズ映像の実績です。',description:'ご友人の誕生日をニュース番組風に紹介する導入から、お祝いのMVへつなぐサプライズ映像。企画・映像生成・編集・音響・仕上げまで担当しました。公開版は58秒。'}
+];
+document.querySelectorAll('.mv-preview img').forEach(image=>{
+ const showFallback=()=>{image.hidden=true;};
+ image.addEventListener('error',showFallback);
+ image.addEventListener('load',()=>{image.hidden=false;});
+ if(image.complete&&image.naturalWidth===0)showFallback();
+});
+document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>{
+ const w=works[Number(b.dataset.work)];if(!w)return;
+ document.getElementById('film-title').textContent=w.title;
+ document.getElementById('film-description').textContent=w.description;
+ const detail=document.getElementById('film-details'),consult=document.getElementById('film-consult'),note=document.getElementById('film-public-note'),reference=document.getElementById('film-reference-note');
+ const isPortfolio=Boolean(w.portfolioId);
+ detail.hidden=!w.detailUrl;note.hidden=!w.publicNote;reference.hidden=!w.reference;
+ detail.textContent=w.detailLabel||'この作品の制作紹介を見る ↗';
+ if(w.detailUrl)detail.href=w.detailUrl;else detail.removeAttribute('href');
+ note.textContent=w.publicNote||'';
+ reference.textContent=w.reference?'フォームのご相談内容に「参考作品：'+w.reference+'」と添えていただくと、ご希望の表現を共有しやすくなります。':'';
+ consult.href=contactUrl;consult.dataset.ctaLocation='homepage_dialog';
+ consult.textContent=isPortfolio?'この作品を参考に制作を相談する ↗':'この表現で制作を相談する ↗';
+ if(isPortfolio){
+  consult.dataset.portfolioId=w.portfolioId;
+  consult.setAttribute('aria-label',w.reference+'を参考に制作を相談する（Googleフォーム・別タブ）');
+ }else{
+  delete consult.dataset.portfolioId;
+  consult.setAttribute('aria-label','制作を相談する（Googleフォーム・別タブ）');
+ }
+ let media;
+ if(w.youtube){
+  media=document.createElement('iframe');
+  media.src='https://www.youtube-nocookie.com/embed/'+w.youtube+'?autoplay=1&rel=0';
+  media.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';media.allowFullscreen=true;media.title=w.title;
+  media.referrerPolicy='strict-origin-when-cross-origin';
+  document.getElementById('film-direct').href='https://youtu.be/'+w.youtube;
+ }else{
+  media=document.createElement('video');media.src=w.video;media.controls=true;media.autoplay=true;media.playsInline=true;
+  document.getElementById('film-direct').href=w.video;
+ }
+ const direct=document.getElementById('film-direct');
+ if(isPortfolio)direct.dataset.portfolioId=w.portfolioId;else delete direct.dataset.portfolioId;
+ document.getElementById('film-content').replaceChildren(media);openDialog(film);
+ if(isPortfolio)document.dispatchEvent(new CustomEvent('framepact:portfolio-action',{detail:{portfolio_id:w.portfolioId,action:'video_open',placement:'homepage_dialog'}}));
+}));
+document.getElementById('film-direct').addEventListener('click',e=>{
+ const id=e.currentTarget.dataset.portfolioId;
+ if(id)document.dispatchEvent(new CustomEvent('framepact:portfolio-action',{detail:{portfolio_id:id,action:'video_external',placement:'homepage_dialog'}}));
+});
 function routeHash(){const key=location.hash.slice(1),aliases={reasons:3,services:1,about:3,founder:3,price:4,faq:4};showScene(aliases[key]??Math.max(0,ids.indexOf(key)),false);if(key==='price'||key==='faq'){const [title,html]=infoCopy[key==='price'?'pricing':'faq'];showInfo(title,html,key==='price'?'pricing':'faq');}}
 routeHash();playbackUi(false);
 // The supplied WebP is the first frame and remains the fallback behind the original film.
 setTimeout(()=>{if(!reduceMotion.matches&&!userChangedPlayback&&!document.hidden){ambientWanted=true;if(!dialogs.some(d=>d.open))startAmbient();}},1800);
 reduceMotion.addEventListener('change',e=>{if(e.matches){ambientWanted=false;ambient.pause();playbackUi(false)}});
+

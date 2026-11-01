@@ -117,3 +117,4 @@ def main():
  if failures:print(json.dumps(failures,ensure_ascii=False,indent=2));raise SystemExit(f'{len(failures)} responsive assertions failed')
  print(f'{len(results)} page/viewport checks plus reflow, menus, tables, dialogs and visibility fallbacks passed. No forms submitted.')
 if __name__=='__main__':main()
+

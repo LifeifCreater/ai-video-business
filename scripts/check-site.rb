@@ -35,7 +35,8 @@ HTML_FILES.each do |source|
     errors << "#{source.basename}: unbalanced <#{tag}>" unless opening_count == 1 && closing_count == 1
   end
   errors << "#{source.basename}: must contain one h1" unless html.scan(/<h1(?:\s|>)/i).length == 1
-  ids = html.scan(/\bid=["']([^"']+)["']/).flatten
+  # Attribute names such as data-portfolio-id are not HTML ids.
+  ids = html.scan(/\sid\s*=\s*["']([^"']+)["']/i).flatten
   id_counts = ids.each_with_object(Hash.new(0)) { |id, counts| counts[id] += 1 }
   id_counts.each { |id, count| errors << "#{source.basename}: duplicate id ##{id}" if count > 1 }
 
@@ -54,7 +55,7 @@ HTML_FILES.each do |source|
     end
     next unless fragment && target.extname == ".html"
 
-    target_ids = target.read.scan(/\bid=["']([^"']+)["']/).flatten
+    target_ids = target.read.scan(/\sid\s*=\s*["']([^"']+)["']/i).flatten
     errors << "#{source.basename}: missing fragment #{url}" unless target_ids.include?(fragment)
   end
 end
@@ -85,3 +86,4 @@ else
   warn errors.join("\n")
   exit 1
 end
+
