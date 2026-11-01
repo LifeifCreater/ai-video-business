@@ -110,3 +110,8 @@
 /published-video-replacement-rollback /published-video-replacement-rollback.html 301
 /published-video-replacement-rollback/ /published-video-replacement-rollback.html 301
 /published-video-replacement-rollback/index.html /published-video-replacement-rollback.html 301
+
+# Unpublished delivery article preview: keep the canonical .html path.
+/ai-video-delivery-file-checklist /ai-video-delivery-file-checklist.html 301
+/ai-video-delivery-file-checklist/ /ai-video-delivery-file-checklist.html 301
+/ai-video-delivery-file-checklist/index.html /ai-video-delivery-file-checklist.html 301
