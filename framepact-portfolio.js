@@ -1,10 +1,11 @@
-/* MV portfolio: load YouTube only on request; copy static, non-personal inquiry notes. */
+/* Portfolio: load YouTube only on request; copy static, non-personal inquiry notes. */
 (function () {
   'use strict';
 
   const works = Object.freeze({
-    'mv-1': { youtubeId: 's6zJ-bgTsDo', title: '実在人物を映画の世界へ。MV制作実績①（公開版・1分7秒）' },
-    'mv-2': { youtubeId: 'L0W4Vx75RtE', title: '実在人物を映画の世界へ。MV制作実績②（公開版・1分11秒）' }
+    'mv-1': { youtubeId: 's6zJ-bgTsDo', title: '女騎士の再起を描くMV・後半制作（公開版・1分7秒）' },
+    'mv-2': { youtubeId: 'L0W4Vx75RtE', title: '金色の龍と出会うMV・全編制作（公開版・1分11秒）' },
+    'mv-3': { youtubeId: 'n_Ttvon0-AU', title: 'ご友人サプライズ動画制作（公開版・58秒）' }
   });
 
   function track(id, action) {

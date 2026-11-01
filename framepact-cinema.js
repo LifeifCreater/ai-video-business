@@ -97,8 +97,9 @@ const works=[
  {title:'FRAMEPACT 制作技術紹介',video:'https://framepact.jp/videos/framepact-showreel.mp4',description:'生成AIと映像編集を組み合わせた制作事例をまとめたショーリール。'},
  {title:'高級スキンケアブランド PR動画',youtube:'dlV_P4kCxRY',description:'高級スキンケアブランドを想定したポートフォリオ作品。企画から映像生成、編集、音響、仕上げまで一貫して制作。'},
  {title:'災害時研修動画',youtube:'dTmCFYJe3EQ',description:'地震発生から避難所運営、地域での支え合いまでを、AI映像と編集で構成した研修コンテンツ。'},
- {title:'実在人物を映画の世界へ。MV制作実績①',youtube:'s6zJ-bgTsDo',portfolioId:'mv-1',reference:'MV制作実績①',description:'実在する人物を映画の主人公のように描いたMV。支給音源をもとに、世界観の企画から映像制作・編集まで対応した制作実績です。公開版は1分7秒。'},
- {title:'実在人物を映画の世界へ。MV制作実績②',youtube:'L0W4Vx75RtE',portfolioId:'mv-2',reference:'MV制作実績②',description:'実在する人物を題材に、映画のような世界観を表現したもう一つのMV。支給音源に合わせた世界観の企画、映像制作、編集を手がけています。公開版は1分11秒。'}
+ {title:'実在人物を映画の世界へ。MV制作実績①',youtube:'s6zJ-bgTsDo',portfolioId:'mv-1',reference:'MV制作実績①（女騎士）',publicEdit:true,description:'女騎士が重い扉を押し開き、剣を掲げて仲間と進む物語。既存MVの後半の映像制作・編集を担当し、人物の見え方や扉の動きなどを調整しました。公開版は1分7秒。'},
+ {title:'実在人物を映画の世界へ。MV制作実績②',youtube:'L0W4Vx75RtE',portfolioId:'mv-2',reference:'MV制作実績②（金龍）',publicEdit:true,description:'日本神話を思わせる架空の世界を旅する人物と、光る道の先から現れる金龍を描いたMV。世界観の企画から全編の映像制作・編集まで担当し、人物の一貫性と光の演出を調整しました。公開版は1分11秒。'},
+ {title:'ご友人サプライズ動画制作',youtube:'n_Ttvon0-AU',portfolioId:'mv-3',reference:'制作実績③（サプライズ映像）',description:'ご友人の誕生日をニュース番組風に紹介する導入から、お祝いのMVへつなぐサプライズ映像。企画・映像生成・編集・音響・仕上げまで担当しました。公開版は58秒。'}
 ];
 document.querySelectorAll('.mv-preview img').forEach(image=>{
  const showFallback=()=>{image.hidden=true;};
@@ -114,12 +115,12 @@ document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',(
  const isPortfolio=Boolean(w.portfolioId);
  detail.hidden=!isPortfolio;note.hidden=!isPortfolio;reference.hidden=!isPortfolio;
  consult.href=contactUrl;consult.dataset.ctaLocation='homepage_dialog';
- consult.textContent=isPortfolio?'このMVを参考に制作を相談する ↗':'この表現で制作を相談する ↗';
+ consult.textContent=isPortfolio?'この作品を参考に制作を相談する ↗':'この表現で制作を相談する ↗';
  if(isPortfolio){
   detail.href='/mv-portfolio.html#'+w.portfolioId;
   consult.dataset.portfolioId=w.portfolioId;
   consult.setAttribute('aria-label',w.reference+'を参考に制作を相談する（Googleフォーム・別タブ）');
-  note.textContent='掲載映像は公開用に編集したポートフォリオ版です。顔にはモザイクを施し、音源も差し替えています。掲載時間は公開版の尺です。';
+  note.textContent=w.publicEdit?'掲載映像は公開用に編集したポートフォリオ版です。顔にはモザイクを施し、音源も差し替えています。掲載時間は公開版の尺です。':'掲載時間は公開版の尺です。ご友人の誕生日に向けて制作したサプライズ映像の実績です。';
   reference.textContent='フォームのご相談内容に「参考作品：'+w.reference+'」と添えていただくと、ご希望の表現を共有しやすくなります。';
  }else{
   detail.removeAttribute('href');delete consult.dataset.portfolioId;
