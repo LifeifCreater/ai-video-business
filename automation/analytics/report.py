@@ -11,7 +11,7 @@ import sys
 from datetime import date, datetime, timedelta
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
-from zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 PROPERTY = '547125968'
 ENDPOINT = f'https://analyticsdata.googleapis.com/v1beta/properties/{PROPERTY}:runReport'
@@ -169,10 +169,37 @@ def validate_page(result, body):
     if not isinstance(result, dict) or 'error' in result:
         raise ReportError('invalid_response', detail='response_shape')
     dimensions = result.get('dimensionHeaders', [])
-    metrics = result.get('metricHeaders')
+    metrics = result.get('metricHeaders', [])
     page = result.get('rows', [])
     count = result.get('rowCount', 0)
-    if not isinstance(dimensions, list) or not isinstance(metrics, list) or not metrics:
+    metadata = result.get('metadata')
+    empty_headers = (metrics == []
+                     or (dimensions == [] and bool(body.get('dimensions', []))))
+    verified_empty = False
+    if (empty_headers and result.get('kind') == 'analyticsData#runReport'
+            and isinstance(metadata, dict)):
+        # Empty repeated fields can be omitted by ProtoJSON. Require the report
+        # identity, valid property timezone and no data before accepting that shape.
+        if not isinstance(page, list) or page:
+            raise ReportError('invalid_response', detail='rows_shape')
+        if type(count) is not int or count != 0:
+            raise ReportError('invalid_response', detail='row_count_shape')
+        timezone = metadata.get('timeZone')
+        if not isinstance(timezone, str) or not timezone:
+            raise ReportError('invalid_response', detail='metadata_shape')
+        try:
+            ZoneInfo(timezone)
+        except (ValueError, ZoneInfoNotFoundError):
+            raise ReportError('invalid_response', detail='metadata_shape') from None
+        if 'emptyReason' in metadata and not isinstance(metadata['emptyReason'], str):
+            raise ReportError('invalid_response', detail='metadata_shape')
+        for field in ('totals', 'maximums', 'minimums'):
+            values = result.get(field, [])
+            if not isinstance(values, list) or values:
+                raise ReportError('invalid_response', detail='rows_shape')
+        verified_empty = True
+    if (not isinstance(dimensions, list) or not isinstance(metrics, list)
+            or (not metrics and not verified_empty)):
         raise ReportError('invalid_response', detail='header_shape')
     if not isinstance(page, list):
         raise ReportError('invalid_response', detail='rows_shape')
@@ -184,9 +211,12 @@ def validate_page(result, body):
         if any(not isinstance(header, dict) or not isinstance(header.get('name'), str)
                or not header['name'] for header in headers):
             raise ReportError('invalid_response', detail='header_shape')
-    if ([header['name'] for header in dimensions] != [item['name'] for item in body.get('dimensions', [])]
-            or [header['name'] for header in metrics] != [item['name'] for item in body.get('metrics', [])]):
-        raise ReportError('invalid_response', detail='header_mismatch')
+    for headers, requested in ((dimensions, body.get('dimensions', [])),
+                               (metrics, body.get('metrics', []))):
+        if verified_empty and not headers:
+            continue
+        if [header['name'] for header in headers] != [item['name'] for item in requested]:
+            raise ReportError('invalid_response', detail='header_mismatch')
     for row in page:
         if not isinstance(row, dict):
             raise ReportError('invalid_response', detail='rows_shape')
