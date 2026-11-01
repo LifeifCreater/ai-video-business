@@ -1,0 +1,4 @@
+# Needed only for service-account execution; previews and offline unit tests
+# use the Python standard library. Keep authentication on the supported major.
+google-auth>=2.38.0,<3
+requests>=2.32.3,<3

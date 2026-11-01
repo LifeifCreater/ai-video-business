@@ -26,9 +26,17 @@
 ## データ再確認
 
 `python3 automation/analytics/report.py --date YYYY-MM-DD` は読み取りクエリ定義だけを表示する。
-`--execute` を指定するとGA4 Data APIを読む。既存の閲覧権限を持つOAuthアクセストークンをローカル環境変数 `GA4_ACCESS_TOKEN` に設定する。認証情報をチャット・コード・PRに貼らない。
+`--execute` を指定するとGA4 Data APIを読む。対象は既存のプロパティ `547125968`。認証は次の優先順位で選び、選択された認証が不正な場合は別の認証へ黙って切り替えず停止する。
 
-日付省略時は日本時間の2日前。結果にはGA4のtimeZoneなど元メタデータを残す。当日・前日は暫定扱いにするが、2日前でも確定を保証しない。API認証未接続のため実データでの実行は未検証。定期実行は未設定であり、このスクリプト単独では自動起動しない。
+1. `GA4_ACCESS_TOKEN`：既存の手動取得との互換用。トークン期限後は再設定が必要。
+2. `GA4_SERVICE_ACCOUNT_JSON`：GA4専用のサービスアカウントを既に設定している場合。
+3. `GSC_SERVICE_ACCOUNT_JSON`：既存Search Console監視と同じサービスアカウントを利用する場合。
+
+サービスアカウント実行時は `python3 -m pip install -r automation/analytics/requirements.txt` で依存を入れる。JSONはメモリ内で読み、Google公式 `google-auth` で `analytics.readonly` scopeだけを要求する。短期アクセストークンの発行・更新をSDKに任せ、鍵やトークンをファイル化しない。GSC側の認証scope・定期処理・保存状態は変更しない。
+
+同じサービスアカウントでも、対象GA4プロパティの閲覧者権限と、対応するGoogle CloudプロジェクトでのGoogle Analytics Data API有効化が必要。GSCの成功をGA4権限の証明にしない。権限の付与、API有効化、鍵の新規発行はこのスクリプトでは実行しない。認証情報をチャット・コード・PRに貼らない。
+
+日付省略時は日本時間の2日前。結果にはGA4のtimeZoneなど元メタデータを残す。当日・前日は暫定扱いにするが、2日前でも確定を保証しない。下記の定期処理で認証と取得を検証する。コードの存在やテスト合格だけを、実APIでの成功の証拠にしない。
 
 - 国内の日別人数、訪問、PV、エンゲージメント
 - 国内の参照元別訪問
@@ -38,7 +46,23 @@
 
 サーバーイベントの国が欠ける場合に問い合わせを取り落とさないよう、全世界と日本の両方を確認する。受信メールの配送時刻とイベント発生時刻は同一とは限らない。時刻の一致だけで人を特定しない。送信完了率には、発火条件を検証したgenerate_leadを使い、クリックとの合計を使わない。
 
-実行結果は標準出力のみ。Publicリポジトリ・PR・CIログへの実データ保存は禁止。API失敗やページング不完全を0件に置き換えない。
+通常の `--execute` はローカルでのみ結果を標準出力へ出す。Publicリポジトリ・PR・CIログ・公開Actions artifactへの実データ保存は禁止。GitHub Actionsでは通常の出力を認証前に拒否し、次の安全な確認モードだけを使用する。API失敗やページング不完全を0件に置き換えない。
+
+## 定期的な取得確認
+
+`.github/workflows/ga4-monitor.yml` は毎日08:40 JST予定（GitHubの実行遅延あり）と、対象ファイルのmain反映時、mainでの手動実行時に動く。PRや任意のブランチでは認証情報を使って実行しない。
+
+```sh
+python3 automation/analytics/report.py --execute --status-only
+```
+
+このモードは既存5種類のレポートを読み、応答とページングを検証した後、集計データをメモリから破棄する。公開ログへ出すのは接続の成否・認証方式・対象日・確認日時・完了したレポート定義数・固定の失敗分類だけ。指標値、取得行数、参照元、イベント時刻、Googleのエラー本文、鍵、アクセストークンは出さない。
+
+workflowは `contents: read` のみで動き、checkoutにGitHub認証を残さず、Secretは取得stepだけへ渡す。GA4専用Secretがなければ既存 `GSC_SERVICE_ACCOUNT_JSON` を利用する。401/403、レート制限、ネットワーク障害、壊れた応答、不完全なページングは失敗として終了し、「アクセス0」や「問い合わせ0」と表示しない。実接続の確認証跡は、このworkflowの対象commitの実行結果を参照する。
+
+**この定期処理で確認できるのは、GA4認証と5種類のクエリを継続して実行できること。実データの蓄積、朝会への数値配信、SEO改善案の生成、サイトの自動変更は含まない。** 集計値の保存・配信を接続する場合は、認可された非公開の保存先と閲覧範囲を確認してから別途つなぐ。公開のSearch Console state branchやKPI台帳を保存先にしない。
+
+既存クエリは問い合わせ照合用の定義を維持している。朝会の本番ホスト限定・直近7日対前7日KPIと同一の定義ではないため、そのまま朝会の本番KPIへ転用しない。フォーム送信完了の検証も、上記の未検証項目として残る。
 
 ## 計測の扱い
 
@@ -60,3 +84,9 @@ ruby scripts/check-site.rb
 - https://developers.google.com/analytics/devguides/collection/protocol/ga4/reference
 - https://developers.google.com/analytics/devguides/collection/protocol/ga4/use-cases
 - https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/runReport
+
+### 認証・定期取得の参照（2026-11-01確認）
+
+- https://developers.google.com/analytics/devguides/reporting/data/v1/quickstart
+- https://developers.google.com/analytics/devguides/MCP
+- https://google-auth.readthedocs.io/en/latest/reference/google.auth.transport.requests.html
