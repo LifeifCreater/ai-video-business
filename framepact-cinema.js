@@ -93,10 +93,62 @@ document.querySelectorAll('[data-service]').forEach(b=>b.addEventListener('click
   showInfo(title,'<p class="eyebrow">'+en+'</p><p>'+copy+'</p><div class="dialog-actions"><a href="/'+url+'">サービスの詳細を見る ↗</a><a href="'+contactUrl+'" target="_blank" rel="noopener" aria-label="制作を相談する（Googleフォーム・別タブ）">制作を相談する ↗</a></div>');
 }));
 document.querySelectorAll('[data-info]').forEach(b=>b.addEventListener('click',()=>{const [title,html]=infoCopy[b.dataset.info];showInfo(title,html,b.dataset.info)}));
-const works=[{title:'FRAMEPACT 制作技術紹介',video:'https://framepact.jp/videos/framepact-showreel.mp4',description:'生成AIと映像編集を組み合わせた制作事例をまとめたショーリール。'},{title:'高級スキンケアブランド PR動画',youtube:'dlV_P4kCxRY',description:'高級スキンケアブランドを想定したポートフォリオ作品。企画から映像生成、編集、音響、仕上げまで一貫して制作。'},{title:'災害時研修動画',youtube:'dTmCFYJe3EQ',description:'地震発生から避難所運営、地域での支え合いまでを、AI映像と編集で構成した研修コンテンツ。'}];
-document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>{const w=works[Number(b.dataset.work)];document.getElementById('film-title').textContent=w.title;document.getElementById('film-description').textContent=w.description;let media;if(w.youtube){media=document.createElement('iframe');media.src='https://www.youtube-nocookie.com/embed/'+w.youtube+'?autoplay=1&rel=0';media.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';media.allowFullscreen=true;media.title=w.title;document.getElementById('film-direct').href='https://youtu.be/'+w.youtube;}else{media=document.createElement('video');media.src=w.video;media.controls=true;media.autoplay=true;media.playsInline=true;document.getElementById('film-direct').href=w.video;}document.getElementById('film-content').replaceChildren(media);openDialog(film)}));
+const works=[
+ {title:'FRAMEPACT 制作技術紹介',video:'https://framepact.jp/videos/framepact-showreel.mp4',description:'生成AIと映像編集を組み合わせた制作事例をまとめたショーリール。'},
+ {title:'高級スキンケアブランド PR動画',youtube:'dlV_P4kCxRY',description:'高級スキンケアブランドを想定したポートフォリオ作品。企画から映像生成、編集、音響、仕上げまで一貫して制作。'},
+ {title:'災害時研修動画',youtube:'dTmCFYJe3EQ',description:'地震発生から避難所運営、地域での支え合いまでを、AI映像と編集で構成した研修コンテンツ。'},
+ {title:'実在人物を映画の世界へ。MV制作実績①',youtube:'s6zJ-bgTsDo',portfolioId:'mv-1',reference:'MV制作実績①',description:'実在する人物を映画の主人公のように描いたMV。支給音源をもとに、世界観の企画から映像制作・編集まで対応した制作実績です。公開版は1分7秒。'},
+ {title:'実在人物を映画の世界へ。MV制作実績②',youtube:'L0W4Vx75RtE',portfolioId:'mv-2',reference:'MV制作実績②',description:'実在する人物を題材に、映画のような世界観を表現したもう一つのMV。支給音源に合わせた世界観の企画、映像制作、編集を手がけています。公開版は1分11秒。'}
+];
+document.querySelectorAll('.mv-preview img').forEach(image=>{
+ const showFallback=()=>{image.hidden=true;};
+ image.addEventListener('error',showFallback);
+ image.addEventListener('load',()=>{image.hidden=false;});
+ if(image.complete&&image.naturalWidth===0)showFallback();
+});
+document.querySelectorAll('[data-work]').forEach(b=>b.addEventListener('click',()=>{
+ const w=works[Number(b.dataset.work)];if(!w)return;
+ document.getElementById('film-title').textContent=w.title;
+ document.getElementById('film-description').textContent=w.description;
+ const detail=document.getElementById('film-details'),consult=document.getElementById('film-consult'),note=document.getElementById('film-public-note'),reference=document.getElementById('film-reference-note');
+ const isPortfolio=Boolean(w.portfolioId);
+ detail.hidden=!isPortfolio;note.hidden=!isPortfolio;reference.hidden=!isPortfolio;
+ consult.href=contactUrl;consult.dataset.ctaLocation='homepage_dialog';
+ consult.textContent=isPortfolio?'このMVを参考に制作を相談する ↗':'この表現で制作を相談する ↗';
+ if(isPortfolio){
+  detail.href='/mv-portfolio.html#'+w.portfolioId;
+  consult.dataset.portfolioId=w.portfolioId;
+  consult.setAttribute('aria-label',w.reference+'を参考に制作を相談する（Googleフォーム・別タブ）');
+  note.textContent='掲載映像は公開用に編集したポートフォリオ版です。顔にはモザイクを施し、音源も差し替えています。掲載時間は公開版の尺です。';
+  reference.textContent='フォームのご相談内容に「参考作品：'+w.reference+'」と添えていただくと、ご希望の表現を共有しやすくなります。';
+ }else{
+  detail.removeAttribute('href');delete consult.dataset.portfolioId;
+  consult.setAttribute('aria-label','制作を相談する（Googleフォーム・別タブ）');
+  note.textContent='';reference.textContent='';
+ }
+ let media;
+ if(w.youtube){
+  media=document.createElement('iframe');
+  media.src='https://www.youtube-nocookie.com/embed/'+w.youtube+'?autoplay=1&rel=0';
+  media.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';media.allowFullscreen=true;media.title=w.title;
+  media.referrerPolicy='strict-origin-when-cross-origin';
+  document.getElementById('film-direct').href='https://youtu.be/'+w.youtube;
+ }else{
+  media=document.createElement('video');media.src=w.video;media.controls=true;media.autoplay=true;media.playsInline=true;
+  document.getElementById('film-direct').href=w.video;
+ }
+ const direct=document.getElementById('film-direct');
+ if(isPortfolio)direct.dataset.portfolioId=w.portfolioId;else delete direct.dataset.portfolioId;
+ document.getElementById('film-content').replaceChildren(media);openDialog(film);
+ if(isPortfolio)document.dispatchEvent(new CustomEvent('framepact:portfolio-action',{detail:{portfolio_id:w.portfolioId,action:'video_open',placement:'homepage_dialog'}}));
+}));
+document.getElementById('film-direct').addEventListener('click',e=>{
+ const id=e.currentTarget.dataset.portfolioId;
+ if(id)document.dispatchEvent(new CustomEvent('framepact:portfolio-action',{detail:{portfolio_id:id,action:'video_external',placement:'homepage_dialog'}}));
+});
 function routeHash(){const key=location.hash.slice(1),aliases={reasons:3,services:1,about:3,founder:3,price:4,faq:4};showScene(aliases[key]??Math.max(0,ids.indexOf(key)),false);if(key==='price'||key==='faq'){const [title,html]=infoCopy[key==='price'?'pricing':'faq'];showInfo(title,html,key==='price'?'pricing':'faq');}}
 routeHash();playbackUi(false);
 // The supplied WebP is the first frame and remains the fallback behind the original film.
 setTimeout(()=>{if(!reduceMotion.matches&&!userChangedPlayback&&!document.hidden){ambientWanted=true;if(!dialogs.some(d=>d.open))startAmbient();}},1800);
 reduceMotion.addEventListener('change',e=>{if(e.matches){ambientWanted=false;ambient.pause();playbackUi(false)}});
+
