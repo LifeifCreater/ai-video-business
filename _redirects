@@ -110,3 +110,9 @@
 /published-video-replacement-rollback /published-video-replacement-rollback.html 301
 /published-video-replacement-rollback/ /published-video-replacement-rollback.html 301
 /published-video-replacement-rollback/index.html /published-video-replacement-rollback.html 301
+
+
+# MV portfolio canonical routes
+/mv-portfolio /mv-portfolio.html 301
+/mv-portfolio/ /mv-portfolio.html 301
+/mv-portfolio/index.html /mv-portfolio.html 301

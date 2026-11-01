@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://framepact.jp/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-01</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/corporate-ai-video.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://framepact.jp/no-material-ai-video.html</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-11-01</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/corporate-pr-video.html</loc>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://framepact.jp/event-video.html</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-01</lastmod>
   </url>
   <url>
     <loc>https://framepact.jp/exhibition-video.html</loc>
@@ -97,5 +97,10 @@
   <url><loc>https://framepact.jp/document-to-video-summary-governance.html</loc><lastmod>2026-10-31</lastmod></url>
   <url><loc>https://framepact.jp/training-video-structure.html</loc><lastmod>2026-10-31</lastmod></url>
   <url><loc>https://framepact.jp/published-video-replacement-rollback.html</loc><lastmod>2026-10-31</lastmod></url>
+  <url>
+    <loc>https://framepact.jp/mv-portfolio.html</loc>
+    <lastmod>2026-11-01</lastmod>
+  </url>
 </urlset>
+
 

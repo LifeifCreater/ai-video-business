@@ -78,6 +78,18 @@
       observed_referrer: ['chatgpt','google','bing','youtube','x','note','other_referral','direct_or_unknown'].includes(visit.source) ? visit.source : 'direct_or_unknown', traffic_type: 'external', measurement_version: '20260929' };
   }
   if (/^\/ai-video-price(?:\.html)?$/.test(page)) gtag('event', 'pricing_view', params());
+  const portfolioIds = ['mv-1', 'mv-2'];
+  const portfolioPlacements = ['homepage_card', 'homepage_dialog', 'portfolio_case', 'portfolio_intro', 'portfolio_footer', 'service_related'];
+  function portfolioContext(id, placement) {
+    if (!portfolioIds.includes(id) || !portfolioPlacements.includes(placement)) return null;
+    return { portfolio_id: id, cta_location: placement };
+  }
+  if (/^\/mv-portfolio(?:\.html)?$/.test(page)) {
+    const values = params();
+    const id = (location.hash || '').slice(1);
+    if (portfolioIds.includes(id)) values.portfolio_id = id;
+    gtag('event', 'portfolio_view', values);
+  }
   document.addEventListener('click', function (event) {
     const link = event.target.closest && event.target.closest('a[href]');
     if (!link) return;
@@ -87,6 +99,9 @@
     const values = params();
     values.contact_channel = 'google_forms';
     values.click_time_utc = new Date().toISOString();
+    const data = link.dataset || {};
+    const context = portfolioContext(data.portfolioId, data.ctaLocation);
+    if (context) Object.assign(values, context);
     gtag('event', 'contact_form_click', values);
     visit.lastSeen = Date.now();
     write('sessionStorage', SESSION, JSON.stringify(visit));
@@ -95,4 +110,14 @@
   document.addEventListener('framepact:pricing-view', function () {
     gtag('event', 'pricing_view', params());
   });
+  // These are explicit portfolio interactions, not playback or completed inquiries.
+  // Accept fixed labels only; never send the copied brief, form answers or arbitrary data.
+  document.addEventListener('framepact:portfolio-action', function (event) {
+    const detail = event.detail || {};
+    if (!['video_open', 'video_external', 'copy_brief'].includes(detail.action)) return;
+    const context = portfolioContext(detail.portfolio_id, detail.placement);
+    if (!context) return;
+    gtag('event', 'portfolio_' + detail.action, Object.assign(params(), context));
+  });
 })();
+

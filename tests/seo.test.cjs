@@ -93,10 +93,12 @@ test('priority pages link to the existing form and keep tracking as an outbound 
 
 test('modified pages have fresh sitemap lastmod entries', () => {
   const sitemap = read('sitemap.xml');
-  const pages = ['index.html', ...primaryPages];
+  const pages = ['index.html', ...primaryPages, 'mv-portfolio.html'];
+  const portfolioUpdate = ['index.html','event-video.html','no-material-ai-video.html','mv-portfolio.html'];
   for (const page of pages) {
     const url = page === 'index.html' ? 'https://framepact.jp/' : canonical(page);
-    const lastmod = ['index.html','training-video.html','event-video.html','corporate-pr-video.html'].includes(page) ? '2026-10-31' : '2026-10-25';
+    const lastmod = portfolioUpdate.includes(page) ? '2026-11-01'
+      : ['training-video.html','corporate-pr-video.html'].includes(page) ? '2026-10-31' : '2026-10-25';
     assert.ok(sitemap.includes(`<loc>${url}</loc>\n    <lastmod>${lastmod}</lastmod>`), `${url}: sitemap lastmod`);
   }
 });
@@ -155,3 +157,30 @@ test('philosophy page is discoverable, canonical and uses the existing consultat
   }
   assert.match(read('sitemap.xml'), /<loc>https:\/\/framepact.jp\/philosophy.html<\/loc>\s*<lastmod>2026-10-29<\/lastmod>/);
 });
+
+test('MV portfolio keeps both supplied public clips distinct and connects each to consultation', () => {
+  const html = read('mv-portfolio.html');
+  const title = firstMatch(html, /<title>([^<]+)<\/title>/, 'portfolio title');
+  assert.equal(firstMatch(html, /<link\s+rel="canonical"\s+href="([^"]+)"/, 'portfolio canonical'), canonical('mv-portfolio.html'));
+  assert.equal(meta(html, 'property', 'og:title'), title);
+  assert.equal(meta(html, 'property', 'og:url'), canonical('mv-portfolio.html'));
+  const json = firstMatch(html, /<script type="application\/ld\+json">([\s\S]+?)<\/script>/, 'portfolio schema');
+  const videos = JSON.parse(json)['@graph'].filter(item => item['@type'] === 'VideoObject');
+  assert.equal(videos.length, 2);
+  const links = html.match(/<a\s[^>]*>/g) || [];
+  const expected = [['mv-1','s6zJ-bgTsDo',67],['mv-2','L0W4Vx75RtE',71]];
+  for (const [id, videoId, seconds] of expected) {
+    const video = videos.find(item => item.embedUrl && new URL(item.embedUrl).pathname === '/embed/'+videoId);
+    assert.ok(video, `${id}: supplied YouTube video`);
+    const duration = /^PT(?:(\d+)M)?(?:(\d+)S)?$/.exec(video.duration);
+    assert.ok(duration, `${id}: valid public clip duration`);
+    assert.equal(Number(duration[1] || 0)*60 + Number(duration[2] || 0), seconds);
+    assert.match(video.uploadDate, /^2026-11-01/);
+    assert.ok(html.includes(`id="${id}"`), `${id}: direct section target`);
+    assert.ok(links.some(tag => tag.includes(`data-portfolio-id="${id}"`) && tag.includes('https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform')), `${id}: contextual consultation link`);
+  }
+  assert.match(html, /公開用/u, 'public edit must be distinguished from the delivered original');
+  assert.match(html, /モザイク/u);
+  assert.match(html, /(?:音源|音楽)[^。<]*差し替/u);
+});
+
