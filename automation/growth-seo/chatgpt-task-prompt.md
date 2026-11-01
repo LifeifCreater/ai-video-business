@@ -6,7 +6,7 @@ Public LifeifCreater/ai-video-business の最新mainから AGENTS.md、automatio
 
 【読み取りとPrivate状態の確保】
 1. Asia/Tokyoの当日から GROWTH-YYYY-MM-DD を作成。Private LifeifCreater/yossy-morning-meeting の data/growth-seo と state/growth-seo のrefをそれぞれcommit SHAへ固定してください。data/growth-seo の automation/growth-seo/latest.json と必要な分割レポートは同じ入力SHAで読みます。保存形式report_parts_v1の各report.partsを読み、raw bytesのSHA256・行数・report識別をmanifestと照合してください。manifest指定外の実データをPublicへコピーしないでください。
-2. state/growth-seo の automation/growth-seo/state.json、latest.md、当日のruns、既存experimentsとruntime実装を読み、既存スキーマに従って期待head SHA付きの楽観ロックを確保してください。読み取り・書き込みが許可されなければ、Public変更を始めず失敗または待機を記録してください。force更新や権限回避をしないでください。
+2. state/growth-seo の automation/growth-seo/state.json、latest.md、当日のruns、既存experimentsを読んでください。JSON操作用runtime.pyはPrivate同repoのmainを別のcommit SHAへ固定し、automation/growth-seo/runtime.pyから読みます。stateブランチに実行コードがあるとは仮定しないでください。既存runtimeのスキーマに従って期待head SHA付きの楽観ロックを確保してください。読み取り・書き込みが許可されなければ、Public変更を始めず失敗または待機を記録してください。force更新や権限回避をしないでください。
 3. 同じ日次IDの実行・PR・mergeがあれば、残った工程を再開するか観測だけを行ってください。途中失敗や期限切れlockはPR・commit・本番を照合してから再開し、二重PR・二重merge・二重実験を作らないでください。Public main、開いているPR、既存編集部の状態とlockを読み、対象URL・ファイルが競合する場合は新規変更を止めて状態へ記録してください。既存編集部の状態・lockは書き換えないでください。
 
 【分析と候補選定】

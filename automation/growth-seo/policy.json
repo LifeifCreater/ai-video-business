@@ -79,8 +79,11 @@
       14,
       28
     ],
-    "exceptions": [
+    "sameUrlHypothesisObservationExceptions": [
       "verified_technical_defect",
+      "revert_own_verified_regression"
+    ],
+    "dailyChangeLimitExceptions": [
       "revert_own_verified_regression"
     ],
     "noChangeIsValidOutcome": true,
