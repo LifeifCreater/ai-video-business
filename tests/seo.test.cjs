@@ -158,7 +158,7 @@ test('philosophy page is discoverable, canonical and uses the existing consultat
   assert.match(read('sitemap.xml'), /<loc>https:\/\/framepact.jp\/philosophy.html<\/loc>\s*<lastmod>2026-10-29<\/lastmod>/);
 });
 
-test('MV portfolio keeps both supplied public clips distinct and connects each to consultation', () => {
+test('MV portfolio keeps all three supplied public clips distinct and connects each to consultation', () => {
   const html = read('mv-portfolio.html');
   const title = firstMatch(html, /<title>([^<]+)<\/title>/, 'portfolio title');
   assert.equal(firstMatch(html, /<link\s+rel="canonical"\s+href="([^"]+)"/, 'portfolio canonical'), canonical('mv-portfolio.html'));
@@ -166,9 +166,9 @@ test('MV portfolio keeps both supplied public clips distinct and connects each t
   assert.equal(meta(html, 'property', 'og:url'), canonical('mv-portfolio.html'));
   const json = firstMatch(html, /<script type="application\/ld\+json">([\s\S]+?)<\/script>/, 'portfolio schema');
   const videos = JSON.parse(json)['@graph'].filter(item => item['@type'] === 'VideoObject');
-  assert.equal(videos.length, 2);
+  assert.equal(videos.length, 3);
   const links = html.match(/<a\s[^>]*>/g) || [];
-  const expected = [['mv-1','s6zJ-bgTsDo',67],['mv-2','L0W4Vx75RtE',71]];
+  const expected = [['mv-1','s6zJ-bgTsDo',67],['mv-2','L0W4Vx75RtE',71],['mv-3','n_Ttvon0-AU',58]];
   for (const [id, videoId, seconds] of expected) {
     const video = videos.find(item => item.embedUrl && new URL(item.embedUrl).pathname === '/embed/'+videoId);
     assert.ok(video, `${id}: supplied YouTube video`);

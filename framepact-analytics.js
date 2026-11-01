@@ -78,7 +78,7 @@
       observed_referrer: ['chatgpt','google','bing','youtube','x','note','other_referral','direct_or_unknown'].includes(visit.source) ? visit.source : 'direct_or_unknown', traffic_type: 'external', measurement_version: '20260929' };
   }
   if (/^\/ai-video-price(?:\.html)?$/.test(page)) gtag('event', 'pricing_view', params());
-  const portfolioIds = ['mv-1', 'mv-2'];
+  const portfolioIds = ['mv-1', 'mv-2', 'mv-3'];
   const portfolioPlacements = ['homepage_card', 'homepage_dialog', 'portfolio_case', 'portfolio_intro', 'portfolio_footer', 'service_related'];
   function portfolioContext(id, placement) {
     if (!portfolioIds.includes(id) || !portfolioPlacements.includes(placement)) return null;
