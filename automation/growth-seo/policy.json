@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "id": "framepact-growth-seo-v1",
+  "updatedOn": "2026-11-02",
+  "timezone": "Asia/Tokyo",
+  "site": {
+    "origin": "https://framepact.jp",
+    "repository": "LifeifCreater/ai-video-business",
+    "baseBranch": "main",
+    "scope": "existing_published_pages"
+  },
+  "authorization": {
+    "id": "OWNER-20261102-GROWTH-SEO",
+    "source": "Owner instruction in the FRAMEPACT improvement conversation",
+    "instruction": "提案にとどまらず自動で気づいたことはサイクルを回して改善していって。グロースとSEO担当も繋げて良いよ。密に連携を図って自動で日々サイトを良くしていってね",
+    "perChangeOwnerConfirmationRequired": false,
+    "finalAuthority": "owner",
+    "approvalIsPreexistingOwnerGrant": true,
+    "selfExpansionAllowed": false
+  },
+  "coordination": {
+    "coordinatorRole": "secretary",
+    "primaryRole": "growth_cro",
+    "specialistRole": "seo_specialist",
+    "ownerCriteriaReviewerRole": "yossy_ai",
+    "actualExecutorsMustBeRecorded": true,
+    "independentReviewerRequiredForMerge": false,
+    "roleSwitchIsIndependentReview": false,
+    "maximumInternalRevisionRounds": 2,
+    "independentReviewerPreferred": true,
+    "sameActorSeparatePassesAllowedForLowRisk": true,
+    "executionModes": [
+      "independent_agents",
+      "same_actor_separate_passes"
+    ]
+  },
+  "data": {
+    "repository": "LifeifCreater/yossy-morning-meeting",
+    "visibility": "private",
+    "inputBranch": "data/growth-seo",
+    "inputManifestPath": "automation/growth-seo/latest.json",
+    "resolveBranchToImmutableCommit": true,
+    "reportPathsFromManifest": true,
+    "reportStorageFormat": "report_parts_v1",
+    "verifyPartSha256BeforeUse": true,
+    "maximumSnapshotAgeHours": 36,
+    "primaryComparisonDays": 28,
+    "referenceComparisonDays": 7,
+    "missingValuesAreZero": false,
+    "queryRowsAreCompletePopulation": false,
+    "allowObservedTechnicalFixWhenMetricsUnavailable": true,
+    "privateMetricsInPublicLogsAllowed": false
+  },
+  "state": {
+    "repository": "LifeifCreater/yossy-morning-meeting",
+    "visibility": "private",
+    "branch": "state/growth-seo",
+    "statePath": "automation/growth-seo/state.json",
+    "summaryPath": "automation/growth-seo/latest.md",
+    "runsPath": "automation/growth-seo/runs",
+    "experimentsPath": "automation/growth-seo/experiments",
+    "runIdFormat": "GROWTH-YYYY-MM-DD",
+    "lockMode": "optimistic_expected_head",
+    "forceUpdateAllowed": false,
+    "resumeExistingRunBeforeNewMutation": true,
+    "duplicateRunMutationAllowed": false
+  },
+  "cadence": {
+    "dataCollectionLocalTime": "03:30",
+    "dailyReviewLocalTime": "07:00",
+    "scheduling": "best_effort",
+    "normalReportLocalTime": "09:00",
+    "normalReportChannel": "existing_morning_brief",
+    "extraRoutineNotifications": false,
+    "maxMeaningfulChangesPerDay": 1,
+    "sameUrlHypothesisObservationDays": 14,
+    "evaluationDays": [
+      7,
+      14,
+      28
+    ],
+    "exceptions": [
+      "verified_technical_defect",
+      "revert_own_verified_regression"
+    ],
+    "noChangeIsValidOutcome": true,
+    "changeUnit": "one_hypothesis_or_verified_defect_not_file_count"
+  },
+  "allowedChanges": [
+    "clarify_existing_published_copy_using_approved_facts",
+    "title_meta_headings_internal_links",
+    "existing_cta_labels_placement_and_navigation",
+    "verified_canonical_sitemap_or_structured_data_defects_without_url_migration",
+    "accessibility_responsive_rendering_or_link_defects",
+    "presentation_of_already_approved_public_portfolio",
+    "create_review_validate_and_merge_scoped_pull_request",
+    "verify_existing_deployment_and_revert_own_regression"
+  ],
+  "excludedChanges": [
+    "new_service_price_discount_delivery_or_performance_promise",
+    "unapproved_client_facts_credits_results_or_experience",
+    "customer_outreach_messages_posts_or_sales_sends",
+    "contracts_legal_terms_spending_ads_or_paid_services",
+    "credentials_permissions_access_controls_or_account_configuration",
+    "tracking_account_identifiers_consent_or_form_delivery_destination",
+    "domain_or_url_migration_mass_rewrite_or_content_deletion",
+    "publish_or_change_status_of_unapproved_editorial_drafts",
+    "other_business_assets_or_financial_operations",
+    "weaken_ci_review_privacy_or_authorization_policy"
+  ],
+  "mergeGates": [
+    "owner_grant_matches_existing_published_page_scope",
+    "source_facts_and_data_quality_checked",
+    "no_conflicting_open_pr_or_editorial_lock",
+    "one_hypothesis_baseline_guardrails_and_revert_plan_recorded",
+    "growth_and_seo_cross_review_with_actual_executor_evidence",
+    "independent_review_or_recorded_separate_review_passes_for_low_risk",
+    "yossy_owner_criteria_check_passed",
+    "public_diff_contains_no_private_inputs",
+    "relevant_tests_and_all_required_ci_success_on_current_head",
+    "final_diff_review_is_bound_to_unchanged_head_sha"
+  ],
+  "deployment": {
+    "directMainPushAllowed": false,
+    "pullRequestRequired": true,
+    "useExistingDeploymentOnly": true,
+    "productionVerificationRequired": true,
+    "mergeIsNotProductionVerification": true,
+    "revertOwnConfirmedRegression": true,
+    "metricNoiseAloneIsRollbackEvidence": false
+  },
+  "failureHandling": {
+    "missingInput": "observe_or_verify_objective_technical_defect_only",
+    "conflictingWrite": "reload_and_reconcile_without_force",
+    "unavailableWritePermission": "record_failed_without_bypass",
+    "outOfScope": "complete_unaffected_work_and_request_only_missing_owner_decision",
+    "ordinaryReport": "private_summary_for_morning_brief",
+    "unavailableIndependentAgent": "record_same_actor_separate_passes_for_low_risk_otherwise_pending_review"
+  }
+}
