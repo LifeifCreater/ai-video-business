@@ -23,12 +23,19 @@ FAILURES = {
     'network_error', 'incomplete_response', 'invalid_response', 'api_error',
     'raw_output_forbidden_in_ci', 'invalid_arguments', 'unexpected_error',
 }
+FAILURE_DETAILS = {
+    'validation_failed', 'response_shape', 'header_shape', 'header_mismatch',
+    'rows_shape', 'row_count_shape', 'metadata_shape', 'dimension_values',
+    'metric_values', 'row_count_mismatch', 'invalid_json', 'http_status',
+}
 
 
 class ReportError(RuntimeError):
     """Carries a fixed public error code, never a response or credential value."""
-    def __init__(self, code):
+    def __init__(self, code, *, detail='validation_failed'):
         self.code = code if code in FAILURES else 'unexpected_error'
+        self.detail = (detail if isinstance(detail, str) and detail in FAILURE_DETAILS
+                       else 'validation_failed')
         super().__init__(self.code)
 
 
@@ -160,31 +167,36 @@ def reports(start, end):
 def validate_page(result, body):
     """Reject error envelopes and unsupported shapes before counting a definition."""
     if not isinstance(result, dict) or 'error' in result:
-        raise ReportError('invalid_response')
+        raise ReportError('invalid_response', detail='response_shape')
     dimensions = result.get('dimensionHeaders', [])
     metrics = result.get('metricHeaders')
     page = result.get('rows', [])
     count = result.get('rowCount', 0)
-    if (not isinstance(dimensions, list) or not isinstance(metrics, list) or not metrics
-            or not isinstance(page, list) or type(count) is not int or count < 0
-            or ('metadata' in result and not isinstance(result['metadata'], dict))):
-        raise ReportError('invalid_response')
+    if not isinstance(dimensions, list) or not isinstance(metrics, list) or not metrics:
+        raise ReportError('invalid_response', detail='header_shape')
+    if not isinstance(page, list):
+        raise ReportError('invalid_response', detail='rows_shape')
+    if type(count) is not int or count < 0:
+        raise ReportError('invalid_response', detail='row_count_shape')
+    if 'metadata' in result and not isinstance(result['metadata'], dict):
+        raise ReportError('invalid_response', detail='metadata_shape')
     for headers in [dimensions, metrics]:
         if any(not isinstance(header, dict) or not isinstance(header.get('name'), str)
                or not header['name'] for header in headers):
-            raise ReportError('invalid_response')
+            raise ReportError('invalid_response', detail='header_shape')
     if ([header['name'] for header in dimensions] != [item['name'] for item in body.get('dimensions', [])]
             or [header['name'] for header in metrics] != [item['name'] for item in body.get('metrics', [])]):
-        raise ReportError('invalid_response')
+        raise ReportError('invalid_response', detail='header_mismatch')
     for row in page:
         if not isinstance(row, dict):
-            raise ReportError('invalid_response')
+            raise ReportError('invalid_response', detail='rows_shape')
         for key, length in [('dimensionValues', len(dimensions)), ('metricValues', len(metrics))]:
             values = row.get(key, [])
             if (not isinstance(values, list) or len(values) != length
                     or any(not isinstance(value, dict) or not isinstance(value.get('value'), str)
                            for value in values)):
-                raise ReportError('invalid_response')
+                detail = 'dimension_values' if key == 'dimensionValues' else 'metric_values'
+                raise ReportError('invalid_response', detail=detail)
     return page, count
 
 
@@ -201,34 +213,35 @@ def run_report(body, token=None, transport=urlopen, *, session=None):
                 except (TypeError, ValueError):
                     if type(status) is int and status >= 400:
                         raise ReportError(http_error_code(status)) from None
-                    raise ReportError('invalid_response') from None
+                    raise ReportError('invalid_response', detail='invalid_json') from None
                 if type(status) is not int or not 200 <= status < 300:
                     if type(status) is int and status >= 400:
                         raise ReportError(http_error_code(status, result))
-                    raise ReportError('invalid_response')
+                    raise ReportError('invalid_response', detail='http_status')
             else:
                 req = Request(ENDPOINT, data=json.dumps(request_body).encode(), headers={
                     'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}, method='POST')
                 with transport(req, timeout=30) as response:
                     result = json.load(response)
         except (json.JSONDecodeError, UnicodeError):
-            raise ReportError('invalid_response') from None
+            raise ReportError('invalid_response', detail='invalid_json') from None
         except Exception as error:
-            raise ReportError(exception_code(error)) from None
+            detail = error.detail if isinstance(error, ReportError) else 'validation_failed'
+            raise ReportError(exception_code(error), detail=detail) from None
         page, count = validate_page(result, body)
         if expected_count is None:
             expected_count = count
         elif count != expected_count:
-            raise ReportError('incomplete_response')
+            raise ReportError('incomplete_response', detail='row_count_mismatch')
         if metadata is None:
             metadata = {k: v for k, v in result.items() if k != 'rows'}
         rows.extend(page)
         if len(rows) > count:
-            raise ReportError('invalid_response')
+            raise ReportError('invalid_response', detail='row_count_mismatch')
         if len(rows) == count:
             return dict(metadata, rows=rows)
         if not page:
-            raise ReportError('incomplete_response')
+            raise ReportError('incomplete_response', detail='row_count_mismatch')
         offset += len(page)
 
 

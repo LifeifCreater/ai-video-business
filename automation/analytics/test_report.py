@@ -105,8 +105,9 @@ class ReportTests(unittest.TestCase):
     def test_incomplete_response_is_not_reported_as_success(self):
         def transport(req, timeout):
             return io.StringIO(json.dumps(response_for(self.body, row_count=1, page_size=0)))
-        with self.assertRaisesRegex(ReportError, '^incomplete_response$'):
+        with self.assertRaisesRegex(ReportError, '^incomplete_response$') as raised:
             run_report(self.body, 'test-only', transport)
+        self.assertEqual(raised.exception.detail, 'row_count_mismatch')
 
     def test_authorized_session_paginates_without_manual_bearer_headers(self):
         session = FakeSession(lambda body: FakeResponse(response_for(body, row_count=2)))
@@ -124,29 +125,70 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(result['rows'], [])
 
     def test_error_envelopes_and_unsupported_success_shapes_fail_closed(self):
-        invalid = [None, [], {}, {'error': {'message': PRIVATE}}]
-        for field, value in [('rowCount', -1), ('rowCount', True), ('rowCount', '1'),
-                             ('rows', {}), ('metricHeaders', []), ('metadata', PRIVATE)]:
+        invalid = [(None, 'response_shape'), ([], 'response_shape'), ({}, 'header_shape'),
+                   ({'error': {'message': PRIVATE}}, 'response_shape')]
+        for field, value, detail in [
+                ('rowCount', -1, 'row_count_shape'), ('rowCount', True, 'row_count_shape'),
+                ('rowCount', '1', 'row_count_shape'), ('rows', {}, 'rows_shape'),
+                ('rows', [PRIVATE], 'rows_shape'), ('metricHeaders', [], 'header_shape'),
+                ('dimensionHeaders', PRIVATE, 'header_shape'), ('metadata', PRIVATE, 'metadata_shape')]:
             payload = response_for(self.body)
             payload[field] = value
-            invalid.append(payload)
+            invalid.append((payload, detail))
         wrong_header = response_for(self.body)
         wrong_header['metricHeaders'][0]['name'] = PRIVATE
-        invalid.append(wrong_header)
+        invalid.append((wrong_header, 'header_mismatch'))
+        malformed_header = response_for(self.body)
+        malformed_header['metricHeaders'][0]['name'] = [SECRET]
+        invalid.append((malformed_header, 'header_shape'))
         wrong_values = response_for(self.body)
         wrong_values['rows'][0]['metricValues'] = [{'value': 1}]
-        invalid.append(wrong_values)
-        invalid.append(response_for(self.body, row_count=0, page_size=1))
-        for payload in invalid:
-            with self.subTest(payload_type=type(payload).__name__):
-                with self.assertRaisesRegex(ReportError, '^invalid_response$'):
+        invalid.append((wrong_values, 'metric_values'))
+        wrong_dimensions = response_for(self.body)
+        wrong_dimensions['rows'][0]['dimensionValues'] = [{'value': [SECRET]}]
+        invalid.append((wrong_dimensions, 'dimension_values'))
+        invalid.append((response_for(self.body, row_count=0, page_size=1), 'row_count_mismatch'))
+        for payload, detail in invalid:
+            with self.subTest(detail=detail):
+                with self.assertRaisesRegex(ReportError, '^invalid_response$') as raised:
                     run_report(self.body, session=FakeSession(lambda body: FakeResponse(payload)))
+                self.assertEqual(raised.exception.detail, detail)
+                for forbidden in (SECRET, PRIVATE, PRIVATE_METRIC):
+                    self.assertNotIn(forbidden, str(raised.exception))
+                    self.assertNotIn(forbidden, raised.exception.detail)
+
+    def test_transport_details_are_allowlisted_and_survive_error_wrapping(self):
+        for payload, status, detail in [(ValueError(SECRET), 200, 'invalid_json'),
+                                        (response_for(self.body), PRIVATE, 'http_status')]:
+            with self.subTest(detail=detail):
+                with self.assertRaisesRegex(ReportError, '^invalid_response$') as raised:
+                    run_report(self.body, session=FakeSession(lambda body: FakeResponse(payload, status)))
+                self.assertEqual(raised.exception.detail, detail)
+        def invalid_json(req, timeout):
+            return io.StringIO(SECRET)
+        with self.assertRaisesRegex(ReportError, '^invalid_response$') as raised:
+            run_report(self.body, 'test-only', invalid_json)
+        self.assertEqual(raised.exception.detail, 'invalid_json')
+        for detail in (SECRET, [SECRET], {'raw': PRIVATE}, 'header_shape'):
+            def fail(body):
+                error = ReportError('invalid_response', detail=detail)
+                error.args = (SECRET, PRIVATE)
+                raise error
+            with self.subTest(detail_type=type(detail).__name__):
+                with self.assertRaisesRegex(ReportError, '^invalid_response$') as raised:
+                    run_report(self.body, session=FakeSession(fail))
+                self.assertEqual(raised.exception.detail,
+                                 'header_shape' if detail == 'header_shape' else 'validation_failed')
+                for forbidden in (SECRET, PRIVATE):
+                    self.assertNotIn(forbidden, str(raised.exception))
+                    self.assertNotIn(forbidden, raised.exception.detail)
 
     def test_row_count_change_during_pagination_is_incomplete(self):
         session = FakeSession(lambda body: FakeResponse(response_for(
             body, row_count=2 if body['offset'] == '0' else 3)))
-        with self.assertRaisesRegex(ReportError, '^incomplete_response$'):
+        with self.assertRaisesRegex(ReportError, '^incomplete_response$') as raised:
             run_report(self.body, session=session)
+        self.assertEqual(raised.exception.detail, 'row_count_mismatch')
 
     def test_legacy_http_errors_are_sanitized_and_classified(self):
         payload = {'error': {'message': SECRET, 'details': [
@@ -319,6 +361,7 @@ class CommandTests(unittest.TestCase):
                                           {'GSC_SERVICE_ACCOUNT_JSON': SERVICE_JSON})
             self.assertEqual(code, 1)
             self.assertEqual(payload['error'], expected)
+            self.assertNotIn('detail', payload)
             self.assert_private_values_absent(text)
 
     def test_malformed_success_and_http_bodies_never_become_success(self):
