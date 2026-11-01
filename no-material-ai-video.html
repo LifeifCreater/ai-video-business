@@ -485,10 +485,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 ============================================================= */
 .floating-cta{
   position:fixed; right:16px; bottom:16px; z-index:150;
-  opacity:0; transform:translateY(12px); pointer-events:none;
+  opacity:0;visibility:hidden; transform:translateY(12px); pointer-events:none;
   transition:opacity .3s var(--ease), transform .3s var(--ease);
 }
-.floating-cta.is-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
+.floating-cta.is-visible, .floating-cta:focus-within{ opacity:1;visibility:visible; transform:translateY(0); pointer-events:auto; }
 .floating-cta .btn{ box-shadow:0 14px 30px -12px rgba(0,0,0,.5); padding:14px 22px; font-size:.88rem; min-height:auto; }
 @media (min-width:1080px){ .floating-cta{ right:28px; bottom:28px; } }
 @media (min-width:1080px){ #planning-guide .service-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }

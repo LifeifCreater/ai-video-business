@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "updatedOn": "2026-10-03",
-  "sourceMainSha": "b6e5c9af38a4c4ac92b016bc797958092b024658",
+  "updatedOn": "2026-11-02",
+  "sourceMainSha": "bc2544738c814a1c4870a9611171ea1636ec3fc6",
   "definitionKind": "role_prompts",
   "memberCount": 17,
   "finalApprover": "owner",
@@ -18,7 +18,8 @@
     "externalConnectionsProvisioned": false,
     "externalActionsAllowed": false,
     "directMainWritesAllowed": false,
-    "automaticOwnerApprovalAllowed": false
+    "automaticOwnerApprovalAllowed": false,
+    "scope": "original_role_provisioning_defaults"
   },
   "members": [
     {
@@ -144,5 +145,22 @@
   "ownerCriteriaReviewerId": "yossy_ai",
   "ownerDecisionProfilePath": "leadership/yossy-decision-profile.md",
   "internalPdcaPath": "secretary/yossy-pdca.md",
-  "ownerDecisionTemplatePath": "tasks/yossy-decision-template.md"
+  "ownerDecisionTemplatePath": "tasks/yossy-decision-template.md",
+  "growthSeoCycle": {
+    "policyPath": "automation/growth-seo/policy.json",
+    "operatingGuidePath": "automation/growth-seo/README.md",
+    "taskPromptPath": "automation/growth-seo/chatgpt-task-prompt.md",
+    "authorizationId": "OWNER-20261102-GROWTH-SEO",
+    "scope": "existing_published_FRAMEPACT_pages_only",
+    "coordinatorId": "secretary",
+    "primaryRoleId": "growth_cro",
+    "specialistRoleId": "seo_specialist",
+    "ownerCriteriaReviewerId": "yossy_ai",
+    "perChangeOwnerConfirmationRequired": false,
+    "actualExecutorsRequired": true,
+    "independentReviewPreferred": true,
+    "sameActorSeparatePassesMustBeDisclosed": true,
+    "taskRegistrationAndExecutionEvidence": "runtime_records",
+    "doesNotProvisionSeventeenIndependentAgents": true
+  }
 }
