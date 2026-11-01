@@ -184,3 +184,20 @@ test('MV portfolio keeps all three supplied public clips distinct and connects e
   assert.match(html, /(?:音源|音楽)[^。<]*差し替/u);
 });
 
+test('both MV case studies and video metadata preserve complete solo production attribution', () => {
+  const html = read('mv-portfolio.html');
+  const json = firstMatch(html, /<script type="application\/ld\+json">([\s\S]+?)<\/script>/, 'portfolio schema');
+  const videos = JSON.parse(json)['@graph'].filter(item => item['@type'] === 'VideoObject');
+  for (const [id, videoId] of [['mv-1','s6zJ-bgTsDo'],['mv-2','L0W4Vx75RtE']]) {
+    const article = firstMatch(html, new RegExp('<article\\b[^>]*\\sid="'+id+'"[^>]*>([\\s\\S]*?)<\\/article>'), `${id} case study`);
+    const video = videos.find(item => item.embedUrl && new URL(item.embedUrl).pathname === '/embed/'+videoId);
+    assert.ok(video, `${id}: video metadata`);
+    const visible = article.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    for (const [surface, text] of [['case', visible], ['video metadata', video.description]]) {
+      for (const meaning of [/全編/u,/(?:一人|ひとり|1人|１人)/u,/企画/u,/(?:動画|映像)生成/u,/編集/u]) {
+        assert.match(text, meaning, `${id} ${surface}: complete solo production scope`);
+      }
+    }
+  }
+});
+

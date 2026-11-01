@@ -4,7 +4,8 @@ const vm = require('node:vm');
 const fs = require('node:fs');
 const code = fs.readFileSync('framepact-analytics.js', 'utf8');
 const FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSeS-G-8U9p5-zMiFGaH3Y0TZjswVbvKOLl1Rg1_uK2GKw0blg/viewform';
-const PORTFOLIO_IDS = ['mv-1','mv-2','mv-3'];
+const MV_PORTFOLIO_IDS = ['mv-1','mv-2','mv-3'];
+const PORTFOLIO_IDS = [...MV_PORTFOLIO_IDS,'showreel','brand-pr','training'];
 const PORTFOLIO_PLACEMENTS = ['homepage_card','homepage_dialog','portfolio_case','portfolio_intro','portfolio_footer','service_related'];
 function boot({host='framepact.jp', path='/', exclude=false, blocked=false, saved=null, ref='', search='', hash=''}={}) {
   const memory = new Map(exclude ? [['framepact.analytics.internal','1']] : []);
@@ -120,13 +121,29 @@ test('portfolio events describe deliberate actions and never imply completed pla
   assert.ok(!names.some(name=>['generate_lead','video_start','video_complete'].includes(name)));
 });
 
+test('portfolio page views associate only the three existing MV anchors',()=>{
+  for(const id of [...PORTFOLIO_IDS,'mv-4','private@example.com']){
+    const app=boot({path:'/mv-portfolio.html',hash:'#'+id});
+    const views=app.calls().filter(call=>call[1]==='portfolio_view');
+    assert.equal(views.length,1);
+    assert.equal(views[0][2].portfolio_id,MV_PORTFOLIO_IDS.includes(id)?id:undefined);
+    assert.equal(views[0][2].page_location,'https://framepact.jp/mv-portfolio.html');
+    assert.ok(!JSON.stringify(app.calls()).includes('private@example.com'));
+  }
+});
+
 test('arbitrary portfolio metadata and malformed custom events cannot leak personal data',()=>{
   const marker='private@example.com';
   const app=boot({path:'/mv-portfolio.html',search:'?portfolio_id='+marker});
-  app.click(FORM,{portfolioId:marker,ctaLocation:marker});
-  const click=app.calls().filter(call=>call[1]==='contact_form_click').at(-1);
-  assert.equal(click[2].portfolio_id,undefined);
-  assert.equal(click[2].cta_location,undefined);
+  for(const data of [
+    {portfolioId:marker,ctaLocation:marker},
+    {portfolioId:'mv-4',ctaLocation:'homepage_dialog'},
+    {portfolioId:'showreel',ctaLocation:marker}]){
+    app.click(FORM,data);
+    const click=app.calls().filter(call=>call[1]==='contact_form_click').at(-1);
+    assert.equal(click[2].portfolio_id,undefined);
+    assert.equal(click[2].cta_location,undefined);
+  }
   const count=app.calls().length;
   for(const detail of [undefined,null,{},
     {portfolio_id:marker,action:'video_open',placement:'portfolio_case'},
@@ -136,6 +153,11 @@ test('arbitrary portfolio metadata and malformed custom events cannot leak perso
   }
   assert.equal(app.calls().length,count,'invalid identities and actions are ignored');
   app.dispatch('framepact:portfolio-action',{portfolio_id:'mv-1',action:'video_open',placement:marker,email:marker});
+  assert.equal(app.calls().length,count,'unknown placements are ignored');
+  for(const portfolio_id of ['showreel','brand-pr','training']){
+    app.dispatch('framepact:portfolio-action',{portfolio_id,action:'copy_brief',placement:'homepage_dialog',email:marker,brief:marker});
+    assert.equal(app.calls().at(-1)[2].portfolio_id,portfolio_id);
+  }
   assert.ok(!JSON.stringify(app.calls()).includes(marker));
 });
 

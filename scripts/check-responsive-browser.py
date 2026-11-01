@@ -94,12 +94,6 @@ def main():
       check(page.evaluate("()=>document.querySelector('main').getBoundingClientRect().bottom<=document.querySelector('.transport').getBoundingClientRect().top+1"),[name,w,h,'footer overlaps reading area'])
       for i in range(6):
        page.locator(f'.timeline [data-go="{i}"]').click()
-       if i == 2:
-        # Existing films are now in a native disclosure below the featured MVs.
-        # Expand it so all original playback buttons remain part of the hit test.
-        if not page.locator('#works .more-films').evaluate('e=>e.open'):
-         page.locator('#works .more-films > summary').click()
-        check(page.locator('#works .more-films').evaluate('e=>e.open'),[name,w,h,'other films disclosure did not open'])
        for a in page.locator('.scene.active').locator('a,button').all():
         a.evaluate("e=>e.scrollIntoView({block:'center',behavior:'instant'})");check(a.evaluate(HIT),[name,w,h,i,'chapter link inaccessible',a.inner_text()])
       page.locator('.timeline [data-go="4"]').click();page.locator('[data-info="pricing"]').first.click()
