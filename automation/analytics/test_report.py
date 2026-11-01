@@ -124,6 +124,75 @@ class ReportTests(unittest.TestCase):
         result = run_report(self.body, session=FakeSession(lambda body: FakeResponse(payload)))
         self.assertEqual(result['rows'], [])
 
+    def test_verified_empty_report_accepts_observed_omissions_without_inventing_data(self):
+        # Observed response shape: both headers, rows, rowCount and emptyReason
+        # are absent, while the report kind and property timezone are present.
+        minimal = {'kind': 'analyticsData#runReport',
+                   'metadata': {'timeZone': 'Asia/Tokyo'}}
+        aggregate_body = dict(self.body, dimensions=[])
+        for body in (self.body, aggregate_body):
+            complete = response_for(body, row_count=0, page_size=0)
+            complete.update(kind=minimal['kind'], metadata=minimal['metadata'])
+            variants = [minimal,
+                        dict(minimal, metadata={'timeZone': 'Asia/Tokyo', 'emptyReason': ''}),
+                        dict(minimal, metadata={'timeZone': 'Asia/Tokyo', 'emptyReason': PRIVATE}),
+                        dict(minimal, dimensionHeaders=[], metricHeaders=[], rows=[], rowCount=0,
+                             totals=[], maximums=[], minimums=[]),
+                        complete,
+                        dict(minimal, metricHeaders=complete['metricHeaders'])]
+            for payload in variants:
+                with self.subTest(dimensions=bool(body['dimensions']), fields=list(payload)):
+                    result = run_report(body, session=FakeSession(lambda request: FakeResponse(payload)))
+                    self.assertEqual(result, dict(payload, rows=[]))
+                    self.assertEqual(result['rows'], [])
+        nonempty = response_for(self.body)
+        nonempty['kind'] = minimal['kind']
+        self.assertEqual(run_report(self.body, session=FakeSession(lambda body: FakeResponse(nonempty))),
+                         nonempty)
+        private_reason = dict(minimal, metadata={'timeZone': 'Asia/Tokyo', 'emptyReason': PRIVATE})
+        with fake_google(FakeSession(lambda body: FakeResponse(private_reason))):
+            code, payload, text = cli(['--execute', '--status-only', '--date', DATE],
+                                      {'GITHUB_ACTIONS': 'true', 'GSC_SERVICE_ACCOUNT_JSON': SERVICE_JSON})
+        self.assertEqual(code, 0)
+        self.assertEqual(payload['reportDefinitionsCompleted'], 5)
+        for forbidden in (PRIVATE, SECRET, PRIVATE_METRIC, 'emptyReason', 'reports'):
+            self.assertNotIn(forbidden, text)
+
+    def test_empty_header_exception_requires_identity_timezone_and_no_contradictory_data(self):
+        minimal = {'kind': 'analyticsData#runReport',
+                   'metadata': {'timeZone': 'Asia/Tokyo'}}
+        missing_kind = dict(minimal)
+        del missing_kind['kind']
+        invalid = [{}, {'kind': minimal['kind']}, missing_kind,
+                   dict(minimal, kind=PRIVATE), dict(minimal, error={'message': SECRET})]
+        for timezone in ('', None, 'not/a-time-zone', [SECRET], '/' + SECRET):
+            invalid.append(dict(minimal, metadata={'timeZone': timezone}))
+        for metadata in ({}, None, PRIVATE):
+            invalid.append(dict(minimal, metadata=metadata))
+        for reason in (None, [], {'raw': SECRET}, 0, True):
+            invalid.append(dict(minimal, metadata={'timeZone': 'Asia/Tokyo', 'emptyReason': reason}))
+        for field, value in [('metricHeaders', None), ('metricHeaders', {}),
+                             ('metricHeaders', [{'name': PRIVATE}]),
+                             ('dimensionHeaders', None),
+                             ('dimensionHeaders', [{'name': PRIVATE}]),
+                             ('dimensionHeaders', [{'name': [SECRET]}])]:
+            invalid.append(dict(minimal, **{field: value}))
+        for field, value in [('rows', None), ('rows', {}),
+                             ('rows', response_for(self.body)['rows']),
+                             ('rowCount', 1), ('rowCount', -1), ('rowCount', '0'),
+                             ('rowCount', False), ('rowCount', True),
+                             ('totals', response_for(self.body)['rows']),
+                             ('maximums', {}), ('minimums', None)]:
+            invalid.append(dict(minimal, **{field: value}))
+        for payload in invalid:
+            with self.subTest(fields=list(payload)):
+                with self.assertRaisesRegex(ReportError, '^invalid_response$') as raised:
+                    run_report(self.body, session=FakeSession(lambda body: FakeResponse(payload)))
+                self.assertIn(raised.exception.detail, report.FAILURE_DETAILS)
+                for forbidden in (PRIVATE, SECRET, PRIVATE_METRIC):
+                    self.assertNotIn(forbidden, str(raised.exception))
+                    self.assertNotIn(forbidden, raised.exception.detail)
+
     def test_error_envelopes_and_unsupported_success_shapes_fail_closed(self):
         invalid = [(None, 'response_shape'), ([], 'response_shape'), ({}, 'header_shape'),
                    ({'error': {'message': PRIVATE}}, 'response_shape')]
