@@ -5,6 +5,38 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const source = fs.readFileSync('framepact-cinema.js', 'utf8');
 
+test('all six works are available as equal cards without expanding a disclosure',()=>{
+  const html=fs.readFileSync('index.html','utf8');
+  const section=/<section\b[^>]*\sid="works"[^>]*>([\s\S]*?)<\/section>/.exec(html);
+  assert.ok(section,'works chapter exists');
+  const works=section[1];
+  assert.doesNotMatch(works,/<details\b/i,'no work is hidden behind a disclosure');
+  const cards=[...works.matchAll(/<article\b[^>]*class="[^"]*\bmv-feature\b[^"]*"[^>]*>([\s\S]*?)<\/article>/g)];
+  assert.equal(cards.length,6,'all six works use the same card structure');
+  const ids=cards.map(card=>{
+    const buttons=[...card[1].matchAll(/<button\b[^>]*\sdata-work="(\d+)"[^>]*>/g)];
+    assert.equal(buttons.length,1,'each card has one playback button');
+    assert.match(buttons[0][0],/class="[^"]*\bmv-preview\b/);
+    assert.doesNotMatch(buttons[0][0],/\s(?:hidden|inert)(?:\s|=|>)/i);
+    return Number(buttons[0][1]);
+  });
+  assert.deepEqual(ids.sort((a,b)=>a-b),[0,1,2,3,4,5]);
+  assert.equal([...works.matchAll(/\sdata-work="\d+"/g)].length,6);
+});
+
+test('both MV modal descriptions preserve the corrected complete solo production scope',()=>{
+  const declaration=/const works\s*=\s*\[[\s\S]+?\];/.exec(source);
+  assert.ok(declaration,'work descriptions exist');
+  const works=vm.runInNewContext(declaration[0]+'\nworks');
+  for(const id of ['mv-1','mv-2']){
+    const work=works.find(item=>item.portfolioId===id);
+    assert.ok(work,`${id}: modal entry`);
+    for(const meaning of [/全編/u,/(?:一人|ひとり|1人|１人)/u,/企画/u,/(?:動画|映像)生成/u,/編集/u]){
+      assert.match(work.description,meaning,`${id}: complete solo production scope`);
+    }
+  }
+});
+
 // Execute the production routing/dialog functions with a minimal event fixture.
 // This is a behavior test, not a replacement for browser layout/focus checks.
 function boot(hash='') {
@@ -74,3 +106,4 @@ test('short-view main scrolling and editing targets are preserved',()=>{
   assert.equal(app.scrolls.length,1);
   const normal=keyboardFixture();normal.key('PageDown');assert.deepEqual(normal.navigations,[1]);
 });
+

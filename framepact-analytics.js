@@ -78,7 +78,8 @@
       observed_referrer: ['chatgpt','google','bing','youtube','x','note','other_referral','direct_or_unknown'].includes(visit.source) ? visit.source : 'direct_or_unknown', traffic_type: 'external', measurement_version: '20260929' };
   }
   if (/^\/ai-video-price(?:\.html)?$/.test(page)) gtag('event', 'pricing_view', params());
-  const portfolioIds = ['mv-1', 'mv-2', 'mv-3'];
+  const portfolioViewIds = ['mv-1', 'mv-2', 'mv-3'];
+  const portfolioIds = [...portfolioViewIds, 'showreel', 'brand-pr', 'training'];
   const portfolioPlacements = ['homepage_card', 'homepage_dialog', 'portfolio_case', 'portfolio_intro', 'portfolio_footer', 'service_related'];
   function portfolioContext(id, placement) {
     if (!portfolioIds.includes(id) || !portfolioPlacements.includes(placement)) return null;
@@ -87,7 +88,7 @@
   if (/^\/mv-portfolio(?:\.html)?$/.test(page)) {
     const values = params();
     const id = (location.hash || '').slice(1);
-    if (portfolioIds.includes(id)) values.portfolio_id = id;
+    if (portfolioViewIds.includes(id)) values.portfolio_id = id;
     gtag('event', 'portfolio_view', values);
   }
   document.addEventListener('click', function (event) {
