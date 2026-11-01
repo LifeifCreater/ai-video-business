@@ -1,0 +1,44 @@
+name: GA4 read-only monitor
+
+on:
+  schedule:
+    - cron: "40 23 * * *" # 08:40 JST; GitHub may delay scheduled jobs.
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - automation/analytics/**
+      - .github/workflows/ga4-monitor.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ga4-read-only-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install read-only API authentication dependencies
+        run: python -m pip install --disable-pip-version-check -r automation/analytics/requirements.txt
+
+      - name: Verify authentication and safe output handling
+        run: python -m unittest discover -s automation/analytics -p 'test_report.py'
+
+      - name: Check all report definitions without publishing analytics
+        env:
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+        run: python automation/analytics/report.py --execute --status-only

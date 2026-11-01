@@ -4,6 +4,7 @@
 No credentials or report results are written to this public repository.
 """
 import argparse
+from dataclasses import dataclass, field
 import json
 import os
 import sys
@@ -13,6 +14,119 @@ from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
 PROPERTY = '547125968'
+ENDPOINT = f'https://analyticsdata.googleapis.com/v1beta/properties/{PROPERTY}:runReport'
+READONLY_SCOPE = 'https://www.googleapis.com/auth/analytics.readonly'
+AUTH_MODES = {'none', 'access_token', 'ga4_service_account', 'gsc_service_account'}
+FAILURES = {
+    'missing_credentials', 'invalid_credentials', 'missing_dependency',
+    'api_disabled', 'access_denied', 'invalid_token', 'rate_limited',
+    'network_error', 'incomplete_response', 'invalid_response', 'api_error',
+    'raw_output_forbidden_in_ci', 'invalid_arguments', 'unexpected_error',
+}
+
+
+class ReportError(RuntimeError):
+    """Carries a fixed public error code, never a response or credential value."""
+    def __init__(self, code):
+        self.code = code if code in FAILURES else 'unexpected_error'
+        super().__init__(self.code)
+
+
+class SafeArgumentParser(argparse.ArgumentParser):
+    def error(self, message):
+        # argparse's normal error may echo arbitrary command-line values.
+        raise ReportError('invalid_arguments')
+
+
+@dataclass
+class Authentication:
+    mode: str
+    token: str | None = field(default=None, repr=False)
+    session: object | None = field(default=None, repr=False)
+
+
+def auth_mode(environ):
+    for key, mode in [('GA4_ACCESS_TOKEN', 'access_token'),
+                      ('GA4_SERVICE_ACCOUNT_JSON', 'ga4_service_account'),
+                      ('GSC_SERVICE_ACCOUNT_JSON', 'gsc_service_account')]:
+        if environ.get(key):
+            return mode
+    return 'none'
+
+
+def authentication(environ):
+    mode = auth_mode(environ)
+    if mode == 'none':
+        raise ReportError('missing_credentials')
+    if mode == 'access_token':
+        token = environ['GA4_ACCESS_TOKEN']
+        if not isinstance(token, str) or not token.strip() or '\n' in token or '\r' in token:
+            raise ReportError('invalid_credentials')
+        return Authentication(mode, token=token.strip())
+    key = 'GA4_SERVICE_ACCOUNT_JSON' if mode == 'ga4_service_account' else 'GSC_SERVICE_ACCOUNT_JSON'
+    try:
+        info = json.loads(environ[key])
+        if (not isinstance(info, dict) or info.get('type') != 'service_account'
+                or info.get('token_uri') != 'https://oauth2.googleapis.com/token'
+                or info.get('universe_domain', 'googleapis.com') != 'googleapis.com'
+                or not isinstance(info.get('client_email'), str) or not info['client_email']
+                or not isinstance(info.get('private_key'), str) or not info['private_key']):
+            raise ValueError()
+    except (TypeError, ValueError, KeyError):
+        raise ReportError('invalid_credentials') from None
+    try:
+        from google.oauth2 import service_account
+        from google.auth.transport.requests import AuthorizedSession
+    except ImportError:
+        raise ReportError('missing_dependency') from None
+    try:
+        credentials = service_account.Credentials.from_service_account_info(
+            info, scopes=[READONLY_SCOPE])
+        # AuthorizedSession obtains and refreshes access tokens in memory.
+        session = AuthorizedSession(credentials, refresh_timeout=30)
+        return Authentication(mode, session=session)
+    except Exception:
+        raise ReportError('invalid_credentials') from None
+
+
+def http_error_code(status, payload=None):
+    error = payload.get('error') if isinstance(payload, dict) else None
+    details = error.get('details', []) if isinstance(error, dict) else []
+    if isinstance(details, list) and any(
+            isinstance(item, dict)
+            and item.get('@type') == 'type.googleapis.com/google.rpc.ErrorInfo'
+            and item.get('reason') == 'SERVICE_DISABLED'
+            for item in details):
+        return 'api_disabled'
+    if status == 401:
+        return 'invalid_token'
+    if status == 403:
+        return 'access_denied'
+    if status == 429:
+        return 'rate_limited'
+    if isinstance(status, int) and 500 <= status <= 599:
+        return 'network_error'
+    return 'api_error'
+
+
+def exception_code(error):
+    if isinstance(error, ReportError):
+        return error.code
+    if isinstance(error, HTTPError):
+        try:
+            payload = json.loads(error.read(65536))
+        except Exception:
+            payload = None
+        return http_error_code(error.code, payload)
+    # Do not stringify exceptions: OAuth and HTTP errors can contain secrets.
+    module, name = type(error).__module__, type(error).__name__
+    if module.startswith('google.auth') and name in {'RefreshError', 'MalformedError', 'DefaultCredentialsError'}:
+        return 'invalid_credentials'
+    if (isinstance(error, OSError)
+            or module.startswith('requests.exceptions')
+            or (module.startswith('google.auth') and name == 'TransportError')):
+        return 'network_error'
+    return 'unexpected_error'
 
 
 def exact(field, value):
@@ -43,61 +157,143 @@ def reports(start, end):
     }
 
 
-def run_report(body, token, transport=urlopen):
-    rows, metadata, offset = [], None, 0
+def validate_page(result, body):
+    """Reject error envelopes and unsupported shapes before counting a definition."""
+    if not isinstance(result, dict) or 'error' in result:
+        raise ReportError('invalid_response')
+    dimensions = result.get('dimensionHeaders', [])
+    metrics = result.get('metricHeaders')
+    page = result.get('rows', [])
+    count = result.get('rowCount', 0)
+    if (not isinstance(dimensions, list) or not isinstance(metrics, list) or not metrics
+            or not isinstance(page, list) or type(count) is not int or count < 0
+            or ('metadata' in result and not isinstance(result['metadata'], dict))):
+        raise ReportError('invalid_response')
+    for headers in [dimensions, metrics]:
+        if any(not isinstance(header, dict) or not isinstance(header.get('name'), str)
+               or not header['name'] for header in headers):
+            raise ReportError('invalid_response')
+    if ([header['name'] for header in dimensions] != [item['name'] for item in body.get('dimensions', [])]
+            or [header['name'] for header in metrics] != [item['name'] for item in body.get('metrics', [])]):
+        raise ReportError('invalid_response')
+    for row in page:
+        if not isinstance(row, dict):
+            raise ReportError('invalid_response')
+        for key, length in [('dimensionValues', len(dimensions)), ('metricValues', len(metrics))]:
+            values = row.get(key, [])
+            if (not isinstance(values, list) or len(values) != length
+                    or any(not isinstance(value, dict) or not isinstance(value.get('value'), str)
+                           for value in values)):
+                raise ReportError('invalid_response')
+    return page, count
+
+
+def run_report(body, token=None, transport=urlopen, *, session=None):
+    rows, metadata, offset, expected_count = [], None, 0, None
     while True:
         request_body = dict(body, offset=str(offset))
-        req = Request(f'https://analyticsdata.googleapis.com/v1beta/properties/{PROPERTY}:runReport',
-            data=json.dumps(request_body).encode(), headers={
-                'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}, method='POST')
-        with transport(req, timeout=30) as response:
-            result = json.load(response)
-        page = result.get('rows', [])
+        try:
+            if session is not None:
+                response = session.post(ENDPOINT, json=request_body, timeout=30, allow_redirects=False)
+                status = response.status_code
+                try:
+                    result = response.json()
+                except (TypeError, ValueError):
+                    if type(status) is int and status >= 400:
+                        raise ReportError(http_error_code(status)) from None
+                    raise ReportError('invalid_response') from None
+                if type(status) is not int or not 200 <= status < 300:
+                    if type(status) is int and status >= 400:
+                        raise ReportError(http_error_code(status, result))
+                    raise ReportError('invalid_response')
+            else:
+                req = Request(ENDPOINT, data=json.dumps(request_body).encode(), headers={
+                    'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json'}, method='POST')
+                with transport(req, timeout=30) as response:
+                    result = json.load(response)
+        except (json.JSONDecodeError, UnicodeError):
+            raise ReportError('invalid_response') from None
+        except Exception as error:
+            raise ReportError(exception_code(error)) from None
+        page, count = validate_page(result, body)
+        if expected_count is None:
+            expected_count = count
+        elif count != expected_count:
+            raise ReportError('incomplete_response')
         if metadata is None:
             metadata = {k: v for k, v in result.items() if k != 'rows'}
         rows.extend(page)
-        count = int(result.get('rowCount', 0))
-        if len(rows) >= count:
+        if len(rows) > count:
+            raise ReportError('invalid_response')
+        if len(rows) == count:
             return dict(metadata, rows=rows)
         if not page:
-            raise RuntimeError('Pagination stopped before rowCount; result is incomplete.')
+            raise ReportError('incomplete_response')
         offset += len(page)
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+def connection_status(status, mode, report_date, completed=0, error=None):
+    result = {'status': 'ok' if status == 'ok' else 'error',
+              'authMode': mode if mode in AUTH_MODES else 'none',
+              'reportDate': report_date,
+              'checkedAt': datetime.now(ZoneInfo('Asia/Tokyo')).isoformat(),
+              'reportDefinitionsCompleted': completed if status == 'ok' else 0}
+    if error is not None:
+        result['error'] = error if error in FAILURES else 'unexpected_error'
+    return result
+
+
+def main(argv=None, environ=None):
+    environ = os.environ if environ is None else environ
+    parser = SafeArgumentParser(description=__doc__)
     parser.add_argument('--date', help='Inquiry date, YYYY-MM-DD; default: 2 days ago in Japan')
     parser.add_argument('--execute', action='store_true')
-    args = parser.parse_args()
-    today = datetime.now(ZoneInfo('Asia/Tokyo')).date()
-    target = date.fromisoformat(args.date) if args.date else today - timedelta(days=2)
-    if target > today:
-        parser.error('Future dates cannot be queried.')
-    bodies = reports(target.isoformat(), target.isoformat())
-    if not args.execute:
-        print(json.dumps({'mode': 'request_preview', 'property': PROPERTY, 'reports': bodies}, ensure_ascii=False, indent=2))
-        return
-    token = os.environ.get('GA4_ACCESS_TOKEN')
-    if not token:
-        parser.error('GA4_ACCESS_TOKEN is required in the local environment; do not paste credentials into chat.')
-    output = {'property': PROPERTY, 'reportDate': target.isoformat(),
-        'capturedAt': datetime.now(ZoneInfo('Asia/Tokyo')).isoformat(),
-        'provisional': target >= today - timedelta(days=1),
-        'caveats': ['Property timezone is returned in report metadata; match receipt time to that timezone.',
-                    'Event time is not email delivery time. Time matching alone does not identify a person.',
-                    'Internal exclusion applies only after each browser opts out; historical internal traffic remains.',
-                    'generate_lead requires verification of the form-side implementation.'], 'reports': {}}
+    parser.add_argument('--status-only', action='store_true', help='Execute all definitions, emitting connection status only')
+    auth, mode, report_date = None, 'none', None
     try:
+        args = parser.parse_args(argv)
+        today = datetime.now(ZoneInfo('Asia/Tokyo')).date()
+        try:
+            target = date.fromisoformat(args.date) if args.date else today - timedelta(days=2)
+        except ValueError:
+            raise ReportError('invalid_arguments') from None
+        if target > today or (args.status_only and not args.execute):
+            raise ReportError('invalid_arguments')
+        report_date = target.isoformat()
+        bodies = reports(report_date, report_date)
+        if not args.execute:
+            print(json.dumps({'mode': 'request_preview', 'property': PROPERTY, 'reports': bodies}, ensure_ascii=False, indent=2))
+            return 0
+        if environ.get('GITHUB_ACTIONS', '').lower() == 'true' and not args.status_only:
+            raise ReportError('raw_output_forbidden_in_ci')
+        mode = auth_mode(environ)
+        auth = authentication(environ)
+        output = {'property': PROPERTY, 'reportDate': report_date,
+            'capturedAt': datetime.now(ZoneInfo('Asia/Tokyo')).isoformat(),
+            'provisional': target >= today - timedelta(days=1),
+            'caveats': ['Property timezone is returned in report metadata; match receipt time to that timezone.',
+                        'Event time is not email delivery time. Time matching alone does not identify a person.',
+                        'Internal exclusion applies only after each browser opts out; historical internal traffic remains.',
+                        'generate_lead requires verification of the form-side implementation.'], 'reports': {}}
         for name, body in bodies.items():
-            output['reports'][name] = run_report(body, token)
-    except HTTPError as error:
-        print(f'GA4 request failed (HTTP {error.code}); no result is reported as zero.', file=sys.stderr)
-        sys.exit(1)
-    except (OSError, ValueError, RuntimeError):
-        print('GA4 request failed or returned incomplete data; retry after checking access.', file=sys.stderr)
-        sys.exit(1)
-    print(json.dumps(output, ensure_ascii=False, indent=2))
+            result = run_report(body, auth.token, session=auth.session)
+            if not args.status_only:
+                output['reports'][name] = result
+        if args.status_only:
+            output = connection_status('ok', mode, report_date, completed=len(bodies))
+        print(json.dumps(output, ensure_ascii=False, indent=2))
+        return 0
+    except Exception as error:
+        print(json.dumps(connection_status('error', mode, report_date, error=exception_code(error)),
+                         ensure_ascii=False, indent=2))
+        return 1
+    finally:
+        if auth is not None and auth.session is not None:
+            try:
+                auth.session.close()
+            except Exception:
+                pass
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
