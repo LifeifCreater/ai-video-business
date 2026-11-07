@@ -1,7 +1,23 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-08T01:03:24+09:00",
+  "generatedAt": "2026-11-08T02:05:45+09:00",
   "runs": [
+    {
+      "runId": "nightly_production:2026-11-08T02:04:36+09:00",
+      "workflowType": "nightly_production",
+      "sourceId": null,
+      "startedAt": "2026-11-08T02:04:36+09:00",
+      "completedAt": "2026-11-08T02:05:45+09:00",
+      "status": "skipped",
+      "result": "no_target",
+      "branch": null,
+      "commitSha": null,
+      "pullRequestNumber": null,
+      "pullRequestUrl": null,
+      "pullRequestState": null,
+      "draft": null,
+      "errorCode": null
+    },
     {
       "runId": "weekly_planning:WEEK-2026-11-09",
       "workflowType": "weekly_planning",
@@ -1576,22 +1592,6 @@
       "sourceId": null,
       "startedAt": "2026-09-10T01:59:58+09:00",
       "completedAt": "2026-09-10T02:04:00+09:00",
-      "status": "skipped",
-      "result": "no_target",
-      "branch": null,
-      "commitSha": null,
-      "pullRequestNumber": null,
-      "pullRequestUrl": null,
-      "pullRequestState": null,
-      "draft": null,
-      "errorCode": null
-    },
-    {
-      "runId": "approved_article_implementation:2026-09-09T04:01:41+09:00",
-      "workflowType": "approved_article_implementation",
-      "sourceId": null,
-      "startedAt": "2026-09-09T04:01:41+09:00",
-      "completedAt": "2026-09-09T04:05:00+09:00",
       "status": "skipped",
       "result": "no_target",
       "branch": null,
