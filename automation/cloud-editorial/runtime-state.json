@@ -1,7 +1,23 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-07T01:57:27.642+09:00",
+  "generatedAt": "2026-11-08T01:03:24+09:00",
   "runs": [
+    {
+      "runId": "weekly_planning:WEEK-2026-11-09",
+      "workflowType": "weekly_planning",
+      "sourceId": "WEEK-2026-11-09",
+      "startedAt": "2026-11-08T00:56:45+09:00",
+      "completedAt": "2026-11-08T01:03:24+09:00",
+      "status": "waiting_owner",
+      "result": "draft_pr_created",
+      "branch": "planning/weekly-2026-11-09",
+      "commitSha": "a6b53d909c1f5494f7ad0f9995ed642b92a4ac33",
+      "pullRequestNumber": 94,
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/94",
+      "pullRequestState": "open",
+      "draft": true,
+      "errorCode": null
+    },
     {
       "runId": "nightly_production:2026-11-07T01:55:11+09:00",
       "workflowType": "nightly_production",
@@ -1576,22 +1592,6 @@
       "sourceId": null,
       "startedAt": "2026-09-09T04:01:41+09:00",
       "completedAt": "2026-09-09T04:05:00+09:00",
-      "status": "skipped",
-      "result": "no_target",
-      "branch": null,
-      "commitSha": null,
-      "pullRequestNumber": null,
-      "pullRequestUrl": null,
-      "pullRequestState": null,
-      "draft": null,
-      "errorCode": null
-    },
-    {
-      "runId": "nightly_production:2026-09-09T02:00:13+09:00",
-      "workflowType": "nightly_production",
-      "sourceId": null,
-      "startedAt": "2026-09-09T02:00:13+09:00",
-      "completedAt": "2026-09-09T02:04:00+09:00",
       "status": "skipped",
       "result": "no_target",
       "branch": null,
