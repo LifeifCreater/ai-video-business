@@ -216,3 +216,44 @@ main `ea53b10462d65130d6cdad190c6791a5681cd721` の正本、公開HTML、`column
 - 企画書: `planning/approved/PLAN-20261101-001-ai-video-delivery-master-format.md`
 - 反映先: 既存の `planning/weekly-2026-11-02` ブランチ。PRはDraftを維持し、mainへのマージは別操作。
 - 原稿承認・HTML実装・公開・投稿・予約・サービス条件変更・有料ツール実行の承認は含まない。今回の操作では執筆・公開を行わない。
+
+
+## 2026-11-08 週次企画候補（オーナー判断待ち）
+
+依頼元タスク: `weekly_planning:WEEK-2026-11-09`。調査対象は直近30日（2026-10-09〜2026-11-08、日本時間）。候補8件から推奨1件。下表は定性的評価で、検索量・順位・商談率の実測スコアではない。
+
+| 企画ID / 候補 | 公式情報日 | FRAMEPACTとの関係 | 企業担当者の実務課題 | 問い合わせへの近さ | CTA / 判断 |
+|---|---|---|---|---|---|
+| `PLAN-20261108-001` 新機能の提供状態・制約・代替手段チェック | 2026-10-28 / 11-02〜06 | 高 | 高 | 高 | 企業PR動画 / 推奨1 |
+| パートナーモデルの管理者権限・対象者台帳 | 2026-11-06 | 中 | 高 | 中 | 保留。`PLAN-20261011-003` のAI利用権限・フォルダ運用と重複。新規企画にせず、既存企画の執筆時再調査候補 |
+| カスタムAIアバターの画像利用・本人同意・停止時対応 | 2026-11-02 / 03 | 高 | 高 | 中 | 見送り。公開済みAIアバター運用記事と検索意図が重なり、当該機能は確認時点でロールアウト停止 |
+| 複数の画像・動画参照を使う際の優先順位と採用基準 | 2026-11-05 | 高 | 高 | 中 | 保留。商品事実の境界、ブランドキット、生成カット台帳との重複が大きい |
+| 3〜30秒の生成クリップを企業動画へ組み込むショット設計 | 2026-11-05 | 高 | 中 | 中 | 見送り。生成差し込みカット台帳と研修動画の構成・速度企画に近い |
+| AI動画制作ツールを既存の企業契約から購入する際の費用・責任分界 | 2026-10-20 | 低〜中 | 中 | 低 | 保留。Runway / Anthropicの調達経路であり、FRAMEPACTの現行サービス正本や相談導線から遠い |
+| 効果音モデル更新時の旧版・再生成・差し替え管理 | 2026-11-02 | 中 | 高 | 低〜中 | 見送り。公開済みAI音声加工承認記事と、既存の音楽・効果音仕様企画に重複 |
+| Firefly Timelineベータの720p・16:9固定を制作条件へ反映する | 2026-10-28 | 中 | 高 | 中 | 単独不採用。特定ツール紹介にせず、推奨1の「制約・代替手段」へ統合 |
+
+### 公式一次情報
+
+確認日はいずれも `2026-11-08`。推奨企画の再確認期限は `2026-12-08`、かつ執筆開始時。
+
+- Google Workspace Updates（2026-11-02、11-03更新）: https://workspaceupdates.googleblog.com/2026/11/create-a-custom-avatar-google-vids.html
+- Google Workspace Updates（2026-11-05）: https://workspaceupdates.googleblog.com/2026/11/gemini-omni-12-flash-now-in-vids-with-15second-generations-and-improved-quality.html
+- Adobe Help（2026-10-28更新）: https://helpx.adobe.com/firefly/web/firefly-video-editor/generate-videos/generate-videos-using-runway-video-models.html
+- Adobe公式Community Manager告知（2026-11-06）: https://community.adobe.com/announcements-623/manage-access-to-kling-and-seedance-partner-models-for-creative-cloud-teams-and-enterprise-1654590
+- Runway News（2026-10-20）: https://runway.com/news/company-news/runway-claude-marketplace
+- Runway Developer Changelog（2026-11-05項目）: https://docs.dev.runwayml.com/api-details/api_changelog/
+- ElevenLabs Documentation Changelog（2026-11-02）: https://elevenlabs.io/docs/changelog/2026/11/2
+
+アクセスできた日付付き公式一次情報だけを採用した。検索結果に出た第三者解説、日付不明ページ、正式発表前の推測は事実根拠にしていない。提供元の品質・普及・費用に関する主張をFRAMEPACTの採用実績、品質保証、納期短縮、価格条件へ変換しない。
+
+### 重複・導線・承認確認
+
+main `20c7832738ff5ad547671a4267a70ec834159cd3` の `business/`、`planning/`、`writing/`、`distribution/`、公開HTML、sitemap、既存PRを照合。今週キーのjob、Draft PR、active/stale lock、専用ブランチは開始時になかった。
+
+- 推奨は1件。新規性の弱い候補を3件まで水増ししない
+- 直前の採用企画 `PLAN-20261101-001` は法人向けAI動画制作CTA。本企画は企業PR動画CTAへ分散
+- 既存のデータ管理、AIアバター運用、生成カット台帳、フォルダ権限、プレビュー/完成承認、納品ファイル仕様を再制作しない
+- X・note、媒体キュー、既存承認・公開状態は変更しない
+- 統括秘書・よっしーAI適合レビューは同一アシスタントの別パス1巡。独立エージェントレビューではない
+- オーナーは `PLAN-20261108-001` を「採用 / 修正 / 保留 / 却下」から判断する。企画承認は原稿・HTML・公開・投稿・予約・ツール契約の承認を含まない
