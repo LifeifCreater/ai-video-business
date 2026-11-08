@@ -520,5 +520,61 @@
     "publishedUrl": "",
     "publicationDisposition": "candidate",
     "ownerScheduleRequired": true
+  },
+  {
+    "id": "PUB-X-012",
+    "platform": "X",
+    "theme": "生成AI動画の新機能レディネス",
+    "sourceArticle": "WR-20261108-001",
+    "sourceUrl": "",
+    "title": "発表された≠本番で使える",
+    "body": "生成AI動画の新機能が発表されても、今日の案件でそのまま使えるとは限りません。\n\n確認したいのは、提供状態、対象契約、地域、管理者設定、尺・解像度などの出力条件、検証日、止まったときの代替手段。\n\n「使えそう」ではなく、誰が・どの環境で・いつ確認したかを残してから構成へ入れる。企業動画では、この一手間が後戻りを減らします。",
+    "completedText": "生成AI動画の新機能が発表されても、今日の案件でそのまま使えるとは限りません。\n\n確認したいのは、提供状態、対象契約、地域、管理者設定、尺・解像度などの出力条件、検証日、止まったときの代替手段。\n\n「使えそう」ではなく、誰が・どの環境で・いつ確認したかを残してから構成へ入れる。企業動画では、この一手間が後戻りを減らします。",
+    "hashtags": [
+      "#AI動画",
+      "#企業動画"
+    ],
+    "cta": "なし",
+    "proposedAt": "2026-11-09T02:13:00+09:00",
+    "objective": "実務課題の認知",
+    "notes": "X停止中。リンク誘導なし。投稿・予約・承認依頼を行わず、明示的な再開指示まで未公開候補として保持する。",
+    "accountUrl": "https://x.com/yossy_FRAMEPACT",
+    "accountDisplayName": "よっしー｜AI動画制作",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": "",
+    "publicationDisposition": "candidate",
+    "ownerScheduleRequired": false
+  },
+  {
+    "id": "PUB-NOTE-008",
+    "platform": "note",
+    "theme": "生成AI動画の新機能レディネス",
+    "sourceArticle": "WR-20261108-001",
+    "sourceUrl": "",
+    "title": "生成AI動画の「新機能」を本番制作へ入れる前に決めたいこと",
+    "body": "生成AI動画の新機能を見つけると、次の企画ですぐ試したくなります。ただ、公式に発表されたこと、自社のアカウントで機能が見えること、企業案件で安定して使えることは別です。\n\n公開後にロールアウトが止まることもあります。契約や管理者設定によって使える人が変わることもあります。生成できる尺、解像度、画面比率が納品条件に合わないこともあります。\n\nだから構成を確定する前に、提供状態、対象契約、地域、管理者設定、検証アカウント、確認日時、出力条件を記録します。判断は「採用」「条件付き採用」「代替」「保留」に分けます。確認できない事項を推測で埋めないことも重要です。\n\nそして、新機能が止まった場合の代替手段を先に決めます。既存素材、追加撮影、ストック、図解、テキストアニメーションなどへ切り替えても、動画の目的と主要メッセージを保てるかを確認します。\n\n新しい機能を使うこと自体が目的ではありません。企業動画では、誰が・どの環境で・いつ確認し、使えない場合にどう戻るかまで設計しておくことが、後戻りを減らします。",
+    "completedText": "",
+    "hashtags": [
+      "#AI動画",
+      "#企業動画"
+    ],
+    "cta": "なし",
+    "proposedAt": "2026-11-09T02:13:00+09:00",
+    "objective": "実務課題の整理",
+    "notes": "note停止中。投稿・予約・承認依頼を行わず、明示的な再開指示まで未公開候補として保持する。",
+    "accountUrl": "https://note.com/framepact",
+    "accountDisplayName": "よっしー｜AI動画制作",
+    "postingMode": "owner_manual",
+    "approvalStatus": "owner_review",
+    "reviewStatus": "editor_in_chief_passed",
+    "publishStatus": "unpublished",
+    "publishedAt": "",
+    "publishedUrl": "",
+    "publicationDisposition": "candidate",
+    "ownerScheduleRequired": false
   }
 ]
