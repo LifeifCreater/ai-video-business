@@ -1,10 +1,15 @@
 ---
 writingId: WR-20261108-001
 planId: PLAN-20261108-001
-status: review
-approvalStatus: owner_review
+status: approved
+approvalStatus: approved
 createdAt: 2026-11-09T02:10:00+09:00
-updatedAt: 2026-11-09T02:10:00+09:00
+updatedAt: 2026-11-10T09:52:37+09:00
+approvedDate: 2026-11-10
+approvalScope: article_and_site_implementation
+sourcePr: 95
+sitePath: ai-video-feature-readiness-check.html
+canonicalUrl: https://framepact.jp/ai-video-feature-readiness-check.html
 targetAudience:
   - 企業の広報・マーケティング担当者
   - 採用・研修・社内広報担当者
@@ -44,11 +49,11 @@ Google Workspace Updatesでは、画像からGoogle Vidsのカスタムアバタ
 - クレジットや回数などの利用条件
 - 商用案件での利用範囲
 
-Adobeは、対象となるTeams・Enterprise契約でKlingやSeedanceモデルへのアクセスを管理者が制御できると案内しています。また、既定の設定は契約条件によって異なります。制作担当者の個人画面だけでなく、案件で使用する組織アカウントと管理者設定まで確認することが重要です。
+Adobeは、対象となるCreative Cloud Teams・Enterprise契約でKlingやSeedanceモデルへのアクセスを管理者が制御できると案内しています。また、既定の設定は契約条件によって異なります。制作担当者の個人画面だけでなく、案件で使用する組織アカウントと管理者設定まで確認することが重要です。
 
 ## 3. 出力条件を納品仕様と照合する
 
-機能を起動できても、出力が納品条件に合わなければ本番採用はできません。次を確認します。
+機能を起動できても、出力が納品条件に合わなければ、そのまま本番採用はできません。次を確認します。
 
 - 生成できる尺
 - 解像度
@@ -59,9 +64,9 @@ Adobeは、対象となるTeams・Enterprise契約でKlingやSeedanceモデル�
 - 透かしや表示義務の有無
 - 利用規約や契約上の制約
 
-Adobe Firefly video editorのRunway Gen-4.5について、公式ヘルプは5秒・8秒・10秒の生成時間、720p、16:9固定と案内しています。縦型広告、4K納品、長尺の連続カットが必要な案件では、生成後の編集方法や別素材への切り替えを先に決めておく必要があります。
+Adobe Fireflyの動画編集機能で使うRunway Gen-4.5について、公式ヘルプは5秒・8秒・10秒の生成時間、720p、16:9固定と案内しています。これは同機能内での仕様であり、Runwayのすべての利用環境に共通する条件として扱うものではありません。縦型広告、4K納品、長尺の連続カットが必要な案件では、生成後の編集方法や別素材への切り替えを先に決めておく必要があります。
 
-Google VidsのOmni 1.2 Flashも、公式案内では生成尺が最長15秒です。機能名だけで判断せず、必要なカットの役割と長さを先に定義します。
+Google VidsのGemini Omni 1.2 Flashも、公式案内では生成尺が最長15秒です。機能名だけで判断せず、必要なカットの役割と長さを先に定義します。
 
 ## 4. 検証記録を残す
 
@@ -116,9 +121,17 @@ FRAMEPACTでは、生成AIの利用範囲を案件ごとに調整し、人の編
 
 ## 参考にした公式情報
 
-- Google Workspace Updates「Upload an image to create a custom avatar in Google Vids」（2026-11-02公開、2026-11-03更新）
-- Adobe Help「Generate videos using Runway」（2026-10-28更新）
-- Adobe Community「Manage access to Kling and Seedance models in Adobe Firefly」（2026-11-06）
-- Google Workspace Updates「Create video clips with Omni 1.2 Flash in Google Vids」（2026-11-05）
+- [Google Workspace Updates：Upload an image to create a custom avatar in Google Vids](https://workspaceupdates.googleblog.com/2026/11/create-a-custom-avatar-google-vids.html?hl=en)（2026-11-02公開、11-03の提供停止に関する追記）
+- [Adobe Help：Generate videos using Runway video generation models](https://helpx.adobe.com/firefly/web/firefly-video-editor/generate-videos/generate-videos-using-runway-video-models.html)（Firefly内の動画編集機能）
+- [Adobe Community：Manage access to Kling and Seedance partner models for Creative Cloud Teams and Enterprise](https://community.adobe.com/announcements-623/manage-access-to-kling-and-seedance-partner-models-for-creative-cloud-teams-and-enterprise-1654590)（2026-11-06）
+- [Google Workspace Updates：Gemini Omni 1.2 Flash now in Vids with 15-second generations and improved quality](https://workspaceupdates.googleblog.com/2026/11/gemini-omni-12-flash-now-in-vids-with-15second-generations-and-improved-quality.html?m=0)（2026-11-05）
 
-※外部機能の記載は2026年11月9日の確認時点です。提供状況、契約条件、仕様は変更される可能性があります。この記事は各機能の採用や利用可能性を保証するものではありません。
+※外部機能の記載は2026年11月10日の情報確認時点です。提供状況、契約条件、仕様は変更される可能性があります。この記事は各機能の採用や利用可能性を保証するものではありません。
+
+## 承認・実装記録
+
+- 2026-11-10：オーナーからPR #95のマージ承認、その後サイト実装の明示指示を受領。
+- 承認対象は本記事とサイト実装。X・noteの承認・投稿・予約へ拡張しない。
+- 公開前の再確認で公式参照先4件を修正。記事の主旨は維持し、Runwayの仕様がFirefly内に限ることを明示した。
+- 本番反映の成否は実装PRのmerge、Cloudflareのビルド、本番HTTP・本文の確認結果で判定する。この承認記録だけでは公開完了を意味しない。
+- 実装・第二パスレビューは同一担当者による `same_actor_separate_passes`。独立エージェントレビューとは扱わない。

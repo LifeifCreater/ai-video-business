@@ -49,5 +49,5 @@ test('column, inquiry, privacy navigation and sharing metadata remain intact', (
   // Twitter card metadata describes a shared preview; it is not a promotional link.
   assert.match(home, /name="twitter:card"/);
   const column = fs.readFileSync('column.html', 'utf8');
-  assert.equal([...column.matchAll(/<a\b[^>]*class="article-card"/g)].length, 18);
+  assert.equal([...column.matchAll(/<a\b[^>]*class="article-card"/g)].length, 19);
 });
