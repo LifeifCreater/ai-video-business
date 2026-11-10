@@ -25,15 +25,16 @@ def main():
    browser=getattr(pw,args.engine).launch(**({'executable_path':args.executable} if args.executable else {}))
    for w,h in [(320,568),(390,664),(466,562),(669,760),(951,669),(1280,800)]:
     ctx=browser.new_context(viewport={'width':w,'height':h},has_touch=True);ctx.route('**/*',route);p=ctx.new_page();load(p)
-    cards=p.locator('.article-card');visible=p.locator('.article-card:not([hidden])');assert cards.count()==18;assert visible.count()==6
-    assert p.locator('.article-card time').first.get_attribute('datetime')=='2026-10-31'
+    cards=p.locator('.article-card');visible=p.locator('.article-card:not([hidden])');assert cards.count()==19;assert visible.count()==6
+    assert p.locator('.article-card time').first.get_attribute('datetime')=='2026-11-10'
+    assert cards.first.get_attribute('href')=='/ai-video-feature-readiness-check.html'
     assert p.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
     assert p.locator('a[href*="note.com"]').count()==0
     first=cards.first;first.scroll_into_view_if_needed();assert first.evaluate(responsive.HIT)
     height=first.bounding_box()['height'];assert w>600 or height<=240,(w,height)
     p.screenshot(path=str(output/f'column-compact-{w}x{h}.png'))
     p.locator('#column-next').click();assert visible.count()==12
-    p.locator('#column-all').click();assert visible.count()==18;assert not p.locator('[data-column-more]').is_visible()
+    p.locator('#column-all').click();assert visible.count()==19;assert not p.locator('[data-column-more]').is_visible()
     p.locator('#column-category').select_option('training');assert visible.count()==4
     p.locator('#column-search').fill('マニュアル');assert visible.count()>0
     p.locator('#column-search').fill('存在しない検索語999');assert visible.count()==0;assert p.locator('#column-empty').is_visible()
@@ -43,10 +44,10 @@ def main():
      p.reload(wait_until='load');assert p.locator('#column-search').input_value()=='音声';assert visible.count()==3
     p.locator('#column-reset').click();p.locator('#column-all').click()
     for a in cards.all():a.scroll_into_view_if_needed();assert a.evaluate(responsive.HIT)
-    stats.append({'width':w,'height':h,'firstCardHeight':height,'articles':18,'initialVisible':6});ctx.close()
-   ctx=browser.new_context(viewport={'width':390,'height':664},java_script_enabled=False);ctx.route('**/*',route);p=ctx.new_page();load(p);assert p.locator('.article-card:not([hidden])').count()==18;assert not p.locator('[data-column-controls]').is_visible();ctx.close()
+    stats.append({'width':w,'height':h,'firstCardHeight':height,'articles':19,'initialVisible':6});ctx.close()
+   ctx=browser.new_context(viewport={'width':390,'height':664},java_script_enabled=False);ctx.route('**/*',route);p=ctx.new_page();load(p);assert p.locator('.article-card:not([hidden])').count()==19;assert not p.locator('[data-column-controls]').is_visible();ctx.close()
    browser.close()
  finally:server.shutdown();server.server_close()
  (output/'column-compact-results.json').write_text(json.dumps({'engine':args.engine,'fixture':args.inline_fixture,'results':stats,'success':True},ensure_ascii=False,indent=2))
- print('Column: compact cards, 6/12/18 pagination, filters, empty state, reset, URL restore and no-JS fallback passed.')
+ print('Column: compact cards, 6/12/19 pagination, filters, empty state, reset, URL restore and no-JS fallback passed.')
 if __name__=='__main__':main()
