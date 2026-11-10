@@ -3,9 +3,9 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const index=fs.readFileSync('column.html','utf8');
 const release=JSON.parse(fs.readFileSync('writing/releases/columns-20261031.json','utf8'));
 function graphs(text){return [...text.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].flatMap(m=>{const x=JSON.parse(m[1]);return x['@graph']||[x];});}
-test('all 18 article links are in HTML and initially readable without JS',()=>{
+test('all 19 article links are in HTML and initially readable without JS',()=>{
  const cards=[...index.matchAll(/<a\b[^>]*class="article-card"[^>]*>/g)].map(m=>m[0]);
- assert.equal(cards.length,18);
+ assert.equal(cards.length,19);
  cards.forEach(c=>assert.doesNotMatch(c,/\bhidden\b/));
  assert.match(index,/id="column-search"/);assert.match(index,/id="column-category"/);
  assert.match(index,/id="column-all"/);assert.match(index,/data-column-controls hidden/);
