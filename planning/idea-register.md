@@ -267,3 +267,48 @@ main `20c7832738ff5ad547671a4267a70ec834159cd3` の `business/`、`planning/`、
 - 反映先: 既存の `planning/weekly-2026-11-09` ブランチ。PR #94はDraftを維持し、mainへの反映は別操作。
 - 今回は採用・企画承認の記録のみ。原稿化、原稿承認、HTML実装、公開、投稿・予約、Ready化・マージ、ツール契約、サービス条件変更は行わない。
 - 執筆時の公式情報再確認と既存企画との差別化条件は維持し、job-register・locks・runtime-stateの過去実行結果は書き換えない。
+
+## 2026-11-15 週次企画候補（オーナー判断待ち）
+
+依頼元タスク: `weekly_planning:WEEK-2026-11-16`。調査対象は直近30日（2026-10-16〜2026-11-15、日本時間）。候補8件から推奨1件。下表は定性的評価で、検索量・順位・商談率の実測スコアではない。
+
+| 企画ID / 候補 | 公式情報日 | FRAMEPACTとの関係 | 企業担当者の実務課題 | 問い合わせへの近さ | CTA / 判断 |
+|---|---|---|---|---|---|
+| `PLAN-20261115-001` 企業動画BGMの利用目的・媒体・ライセンス証跡 | 2026-11-10 | 高 | 高 | 高 | イベント動画 / 推奨1 |
+| 複数の画像・動画参照を使う際の役割・優先順位・禁止事項 | 2026-11-05 | 高 | 高 | 中 | 保留。前週も保留した候補で、商品事実の境界、ブランドキット、生成カット台帳との重複を解消できない |
+| AI編集エージェントの計画確認・実行・差し戻し・停止記録 | 2026-11-10 | 高 | 高 | 中 | 保留。段階別承認と新機能レディネス企画の検索意図に近く、機能もbeta・previewを含む |
+| 市場・媒体別のクリエイティブ派生版とブランド確認 | 2026-11-10 | 高 | 高 | 中 | 見送り。公開済み複数媒体制作設計とブランドキット企画に重複 |
+| 4K生成出力と低解像度ドラフトを混同しない受け入れ条件 | 2026-11-11 | 高 | 高 | 中 | 見送り。`PLAN-20261101-001` の納品ファイル仕様・確認版とマスターの区別に統合すべき内容 |
+| 組織単位のContent Credentialsと制作履歴 | 2026-11-10 | 中 | 高 | 中 | 保留。既存のAI利用表示・生成カット台帳と近く、出力保持条件の個別検証が必要 |
+| 多言語イベントページ・案内メール・登壇者Q&A回答の承認 | 2026-11-05 | 中 | 高 | 低〜中 | 保留。イベント配信プラットフォーム運用へ寄り、現行の動画制作相談から距離がある |
+| AIクリエイティブを試験導入から定常運用へ移す体制 | 2026-11-13 | 中 | 高 | 中 | 見送り。提供企業のサービス訴求を一般化せず、ブランド・ツール連携・承認の論点は既存企画へ分散して扱う |
+
+### 公式一次情報
+
+確認日はいずれも `2026-11-15`。推奨企画の再確認期限は `2026-12-15`、かつ執筆開始時。
+
+- Adobe Blog（2026-11-10）: https://blog.adobe.com/en/publish/2026/11/10/adobe-firefly-premiere-mobile-ways-create-videos-edit-content-perfect-soundtrack-stories
+- Adobe Help “Music licensing FAQ”（最終更新2026-11-10）: https://helpx.adobe.com/premiere/mobile/add-audio/music-licensing-faq.html
+- Adobe Newsroom “Adobe Firefly Expands...” （2026-11-10）: https://news.adobe.com/news/2026/11/adobe-firefly-expands
+- Adobe Newsroom “Adobe Brings Agentic AI...” （2026-11-10）: https://news.adobe.com/news/2026/11/adobe-agentic-ai-content-supply-chain
+- Runway Developer Changelog（2026-11-05、11-11項目）: https://docs.dev.runwayml.com/api-details/api_changelog/
+- Google Workspace Updates（2026-11-05）: https://workspaceupdates.googleblog.com/2026/11/gemini-omni-12-flash-now-in-vids-with-15second-generations-and-improved-quality.html
+- Vimeo Product Updates（2026-11-05項目）: https://vimeo.com/product-updates
+- ElevenLabs（2026-11-13）: https://elevenlabs.io/blog/introducing-forward-deployed-creatives
+
+アクセスできた日付付き公式一次情報だけを候補評価に使用した。第三者解説、日付不明ページ、正式発表前の推測は事実根拠にしていない。提供元の品質・速度・普及・費用・成果に関する表現をFRAMEPACTの採用実績、権利保証、納期短縮、価格条件へ変換しない。
+
+### 重複・導線・承認確認
+
+main `cd5909f369afb25caafa1f03832db9066d024252` の `business/`、`planning/`、`writing/`、`distribution/`、公開HTML、sitemap、既存PRを照合。今週キーのjob、同名branch、PR、active/stale lockは開始前になく、専用branch作成後にjobとlockを取得した。
+
+- 推奨は1件。新規性の弱い候補を3件まで水増ししない
+- 推奨1はBGMの利用目的・媒体・地域・証跡へ限定し、音声補正、音声抽出、広告表示、音響仕様を再制作しない
+- 直近の採用企画は法人向けAI動画制作、企業PR動画。本企画はイベント動画CTAへ分散する
+- 公開順は未決定で、1記事1主CTAを維持する
+- X・noteの展開案、本文、キュー、既存承認・公開状態は変更しない
+- 統括秘書・よっしーAI適合レビューは同一アシスタントの役割切替による別パス1巡。独立エージェントレビューではない
+- 本企画は条件付き合格であり、本人承認ではない
+
+推奨企画は未承認。オーナー判断は「採用 / 修正 / 保留 / 却下」。原稿作成、HTML化、公開、投稿は行っていない。
+
