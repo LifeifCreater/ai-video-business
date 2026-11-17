@@ -41,6 +41,11 @@ AI動画リサーチで使用した情報源を、URL単位で重複なく管理
 | `SRC-0020` | https://www.facebook.com/business/ads/facebook-instagram-reels-ads | Meta | Instagram & Facebook Reels Ads | 公式ドキュメント | 更新日不明 | 2026-08-03 | 2026-08-03 | A | 要再確認 | 有効 | `RES-20260803-004` | `SRC-0021` | 詳細数値未取得 |
 | `SRC-0021` | https://www.facebook.com/business/ads/video-ad-format | Meta | Video ads | 公式ドキュメント | 更新日不明 | 2026-08-03 | 2026-08-03 | A | 要再確認 | 有効 | `RES-20260803-004` | `SRC-0020` | 配置別Ads Guide要確認 |
 
+| `SRC-0022` | https://blog.adobe.com/en/publish/2026/11/10/adobe-firefly-premiere-mobile-ways-create-videos-edit-content-perfect-soundtrack-stories | Adobe | Adobe Firefly and Premiere mobile unlock new ways to create videos, edit content and find the perfect soundtrack for your stories | 公式発表 | 2026-11-10 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0023`〜`SRC-0025` | Premiere mobile音楽機能。2026-12-15再確認 |
+| `SRC-0023` | https://helpx.adobe.com/premiere/mobile/add-audio/music-licensing-faq.html | Adobe | Music licensing FAQ | 公式ドキュメント | 2026-11-10更新 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0024`、`SRC-0025` | 媒体・再投稿・クライアント用途。2026-12-15再確認 |
+| `SRC-0024` | https://helpx.adobe.com/premiere/mobile/add-audio/personal-versus-commercial-music-use.html | Adobe | Personal versus commercial music use | 公式ドキュメント | 2026-11-10更新 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0023` | Adobeの説明として使用。個別の法的判断へ一般化しない |
+| `SRC-0025` | https://helpx.adobe.com/premiere/mobile/add-audio/popular-music-faq.html | Adobe | Popular Music FAQ | 公式ドキュメント | 2026-11-10更新 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0022`、`SRC-0023` | 地域・端末・利用条件。細かな仕様は公開前再確認 |
+
 ## 重複確認ログ
 
 同一URLや実質的に同じ資料を統合した場合に記録する。
@@ -48,7 +53,3 @@ AI動画リサーチで使用した情報源を、URL単位で重複なく管理
 | 確認日 | 入力URL | 採用した情報源ID | 判定 | メモ |
 |---|---|---|---|---|
 |  |  |  | `新規 / 既存を再利用 / 版違いで新規` |  |
-| `SRC-0022` | https://blog.adobe.com/en/publish/2026/11/10/adobe-firefly-premiere-mobile-ways-create-videos-edit-content-perfect-soundtrack-stories | Adobe | Adobe Firefly and Premiere mobile unlock new ways to create videos, edit content and find the perfect soundtrack for your stories | 公式発表 | 2026-11-10 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0023`〜`SRC-0025` | Premiere mobile音楽機能。2026-12-15再確認 |
-| `SRC-0023` | https://helpx.adobe.com/premiere/mobile/add-audio/music-licensing-faq.html | Adobe | Music licensing FAQ | 公式ドキュメント | 2026-11-10更新 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0024`、`SRC-0025` | 媒体・再投稿・クライアント用途。2026-12-15再確認 |
-| `SRC-0024` | https://helpx.adobe.com/premiere/mobile/add-audio/personal-versus-commercial-music-use.html | Adobe | Personal versus commercial music use | 公式ドキュメント | 2026-11-10更新 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0023` | Adobeの説明として使用。個別の法的判断へ一般化しない |
-| `SRC-0025` | https://helpx.adobe.com/premiere/mobile/add-audio/popular-music-faq.html | Adobe | Popular Music FAQ | 公式ドキュメント | 2026-11-10更新 | 2026-11-18 | 2026-11-18 | A | 最新 | 有効 | `RES-20261118-001` | `SRC-0022`、`SRC-0023` | 地域・端末・利用条件。細かな仕様は公開前再確認 |

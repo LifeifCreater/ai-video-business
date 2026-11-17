@@ -92,7 +92,7 @@
       "workflowType": "nightly_production",
       "sourceId": "PLAN-20261115-001",
       "acquiredAt": "2026-11-18T02:01:26.088+09:00",
-      "heartbeatAt": "2026-11-18T02:04:10.723+09:00",
+      "heartbeatAt": "2026-11-18T02:09:16.207+09:00",
       "expiresAt": "2026-11-18T05:01:26.088+09:00",
       "state": "active",
       "branch": "writing/WR-20261115-001",
