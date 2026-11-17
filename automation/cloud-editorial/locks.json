@@ -72,6 +72,19 @@
       "branch": "writing/WR-20261108-001",
       "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/95",
       "reviewRequired": true
+    },
+    {
+      "lockKey": "weekly_planning:WEEK-2026-11-16",
+      "jobId": "WEEKLY-PLANNING-WEEK-2026-11-16",
+      "workflowType": "weekly_planning",
+      "sourceId": "WEEK-2026-11-16",
+      "acquiredAt": "2026-11-15T01:00:09.512+09:00",
+      "heartbeatAt": "2026-11-15T01:05:03.666+09:00",
+      "expiresAt": "2026-11-15T04:00:09.512+09:00",
+      "state": "released",
+      "branch": "planning/weekly-2026-11-16",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/97",
+      "reviewRequired": false
     }
   ]
 }
