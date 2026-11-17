@@ -97,7 +97,7 @@
       "state": "released",
       "branch": "writing/WR-20261115-001",
       "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/100",
-      "reviewRequired": true
+      "reviewRequired": false
     }
   ]
 }
