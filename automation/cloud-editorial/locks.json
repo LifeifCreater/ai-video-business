@@ -92,11 +92,11 @@
       "workflowType": "nightly_production",
       "sourceId": "PLAN-20261115-001",
       "acquiredAt": "2026-11-18T02:01:26.088+09:00",
-      "heartbeatAt": "2026-11-18T02:12:41.865+09:00",
+      "heartbeatAt": "2026-11-18T02:14:17.464+09:00",
       "expiresAt": "2026-11-18T05:01:26.088+09:00",
-      "state": "active",
+      "state": "released",
       "branch": "writing/WR-20261115-001",
-      "pullRequestUrl": null,
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/100",
       "reviewRequired": true
     }
   ]
