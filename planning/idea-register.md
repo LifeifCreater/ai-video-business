@@ -322,3 +322,72 @@ main `cd5909f369afb25caafa1f03832db9066d024252` の `business/`、`planning/`、
 - 承認範囲: 本企画1件の採用・企画承認と、その記録反映差分のPRマージ。原稿承認、HTML実装、公開、投稿・予約、ツール契約、サービス条件変更は含まない
 - 次工程は既存の夜間制作で開始条件を再確認する。今回の操作では執筆せず、X・noteの一時停止を維持する
 - 執筆時の公式情報再確認と既存企画との差別化条件を維持し、job-register・locks・runtime-stateの過去実行結果は書き換えない
+
+## 2026-11-22 週次企画候補（オーナー判断待ち）
+
+依頼元タスク: `weekly_planning:WEEK-2026-11-23`。調査対象は直近30日（2026-10-23〜2026-11-22、日本時間）。候補10件から推奨1件。下表は定性的評価で、検索量・順位・商談率の実測スコアではない。
+
+| 企画ID / 候補 | 公式情報日 | FRAMEPACTとの関係 | 企業担当者の実務課題 | 問い合わせへの近さ | CTA / 判断 |
+|---|---|---|---|---|---|
+| `PLAN-20261122-001` 展示会動画の映り込みをAIで消す前の原本・削除理由・確認記録 | 2026-11-09 / 10 | 高 | 高 | 高 | 展示会動画 / 推奨1 |
+| AI動画で再利用する画像・動画・音声の権利・版・用途 | 2026-11-20 | 高 | 高 | 高 | 保留。Google Vidsの新しいAssetsは有力な契機だが、データ管理、生成カット台帳、ブランドキット、素材権利の既存企画と境界が狭い |
+| 企業動画制作で工程別に決めるAI利用レベル | 2026-11-19 | 高 | 高 | 中〜高 | 保留。Canvaの生成AI制御と補助編集の区別は有効だが、AI表示、機能レディネス、承認工程との重複をさらに分離する必要がある |
+| 次回発注へ再利用できる制作ワークフロー | 2026-11-10 | 中〜高 | 高 | 中 | 保留。継続制作には有効だが、ブランドキット、素材引き継ぎ、承認工程、多媒体展開とのカニバリが強い |
+| TikTok外のAI生成・編集コンテンツを再投稿する前の透明性確認 | 2026-11-20 | 中 | 高 | 中 | 見送り。AI生成表示、Content Credentials、生成履歴の既存記事・候補と重複 |
+| AI生成動画における社員・出演者の肖像検出と報告 | 2026-11-20 | 中 | 高 | 低〜中 | 見送り。AIアバター運用、人物同意、公開範囲の既存記事と重複し、TikTok運用へ寄りやすい |
+| AI編集アシスタントへ任せる作業と人の承認境界 | 2026-11-10 / 18 | 高 | 高 | 中 | 見送り。段階別承認、新機能レディネス、納品データ、直近の保留候補と検索意図が近い |
+| 15秒の生成クリップを企業動画へ組み込むショット設計 | 2026-11-05 | 高 | 中 | 中 | 見送り。生成差し込みカット台帳、複数参照、尺・納品仕様に重複 |
+| 発表・研究プレビュー・正式提供を分ける採用判断 | 2026-11-11 | 中 | 高 | 低〜中 | 見送り。公開済みの新機能レディネス記事と直接重複 |
+| AI動画ツールの入力権利・出力権利・データ保持の契約確認 | 2026-10-26更新 | 高 | 高 | 中〜高 | 見送り。データ管理、素材権利、AI表示、音楽ライセンスの既存記事・企画と範囲が重なる |
+
+### 推奨理由
+
+- 2026-11-09〜10の公式一次情報で、撮影済み動画の一部を生成的に削除し、元クリップへ戻せる新しい編集場面を確認できた
+- 公開済み記事群に、撮影済み実写の映り込み削除、原本と加工版、削除理由を主題にした記事はない
+- 一般的なツール紹介ではなく、展示会・イベント会場で起きる通行人、他社ロゴ、撮影機材、反射等の具体的な発注課題へ変換できる
+- 直近の主CTAは法人向けAI動画制作、企業PR動画、イベント動画。公開済み実務記事で主導線が薄い展示会動画へ分散できる
+- 新規性の弱い候補を最大3件まで水増しせず、独立性と相談距離を満たす1件に限定した
+
+### 公式一次情報
+
+確認日はいずれも `2026-11-22`。推奨企画の再確認期限は `2026-12-22`、かつ執筆開始時。
+
+- Adobe Help「生成 AI 削除 (beta) を使ってビデオから不要なオブジェクトを削除」（最終更新2026-11-09）  
+  https://helpx.adobe.com/jp/premiere/desktop/edit-projects/edit-with-generative-ai/generative-remove.html
+- Adobe Blog “Explore new ways to create across Creative Cloud and Adobe Firefly while advancing your craft with more precision, choice and control”（公開2026-11-10）  
+  https://blog.adobe.com/en/publish/2026/11/10/explore-new-ways-create-across-creative-cloud-adobe-firefly-while-advancing-craft-precision-choice-control
+- Google Workspace Updates “Google Vids now lets you reuse your media in video generation”（公開2026-11-20）  
+  https://workspaceupdates.googleblog.com/2026/11/google-vids-now-lets-you-reuse-your-media-in-video-generation.html
+- Canva Newsroom “Introducing AI Controls: Your creativity, your call”（公開2026-11-19）  
+  https://www.canva.com/newsroom/news/ai-controls-canva/
+- TikTok Newsroom「TikTok、AI生成コンテンツに関する透明性と管理を高める新たな機能を発表」（公開2026-11-20）  
+  https://newsroom.tiktok.com/tiktok-AI-generated-content-updates-2026?lang=ja-JP
+- Adobe Premiere desktop release notes（2026-11-18更新、version 27.0）  
+  https://helpx.adobe.com/premiere/desktop/whats-new/release-notes.html
+- Google Workspace Updates “Gemini Omni 1.2 Flash now in Vids with 15-second generations and improved quality”（公開2026-11-05）  
+  https://workspaceupdates.googleblog.com/2026/11/gemini-omni-12-flash-now-in-vids-with-15second-generations-and-improved-quality.html
+- Adobe Blog “Adobe MAX Sneaks”（公開2026-11-11）  
+  https://blog.adobe.com/en/publish/2026/11/11/adobe-max-sneaks
+- Runway Dev “Commercial Use”（2026-10-26更新を確認）  
+  https://dev.runwayml.com/learn/commercial-use
+- Adobe Newsroom “Adobe Brings Agentic AI to the Content Supply Chain with CX Enterprise Coworker”（公開2026-11-10）  
+  https://news.adobe.com/news/2026/11/adobe-agentic-ai-content-supply-chain
+
+アクセスできた日付付き公式一次情報だけを候補評価に使用した。第三者解説、日付不明ページ、正式発表前の推測は事実根拠にしていない。提供元の品質・速度・普及・費用・成果に関する表現をFRAMEPACTの採用実績、権利保証、納期短縮、価格条件へ変換しない。
+
+### 重複・導線・レビュー確認
+
+main `f5c5266e0ecb5a4922480d5e2a898cdb76166dd7` の `business/`、`planning/`、`writing/`、`distribution/`、公開HTML、sitemap、既存PRを照合。今週キーのjob、同名branch、PR、active/stale lockは開始時になく、固定SHAから専用branchを作成した。
+
+- 主担当はコンテンツ企画担当。統括秘書が依存関係と引き継ぎを管理し、リサーチ、SEO、グロース、編集長、よっしーAIを必要範囲に限定した
+- 一次情報調査とSEO・重複・CTA監査を別の独立エージェントへ委任。一次情報側の最優先案は素材再利用だったが、SEO監査で一般的な権利・版管理との競合が強いと確認した
+- 1巡目で、素材再利用案を推奨から外し、生成AI削除案を展示会・イベント撮影の映り込みへ限定。CTAを展示会動画へ変更した
+- 編集長・よっしーAI基準の独立最終レビューを別エージェントで実施。タイトルの展示会限定、business正本と公開サービスページの区別、会場確認への限定、SEO語の調整を反映し、2巡で収束した
+- 推奨1は、生成カットの新規作成ではなく、撮影済み実写の削除加工と原本の対応に限定する。データ管理、AI表示、公開後差し替え、ブランドキット、納品仕様を再掲しない
+- 公開順は未決定で、1記事1主CTAを維持する
+- X・noteの展開案、本文、キュー、既存承認・公開状態は変更しない
+- 本企画は内部レビュー上の推奨であり、本人承認ではない
+
+独立最終レビューは、編集長 `修正後合格`、よっしーAI `recommend_with_conditions`。未解決事項は検索量・順位・商談率の未取得と、執筆開始時のAdobeベータ提供状態・制約の再確認。次に必要な本人判断は本企画1件の採否だけである。
+
+企画1件は未承認。オーナー判断は `PLAN-20261122-001` の `採用 / 修正 / 保留 / 却下`。原稿作成、HTML化、公開、投稿は行っていない。
