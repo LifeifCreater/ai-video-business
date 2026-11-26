@@ -195,7 +195,7 @@ class SearchConsoleSummaryTests(unittest.TestCase):
         )
         with tempfile.TemporaryDirectory() as directory:
             morning = Path(directory) / "morning-brief.json"
-            morning.write_text('{"searchConsole": null}\\n', encoding="utf-8")
+            morning.write_text(json.dumps({"searchConsole": None}), encoding="utf-8")
             original = automation.MORNING
             automation.MORNING = morning
             try:
