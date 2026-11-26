@@ -399,6 +399,11 @@ def update_morning(data, ts, sitemap_count=None):
     errors = [
         page
         for page in pages
+        if page.get("errorInfo")
+    ]
+    needs_attention = [
+        page
+        for page in pages
         if page["ownerActionRequired"] or page.get("errorInfo")
     ]
     canonical = [
@@ -409,7 +414,7 @@ def update_morning(data, ts, sitemap_count=None):
         and page["googleCanonical"] != page["userCanonical"]
     ]
     priority = sorted(
-        errors,
+        needs_attention,
         key=lambda page: (
             "API" not in (page["notes"] or ""),
             page["url"],
@@ -465,6 +470,7 @@ def update_morning(data, ts, sitemap_count=None):
         ),
         "errorCount": len(errors),
         "apiFailureCount": len(api_failures),
+        "ownerActionRequiredCount": sum(1 for page in pages if page["ownerActionRequired"]),
         "canonicalMismatchCount": len(canonical) if known else None,
         "sitemapMissingCount": sum(
             1 for page in pages if not page["sitemapIncluded"]

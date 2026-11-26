@@ -180,6 +180,39 @@ class SearchConsoleSummaryTests(unittest.TestCase):
                 self.assertEqual(page["ownerActionRequired"], action)
                 self.assertIn(note, page["notes"])
 
+    def test_unindexed_owner_action_is_not_an_api_error(self):
+        page = automation.new_page(
+            "https://framepact.jp/ai-video-price.html",
+            "2026-11-18",
+            {"lastSitemapSubmissionAt": None},
+        )
+        page.update(
+            inspectionStatus="NEUTRAL",
+            coverageState="クロール済み - インデックス未登録",
+            ownerActionRequired=True,
+            errorInfo=None,
+            inspectedAt="2026-11-26T14:18:47+09:00",
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            morning = Path(directory) / "morning-brief.json"
+            morning.write_text(json.dumps({"searchConsole": None}), encoding="utf-8")
+            original = automation.MORNING
+            automation.MORNING = morning
+            try:
+                automation.update_morning(
+                    {"pages": [page]},
+                    datetime.fromisoformat("2026-11-26T14:18:47+09:00"),
+                    sitemap_count=1,
+                )
+            finally:
+                automation.MORNING = original
+            summary = json.loads(morning.read_text(encoding="utf-8"))["searchConsole"]
+        self.assertEqual(summary["errorCount"], 0)
+        self.assertEqual(summary["apiFailureCount"], 0)
+        self.assertEqual(summary["notIndexedCount"], 1)
+        self.assertEqual(summary["ownerActionRequiredCount"], 1)
+        self.assertEqual(len(summary["ownerActionRequired"]), 1)
+
     def test_api_failures_are_not_reported_as_zero_errors(self):
         pages = [
             {
