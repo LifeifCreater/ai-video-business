@@ -400,3 +400,66 @@ main `f5c5266e0ecb5a4922480d5e2a898cdb76166dd7` の `business/`、`planning/`、
 - 原稿ID: `WR-20261122-001`。承認記録: `business/approvals/APPROVAL-WR-20261122-001.md`。完成原稿を本人が個別校正済みとは記録しない。
 - 初回週次実行時の未承認・未実施の記録は履歴として保持。今回の制作を夜間タスクの実行実績へ書き換えない。
 - 他9候補、他記事・他PR、X・note、投稿・予約・定期実行、サービス条件は変更しない。
+
+
+## 2026-11-29 週次企画候補（オーナー判断待ち）
+
+依頼元タスク: `weekly_planning:WEEK-2026-11-30`。調査対象は直近30日（2026-10-30〜2026-11-29、日本時間）。候補8件から推奨1件。下表は定性的評価で、検索量・順位・商談率の実測スコアではない。
+
+| 企画ID / 候補 | 公式情報日 | FRAMEPACTとの関係 | 企業担当者の実務課題 | 問い合わせへの近さ | CTA / 判断 |
+|---|---|---|---|---|---|
+| `PLAN-20261129-001` AI動画の見積もりで確認したい完成カット数・生成案数・再生成の違い | 2026-11-18 | 高 | 高 | 高 | 企業向けAI動画制作・料金 / 推奨1 |
+| AI動画制作ワークスペースの参加者・権限・最終利用棚卸し | 2026-11-20 | 中 | 高 | 低〜中 | 保留。公開済みデータ管理と`PLAN-20261011-003`の権限・命名ルールに近く、API管理へ寄る |
+| 低解像度の生成案を完成版として承認しない受入条件 | 2026-11-16 | 高 | 高 | 中 | 見送り。`PLAN-20261018-002`、納品ファイル仕様、生成カット台帳と重複 |
+| AI編集エージェントがシーケンス全体を変更した後のショット別確認 | 2026-11-10 | 高 | 高 | 中 | 見送り。段階別承認、新機能レディネス、AI編集アシスタントの承認境界候補に近い |
+| 同一プロジェクトで再利用する画像・動画・音声の版・用途・権利記録 | 2026-11-20 | 高 | 高 | 高 | 保留継続。前週評価済みで、データ管理、生成カット台帳、ブランドキット、素材権利との境界が狭い |
+| AIネイティブ編集画面で生成物・字幕・コメントを同じタイムラインに置く際の確認単位 | 2026-09-21 / 11-23更新 | 高 | 高 | 中 | 見送り。タイムコード修正、AI初稿、音楽・音声・効果音仕様と重複。11-23の変更箇所も特定できない |
+| ブラウザ配信前・配信中の映像・音声状態確認 | 2026-11-04 / 11-05更新 | 中 | 高 | 低〜中 | 保留継続。イベント配信プラットフォーム運用へ寄り、現行サービス正本から遠い |
+| カスタムAIアバター画像の提供状態確認 | 2026-11-02 / 11-03更新 | 高 | 高 | 低〜中 | 見送り。公開済み新機能レディネスとAIアバター運用記事に直接重複 |
+
+### 推奨理由
+
+- 2026-11-18のRunway Dev公式更新で、生成リクエストにタグを付け、タグ別にクレジット使用量を集計できるRequest tagsを確認した
+- 公開済み記事・企画・原稿に、発注前の「完成カット数・候補としての生成案数・修正時の再生成・確定後の企画変更」の見積境界を主題にしたものはない
+- FRAMEPACTの承認済み料金正本には生成カット上限、編集修正2回、部分再生成1回、確定後変更と上限超過の別見積もりがあり、一般的な料金相場ではなく自社の相談条件へ接続できる
+- 内部原価や特定ツール採用を公開せず、企業担当者が用途・尺・案数・修正条件を持って相談する確認表へ変換できる
+- 直近の主CTAは展示会動画、企業PR動画、研修・イベント動画。本企画は企業向けAI動画制作の料金・見積条件へ分散する
+- 新規性の弱い候補を最大3件まで水増しせず、独立性と相談距離を満たす1件に限定した
+
+### 公式一次情報
+
+確認日は `2026-11-29`。推奨企画の再確認期限は `2026-12-18`、かつ執筆開始時。
+
+- Runway Dev Changelog “Request tags”（公開2026-11-18、Runway Dev Organization API / Usage page）  
+  https://docs.dev.runwayml.com/changelog/
+- Runway Dev Changelog “Workspace members”（公開2026-11-20、Organization API）  
+  https://docs.dev.runwayml.com/changelog/
+- Runway Dev Changelog “Seedance 2.5 Flash on Runway Dev”（公開2026-11-16）  
+  https://docs.dev.runwayml.com/changelog/
+- Adobe Newsroom “Adobe Transforms its Creative Cloud Tools...” （公開2026-11-10、Premiere Creative Agent betaを含む）  
+  https://news.adobe.com/news/2026/11/adobe-transforms-creative-cloud-tools
+- Google Workspace Updates “Google Vids now lets you reuse your media in video generation”（公開2026-11-20）  
+  https://workspaceupdates.googleblog.com/2026/11/google-vids-now-lets-you-reuse-your-media-in-video-generation.html
+- ElevenLabs “Introducing Studio 4.0 in ElevenCreative”（公開2026-09-21、更新2026-11-23）  
+  https://elevenlabs.io/blog/introducing-studio-4
+- Vimeo “5 updates for Enterprise...” （公開2026-11-04、更新2026-11-05）  
+  https://vimeo.com/blog/post/enterprise-october-update
+- Google Workspace Updates “Upload an image to create a custom avatar in Google Vids”（公開2026-11-02、更新2026-11-03）  
+  https://workspaceupdates.googleblog.com/2026/11/create-a-custom-avatar-google-vids.html
+
+アクセスできた日付付き公式一次情報だけを候補評価に使用した。第三者解説、アクセス不可、日付不明の事項は採用していない。Studio 4.0は更新箇所を特定できないため、11月23日の新機能とは断定しない。提供元の品質・速度・費用・成果に関する表現をFRAMEPACTの採用実績、内部原価、権利保証、納期短縮、価格条件へ変換しない。
+
+### 重複・導線・レビュー確認
+
+固定main `4666c8bbf8a36499315f92a526903d755aa29997` の `business/`、`planning/`、`writing/`、`distribution/`、公開HTML、`column.html`、sitemap、既存PRを照合。今週キーのjob、同名branch、PR、active/stale lockは開始時になく、固定SHAから専用branchを作成してlockを取得した。
+
+- 主担当はコンテンツ企画担当。統括秘書が依存関係と引き継ぎを管理し、リサーチ、SEO、グロース、編集長、よっしーAIを必要範囲に限定した
+- 一次情報調査とSEO・重複・CTA監査を別の独立エージェントへ委任した
+- 1巡目で、内部のクレジット・原価管理を中心にした案から、企業担当者向けの完成カット数・生成案数・再生成・見積境界へ変更した
+- 推奨1はAPI運用・料金相場・社内原価の記事にせず、発注前の確認表に限定する。料金ページ、外注前チェック、生成カット台帳、段階別承認、納品仕様を再掲しない
+- 公開順は未決定で、1記事1主CTAを維持する
+- X・noteの展開案、本文、キュー、既存承認・公開状態は変更しない
+- 編集長・よっしーAI基準の独立最終レビューを初稿後に実施し、必要な内部修正は最大2巡で反映する
+- 本企画は内部レビュー上の推奨であり、本人承認ではない
+
+企画1件は未承認。オーナー判断は `PLAN-20261129-001` の `採用 / 修正 / 保留 / 却下`。原稿作成、HTML化、公開、投稿は行っていない。
