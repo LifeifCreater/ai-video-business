@@ -571,6 +571,23 @@
       "errorSummary": null,
       "retryCount": 0,
       "lastUpdatedAt": "2026-11-15T02:03:40.175+09:00"
+    },
+    {
+      "jobId": "NIGHTLY-PRODUCTION-PLAN-20261122-001-RECONCILED",
+      "workflowType": "nightly_production",
+      "sourceId": "PLAN-20261122-001",
+      "status": "completed",
+      "scheduledFor": "2026-11-23T02:00:00+09:00",
+      "startedAt": "2026-11-23T01:56:16+09:00",
+      "completedAt": "2026-11-23T02:01:30+09:00",
+      "branch": "planning/weekly-2026-11-23",
+      "commitSha": "1207c05cfd63e220c281909c16eb3f23d7bca856",
+      "pullRequestUrl": "https://github.com/LifeifCreater/ai-video-business/pull/102",
+      "approvalRequired": null,
+      "errorCode": null,
+      "errorSummary": null,
+      "retryCount": 0,
+      "lastUpdatedAt": "2026-11-29T02:07:00+09:00"
     }
   ]
 }
